@@ -95,7 +95,7 @@ import System.IO;
 		public this(Stream stream)
 		{
 			if (stream == null)
-				throw new ArgumentNullException(nameof(stream));
+				throw new ArgumentNullException(__traits(identifier, stream));
 			// init arrays
 			for (int i = 0; i < BZip2Constants.GroupCount; ++i)
 			{
@@ -235,7 +235,7 @@ import System.IO;
 		{
 			if (buffer == null)
 			{
-				throw new ArgumentNullException(nameof(buffer));
+				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			for (int i = 0; i < count; ++i)

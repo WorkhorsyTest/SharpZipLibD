@@ -17,10 +17,10 @@ import System.IO;
 		public static void Decompress(Stream inStream, Stream outStream, bool isStreamOwner)
 		{
 			if (inStream == null)
-				throw new ArgumentNullException(nameof(inStream));
+				throw new ArgumentNullException(__traits(identifier, inStream));
 
 			if (outStream == null)
-				throw new ArgumentNullException(nameof(outStream));
+				throw new ArgumentNullException(__traits(identifier, outStream));
 
 			try
 			{
@@ -52,10 +52,10 @@ import System.IO;
 		public static void Compress(Stream inStream, Stream outStream, bool isStreamOwner, int level)
 		{
 			if (inStream == null)
-				throw new ArgumentNullException(nameof(inStream));
+				throw new ArgumentNullException(__traits(identifier, inStream));
 
 			if (outStream == null)
-				throw new ArgumentNullException(nameof(outStream));
+				throw new ArgumentNullException(__traits(identifier, outStream));
 
 			try
 			{

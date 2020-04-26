@@ -129,7 +129,7 @@ import System.IO;
 		public this(Stream stream, int blockSize)
 		{
 			if (stream == null)
-				throw new ArgumentNullException(nameof(stream));
+				throw new ArgumentNullException(__traits(identifier, stream));
 
 			baseStream = stream;
 			bsLive = 0;
@@ -265,17 +265,17 @@ import System.IO;
 		{
 			if (buffer == null)
 			{
-				throw new ArgumentNullException(nameof(buffer));
+				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			if (offset < 0)
 			{
-				throw new ArgumentOutOfRangeException(nameof(offset));
+				throw new ArgumentOutOfRangeException(__traits(identifier, offset));
 			}
 
 			if (count < 0)
 			{
-				throw new ArgumentOutOfRangeException(nameof(count));
+				throw new ArgumentOutOfRangeException(__traits(identifier, count));
 			}
 
 			if (buffer.Length - offset < count)

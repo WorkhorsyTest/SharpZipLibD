@@ -115,7 +115,7 @@ import System;
 		{
 			if (buffer == null)
 			{
-				throw new ArgumentNullException(nameof(buffer));
+				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			Update(new ArraySegment<byte>(buffer, 0, buffer.Length));
