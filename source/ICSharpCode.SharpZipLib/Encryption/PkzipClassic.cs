@@ -351,7 +351,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 	/// Defines a wrapper object to access the Pkzip algorithm.
 	/// This class cannot be inherited.
 	/// </summary>
-	public sealed class PkzipClassicManaged : PkzipClassic
+	public /*sealed*/ class PkzipClassicManaged : PkzipClassic
 	{
 		/// <summary>
 		/// Get / set the applicable block size in bits.

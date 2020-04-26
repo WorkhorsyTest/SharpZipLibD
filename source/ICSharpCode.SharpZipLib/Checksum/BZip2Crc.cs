@@ -29,7 +29,7 @@ namespace ICSharpCode.SharpZipLib.Checksum
 	/// the information needed to generate CRC's on data a byte at a time for all
 	/// combinations of CRC register values and incoming bytes.
 	/// </remarks>
-	public sealed class BZip2Crc : IChecksum
+	public /*sealed*/ class BZip2Crc : IChecksum
 	{
 		#region Instance Fields
 

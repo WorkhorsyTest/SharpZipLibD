@@ -501,7 +501,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// means that for extra data created by passing in data can have the values modified by the caller
 	/// in some circumstances.
 	/// </remarks>
-	sealed public class ZipExtraData : IDisposable
+	/*sealed*/ public class ZipExtraData : IDisposable
 	{
 		#region Constructors
 
