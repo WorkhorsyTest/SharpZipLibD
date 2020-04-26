@@ -38,7 +38,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 		private const uint crcInit = 0xFFFFFFFF;
 		//const uint crcXor = 0x00000000;
 
-		private static /*readonly*/ uint[] crcTable = {
+		private static /*readonly*/ uint[] crcTable = [
 			0X00000000, 0X04C11DB7, 0X09823B6E, 0X0D4326D9,
 			0X130476DC, 0X17C56B6B, 0X1A864DB2, 0X1E475005,
 			0X2608EDB8, 0X22C9F00F, 0X2F8AD6D6, 0X2B4BCB61,
@@ -103,7 +103,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 			0X9ABC8BD5, 0X9E7D9662, 0X933EB0BB, 0X97FFAD0C,
 			0XAFB010B1, 0XAB710D06, 0XA6322BDF, 0XA2F33668,
 			0XBCB4666D, 0XB8757BDA, 0XB5365D03, 0XB1F740B4
-		};
+		];
 
 		/// <summary>
 		/// The CRC data checksum so far.
