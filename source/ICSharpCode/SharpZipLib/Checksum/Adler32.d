@@ -82,12 +82,9 @@ import System;
 		/// <summary>
 		/// Returns the Adler32 data checksum computed so far.
 		/// </summary>
-		public long Value
+		public long Value()
 		{
-			get
-			{
-				return checkValue;
-			}
+			return checkValue;
 		}
 
 		/// <summary>

@@ -116,53 +116,41 @@ import System.IO;
 		/// Get/set flag indicating ownership of underlying stream.
 		/// When the flag is true <see cref="Stream.Dispose()" /> will close the underlying stream also.
 		/// </summary>
-		public bool IsStreamOwner { get; set; } = true;
+		public bool IsStreamOwner /*{ get; set; }*/ = true;
 
 		//#region Stream Overrides
 
 		/// <summary>
 		/// Gets a value indicating if the stream supports reading
 		/// </summary>
-		public override bool CanRead
+		public override bool CanRead()
 		{
-			get
-			{
-				return baseStream.CanRead;
-			}
+			return baseStream.CanRead;
 		}
 
 		/// <summary>
 		/// Gets a value indicating whether the current stream supports seeking.
 		/// </summary>
-		public override bool CanSeek
+		public override bool CanSeek()
 		{
-			get
-			{
-				return false;
-			}
+			return false;
 		}
 
 		/// <summary>
 		/// Gets a value indicating whether the current stream supports writing.
 		/// This property always returns false
 		/// </summary>
-		public override bool CanWrite
+		public override bool CanWrite()
 		{
-			get
-			{
-				return false;
-			}
+			return false;
 		}
 
 		/// <summary>
 		/// Gets the length in bytes of the stream.
 		/// </summary>
-		public override long Length
+		public override long Length()
 		{
-			get
-			{
-				return baseStream.Length;
-			}
+			return baseStream.Length;
 		}
 
 		/// <summary>
@@ -170,16 +158,12 @@ import System.IO;
 		/// Setting the position is not supported and will throw a NotSupportException.
 		/// </summary>
 		/// <exception cref="NotSupportedException">Any attempt to set the position.</exception>
-		public override long Position
+		public override long Position()
 		{
-			get
-			{
-				return baseStream.Position;
-			}
-			set
-			{
-				throw new NotSupportedException("BZip2InputStream position cannot be set");
-			}
+			return baseStream.Position;
+		}
+		public override long Position(long value)
+			throw new NotSupportedException("BZip2InputStream position cannot be set");
 		}
 
 		/// <summary>

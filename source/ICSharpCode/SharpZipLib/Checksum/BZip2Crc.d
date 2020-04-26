@@ -129,16 +129,13 @@ import System;
 		/// Returns the CRC data checksum computed so far.
 		/// </summary>
 		/// <remarks>Reversed Out = true</remarks>
-		public long Value
+		public long Value()
 		{
-			get
-			{
-				// Tehcnically, the output should be:
-				//return (long)(~checkValue ^ crcXor);
-				// but x ^ 0 = x, so there is no point in adding
-				// the XOR operation
-				return (long)(~checkValue);
-			}
+			// Tehcnically, the output should be:
+			//return (long)(~checkValue ^ crcXor);
+			// but x ^ 0 = x, so there is no point in adding
+			// the XOR operation
+			return (long)(~checkValue);
 		}
 
 		/// <summary>

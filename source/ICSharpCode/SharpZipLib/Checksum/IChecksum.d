@@ -18,10 +18,12 @@ import System;
 		/// <summary>
 		/// Returns the data checksum computed so far.
 		/// </summary>
-		long Value
+		long Value();
+/*
 		{
 			get;
 		}
+*/
 
 		/// <summary>
 		/// Adds one byte to the data checksum.

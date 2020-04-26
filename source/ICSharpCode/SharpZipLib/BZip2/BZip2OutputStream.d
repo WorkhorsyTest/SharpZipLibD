@@ -166,65 +166,50 @@ import System.IO;
 		/// When the flag is true <see cref="Stream.Dispose()" /> will close the underlying stream also.
 		/// </summary>
 		/// <remarks>The default value is true.</remarks>
-		public bool IsStreamOwner { get; set; } = true;
+		public bool IsStreamOwner /*{ get; set; }*/ = true;
 
 		/// <summary>
 		/// Gets a value indicating whether the current stream supports reading
 		/// </summary>
-		public override bool CanRead
+		public override bool CanRead()
 		{
-			get
-			{
-				return false;
-			}
+			return false;
 		}
 
 		/// <summary>
 		/// Gets a value indicating whether the current stream supports seeking
 		/// </summary>
-		public override bool CanSeek
+		public override bool CanSeek()
 		{
-			get
-			{
-				return false;
-			}
+			return false;
 		}
 
 		/// <summary>
 		/// Gets a value indicating whether the current stream supports writing
 		/// </summary>
-		public override bool CanWrite
+		public override bool CanWrite()
 		{
-			get
-			{
-				return baseStream.CanWrite;
-			}
+			return baseStream.CanWrite;
 		}
 
 		/// <summary>
 		/// Gets the length in bytes of the stream
 		/// </summary>
-		public override long Length
+		public override long Length()
 		{
-			get
-			{
-				return baseStream.Length;
-			}
+			return baseStream.Length;
 		}
 
 		/// <summary>
 		/// Gets or sets the current position of this stream.
 		/// </summary>
-		public override long Position
+		public override long Position()
 		{
-			get
-			{
-				return baseStream.Position;
-			}
-			set
-			{
-				throw new NotSupportedException("BZip2OutputStream position cannot be set");
-			}
+			return baseStream.Position;
+		}
+		public override long Position(value long)
+		{
+			throw new NotSupportedException("BZip2OutputStream position cannot be set");
 		}
 
 		/// <summary>
@@ -413,9 +398,9 @@ import System.IO;
 		/// <summary>
 		/// Get the number of bytes written to the output.
 		/// </summary>
-		public int BytesWritten
+		public int BytesWritten()
 		{
-			get { return bytesOut; }
+			return bytesOut;
 		}
 
 		/// <summary>
