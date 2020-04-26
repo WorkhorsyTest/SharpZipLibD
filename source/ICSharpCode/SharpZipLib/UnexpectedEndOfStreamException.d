@@ -1,5 +1,5 @@
-﻿using System;
-using System.Runtime.Serialization;
+import System;
+import System.Runtime.Serialization;
 
 namespace ICSharpCode.SharpZipLib
 {

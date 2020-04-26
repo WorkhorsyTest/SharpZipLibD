@@ -1,6 +1,6 @@
-using ICSharpCode.SharpZipLib.Checksum;
-using System;
-using System.IO;
+import ICSharpCode.SharpZipLib.Checksum;
+import System;
+import System.IO;
 
 namespace ICSharpCode.SharpZipLib.BZip2
 {

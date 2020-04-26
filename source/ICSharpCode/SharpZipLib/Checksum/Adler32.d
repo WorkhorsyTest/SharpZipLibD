@@ -1,4 +1,4 @@
-using System;
+import System;
 
 namespace ICSharpCode.SharpZipLib.Checksum
 {

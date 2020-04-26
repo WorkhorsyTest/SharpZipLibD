@@ -1,5 +1,5 @@
-using System;
-using System.IO;
+import System;
+import System.IO;
 
 namespace ICSharpCode.SharpZipLib.BZip2
 {
