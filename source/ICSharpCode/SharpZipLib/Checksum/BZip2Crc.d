@@ -112,7 +112,7 @@ import System;
 		/// <summary>
 		/// Initialise a default instance of <see cref="BZip2Crc"></see>
 		/// </summary>
-		public BZip2Crc()
+		public this()
 		{
 			Reset();
 		}

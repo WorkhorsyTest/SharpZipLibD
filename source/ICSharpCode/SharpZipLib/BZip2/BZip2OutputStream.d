@@ -112,7 +112,7 @@ import System.IO;
 		/// Construct a default output stream with maximum block size
 		/// </summary>
 		/// <param name="stream">The stream to write BZip data onto.</param>
-		public BZip2OutputStream(Stream stream) : this(stream, 9)
+		public this(Stream stream) : this(stream, 9)
 		{
 		}
 
@@ -126,7 +126,7 @@ import System.IO;
 		/// Valid block sizes are in the range 1..9, with 1 giving
 		/// the lowest compression and 9 the highest.
 		/// </remarks>
-		public BZip2OutputStream(Stream stream, int blockSize)
+		public this(Stream stream, int blockSize)
 		{
 			if (stream == null)
 				throw new ArgumentNullException(nameof(stream));
@@ -156,7 +156,7 @@ import System.IO;
 		/// Ensures that resources are freed and other cleanup operations
 		/// are performed when the garbage collector reclaims the BZip2OutputStream.
 		/// </summary>
-		~BZip2OutputStream()
+		~this()
 		{
 			Dispose(false);
 		}

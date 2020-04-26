@@ -66,7 +66,7 @@ import System;
 		/// <summary>
 		/// Initialise a default instance of <see cref="Adler32"></see>
 		/// </summary>
-		public Adler32()
+		public this()
 		{
 			Reset();
 		}

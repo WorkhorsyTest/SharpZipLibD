@@ -113,7 +113,7 @@
 		/// </summary>
 		public const int OvershootBytes = 20;
 
-		private BZip2Constants()
+		private this()
 		{
 		}
 	}

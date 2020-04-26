@@ -13,13 +13,13 @@ import System.Runtime.Serialization;
 		/// <summary>
 		/// Initializes a new instance of the StreamUnsupportedException with a generic message
 		/// </summary>
-		public StreamUnsupportedException() : base(GenericMessage) { }
+		public this() : base(GenericMessage) { }
 
 		/// <summary>
 		/// Initializes a new instance of the StreamUnsupportedException class with a specified error message.
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
-		public StreamUnsupportedException(string message) : base(message) { }
+		public this(string message) : base(message) { }
 
 		/// <summary>
 		/// Initializes a new instance of the StreamUnsupportedException class with a specified
@@ -27,7 +27,7 @@ import System.Runtime.Serialization;
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
 		/// <param name="innerException">The inner exception</param>
-		public StreamUnsupportedException(string message, BaseException innerException) : base(message, innerException) { }
+		public this(string message, BaseException innerException) : base(message, innerException) { }
 
 		/// <summary>
 		/// Initializes a new instance of the StreamUnsupportedException class with serialized data.
@@ -40,7 +40,7 @@ import System.Runtime.Serialization;
 		/// The System.Runtime.Serialization.StreamingContext that contains contextual information
 		/// about the source or destination.
 		/// </param>
-		protected StreamUnsupportedException(SerializationInfo info, StreamingContext context)
+		protected this(SerializationInfo info, StreamingContext context)
 			: base(info, context)
 		{
 		}

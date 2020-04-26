@@ -11,7 +11,7 @@ import System.Runtime.Serialization;
 		/// <summary>
 		/// Initialise a new instance of <see cref="BZip2Exception" />.
 		/// </summary>
-		public BZip2Exception()
+		public this()
 		{
 		}
 
@@ -19,7 +19,7 @@ import System.Runtime.Serialization;
 		/// Initialise a new instance of <see cref="BZip2Exception" /> with its message string.
 		/// </summary>
 		/// <param name="message">A <see cref="string"/> that describes the error.</param>
-		public BZip2Exception(string message)
+		public this(string message)
 			: base(message)
 		{
 		}
@@ -29,7 +29,7 @@ import System.Runtime.Serialization;
 		/// </summary>
 		/// <param name="message">A <see cref="string"/> that describes the error.</param>
 		/// <param name="innerException">The <see cref="BaseException"/> that caused this exception.</param>
-		public BZip2Exception(string message, BaseException innerException)
+		public this(string message, BaseException innerException)
 			: base(message, innerException)
 		{
 		}
@@ -45,7 +45,7 @@ import System.Runtime.Serialization;
 		/// The System.Runtime.Serialization.StreamingContext that contains contextual information
 		/// about the source or destination.
 		/// </param>
-		protected BZip2Exception(SerializationInfo info, StreamingContext context)
+		protected this(SerializationInfo info, StreamingContext context)
 			: base(info, context)
 		{
 		}

@@ -12,7 +12,7 @@ import System.Runtime.Serialization;
 		/// Initializes a new instance of the ValueOutOfRangeException class naming the the causing variable
 		/// </summary>
 		/// <param name="nameOfValue">Name of the variable, use: nameof()</param>
-		public ValueOutOfRangeException(string nameOfValue)
+		public this(string nameOfValue)
 			: base($"{nameOfValue} out of range") { }
 
 		/// <summary>
@@ -23,7 +23,7 @@ import System.Runtime.Serialization;
 		/// <param name="value">The invalid value</param>
 		/// <param name="maxValue">Expected maximum value</param>
 		/// <param name="minValue">Expected minimum value</param>
-		public ValueOutOfRangeException(string nameOfValue, long value, long maxValue, long minValue = 0)
+		public this(string nameOfValue, long value, long maxValue, long minValue = 0)
 			: this(nameOfValue, value.ToString(), maxValue.ToString(), minValue.ToString()) { }
 
 		/// <summary>
@@ -34,15 +34,15 @@ import System.Runtime.Serialization;
 		/// <param name="value">The invalid value</param>
 		/// <param name="maxValue">Expected maximum value</param>
 		/// <param name="minValue">Expected minimum value</param>
-		public ValueOutOfRangeException(string nameOfValue, string value, string maxValue, string minValue = "0") :
+		public this(string nameOfValue, string value, string maxValue, string minValue = "0") :
 			base($"{nameOfValue} out of range: {value}, should be {minValue}..{maxValue}")
 		{ }
 
-		private ValueOutOfRangeException()
+		private this()
 		{
 		}
 
-		private ValueOutOfRangeException(string message, BaseException innerException) : base(message, innerException)
+		private this(string message, BaseException innerException) : base(message, innerException)
 		{
 		}
 
@@ -57,7 +57,7 @@ import System.Runtime.Serialization;
 		/// The System.Runtime.Serialization.StreamingContext that contains contextual information
 		/// about the source or destination.
 		/// </param>
-		protected ValueOutOfRangeException(SerializationInfo info, StreamingContext context)
+		protected this(SerializationInfo info, StreamingContext context)
 			: base(info, context)
 		{
 		}

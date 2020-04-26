@@ -14,7 +14,7 @@ import System.Runtime.Serialization;
 		/// <summary>
 		/// Initializes a new instance of the SharpZipBaseException class.
 		/// </summary>
-		public SharpZipBaseException()
+		public this()
 		{
 		}
 
@@ -22,7 +22,7 @@ import System.Runtime.Serialization;
 		/// Initializes a new instance of the SharpZipBaseException class with a specified error message.
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
-		public SharpZipBaseException(string message)
+		public this(string message)
 			: base(message)
 		{
 		}
@@ -33,7 +33,7 @@ import System.Runtime.Serialization;
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
 		/// <param name="innerException">The inner exception</param>
-		public SharpZipBaseException(string message, BaseException innerException)
+		public this(string message, BaseException innerException)
 			: base(message, innerException)
 		{
 		}
@@ -49,7 +49,7 @@ import System.Runtime.Serialization;
 		/// The System.Runtime.Serialization.StreamingContext that contains contextual information
 		/// about the source or destination.
 		/// </param>
-		protected SharpZipBaseException(SerializationInfo info, StreamingContext context)
+		protected this(SerializationInfo info, StreamingContext context)
 			: base(info, context)
 		{
 		}

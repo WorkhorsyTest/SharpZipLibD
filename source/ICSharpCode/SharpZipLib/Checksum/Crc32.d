@@ -105,7 +105,7 @@ import System;
 		/// <summary>
 		/// Initialise a default instance of <see cref="Crc32"></see>
 		/// </summary>
-		public Crc32()
+		public this()
 		{
 			Reset();
 		}

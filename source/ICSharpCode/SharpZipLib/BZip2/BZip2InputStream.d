@@ -92,7 +92,7 @@ import System.IO;
 		/// Construct instance for reading from stream
 		/// </summary>
 		/// <param name="stream">Data source</param>
-		public BZip2InputStream(Stream stream)
+		public this(Stream stream)
 		{
 			if (stream == null)
 				throw new ArgumentNullException(nameof(stream));
