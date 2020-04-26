@@ -1,8 +1,7 @@
 import System;
 import System.Runtime.Serialization;
 
-namespace ICSharpCode.SharpZipLib
-{
+
 	/// <summary>
 	/// Indicates that an error occured during decoding of a input stream due to corrupt
 	/// data or (unintentional) library incompability.
@@ -47,4 +46,3 @@ namespace ICSharpCode.SharpZipLib
 		{
 		}
 	}
-}

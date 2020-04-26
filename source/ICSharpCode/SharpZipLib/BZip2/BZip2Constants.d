@@ -1,5 +1,4 @@
-namespace ICSharpCode.SharpZipLib.BZip2
-{
+
 	/// <summary>
 	/// Defines /*internal*/ values for both compression and decompression
 	/// </summary>
@@ -118,4 +117,3 @@ namespace ICSharpCode.SharpZipLib.BZip2
 		{
 		}
 	}
-}

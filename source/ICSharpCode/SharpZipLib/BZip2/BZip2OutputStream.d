@@ -2,8 +2,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 import System;
 import System.IO;
 
-namespace ICSharpCode.SharpZipLib.BZip2
-{
+
 	/// <summary>
 	/// An output stream that compresses into the BZip2 format
 	/// including file header chars into another stream.
@@ -2030,4 +2029,3 @@ namespace ICSharpCode.SharpZipLib.BZip2
 			public int dd;
 		}
 	}
-}

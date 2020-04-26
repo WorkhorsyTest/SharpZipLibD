@@ -1,8 +1,7 @@
 import System;
 import System.Runtime.Serialization;
 
-namespace ICSharpCode.SharpZipLib
-{
+
 	/// <summary>
 	/// Indicates that the input stream could not decoded due to the stream ending before enough data had been provided
 	/// </summary>
@@ -46,4 +45,3 @@ namespace ICSharpCode.SharpZipLib
 		{
 		}
 	}
-}

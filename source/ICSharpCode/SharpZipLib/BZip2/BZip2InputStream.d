@@ -2,8 +2,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 import System;
 import System.IO;
 
-namespace ICSharpCode.SharpZipLib.BZip2
-{
+
 	/// <summary>
 	/// An input stream that decompresses files in the BZip2 format
 	/// </summary>
@@ -1025,4 +1024,3 @@ namespace ICSharpCode.SharpZipLib.BZip2
 			}
 		}
 	}
-}

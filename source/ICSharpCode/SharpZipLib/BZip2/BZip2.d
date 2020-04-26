@@ -1,8 +1,7 @@
 import System;
 import System.IO;
 
-namespace ICSharpCode.SharpZipLib.BZip2
-{
+
 	/// <summary>
 	/// An example class to demonstrate compression and decompression of BZip2 streams.
 	/// </summary>
@@ -76,4 +75,3 @@ namespace ICSharpCode.SharpZipLib.BZip2
 			}
 		}
 	}
-}

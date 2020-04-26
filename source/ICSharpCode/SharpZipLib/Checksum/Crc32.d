@@ -1,7 +1,6 @@
 import System;
 
-namespace ICSharpCode.SharpZipLib.Checksum
-{
+
 	/// <summary>
 	/// CRC-32 with reversed data and unreversed output
 	/// </summary>
@@ -173,4 +172,3 @@ namespace ICSharpCode.SharpZipLib.Checksum
 				Update(segment.Array[offset++]);
 		}
 	}
-}

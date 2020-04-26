@@ -1,7 +1,6 @@
 import System;
 
-namespace ICSharpCode.SharpZipLib.Checksum
-{
+
 	/// <summary>
 	/// Computes Adler32 checksum for a stream of data. An Adler32
 	/// checksum is not as reliable as a CRC32 checksum, but a lot faster to
@@ -160,4 +159,3 @@ namespace ICSharpCode.SharpZipLib.Checksum
 			checkValue = (s2 << 16) | s1;
 		}
 	}
-}
