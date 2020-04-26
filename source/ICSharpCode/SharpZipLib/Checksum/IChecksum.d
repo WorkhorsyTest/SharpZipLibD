@@ -1,5 +1,7 @@
-import System;
 
+import System : ArraySegment;
+
+import ICSharpCode.SharpZipLib.Checksum;
 
 	/// <summary>
 	/// Interface to compute a data checksum used by checked input/output streams.
@@ -47,5 +49,5 @@ import System;
 		/// <param name = "segment">
 		/// The chunk of data to add
 		/// </param>
-		void Update(ArraySegment<byte> segment);
+		void Update(ArraySegment!byte segment);
 	}

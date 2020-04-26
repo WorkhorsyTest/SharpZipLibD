@@ -1,6 +1,8 @@
 import System;
 import System.Runtime.Serialization;
+import ICSharpCode.SharpZipLib : SharpZipBaseException;
 
+import ICSharpCode.SharpZipLib.BZip2;
 
 	/// <summary>
 	/// BZip2Exception represents exceptions specific to BZip2 classes and code.

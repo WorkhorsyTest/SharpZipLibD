@@ -1,6 +1,7 @@
 import System;
 import System.Runtime.Serialization;
 
+import ICSharpCode.SharpZipLib;
 
 	/// <summary>
 	/// Indicates that a value was outside of the expected range when decoding an input stream

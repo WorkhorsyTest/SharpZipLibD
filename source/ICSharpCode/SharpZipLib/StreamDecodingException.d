@@ -1,6 +1,7 @@
 import System;
 import System.Runtime.Serialization;
 
+import ICSharpCode.SharpZipLib;
 
 	/// <summary>
 	/// Indicates that an error occured during decoding of a input stream due to corrupt

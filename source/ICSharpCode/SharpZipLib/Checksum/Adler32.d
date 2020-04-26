@@ -1,5 +1,8 @@
-import System;
 
+
+import System : ArraySegment;
+
+import ICSharpCode.SharpZipLib.Checksum;
 
 	/// <summary>
 	/// Computes Adler32 checksum for a stream of data. An Adler32
@@ -95,6 +98,7 @@ import System;
 		/// </param>
 		public void Update(int bval)
 		{
+/*
 			// We could make a length 1 byte array and call update again, but I
 			// would rather not have that overhead
 			uint s1 = checkValue & 0xFFFF;
@@ -104,6 +108,7 @@ import System;
 			s2 = (s1 + s2) % BASE;
 
 			checkValue = (s2 << 16) + s1;
+*/
 		}
 
 		/// <summary>
@@ -113,12 +118,14 @@ import System;
 		/// <param name="buffer">Contains the data to update the checksum with.</param>
 		public void Update(byte[] buffer)
 		{
+/*
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			Update(new ArraySegment<byte>(buffer, 0, buffer.Length));
+*/
 		}
 
 		/// <summary>
@@ -127,8 +134,9 @@ import System;
 		/// <param name = "segment">
 		/// The chunk of data to add
 		/// </param>
-		public void Update(ArraySegment<byte> segment)
+		public void Update(ArraySegment!byte segment)
 		{
+/*
 			//(By Per Bothner)
 			uint s1 = checkValue & 0xFFFF;
 			uint s2 = checkValue >> 16;
@@ -154,5 +162,6 @@ import System;
 				s2 %= BASE;
 			}
 			checkValue = (s2 << 16) | s1;
+*/
 		}
 	}

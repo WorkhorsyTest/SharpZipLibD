@@ -1,5 +1,8 @@
 import System;
 import System.IO;
+//import ICSharpCode.SharpZipLib.Core : StreamUtils;
+
+import ICSharpCode.SharpZipLib.BZip2;
 
 
 	/// <summary>
@@ -16,6 +19,7 @@ import System.IO;
 		/// <param name="isStreamOwner">Both streams are closed on completion if true.</param>
 		public static void Decompress(Stream inStream, Stream outStream, bool isStreamOwner)
 		{
+/*
 			if (inStream is null)
 				throw new ArgumentNullException(__traits(identifier, inStream));
 
@@ -38,6 +42,7 @@ import System.IO;
 					outStream.Dispose();
 				}
 			}
+*/
 		}
 
 		/// <summary>
@@ -51,6 +56,7 @@ import System.IO;
 		/// the lowest compression and 9 the highest.</param>
 		public static void Compress(Stream inStream, Stream outStream, bool isStreamOwner, int level)
 		{
+/*
 			if (inStream is null)
 				throw new ArgumentNullException(__traits(identifier, inStream));
 
@@ -73,5 +79,6 @@ import System.IO;
 					inStream.Dispose();
 				}
 			}
+*/
 		}
 	}

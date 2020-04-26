@@ -1,6 +1,9 @@
-import ICSharpCode.SharpZipLib.Checksum;
+
 import System;
-import System.IO;
+import System.IO : Stream, SeekOrigin, EndOfStreamException;
+import ICSharpCode.SharpZipLib.Checksum;
+
+import ICSharpCode.SharpZipLib.BZip2;
 
 
 	/// <summary>
@@ -94,6 +97,7 @@ import System.IO;
 		/// <param name="stream">Data source</param>
 		public this(Stream stream)
 		{
+/*
 			if (stream is null)
 				throw new ArgumentNullException(__traits(identifier, stream));
 			// init arrays
@@ -110,6 +114,7 @@ import System.IO;
 			Initialize();
 			InitBlock();
 			SetupBlock();
+*/
 		}
 
 		/// <summary>
@@ -163,6 +168,7 @@ import System.IO;
 			return baseStream.Position;
 		}
 		public override long Position(long value)
+		{
 			throw new NotSupportedException("BZip2InputStream position cannot be set");
 		}
 
@@ -233,6 +239,7 @@ import System.IO;
 		/// </returns>
 		public override int Read(byte[] buffer, int offset, int count)
 		{
+/*
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
@@ -248,6 +255,7 @@ import System.IO;
 				buffer[offset + i] = (byte)rb;
 			}
 			return count;
+*/return 0;
 		}
 
 		/// <summary>
@@ -267,6 +275,7 @@ import System.IO;
 		/// <returns>byte read or -1 on end of stream</returns>
 		public override int ReadByte()
 		{
+/*
 			if (streamEnd)
 			{
 				return -1; // ok
@@ -297,12 +306,14 @@ import System.IO;
 					break;
 			}
 			return retChar;
+*/return 0;
 		}
 
 		//#endregion Stream Overrides
 
 		private void MakeMaps()
 		{
+/*
 			nInUse = 0;
 			for (int i = 0; i < 256; ++i)
 			{
@@ -313,10 +324,12 @@ import System.IO;
 					nInUse++;
 				}
 			}
+*/
 		}
 
 		private void Initialize()
 		{
+/*
 			char magic1 = BsGetUChar();
 			char magic2 = BsGetUChar();
 
@@ -331,10 +344,12 @@ import System.IO;
 
 			SetDecompressStructureSizes(magic4 - '0');
 			computedCombinedCRC = 0;
+*/
 		}
 
 		private void InitBlock()
 		{
+/*
 			char magic1 = BsGetUChar();
 			char magic2 = BsGetUChar();
 			char magic3 = BsGetUChar();
@@ -363,10 +378,12 @@ import System.IO;
 
 			mCrc.Reset();
 			currentState = START_BLOCK_STATE;
+*/
 		}
 
 		private void EndBlock()
 		{
+/*
 			computedBlockCRC = (int)mCrc.Value;
 
 			// -- A bad CRC is considered a fatal error. --
@@ -378,10 +395,12 @@ import System.IO;
 			// 1528150659
 			computedCombinedCRC = ((computedCombinedCRC << 1) & 0xFFFFFFFF) | (computedCombinedCRC >> 31);
 			computedCombinedCRC = computedCombinedCRC ^ (uint)computedBlockCRC;
+*/
 		}
 
 		private void Complete()
 		{
+/*
 			storedCombinedCRC = BsGetInt32();
 			if (storedCombinedCRC != (int)computedCombinedCRC)
 			{
@@ -389,10 +408,12 @@ import System.IO;
 			}
 
 			streamEnd = true;
+*/
 		}
 
 		private void FillBuffer()
 		{
+/*
 			int thech = 0;
 
 			try
@@ -411,10 +432,12 @@ import System.IO;
 
 			bsBuff = (bsBuff << 8) | (thech & 0xFF);
 			bsLive += 8;
+*/
 		}
 
 		private int BsR(int n)
 		{
+/*
 			while (bsLive < n)
 			{
 				FillBuffer();
@@ -423,11 +446,14 @@ import System.IO;
 			int v = (bsBuff >> (bsLive - n)) & ((1 << n) - 1);
 			bsLive -= n;
 			return v;
+*/
 		}
 
 		private char BsGetUChar()
 		{
+/*
 			return (char)BsR(8);
+*/return 0;
 		}
 
 		private int BsGetIntVS(int numBits)
@@ -437,15 +463,18 @@ import System.IO;
 
 		private int BsGetInt32()
 		{
+/*
 			int result = BsR(8);
 			result = (result << 8) | BsR(8);
 			result = (result << 8) | BsR(8);
 			result = (result << 8) | BsR(8);
 			return result;
+*/return 0;
 		}
 
 		private void RecvDecodingTables()
 		{
+/*
 			char[][] len = new char[BZip2Constants.GroupCount][];
 			for (int i = 0; i < BZip2Constants.GroupCount; ++i)
 			{
@@ -549,10 +578,12 @@ import System.IO;
 				HbCreateDecodeTables(limit[t], baseArray[t], perm[t], len[t], minLen, maxLen, alphaSize);
 				minLens[t] = minLen;
 			}
+*/
 		}
 
 		private void GetAndMoveToFrontDecode()
 		{
+/*
 			byte[] yy = new byte[256];
 			int nextSym;
 
@@ -725,10 +756,12 @@ import System.IO;
 					continue;
 				}
 			}
+*/
 		}
 
 		private void SetupBlock()
 		{
+/*
 			int[] cftab = new int[257];
 
 			cftab[0] = 0;
@@ -764,10 +797,12 @@ import System.IO;
 			{
 				SetupNoRandPartA();
 			}
+*/
 		}
 
 		private void SetupRandPartA()
 		{
+/*
 			if (i2 <= last)
 			{
 				chPrev = ch2;
@@ -796,10 +831,12 @@ import System.IO;
 				InitBlock();
 				SetupBlock();
 			}
+*/
 		}
 
 		private void SetupNoRandPartA()
 		{
+/*
 			if (i2 <= last)
 			{
 				chPrev = ch2;
@@ -817,10 +854,12 @@ import System.IO;
 				InitBlock();
 				SetupBlock();
 			}
+*/
 		}
 
 		private void SetupRandPartB()
 		{
+/*
 			if (ch2 != chPrev)
 			{
 				currentState = RAND_PART_A_STATE;
@@ -855,10 +894,12 @@ import System.IO;
 					SetupRandPartA();
 				}
 			}
+*/
 		}
 
 		private void SetupRandPartC()
 		{
+/*
 			if (j2 < (int)z)
 			{
 				currentChar = ch2;
@@ -872,10 +913,12 @@ import System.IO;
 				count = 0;
 				SetupRandPartA();
 			}
+*/
 		}
 
 		private void SetupNoRandPartB()
 		{
+/*
 			if (ch2 != chPrev)
 			{
 				currentState = NO_RAND_PART_A_STATE;
@@ -899,10 +942,12 @@ import System.IO;
 					SetupNoRandPartA();
 				}
 			}
+*/
 		}
 
 		private void SetupNoRandPartC()
 		{
+/*
 			if (j2 < (int)z)
 			{
 				currentChar = ch2;
@@ -916,10 +961,12 @@ import System.IO;
 				count = 0;
 				SetupNoRandPartA();
 			}
+*/
 		}
 
 		private void SetDecompressStructureSizes(int newSize100k)
 		{
+/*
 			if (!(0 <= newSize100k && newSize100k <= 9 && 0 <= blockSize100k && blockSize100k <= 9))
 			{
 				throw new BZip2Exception("Invalid block size");
@@ -935,6 +982,7 @@ import System.IO;
 			int n = BZip2Constants.BaseBlockSize * newSize100k;
 			ll8 = new byte[n];
 			tt = new int[n];
+*/
 		}
 
 		private static void CompressedStreamEOF()
@@ -959,6 +1007,7 @@ import System.IO;
 
 		private static void HbCreateDecodeTables(int[] limit, int[] baseArray, int[] perm, char[] length, int minLen, int maxLen, int alphaSize)
 		{
+/*
 			int pp = 0;
 
 			for (int i = minLen; i <= maxLen; ++i)
@@ -1006,5 +1055,6 @@ import System.IO;
 			{
 				baseArray[i] = ((limit[i - 1] + 1) << 1) - baseArray[i];
 			}
+*/
 		}
 	}

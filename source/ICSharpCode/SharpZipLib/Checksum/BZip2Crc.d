@@ -1,5 +1,8 @@
-import System;
 
+import System : ArraySegment;
+
+
+import ICSharpCode.SharpZipLib.Checksum;
 
 	/// <summary>
 	/// CRC-32 with unreversed data and reversed output
@@ -131,11 +134,13 @@ import System;
 		/// <remarks>Reversed Out = true</remarks>
 		public long Value()
 		{
+/*
 			// Tehcnically, the output should be:
 			//return (long)(~checkValue ^ crcXor);
 			// but x ^ 0 = x, so there is no point in adding
 			// the XOR operation
 			return (long)(~checkValue);
+*/
 		}
 
 		/// <summary>
@@ -147,7 +152,9 @@ import System;
 		/// <remarks>Reversed Data = false</remarks>
 		public void Update(int bval)
 		{
+/*
 			checkValue = unchecked(crcTable[(byte)(((checkValue >> 24) & 0xFF) ^ bval)] ^ (checkValue << 8));
+*/
 		}
 
 		/// <summary>
@@ -157,12 +164,14 @@ import System;
 		/// <param name="buffer">Contains the data to update the CRC with.</param>
 		public void Update(byte[] buffer)
 		{
+/*
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			Update(new ArraySegment<byte>(buffer, 0, buffer.Length));
+*/
 		}
 
 		/// <summary>
@@ -171,12 +180,14 @@ import System;
 		/// <param name = "segment">
 		/// The chunk of data to add
 		/// </param>
-		public void Update(ArraySegment<byte> segment)
+		public void Update(ArraySegment!byte segment)
 		{
+/*
 			auto count = segment.Count;
 			auto offset = segment.Offset;
 
 			while (--count >= 0)
 				Update(segment.Array[offset++]);
+*/
 		}
 	}

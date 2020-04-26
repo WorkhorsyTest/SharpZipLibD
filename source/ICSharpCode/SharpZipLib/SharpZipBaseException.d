@@ -1,6 +1,7 @@
 import System;
 import System.Runtime.Serialization;
 
+import ICSharpCode.SharpZipLib;
 
 	/// <summary>
 	/// SharpZipBaseException is the base exception class for SharpZipLib.

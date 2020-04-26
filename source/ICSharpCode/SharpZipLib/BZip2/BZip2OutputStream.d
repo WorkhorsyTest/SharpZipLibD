@@ -1,7 +1,10 @@
+
 import ICSharpCode.SharpZipLib.Checksum;
 import System;
 import System.IO;
 
+
+import ICSharpCode.SharpZipLib.BZip2;
 
 	/// <summary>
 	/// An output stream that compresses into the BZip2 format
@@ -112,8 +115,9 @@ import System.IO;
 		/// Construct a default output stream with maximum block size
 		/// </summary>
 		/// <param name="stream">The stream to write BZip data onto.</param>
-		public this(Stream stream) : this(stream, 9)
+		public this(Stream stream)
 		{
+			this(stream, 9);
 		}
 
 		/// <summary>
@@ -128,6 +132,7 @@ import System.IO;
 		/// </remarks>
 		public this(Stream stream, int blockSize)
 		{
+/*
 			if (stream is null)
 				throw new ArgumentNullException(__traits(identifier, stream));
 
@@ -150,6 +155,7 @@ import System.IO;
 			AllocateCompressStructures();
 			Initialize();
 			InitBlock();
+*/
 		}
 
 		/// <summary>
@@ -207,7 +213,7 @@ import System.IO;
 		{
 			return baseStream.Position;
 		}
-		public override long Position(value long)
+		public override long Position(long value)
 		{
 			throw new NotSupportedException("BZip2OutputStream position cannot be set");
 		}
@@ -263,6 +269,7 @@ import System.IO;
 		/// <param name="count">The number of bytes to write.</param>
 		public override void Write(byte[] buffer, int offset, int count)
 		{
+/*
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
@@ -287,6 +294,7 @@ import System.IO;
 			{
 				WriteByte(buffer[offset + i]);
 			}
+*/
 		}
 
 		/// <summary>
@@ -295,6 +303,7 @@ import System.IO;
 		/// <param name="value">The byte to write to the stream.</param>
 		public override void WriteByte(byte value)
 		{
+/*
 			int b = (256 + value) % 256;
 			if (currentChar != -1)
 			{
@@ -320,10 +329,12 @@ import System.IO;
 				currentChar = b;
 				runLength++;
 			}
+*/
 		}
 
 		private void MakeMaps()
 		{
+/*
 			nInUse = 0;
 			for (int i = 0; i < 256; i++)
 			{
@@ -334,6 +345,7 @@ import System.IO;
 					nInUse++;
 				}
 			}
+*/
 		}
 
 		/// <summary>
@@ -341,6 +353,7 @@ import System.IO;
 		/// </summary>
 		private void WriteRun()
 		{
+/*
 			if (last < allowableBlockSize)
 			{
 				inUse[currentChar] = true;
@@ -393,6 +406,7 @@ import System.IO;
 				InitBlock();
 				WriteRun();
 			}
+*/
 		}
 
 		/// <summary>
@@ -409,6 +423,7 @@ import System.IO;
 		/// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
 		override protected void Dispose(bool disposing)
 		{
+/*
 			try
 			{
 				try
@@ -443,6 +458,7 @@ import System.IO;
 			catch
 			{
 			}
+*/
 		}
 
 		/// <summary>
@@ -455,6 +471,7 @@ import System.IO;
 
 		private void Initialize()
 		{
+/*
 			bytesOut = 0;
 			nBlocksRandomised = 0;
 
@@ -469,10 +486,12 @@ import System.IO;
 			BsPutUChar('0' + blockSize100k);
 
 			combinedCRC = 0;
+*/
 		}
 
 		private void InitBlock()
 		{
+/*
 			mCrc.Reset();
 			last = -1;
 
@@ -483,10 +502,12 @@ import System.IO;
 
 			/+++ 20 is just a paranoia constant +/
 			allowableBlockSize = BZip2Constants.BaseBlockSize * blockSize100k - 20;
+*/
 		}
 
 		private void EndBlock()
 		{
+/*
 			if (last < 0)
 			{       // dont do anything for empty files, (makes empty files compatible with original Bzip)
 				return;
@@ -538,10 +559,12 @@ import System.IO;
 
 			/++ Finally, block's contents proper. +/
 			MoveToFrontCodeAndSend();
+*/
 		}
 
 		private void EndCompression()
 		{
+/*
 			/++
 			Now another magic 48-bit number, 0x177245385090, to
 			indicate the end of the last block.  (sqrt(pi), if
@@ -562,10 +585,12 @@ import System.IO;
 			}
 
 			BsFinishedWithStream();
+*/
 		}
 
 		private void BsFinishedWithStream()
 		{
+/*
 			while (bsLive > 0)
 			{
 				int ch = (bsBuff >> 24);
@@ -574,10 +599,12 @@ import System.IO;
 				bsLive -= 8;
 				bytesOut++;
 			}
+*/
 		}
 
 		private void BsW(int n, int v)
 		{
+/*
 			while (bsLive >= 8)
 			{
 				int ch = (bsBuff >> 24);
@@ -588,6 +615,7 @@ import System.IO;
 			}
 			bsBuff |= (v << (32 - bsLive - n));
 			bsLive += n;
+*/
 		}
 
 		private void BsPutUChar(int c)
@@ -610,6 +638,7 @@ import System.IO;
 
 		private void SendMTFValues()
 		{
+/*
 			char[][] len = new char[BZip2Constants.GroupCount][];
 			for (int i = 0; i < BZip2Constants.GroupCount; ++i)
 			{
@@ -956,12 +985,12 @@ import System.IO;
 					while (curr < len[t][i])
 					{
 						BsW(2, 2);
-						curr++; /* 10 */
+						curr++; // 10
 					}
 					while (curr > len[t][i])
 					{
 						BsW(2, 3);
-						curr--; /* 11 */
+						curr--; // 11
 					}
 					BsW(1, 0);
 				}
@@ -994,17 +1023,21 @@ import System.IO;
 			{
 				Panic();
 			}
+*/
 		}
 
 		private void MoveToFrontCodeAndSend()
 		{
+/*
 			BsPutIntVS(24, origPtr);
 			GenerateMTFValues();
 			SendMTFValues();
+*/
 		}
 
 		private void SimpleSort(int lo, int hi, int d)
 		{
+/*
 			int i, j, h, bigN, hp;
 			int v;
 
@@ -1087,10 +1120,12 @@ import System.IO;
 					}
 				}
 			}
+*/
 		}
 
 		private void Vswap(int p1, int p2, int n)
 		{
+/*
 			int temp = 0;
 			while (n > 0)
 			{
@@ -1101,10 +1136,12 @@ import System.IO;
 				p2++;
 				n--;
 			}
+*/
 		}
 
 		private void QSort3(int loSt, int hiSt, int dSt)
 		{
+/*
 			int unLo, unHi, ltLo, gtHi, med, n, m;
 			int lo, hi, d;
 
@@ -1240,10 +1277,12 @@ import System.IO;
 				stack[sp].dd = d;
 				sp++;
 			}
+*/
 		}
 
 		private void MainSort()
 		{
+/*
 			int i, j, ss, sb;
 			int[] runningOrder = new int[256];
 			int[] copy = new int[256];
@@ -1459,10 +1498,12 @@ import System.IO;
 					}
 				}
 			}
+*/
 		}
 
 		private void RandomiseBlock()
 		{
+/*
 			int i;
 			int rNToGo = 0;
 			int rTPos = 0;
@@ -1489,10 +1530,12 @@ import System.IO;
 
 				inUse[block[i + 1]] = true;
 			}
+*/
 		}
 
 		private void DoReversibleTransformation()
 		{
+/*
 			workLimit = workFactor * last;
 			workDone = 0;
 			blockRandomised = false;
@@ -1523,10 +1566,12 @@ import System.IO;
 			{
 				Panic();
 			}
+*/
 		}
 
 		private bool FullGtU(int i1, int i2)
 		{
+/*
 			int k;
 			byte c1, c2;
 			int s1, s2;
@@ -1665,10 +1710,12 @@ import System.IO;
 			} while (k >= 0);
 
 			return false;
+*/return false;
 		}
 
 		private void AllocateCompressStructures()
 		{
+/*
 			int n = BZip2Constants.BaseBlockSize * blockSize100k;
 			block = new byte[(n + 1 + BZip2Constants.OvershootBytes)];
 			quadrant = new int[(n + BZip2Constants.OvershootBytes)];
@@ -1681,7 +1728,7 @@ import System.IO;
 				//		compressOutOfMemory ( totalDraw, n );
 			}
 
-			/*
+			/+
 			The back end needs a place to store the MTF values
 			whilst it calculates the coding tables.  We could
 			put them in the zptr array.  However, these values
@@ -1690,14 +1737,16 @@ import System.IO;
 			of cache misses induced by the multiple traversals
 			of the MTF values when calculating coding tables.
 			Seems to improve compression speed by about 1%.
-			*/
+			+/
 			//	szptr = zptr;
 
 			szptr = new short[2 * n];
+*/
 		}
 
 		private void GenerateMTFValues()
 		{
+/*
 			char[] yy = new char[256];
 			int i, j;
 			char tmp;
@@ -1809,6 +1858,7 @@ import System.IO;
 			mtfFreq[EOB]++;
 
 			nMTF = wr;
+*/
 		}
 
 		private static void Panic()
@@ -1818,6 +1868,7 @@ import System.IO;
 
 		private static void HbMakeCodeLengths(char[] len, int[] freq, int alphaSize, int maxLen)
 		{
+/*
 			/++
 			Nodes and heap entries run from 1.  Entry 0
 			for both the heap and nodes is a sentinel.
@@ -1966,10 +2017,12 @@ import System.IO;
 					weight[i] = j << 8;
 				}
 			}
+*/
 		}
 
 		private static void HbAssignCodes(int[] code, char[] length, int minLen, int maxLen, int alphaSize)
 		{
+/*
 			int vec = 0;
 			for (int n = minLen; n <= maxLen; ++n)
 			{
@@ -1983,10 +2036,12 @@ import System.IO;
 				}
 				vec <<= 1;
 			}
+*/
 		}
 
 		private static byte Med3(byte a, byte b, byte c)
 		{
+/*
 			byte t;
 			if (a > b)
 			{
@@ -2005,6 +2060,7 @@ import System.IO;
 				b = a;
 			}
 			return b;
+*/return 0;
 		}
 
 		private struct StackElement
