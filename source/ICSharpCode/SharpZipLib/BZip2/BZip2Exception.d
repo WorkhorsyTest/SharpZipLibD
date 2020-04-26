@@ -20,7 +20,7 @@ import System.Runtime.Serialization;
 		/// </summary>
 		/// <param name="message">A <see cref="string"/> that describes the error.</param>
 		public this(string message)
-			: base(message)
+			: super(message)
 		{
 		}
 
@@ -30,7 +30,7 @@ import System.Runtime.Serialization;
 		/// <param name="message">A <see cref="string"/> that describes the error.</param>
 		/// <param name="innerException">The <see cref="BaseException"/> that caused this exception.</param>
 		public this(string message, BaseException innerException)
-			: base(message, innerException)
+			: super(message, innerException)
 		{
 		}
 
@@ -46,7 +46,7 @@ import System.Runtime.Serialization;
 		/// about the source or destination.
 		/// </param>
 		protected this(SerializationInfo info, StreamingContext context)
-			: base(info, context)
+			: super(info, context)
 		{
 		}
 	}

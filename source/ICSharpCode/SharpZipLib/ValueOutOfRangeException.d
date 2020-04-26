@@ -13,7 +13,7 @@ import System.Runtime.Serialization;
 		/// </summary>
 		/// <param name="nameOfValue">Name of the variable, use: nameof()</param>
 		public this(string nameOfValue)
-			: base($"{nameOfValue} out of range") { }
+			: super($"{nameOfValue} out of range") { }
 
 		/// <summary>
 		/// Initializes a new instance of the ValueOutOfRangeException class naming the the causing variable,
@@ -35,14 +35,14 @@ import System.Runtime.Serialization;
 		/// <param name="maxValue">Expected maximum value</param>
 		/// <param name="minValue">Expected minimum value</param>
 		public this(string nameOfValue, string value, string maxValue, string minValue = "0") :
-			base($"{nameOfValue} out of range: {value}, should be {minValue}..{maxValue}")
+			super($"{nameOfValue} out of range: {value}, should be {minValue}..{maxValue}")
 		{ }
 
 		private this()
 		{
 		}
 
-		private this(string message, BaseException innerException) : base(message, innerException)
+		private this(string message, BaseException innerException) : super(message, innerException)
 		{
 		}
 
@@ -58,7 +58,7 @@ import System.Runtime.Serialization;
 		/// about the source or destination.
 		/// </param>
 		protected this(SerializationInfo info, StreamingContext context)
-			: base(info, context)
+			: super(info, context)
 		{
 		}
 	}

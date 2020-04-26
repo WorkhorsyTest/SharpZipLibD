@@ -428,7 +428,7 @@ import System.IO;
 			{
 				try
 				{
-					base.Dispose(disposing);
+					super.Dispose(disposing);
 					if (!disposed_)
 					{
 						disposed_ = true;
