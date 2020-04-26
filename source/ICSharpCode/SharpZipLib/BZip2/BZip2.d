@@ -24,11 +24,11 @@ import System.IO;
 
 			try
 			{
-				using (BZip2InputStream bzipInput = new BZip2InputStream(inStream))
-				{
-					bzipInput.IsStreamOwner = isStreamOwner;
-					Core.StreamUtils.Copy(bzipInput, outStream, new byte[4096]);
-				}
+				BZip2InputStream bzipInput = new BZip2InputStream(inStream);
+				scope (exit) bzipInput.destroy();
+
+				bzipInput.IsStreamOwner = isStreamOwner;
+				Core.StreamUtils.Copy(bzipInput, outStream, new byte[4096]);
 			}
 			finally
 			{
@@ -59,11 +59,11 @@ import System.IO;
 
 			try
 			{
-				using (BZip2OutputStream bzipOutput = new BZip2OutputStream(outStream, level))
-				{
-					bzipOutput.IsStreamOwner = isStreamOwner;
-					Core.StreamUtils.Copy(inStream, bzipOutput, new byte[4096]);
-				}
+				BZip2OutputStream bzipOutput = new BZip2OutputStream(outStream, level);
+				scope (exit) bzipOutput.destroy();
+
+				bzipOutput.IsStreamOwner = isStreamOwner;
+				Core.StreamUtils.Copy(inStream, bzipOutput, new byte[4096]);
 			}
 			finally
 			{
