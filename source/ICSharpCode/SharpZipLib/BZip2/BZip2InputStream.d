@@ -439,7 +439,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 			int v = (bsBuff >> (bsLive - n)) & ((1 << n) - 1);
 			bsLive -= n;
 			return v;
-*/
+*/return 0;
 		}
 
 		private char BsGetUChar()

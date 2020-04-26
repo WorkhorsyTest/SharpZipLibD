@@ -140,7 +140,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 			// but x ^ 0 = x, so there is no point in adding
 			// the XOR operation
 			return (long)(~checkValue);
-*/
+*/return 0;
 		}
 
 		/// <summary>

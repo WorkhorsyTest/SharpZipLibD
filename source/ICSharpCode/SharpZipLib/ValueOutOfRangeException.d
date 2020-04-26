@@ -29,7 +29,8 @@ import ICSharpCode.SharpZipLib;
 		/// <param name="minValue">Expected minimum value</param>
 		public this(string nameOfValue, long value, long maxValue, long minValue = 0)
 		{
-			this(nameOfValue, value.ToString(), maxValue.ToString(), minValue.ToString());
+			import std.string : format;
+			this(nameOfValue, "%s".format(value), "%s".format(maxValue), "%s".format(minValue));
 		}
 
 		/// <summary>
