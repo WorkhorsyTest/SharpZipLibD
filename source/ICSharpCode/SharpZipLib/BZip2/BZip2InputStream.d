@@ -94,7 +94,7 @@ import System.IO;
 		/// <param name="stream">Data source</param>
 		public this(Stream stream)
 		{
-			if (stream == null)
+			if (stream is null)
 				throw new ArgumentNullException(__traits(identifier, stream));
 			// init arrays
 			for (int i = 0; i < BZip2Constants.GroupCount; ++i)
@@ -233,7 +233,7 @@ import System.IO;
 		/// </returns>
 		public override int Read(byte[] buffer, int offset, int count)
 		{
-			if (buffer == null)
+			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
 			}

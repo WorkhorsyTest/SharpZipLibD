@@ -16,10 +16,10 @@ import System.IO;
 		/// <param name="isStreamOwner">Both streams are closed on completion if true.</param>
 		public static void Decompress(Stream inStream, Stream outStream, bool isStreamOwner)
 		{
-			if (inStream == null)
+			if (inStream is null)
 				throw new ArgumentNullException(__traits(identifier, inStream));
 
-			if (outStream == null)
+			if (outStream is null)
 				throw new ArgumentNullException(__traits(identifier, outStream));
 
 			try
@@ -51,10 +51,10 @@ import System.IO;
 		/// the lowest compression and 9 the highest.</param>
 		public static void Compress(Stream inStream, Stream outStream, bool isStreamOwner, int level)
 		{
-			if (inStream == null)
+			if (inStream is null)
 				throw new ArgumentNullException(__traits(identifier, inStream));
 
-			if (outStream == null)
+			if (outStream is null)
 				throw new ArgumentNullException(__traits(identifier, outStream));
 
 			try

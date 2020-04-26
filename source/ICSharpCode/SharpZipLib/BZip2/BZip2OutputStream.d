@@ -128,7 +128,7 @@ import System.IO;
 		/// </remarks>
 		public this(Stream stream, int blockSize)
 		{
-			if (stream == null)
+			if (stream is null)
 				throw new ArgumentNullException(__traits(identifier, stream));
 
 			baseStream = stream;
@@ -263,7 +263,7 @@ import System.IO;
 		/// <param name="count">The number of bytes to write.</param>
 		public override void Write(byte[] buffer, int offset, int count)
 		{
-			if (buffer == null)
+			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
@@ -1675,7 +1675,7 @@ import System.IO;
 			zptr = new int[n];
 			ftab = new int[65537];
 
-			if (block == null || quadrant == null || zptr == null || ftab == null)
+			if (block is null || quadrant is null || zptr is null || ftab is null)
 			{
 				//		int totalDraw = (n + 1 + NUM_OVERSHOOT_BYTES) + (n + NUM_OVERSHOOT_BYTES) + n + 65537;
 				//		compressOutOfMemory ( totalDraw, n );
