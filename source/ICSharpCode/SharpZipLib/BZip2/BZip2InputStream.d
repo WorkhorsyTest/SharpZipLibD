@@ -66,9 +66,9 @@ import ICSharpCode.SharpZipLib.BZip2;
 		+/
 		private int[] unzftab = new int[256];
 
-		private int[][] limit = new int[BZip2Constants.GroupCount][];
-		private int[][] baseArray = new int[BZip2Constants.GroupCount][];
-		private int[][] perm = new int[BZip2Constants.GroupCount][];
+		private int[][] limit = new int[][](BZip2Constants.GroupCount, BZip2Constants.MaximumAlphaSize);
+		private int[][] baseArray = new int[][](BZip2Constants.GroupCount, BZip2Constants.MaximumAlphaSize);
+		private int[][] perm = new int[][](BZip2Constants.GroupCount, BZip2Constants.MaximumAlphaSize);
 		private int[] minLens = new int[BZip2Constants.GroupCount];
 
 		private /*readonly*/ Stream baseStream;
@@ -100,13 +100,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 /*
 			if (stream is null)
 				throw new ArgumentNullException(__traits(identifier, stream));
-			// init arrays
-			for (int i = 0; i < BZip2Constants.GroupCount; ++i)
-			{
-				limit[i] = new int[BZip2Constants.MaximumAlphaSize];
-				baseArray[i] = new int[BZip2Constants.MaximumAlphaSize];
-				perm[i] = new int[BZip2Constants.MaximumAlphaSize];
-			}
 
 			baseStream = stream;
 			bsLive = 0;
