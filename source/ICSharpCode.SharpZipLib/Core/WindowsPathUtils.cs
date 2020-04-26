@@ -8,7 +8,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// <summary>
 		/// Initializes a new instance of the <see cref="WindowsPathUtils"/> class.
 		/// </summary>
-		internal WindowsPathUtils()
+		/*internal*/ WindowsPathUtils()
 		{
 		}
 

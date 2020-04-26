@@ -46,7 +46,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		*     there is no more INPUT.  There are also states indicating, that
 		*     the header wasn't written yet.
 		* (6) FINISHED_STATE is entered, when everything has been flushed to the
-		*     internal pending output buffer.
+		*     /*internal*/ pending output buffer.
 		* (7) At any time (7)
 		*
 		*/

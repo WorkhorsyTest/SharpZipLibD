@@ -44,7 +44,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		#endregion Instance Fields
 	}
 
-	internal class EntryPatchData
+	/*internal*/ class EntryPatchData
 	{
 		public long SizePatchOffset
 		{
@@ -69,7 +69,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// This class assists with writing/reading from Zip files.
 	/// </summary>
-	internal class ZipHelperStream : Stream
+	/*internal*/ class ZipHelperStream : Stream
 	{
 		#region Constructors
 

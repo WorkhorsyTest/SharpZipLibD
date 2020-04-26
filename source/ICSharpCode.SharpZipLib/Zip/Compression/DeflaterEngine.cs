@@ -229,7 +229,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		}
 
 		/// <summary>
-		/// Reset internal state
+		/// Reset /*internal*/ state
 		/// </summary>
 		public void Reset()
 		{

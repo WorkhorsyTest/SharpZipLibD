@@ -202,25 +202,25 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 		#region Internal API
 
-		internal void AddError()
+		/*internal*/ void AddError()
 		{
 			errorCount_++;
 			entryValid_ = false;
 		}
 
-		internal void SetOperation(TestOperation operation)
+		/*internal*/ void SetOperation(TestOperation operation)
 		{
 			operation_ = operation;
 		}
 
-		internal void SetEntry(ZipEntry entry)
+		/*internal*/ void SetEntry(ZipEntry entry)
 		{
 			entry_ = entry;
 			entryValid_ = true;
 			bytesTested_ = 0;
 		}
 
-		internal void SetBytesTested(long value)
+		/*internal*/ void SetBytesTested(long value)
 		{
 			bytesTested_ = value;
 		}
@@ -546,7 +546,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <summary>
 		/// Initialises a default <see cref="ZipFile"/> instance with no entries and no file storage.
 		/// </summary>
-		internal ZipFile()
+		/*internal*/ ZipFile()
 		{
 			entries_ = new ZipEntry[0];
 			isNewArchive_ = true;
@@ -2287,7 +2287,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			WriteLEShort(entry.Comment != null ? entry.Comment.Length : 0);
 
 			WriteLEShort(0);    // disk number
-			WriteLEShort(0);    // internal file attributes
+			WriteLEShort(0);    // /*internal*/ file attributes
 
 			// External file attributes...
 			if (entry.ExternalFileAttributes != -1)
@@ -4611,7 +4611,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 			else
 			{
-				// Determine where to place files based on internal strategy.
+				// Determine where to place files based on /*internal*/ strategy.
 				// Currently this is always done in system temp directory.
 				temporaryName_ = Path.GetTempFileName();
 				temporaryStream_ = File.Open(temporaryName_, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);

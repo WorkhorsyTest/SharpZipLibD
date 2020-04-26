@@ -226,7 +226,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 		}
 
 		/// <summary>
-		/// Resets state and empties internal buffers
+		/// Resets state and empties /*internal*/ buffers
 		/// </summary>
 		public void Reset()
 		{

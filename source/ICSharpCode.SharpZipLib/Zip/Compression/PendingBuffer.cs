@@ -38,7 +38,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		/// construct instance using specified buffer size
 		/// </summary>
 		/// <param name="bufferSize">
-		/// size to use for internal buffer
+		/// size to use for /*internal*/ buffer
 		/// </param>
 		public PendingBuffer(int bufferSize)
 		{
@@ -48,7 +48,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		#endregion Constructors
 
 		/// <summary>
-		/// Clear internal state/buffers
+		/// Clear /*internal*/ state/buffers
 		/// </summary>
 		public void Reset()
 		{
@@ -138,7 +138,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		}
 
 		/// <summary>
-		/// Align internal buffer on a byte boundary
+		/// Align /*internal*/ buffer on a byte boundary
 		/// </summary>
 		public void AlignToByte()
 		{
@@ -161,7 +161,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		}
 
 		/// <summary>
-		/// Write bits to internal buffer
+		/// Write bits to /*internal*/ buffer
 		/// </summary>
 		/// <param name="b">source of bits</param>
 		/// <param name="count">number of bits to write</param>
@@ -189,7 +189,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		}
 
 		/// <summary>
-		/// Write a short value to internal buffer most significant byte first
+		/// Write a short value to /*internal*/ buffer most significant byte first
 		/// </summary>
 		/// <param name="s">value to write</param>
 		public void WriteShortMSB(int s)
@@ -248,11 +248,11 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		}
 
 		/// <summary>
-		/// Convert internal buffer to byte array.
+		/// Convert /*internal*/ buffer to byte array.
 		/// Buffer is empty on completion
 		/// </summary>
 		/// <returns>
-		/// The internal buffer contents converted to a byte array.
+		/// The /*internal*/ buffer contents converted to a byte array.
 		/// </returns>
 		public byte[] ToByteArray()
 		{

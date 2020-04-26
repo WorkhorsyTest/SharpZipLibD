@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ICSharpCode.SharpZipLib.Zip.Compression
 {
-	internal class InflaterDynHeader
+	/*internal*/ class InflaterDynHeader
 	{
 		#region Constants
 

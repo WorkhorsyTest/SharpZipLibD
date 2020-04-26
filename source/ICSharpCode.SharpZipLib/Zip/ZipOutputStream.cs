@@ -833,7 +833,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 				WriteLeShort(extra.Length);
 				WriteLeShort(entryComment.Length);
 				WriteLeShort(0);    // disk number
-				WriteLeShort(0);    // internal file attributes
+				WriteLeShort(0);    // /*internal*/ file attributes
 									// external file attributes
 
 				if (entry.ExternalFileAttributes != -1)

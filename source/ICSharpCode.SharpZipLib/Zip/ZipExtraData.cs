@@ -477,7 +477,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// A factory that creates <see cref="ITaggedData">tagged data</see> instances.
 	/// </summary>
-	internal interface ITaggedDataFactory
+	/*internal*/ interface ITaggedDataFactory
 	{
 		/// <summary>
 		/// Get data for a specific tag value.

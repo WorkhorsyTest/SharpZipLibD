@@ -6,7 +6,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 	/// <summary>
 	/// Transforms stream using AES in CTR mode
 	/// </summary>
-	internal class ZipAESTransform : ICryptoTransform
+	/*internal*/ class ZipAESTransform : ICryptoTransform
 	{
 #if NET45
 		class IncrementalHash : HMACSHA1
@@ -211,7 +211,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 		}
 
 		/// <summary>
-		/// Cleanup internal state.
+		/// Cleanup /*internal*/ state.
 		/// </summary>
 		public void Dispose()
 		{

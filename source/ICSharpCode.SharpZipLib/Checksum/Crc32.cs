@@ -98,7 +98,7 @@ namespace ICSharpCode.SharpZipLib.Checksum
 
 		#endregion Instance Fields
 
-		internal static uint ComputeCrc32(uint oldCrc, byte bval)
+		/*internal*/ static uint ComputeCrc32(uint oldCrc, byte bval)
 		{
 			return (uint)(Crc32.crcTable[(oldCrc ^ bval) & 0xFF] ^ (oldCrc >> 8));
 		}

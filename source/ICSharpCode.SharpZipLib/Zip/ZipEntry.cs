@@ -169,7 +169,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <exception cref="ArgumentNullException">
 		/// The name passed is null
 		/// </exception>
-		internal ZipEntry(string name, int versionRequiredToExtract)
+		/*internal*/ ZipEntry(string name, int versionRequiredToExtract)
 			: this(name, versionRequiredToExtract, ZipConstants.VersionMadeBy,
 			CompressionMethod.Deflated)
 		{
@@ -192,7 +192,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// This constructor is used by the ZipFile class when reading from the central header
 		/// It is not generally useful, use the constructor specifying the name only.
 		/// </remarks>
-		internal ZipEntry(string name, int versionRequiredToExtract, int madeByInfo,
+		/*internal*/ ZipEntry(string name, int versionRequiredToExtract, int madeByInfo,
 			CompressionMethod method)
 		{
 			if (name == null)
@@ -322,7 +322,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <summary>
 		/// Value used during password checking for PKZIP 2.0 / 'classic' encryption.
 		/// </summary>
-		internal byte CryptoCheckValue
+		/*internal*/ byte CryptoCheckValue
 		{
 			get
 			{
@@ -880,7 +880,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// Returns same value as CompressionMethod except when AES encrypting, which
 		/// places 99 in the method and places the real method in the extra data.
 		/// </summary>
-		internal CompressionMethod CompressionMethodForHeader
+		/*internal*/ CompressionMethod CompressionMethodForHeader
 		{
 			get
 			{
@@ -976,7 +976,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// AES Encryption strength for storage in extra data in entry header.
 		/// 1 is 128 bit, 2 is 192 bit, 3 is 256 bit.
 		/// </summary>
-		internal byte AESEncryptionStrength
+		/*internal*/ byte AESEncryptionStrength
 		{
 			get
 			{
@@ -987,7 +987,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <summary>
 		/// Returns the length of the salt, in bytes
 		/// </summary>
-		internal int AESSaltLen
+		/*internal*/ int AESSaltLen
 		{
 			get
 			{
@@ -999,7 +999,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <summary>
 		/// Number of extra bytes required to hold the AES Header fields (Salt, Pwd verify, AuthCode)
 		/// </summary>
-		internal int AESOverheadSize
+		/*internal*/ int AESOverheadSize
 		{
 			get
 			{
@@ -1019,7 +1019,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <param name="localHeader">True if the extra data fields should be handled
 		/// for a local header, rather than for a central header.
 		/// </param>
-		internal void ProcessExtraData(bool localHeader)
+		/*internal*/ void ProcessExtraData(bool localHeader)
 		{
 			var extraData = new ZipExtraData(this.extra);
 

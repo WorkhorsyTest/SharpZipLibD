@@ -92,7 +92,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 		}
 
 		/// <summary>
-		/// Copy from input manipulator to internal window
+		/// Copy from input manipulator to /*internal*/ window
 		/// </summary>
 		/// <param name="input">source of data</param>
 		/// <param name="length">length of data to copy</param>

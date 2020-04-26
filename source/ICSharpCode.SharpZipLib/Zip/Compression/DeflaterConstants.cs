@@ -33,7 +33,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		public const int PRESET_DICT = 0x20;
 
 		/// <summary>
-		/// Sets internal buffer sizes for Huffman encoding
+		/// Sets /*internal*/ buffer sizes for Huffman encoding
 		/// </summary>
 		public const int DEFAULT_MEM_LEVEL = 8;
 

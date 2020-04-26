@@ -93,7 +93,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			#endregion Constructors
 
 			/// <summary>
-			/// Resets the internal state of the tree
+			/// Resets the /*internal*/ state of the tree
 			/// </summary>
 			public void Reset()
 			{
@@ -658,7 +658,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		}
 
 		/// <summary>
-		/// Reset internal state
+		/// Reset /*internal*/ state
 		/// </summary>
 		public void Reset()
 		{
@@ -857,7 +857,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		}
 
 		/// <summary>
-		/// Get value indicating if internal buffer is full
+		/// Get value indicating if /*internal*/ buffer is full
 		/// </summary>
 		/// <returns>true if buffer is full</returns>
 		public bool IsFull()
@@ -869,7 +869,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		/// Add literal to buffer
 		/// </summary>
 		/// <param name="literal">Literal value to add to buffer.</param>
-		/// <returns>Value indicating internal buffer is full</returns>
+		/// <returns>Value indicating /*internal*/ buffer is full</returns>
 		public bool TallyLit(int literal)
 		{
 			//			if (DeflaterConstants.DEBUGGING) {
@@ -890,7 +890,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		/// </summary>
 		/// <param name="distance">Distance code</param>
 		/// <param name="length">Length</param>
-		/// <returns>Value indicating if internal buffer is full</returns>
+		/// <returns>Value indicating if /*internal*/ buffer is full</returns>
 		public bool TallyDist(int distance, int length)
 		{
 			//			if (DeflaterConstants.DEBUGGING) {

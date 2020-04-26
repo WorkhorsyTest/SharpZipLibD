@@ -63,7 +63,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 	/// PkzipClassicCryptoBase provides the low level facilities for encryption
 	/// and decryption using the PkzipClassic algorithm.
 	/// </summary>
-	internal class PkzipClassicCryptoBase
+	/*internal*/ class PkzipClassicCryptoBase
 	{
 		/// <summary>
 		/// Transform a single byte
@@ -111,7 +111,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 		}
 
 		/// <summary>
-		/// Reset the internal state.
+		/// Reset the /*internal*/ state.
 		/// </summary>
 		protected void Reset()
 		{
@@ -130,13 +130,13 @@ namespace ICSharpCode.SharpZipLib.Encryption
 	/// <summary>
 	/// PkzipClassic CryptoTransform for encryption.
 	/// </summary>
-	internal class PkzipClassicEncryptCryptoTransform : PkzipClassicCryptoBase, ICryptoTransform
+	/*internal*/ class PkzipClassicEncryptCryptoTransform : PkzipClassicCryptoBase, ICryptoTransform
 	{
 		/// <summary>
 		/// Initialise a new instance of <see cref="PkzipClassicEncryptCryptoTransform"></see>
 		/// </summary>
 		/// <param name="keyBlock">The key block to use.</param>
-		internal PkzipClassicEncryptCryptoTransform(byte[] keyBlock)
+		/*internal*/ PkzipClassicEncryptCryptoTransform(byte[] keyBlock)
 		{
 			SetKeys(keyBlock);
 		}
@@ -227,7 +227,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 		#region IDisposable Members
 
 		/// <summary>
-		/// Cleanup internal state.
+		/// Cleanup /*internal*/ state.
 		/// </summary>
 		public void Dispose()
 		{
@@ -240,13 +240,13 @@ namespace ICSharpCode.SharpZipLib.Encryption
 	/// <summary>
 	/// PkzipClassic CryptoTransform for decryption.
 	/// </summary>
-	internal class PkzipClassicDecryptCryptoTransform : PkzipClassicCryptoBase, ICryptoTransform
+	/*internal*/ class PkzipClassicDecryptCryptoTransform : PkzipClassicCryptoBase, ICryptoTransform
 	{
 		/// <summary>
 		/// Initialise a new instance of <see cref="PkzipClassicDecryptCryptoTransform"></see>.
 		/// </summary>
 		/// <param name="keyBlock">The key block to decrypt with.</param>
-		internal PkzipClassicDecryptCryptoTransform(byte[] keyBlock)
+		/*internal*/ PkzipClassicDecryptCryptoTransform(byte[] keyBlock)
 		{
 			SetKeys(keyBlock);
 		}
@@ -337,7 +337,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 		#region IDisposable Members
 
 		/// <summary>
-		/// Cleanup internal state.
+		/// Cleanup /*internal*/ state.
 		/// </summary>
 		public void Dispose()
 		{

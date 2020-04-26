@@ -693,7 +693,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name="userName">Value to apply as a default for userName.</param>
 		/// <param name="groupId">Value to apply as a default for groupId.</param>
 		/// <param name="groupName">Value to apply as a default for groupName.</param>
-		static internal void SetValueDefaults(int userId, string userName, int groupId, string groupName)
+		static /*internal*/ void SetValueDefaults(int userId, string userName, int groupId, string groupName)
 		{
 			defaultUserId = userIdAsSet = userId;
 			defaultUser = userNameAsSet = userName;
@@ -701,7 +701,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			defaultGroupName = groupNameAsSet = groupName;
 		}
 
-		static internal void RestoreSetValues()
+		static /*internal*/ void RestoreSetValues()
 		{
 			defaultUserId = userIdAsSet;
 			defaultUser = userNameAsSet;
@@ -1145,16 +1145,16 @@ namespace ICSharpCode.SharpZipLib.Tar
 		#region Class Fields
 
 		// Values used during recursive operations.
-		static internal int userIdAsSet;
+		static /*internal*/ int userIdAsSet;
 
-		static internal int groupIdAsSet;
-		static internal string userNameAsSet;
-		static internal string groupNameAsSet = "None";
+		static /*internal*/ int groupIdAsSet;
+		static /*internal*/ string userNameAsSet;
+		static /*internal*/ string groupNameAsSet = "None";
 
-		static internal int defaultUserId;
-		static internal int defaultGroupId;
-		static internal string defaultGroupName = "None";
-		static internal string defaultUser;
+		static /*internal*/ int defaultUserId;
+		static /*internal*/ int defaultGroupId;
+		static /*internal*/ string defaultGroupName = "None";
+		static /*internal*/ string defaultUser;
 
 		#endregion Class Fields
 	}
