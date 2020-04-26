@@ -1,0 +1,13 @@
+{
+	"name": "sharp_zip_lib",
+	"description": "todo",
+	"authors": [
+		"Matthew Brennan Jones <matthew.brennan.jones@gmail.com>",
+		"SharpZipLib Contributors"
+	],
+	"homepage": "https://github.com/WorkhorsyTest/SharpZipLib",
+	"copyright": "Copyright (c) 2020 Matthew Brennan Jones, Copyright © 2000-2018 SharpZipLib Contributors",
+	"license": "MIT",
+	"targetType": "executable",
+	"targetName": "main"
+}
