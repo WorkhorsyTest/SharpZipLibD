@@ -22,11 +22,11 @@ import ICSharpCode.SharpZipLib.Checksum;
 	///       of the Fletcher algorithm, used in the ITU-T X.224 / ISO 8073
 	///       standard.
 	///
-	///       Adler-32 is composed of two sums accumulated per byte: s1 is
+	///       Adler-32 is composed of two sums accumulated per ubyte: s1 is
 	///       the sum of all bytes, s2 is the sum of all s1 values. Both sums
 	///       are done modulo 65521. s1 is initialized to 1, s2 to zero.  The
 	///       Adler-32 checksum is stored as s2*65536 + s1 in most-
-	///       significant-byte first (network) order."
+	///       significant-ubyte first (network) order."
 	///
 	///  "8.2. The Adler-32 algorithm
 	///
@@ -38,9 +38,9 @@ import ICSharpCode.SharpZipLib.Checksum;
 	///    are a, b, c, the second sum is 3a + 2b + c + 3, and so is position
 	///    and order sensitive, unlike the first sum, which is just a
 	///    checksum.  That 65521 is prime is important to avoid a possible
-	///    large class of two-byte errors that leave the check unchanged.
+	///    large class of two-ubyte errors that leave the check unchanged.
 	///    (The Fletcher checksum uses 255, which is not prime and which also
-	///    makes the Fletcher check insensitive to single byte changes 0 -
+	///    makes the Fletcher check insensitive to single ubyte changes 0 -
 	///    255.)
 	///
 	///    The sum s1 is initialized to 1 instead of zero to make the length
@@ -91,15 +91,15 @@ import ICSharpCode.SharpZipLib.Checksum;
 		}
 
 		/// <summary>
-		/// Updates the checksum with the byte b.
+		/// Updates the checksum with the ubyte b.
 		/// </summary>
 		/// <param name="bval">
-		/// The data value to add. The high byte of the int is ignored.
+		/// The data value to add. The high ubyte of the int is ignored.
 		/// </param>
 		public void Update(int bval)
 		{
 /*
-			// We could make a length 1 byte array and call update again, but I
+			// We could make a length 1 ubyte array and call update again, but I
 			// would rather not have that overhead
 			uint s1 = checkValue & 0xFFFF;
 			uint s2 = checkValue >> 16;
@@ -116,7 +116,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// a block of data.
 		/// </summary>
 		/// <param name="buffer">Contains the data to update the checksum with.</param>
-		public void Update(byte[] buffer)
+		public void Update(ubyte[] buffer)
 		{
 /*
 			if (buffer is null)
@@ -124,7 +124,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
-			Update(new ArraySegment<byte>(buffer, 0, buffer.Length));
+			Update(new ArraySegment<ubyte>(buffer, 0, buffer.Length));
 */
 		}
 
@@ -134,7 +134,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// <param name = "segment">
 		/// The chunk of data to add
 		/// </param>
-		public void Update(ArraySegment!byte segment)
+		public void Update(ArraySegment!ubyte segment)
 		{
 /*
 			//(By Per Bothner)

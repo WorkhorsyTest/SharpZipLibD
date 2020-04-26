@@ -5,7 +5,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 
 	/// <summary>
 	/// Interface to compute a data checksum used by checked input/output streams.
-	/// A data checksum can be updated by one byte or with a byte array. After each
+	/// A data checksum can be updated by one ubyte or with a ubyte array. After each
 	/// update the value of the current checksum can be returned by calling
 	/// <code>getValue</code>. The complete checksum object can also be reset
 	/// so it can be used again with new data.
@@ -28,10 +28,10 @@ import ICSharpCode.SharpZipLib.Checksum;
 */
 
 		/// <summary>
-		/// Adds one byte to the data checksum.
+		/// Adds one ubyte to the data checksum.
 		/// </summary>
 		/// <param name = "bval">
-		/// the data value to add. The high byte of the int is ignored.
+		/// the data value to add. The high ubyte of the int is ignored.
 		/// </param>
 		void Update(int bval);
 
@@ -41,13 +41,13 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// <param name="buffer">
 		/// buffer an array of bytes
 		/// </param>
-		void Update(byte[] buffer);
+		void Update(ubyte[] buffer);
 
 		/// <summary>
-		/// Adds the byte array to the data checksum.
+		/// Adds the ubyte array to the data checksum.
 		/// </summary>
 		/// <param name = "segment">
 		/// The chunk of data to add
 		/// </param>
-		void Update(ArraySegment!byte segment);
+		void Update(ArraySegment!ubyte segment);
 	}

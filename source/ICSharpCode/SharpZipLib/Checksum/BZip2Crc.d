@@ -8,15 +8,15 @@ import ICSharpCode.SharpZipLib.Checksum;
 	/// CRC-32 with unreversed data and reversed output
 	/// </summary>
 	/// <remarks>
-	/// Generate a table for a byte-wise 32-bit CRC calculation on the polynomial:
+	/// Generate a table for a ubyte-wise 32-bit CRC calculation on the polynomial:
 	/// x^32+x^26+x^23+x^22+x^16+x^12+x^11+x^10+x^8+x^7+x^5+x^4+x^2+x^1+x^0.
 	///
 	/// Polynomials over GF(2) are represented in binary, one bit per coefficient,
 	/// with the lowest powers in the most significant bit.  Then adding polynomials
 	/// is just exclusive-or, and multiplying a polynomial by x is a right shift by
-	/// one.  If we call the above polynomial p, and represent a byte as the
+	/// one.  If we call the above polynomial p, and represent a ubyte as the
 	/// polynomial q, also with the lowest power in the most significant bit (so the
-	/// byte 0xb1 is the polynomial x^7+x^3+x+1), then the CRC is (q*x^32) mod p,
+	/// ubyte 0xb1 is the polynomial x^7+x^3+x+1), then the CRC is (q*x^32) mod p,
 	/// where a mod b means the remainder after dividing a by b.
 	///
 	/// This calculation is done using the shift-register method of multiplying and
@@ -28,7 +28,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 	/// q and repeat for all eight bits of q.
 	///
 	/// The table is simply the CRC of all possible eight bit values.  This is all
-	/// the information needed to generate CRC's on data a byte at a time for all
+	/// the information needed to generate CRC's on data a ubyte at a time for all
 	/// combinations of CRC register values and incoming bytes.
 	/// </remarks>
 	public /*sealed*/ class BZip2Crc : IChecksum
@@ -147,13 +147,13 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// Updates the checksum with the int bval.
 		/// </summary>
 		/// <param name = "bval">
-		/// the byte is taken as the lower 8 bits of bval
+		/// the ubyte is taken as the lower 8 bits of bval
 		/// </param>
 		/// <remarks>Reversed Data = false</remarks>
 		public void Update(int bval)
 		{
 /*
-			checkValue = unchecked(crcTable[(byte)(((checkValue >> 24) & 0xFF) ^ bval)] ^ (checkValue << 8));
+			checkValue = unchecked(crcTable[(ubyte)(((checkValue >> 24) & 0xFF) ^ bval)] ^ (checkValue << 8));
 */
 		}
 
@@ -162,7 +162,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// a block of data.
 		/// </summary>
 		/// <param name="buffer">Contains the data to update the CRC with.</param>
-		public void Update(byte[] buffer)
+		public void Update(ubyte[] buffer)
 		{
 /*
 			if (buffer is null)
@@ -170,7 +170,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
-			Update(new ArraySegment<byte>(buffer, 0, buffer.Length));
+			Update(new ArraySegment<ubyte>(buffer, 0, buffer.Length));
 */
 		}
 
@@ -180,7 +180,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// <param name = "segment">
 		/// The chunk of data to add
 		/// </param>
-		public void Update(ArraySegment!byte segment)
+		public void Update(ArraySegment!ubyte segment)
 		{
 /*
 			auto count = segment.Count;

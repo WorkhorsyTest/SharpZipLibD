@@ -81,7 +81,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		private char[] selector = new char[BZip2Constants.MaximumSelectors];
 		private char[] selectorMtf = new char[BZip2Constants.MaximumSelectors];
 
-		private byte[] block;
+		private ubyte[] block;
 		private int[] quadrant;
 		private int[] zptr;
 		private short[] szptr;
@@ -239,9 +239,9 @@ import ICSharpCode.SharpZipLib.BZip2;
 		}
 
 		/// <summary>
-		/// Read a byte from the stream advancing the position.
+		/// Read a ubyte from the stream advancing the position.
 		/// </summary>
-		/// <returns>The byte read cast to an int; -1 if end of stream.</returns>
+		/// <returns>The ubyte read cast to an int; -1 if end of stream.</returns>
 		public override int ReadByte()
 		{
 			throw new NotSupportedException("BZip2OutputStream ReadByte not supported");
@@ -256,7 +256,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// <returns>The total number of bytes read. This might be less than the number of bytes
 		/// requested if that number of bytes are not currently available, or zero
 		/// if the end of the stream is reached.</returns>
-		public override int Read(byte[] buffer, int offset, int count)
+		public override int Read(ubyte[] buffer, int offset, int count)
 		{
 			throw new NotSupportedException("BZip2OutputStream Read not supported");
 		}
@@ -265,9 +265,9 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// Write a block of bytes to the stream
 		/// </summary>
 		/// <param name="buffer">The buffer containing data to write.</param>
-		/// <param name="offset">The offset of the first byte to write.</param>
+		/// <param name="offset">The offset of the first ubyte to write.</param>
 		/// <param name="count">The number of bytes to write.</param>
-		public override void Write(byte[] buffer, int offset, int count)
+		public override void Write(ubyte[] buffer, int offset, int count)
 		{
 /*
 			if (buffer is null)
@@ -298,10 +298,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 		}
 
 		/// <summary>
-		/// Write a byte to the stream.
+		/// Write a ubyte to the stream.
 		/// </summary>
-		/// <param name="value">The byte to write to the stream.</param>
-		public override void WriteByte(byte value)
+		/// <param name="value">The ubyte to write to the stream.</param>
+		public override void WriteByte(ubyte value)
 		{
 /*
 			int b = (256 + value) % 256;
@@ -366,37 +366,37 @@ import ICSharpCode.SharpZipLib.BZip2;
 				{
 					case 1:
 						last++;
-						block[last + 1] = (byte)currentChar;
+						block[last + 1] = (ubyte)currentChar;
 						break;
 
 					case 2:
 						last++;
-						block[last + 1] = (byte)currentChar;
+						block[last + 1] = (ubyte)currentChar;
 						last++;
-						block[last + 1] = (byte)currentChar;
+						block[last + 1] = (ubyte)currentChar;
 						break;
 
 					case 3:
 						last++;
-						block[last + 1] = (byte)currentChar;
+						block[last + 1] = (ubyte)currentChar;
 						last++;
-						block[last + 1] = (byte)currentChar;
+						block[last + 1] = (ubyte)currentChar;
 						last++;
-						block[last + 1] = (byte)currentChar;
+						block[last + 1] = (ubyte)currentChar;
 						break;
 
 					default:
 						inUse[runLength - 4] = true;
 						last++;
-						block[last + 1] = (byte)currentChar;
+						block[last + 1] = (ubyte)currentChar;
 						last++;
-						block[last + 1] = (byte)currentChar;
+						block[last + 1] = (ubyte)currentChar;
 						last++;
-						block[last + 1] = (byte)currentChar;
+						block[last + 1] = (ubyte)currentChar;
 						last++;
-						block[last + 1] = (byte)currentChar;
+						block[last + 1] = (ubyte)currentChar;
 						last++;
-						block[last + 1] = (byte)(runLength - 4);
+						block[last + 1] = (ubyte)(runLength - 4);
 						break;
 				}
 			}
@@ -521,7 +521,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 			DoReversibleTransformation();
 
 			/++
-			A 6-byte block header, the value chosen arbitrarily
+			A 6-ubyte block header, the value chosen arbitrarily
 			as 0x314159265359 :-).  A 32 bit value does not really
 			give a strong enough guarantee that the value will not
 			appear by chance in the compressed datastream.  Worst-case
@@ -594,7 +594,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 			while (bsLive > 0)
 			{
 				int ch = (bsBuff >> 24);
-				baseStream.WriteByte((byte)ch); // write 8-bit
+				baseStream.WriteByte((ubyte)ch); // write 8-bit
 				bsBuff <<= 8;
 				bsLive -= 8;
 				bytesOut++;
@@ -608,7 +608,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 			while (bsLive >= 8)
 			{
 				int ch = (bsBuff >> 24);
-				unchecked { baseStream.WriteByte((byte)ch); } // write 8-bit
+				unchecked { baseStream.WriteByte((ubyte)ch); } // write 8-bit
 				bsBuff <<= 8;
 				bsLive -= 8;
 				++bytesOut;
@@ -1306,7 +1306,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 				quadrant[i] = 0;
 			}
 
-			block[0] = (byte)(block[last + 1]);
+			block[0] = (ubyte)(block[last + 1]);
 
 			if (last < 4000)
 			{
@@ -1524,7 +1524,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 					}
 				}
 				rNToGo--;
-				block[i + 1] ^= (byte)((rNToGo == 1) ? 1 : 0);
+				block[i + 1] ^= (ubyte)((rNToGo == 1) ? 1 : 0);
 				// handle 16 bit signed numbers
 				block[i + 1] &= 0xFF;
 
@@ -1573,7 +1573,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		{
 /*
 			int k;
-			byte c1, c2;
+			ubyte c1, c2;
 			int s1, s2;
 
 			c1 = block[i1 + 1];
@@ -1717,7 +1717,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		{
 /*
 			int n = BZip2Constants.BaseBlockSize * blockSize100k;
-			block = new byte[(n + 1 + BZip2Constants.OvershootBytes)];
+			block = new ubyte[(n + 1 + BZip2Constants.OvershootBytes)];
 			quadrant = new int[(n + BZip2Constants.OvershootBytes)];
 			zptr = new int[n];
 			ftab = new int[65537];
@@ -2039,10 +2039,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 */
 		}
 
-		private static byte Med3(byte a, byte b, byte c)
+		private static ubyte Med3(ubyte a, ubyte b, ubyte c)
 		{
 /*
-			byte t;
+			ubyte t;
 			if (a > b)
 			{
 				t = a;

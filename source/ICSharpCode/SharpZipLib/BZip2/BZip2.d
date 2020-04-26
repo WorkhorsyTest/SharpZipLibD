@@ -32,7 +32,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 				scope (exit) bzipInput.destroy();
 
 				bzipInput.IsStreamOwner = isStreamOwner;
-				Core.StreamUtils.Copy(bzipInput, outStream, new byte[4096]);
+				Core.StreamUtils.Copy(bzipInput, outStream, new ubyte[4096]);
 			}
 			finally
 			{
@@ -69,7 +69,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 				scope (exit) bzipOutput.destroy();
 
 				bzipOutput.IsStreamOwner = isStreamOwner;
-				Core.StreamUtils.Copy(inStream, bzipOutput, new byte[4096]);
+				Core.StreamUtils.Copy(inStream, bzipOutput, new ubyte[4096]);
 			}
 			finally
 			{

@@ -51,14 +51,14 @@ import ICSharpCode.SharpZipLib.BZip2;
 		private bool[] inUse = new bool[256];
 		private int nInUse;
 
-		private byte[] seqToUnseq = new byte[256];
-		private byte[] unseqToSeq = new byte[256];
+		private ubyte[] seqToUnseq = new ubyte[256];
+		private ubyte[] unseqToSeq = new ubyte[256];
 
-		private byte[] selector = new byte[BZip2Constants.MaximumSelectors];
-		private byte[] selectorMtf = new byte[BZip2Constants.MaximumSelectors];
+		private ubyte[] selector = new ubyte[BZip2Constants.MaximumSelectors];
+		private ubyte[] selectorMtf = new ubyte[BZip2Constants.MaximumSelectors];
 
 		private int[] tt;
-		private byte[] ll8;
+		private ubyte[] ll8;
 
 		/++
 		freq table collected to save a pass over the data
@@ -87,7 +87,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		private int rNToGo;
 		private int rTPos;
 		private int i2, j2;
-		private byte z;
+		private ubyte z;
 
 		//#endregion Instance Fields
 
@@ -183,7 +183,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// <summary>
 		/// Set the streams position.  This operation is not supported and will throw a NotSupportedException
 		/// </summary>
-		/// <param name="offset">A byte offset relative to the <paramref name="origin"/> parameter.</param>
+		/// <param name="offset">A ubyte offset relative to the <paramref name="origin"/> parameter.</param>
 		/// <param name="origin">A value of type <see cref="SeekOrigin"/> indicating the reference point used to obtain the new position.</param>
 		/// <returns>The new position of the stream.</returns>
 		/// <exception cref="NotSupportedException">Any access</exception>
@@ -211,24 +211,24 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// <param name="offset">The offset to start obtaining data from.</param>
 		/// <param name="count">The number of bytes of data to write.</param>
 		/// <exception cref="NotSupportedException">Any access</exception>
-		public override void Write(byte[] buffer, int offset, int count)
+		public override void Write(ubyte[] buffer, int offset, int count)
 		{
 			throw new NotSupportedException("BZip2InputStream Write not supported");
 		}
 
 		/// <summary>
-		/// Writes a byte to the current position in the file stream.
+		/// Writes a ubyte to the current position in the file stream.
 		/// This operation is not supported and will throw a NotSupportedException
 		/// </summary>
 		/// <param name="value">The value to write.</param>
 		/// <exception cref="NotSupportedException">Any access</exception>
-		public override void WriteByte(byte value)
+		public override void WriteByte(ubyte value)
 		{
 			throw new NotSupportedException("BZip2InputStream WriteByte not supported");
 		}
 
 		/// <summary>
-		/// Read a sequence of bytes and advances the read position by one byte.
+		/// Read a sequence of bytes and advances the read position by one ubyte.
 		/// </summary>
 		/// <param name="buffer">Array of bytes to store values in</param>
 		/// <param name="offset">Offset in array to begin storing data</param>
@@ -237,7 +237,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// than the number of bytes requested if that number of bytes are not
 		/// currently available or zero if the end of the stream is reached.
 		/// </returns>
-		public override int Read(byte[] buffer, int offset, int count)
+		public override int Read(ubyte[] buffer, int offset, int count)
 		{
 /*
 			if (buffer is null)
@@ -252,7 +252,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 				{
 					return i;
 				}
-				buffer[offset + i] = (byte)rb;
+				buffer[offset + i] = (ubyte)rb;
 			}
 			return count;
 */return 0;
@@ -270,9 +270,9 @@ import ICSharpCode.SharpZipLib.BZip2;
 		}
 
 		/// <summary>
-		/// Read a byte from stream advancing position
+		/// Read a ubyte from stream advancing position
 		/// </summary>
-		/// <returns>byte read or -1 on end of stream</returns>
+		/// <returns>ubyte read or -1 on end of stream</returns>
 		public override int ReadByte()
 		{
 /*
@@ -319,8 +319,8 @@ import ICSharpCode.SharpZipLib.BZip2;
 			{
 				if (inUse[i])
 				{
-					seqToUnseq[nInUse] = (byte)i;
-					unseqToSeq[i] = (byte)nInUse;
+					seqToUnseq[nInUse] = (ubyte)i;
+					unseqToSeq[i] = (ubyte)nInUse;
 					nInUse++;
 				}
 			}
@@ -521,20 +521,20 @@ import ICSharpCode.SharpZipLib.BZip2;
 				{
 					j++;
 				}
-				selectorMtf[i] = (byte)j;
+				selectorMtf[i] = (ubyte)j;
 			}
 
 			//--- Undo the MTF values for the selectors. ---
-			byte[] pos = new byte[BZip2Constants.GroupCount];
+			ubyte[] pos = new ubyte[BZip2Constants.GroupCount];
 			for (int v = 0; v < nGroups; v++)
 			{
-				pos[v] = (byte)v;
+				pos[v] = (ubyte)v;
 			}
 
 			for (int i = 0; i < nSelectors; i++)
 			{
 				int v = selectorMtf[i];
-				byte tmp = pos[v];
+				ubyte tmp = pos[v];
 				while (v > 0)
 				{
 					pos[v] = pos[v - 1];
@@ -584,7 +584,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		private void GetAndMoveToFrontDecode()
 		{
 /*
-			byte[] yy = new byte[256];
+			ubyte[] yy = new ubyte[256];
 			int nextSym;
 
 			int limitLast = BZip2Constants.BaseBlockSize * blockSize100k;
@@ -608,7 +608,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 
 			for (int i = 0; i <= 255; i++)
 			{
-				yy[i] = (byte)i;
+				yy[i] = (ubyte)i;
 			}
 
 			last = -1;
@@ -697,7 +697,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 					} while (nextSym == BZip2Constants.RunA || nextSym == BZip2Constants.RunB);
 
 					s++;
-					byte ch = seqToUnseq[yy[0]];
+					ubyte ch = seqToUnseq[yy[0]];
 					unzftab[ch] += s;
 
 					while (s > 0)
@@ -721,7 +721,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 						BlockOverrun();
 					}
 
-					byte tmp = yy[nextSym - 1];
+					ubyte tmp = yy[nextSym - 1];
 					unzftab[seqToUnseq[tmp]]++;
 					ll8[last] = seqToUnseq[tmp];
 
@@ -774,7 +774,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 
 			for (int i = 0; i <= last; i++)
 			{
-				byte ch = ll8[i];
+				ubyte ch = ll8[i];
 				tt[cftab[ch]] = i;
 				cftab[ch]++;
 			}
@@ -883,7 +883,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 						}
 					}
 					rNToGo--;
-					z ^= (byte)((rNToGo == 1) ? 1 : 0);
+					z ^= (ubyte)((rNToGo == 1) ? 1 : 0);
 					j2 = 0;
 					currentState = RAND_PART_C_STATE;
 					SetupRandPartC();
@@ -980,7 +980,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 			}
 
 			int n = BZip2Constants.BaseBlockSize * newSize100k;
-			ll8 = new byte[n];
+			ll8 = new ubyte[n];
 			tt = new int[n];
 */
 		}
