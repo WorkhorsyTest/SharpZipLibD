@@ -31,7 +31,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// </summary>
 	public class Inflater
 	{
-		#region Constants/Readonly
+		//#region Constants/Readonly
 
 		/// <summary>
 		/// Copy lengths for literal codes 257..285
@@ -85,9 +85,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		private const int DECODE_CHKSUM = 11;
 		private const int FINISHED = 12;
 
-		#endregion Constants/Readonly
+		//#endregion Constants/Readonly
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// This variable contains the current state.
@@ -145,9 +145,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		private InflaterHuffmanTree litlenTree, distTree;
 		private Adler32 adler;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Creates a new inflater or RFC1951 decompressor
@@ -179,7 +179,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			mode = noHeader ? DECODE_BLOCKS : DECODE_HEADER;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Resets the inflater so that a new stream can be decompressed.  All

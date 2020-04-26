@@ -2,7 +2,7 @@ using System;
 
 namespace ICSharpCode.SharpZipLib.Zip
 {
-	#region Enumerations
+	//#region Enumerations
 
 	/// <summary>
 	/// Determines how entries are tested to see if they should use Zip64 extensions or not.
@@ -232,14 +232,14 @@ namespace ICSharpCode.SharpZipLib.Zip
 		ReservedPkware15 = 0x8000
 	}
 
-	#endregion Enumerations
+	//#endregion Enumerations
 
 	/// <summary>
 	/// This class contains constants used for Zip format files
 	/// </summary>
 	public static class ZipConstants
 	{
-		#region Versions
+		//#region Versions
 
 		/// <summary>
 		/// The version made by field for entries in the central header when created by this library
@@ -281,9 +281,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// </summary>
 		public const int VersionZip64 = 45;
 
-		#endregion Versions
+		//#endregion Versions
 
-		#region Header Sizes
+		//#region Header Sizes
 
 		/// <summary>
 		/// Size of local entry header (excluding variable length fields at end)
@@ -350,9 +350,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// </summary>
 		public const int Zip64EndOfCentralDirectoryLocatorSize = 20;
 
-		#endregion Header Sizes
+		//#endregion Header Sizes
 
-		#region Header Signatures
+		//#region Header Signatures
 
 		/// <summary>
 		/// Signature for local entry header
@@ -464,7 +464,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		[Obsolete("Use EndOfCentralDirectorySignature instead")]
 		public const int ENDSIG = 'P' | ('K' << 8) | (5 << 16) | (6 << 24);
 
-		#endregion Header Signatures
+		//#endregion Header Signatures
 
 		/// <summary>
 		/// Default encoding used for string conversion.  0 gives the default system OEM code page.

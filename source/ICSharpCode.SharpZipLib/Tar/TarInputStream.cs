@@ -12,7 +12,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 	/// </summary>
 	public class TarInputStream : Stream
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Construct a TarInputStream with default block factor
@@ -34,7 +34,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			tarBuffer = TarBuffer.CreateInputTarBuffer(inputStream, blockFactor);
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Gets or sets a flag indicating ownership of underlying stream.
@@ -47,7 +47,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			set { tarBuffer.IsStreamOwner = value; }
 		}
 
-		#region Stream Overrides
+		//#region Stream Overrides
 
 		/// <summary>
 		/// Gets a value indicating whether the current stream supports reading
@@ -291,7 +291,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			}
 		}
 
-		#endregion Stream Overrides
+		//#endregion Stream Overrides
 
 		/// <summary>
 		/// Set the entry factory for this instance.
@@ -679,7 +679,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			}
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// Flag set when last block has been read
@@ -721,6 +721,6 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		private /*readonly*/ Stream inputStream;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

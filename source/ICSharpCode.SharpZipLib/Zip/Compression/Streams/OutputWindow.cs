@@ -10,20 +10,20 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 	/// </summary>
 	public class OutputWindow
 	{
-		#region Constants
+		//#region Constants
 
 		private const int WindowSize = 1 << 15;
 		private const int WindowMask = WindowSize - 1;
 
-		#endregion Constants
+		//#endregion Constants
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private byte[] window = new byte[WindowSize]; //The window is 2^15 bytes
 		private int windowEnd;
 		private int windowFilled;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
 		/// <summary>
 		/// Write a byte to this output window

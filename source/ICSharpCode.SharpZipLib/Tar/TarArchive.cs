@@ -51,7 +51,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			}
 		}
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Constructor for a default <see cref="TarArchive"/>.
@@ -88,9 +88,9 @@ namespace ICSharpCode.SharpZipLib.Tar
 			tarOut = stream;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Static factory methods
+		//#region Static factory methods
 
 		/// <summary>
 		/// The InputStream based constructors create a TarArchive for the
@@ -189,7 +189,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			return new TarArchive(new TarOutputStream(outputStream, blockFactor));
 		}
 
-		#endregion Static factory methods
+		//#endregion Static factory methods
 
 		/// <summary>
 		/// Set the flag that determines whether existing files are
@@ -935,7 +935,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			return false;
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private bool keepOldFiles;
 		private bool asciiTranslate;
@@ -954,6 +954,6 @@ namespace ICSharpCode.SharpZipLib.Tar
 		private TarOutputStream tarOut;
 		private bool isDisposed;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

@@ -152,7 +152,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			return _authCode;
 		}
 
-		#region ICryptoTransform Members
+		//#region ICryptoTransform Members
 
 		/// <summary>
 		/// Not implemented.
@@ -218,6 +218,6 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			_encryptor.Dispose();
 		}
 
-		#endregion ICryptoTransform Members
+		//#endregion ICryptoTransform Members
 	}
 }

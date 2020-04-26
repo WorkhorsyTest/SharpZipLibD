@@ -31,7 +31,7 @@ namespace ICSharpCode.SharpZipLib.Checksum
 	/// </remarks>
 	public /*sealed*/ class Crc32 : IChecksum
 	{
-		#region Instance Fields
+		//#region Instance Fields
 
 		private static /*readonly*/ uint crcInit = 0xFFFFFFFF;
 		private static /*readonly*/ uint crcXor = 0xFFFFFFFF;
@@ -96,7 +96,7 @@ namespace ICSharpCode.SharpZipLib.Checksum
 		/// </summary>
 		private uint checkValue;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
 		/*internal*/ static uint ComputeCrc32(uint oldCrc, byte bval)
 		{

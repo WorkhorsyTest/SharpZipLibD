@@ -35,13 +35,13 @@ namespace ICSharpCode.SharpZipLib.Zip
 			set { crc = (value & 0xffffffff); }
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private long size;
 		private long compressedSize;
 		private long crc;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/*internal*/ class EntryPatchData
@@ -58,12 +58,12 @@ namespace ICSharpCode.SharpZipLib.Zip
 			set { crcPatchOffset_ = value; }
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private long sizePatchOffset_;
 		private long crcPatchOffset_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -71,7 +71,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </summary>
 	/*internal*/ class ZipHelperStream : Stream
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise an instance of this class.
@@ -92,7 +92,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			stream_ = stream;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Get / set a value indicating wether the the underlying stream is owned or not.
@@ -104,7 +104,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			set { isOwner_ = value; }
 		}
 
-		#region Base Stream Methods
+		//#region Base Stream Methods
 
 		public override bool CanRead
 		{
@@ -179,7 +179,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion Base Stream Methods
+		//#endregion Base Stream Methods
 
 		// Write the local file header
 		// TODO: ZipHelperStream.WriteLocalHeader is not yet used and needs checking for ZipFile and ZipOuptutStream usage
@@ -431,7 +431,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#region LE value reading/writing
+		//#region LE value reading/writing
 
 		/// <summary>
 		/// Read an unsigned short in little endian byte order.
@@ -545,7 +545,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			WriteLEUint((uint)(value >> 32));
 		}
 
-		#endregion LE value reading/writing
+		//#endregion LE value reading/writing
 
 		/// <summary>
 		/// Write a data descriptor.
@@ -619,11 +619,11 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private bool isOwner_;
 		private Stream stream_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

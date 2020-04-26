@@ -45,7 +45,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			_tag = tag;
 		}
 
-		#region ITaggedData Members
+		//#region ITaggedData Members
 
 		/// <summary>
 		/// Get the ID for this tagged data value.
@@ -82,7 +82,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return _data;
 		}
 
-		#endregion ITaggedData Members
+		//#endregion ITaggedData Members
 
 		/// <summary>
 		/// Get /set the binary data representing this instance.
@@ -94,7 +94,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			set { _data = value; }
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// The tag ID for this instance.
@@ -103,7 +103,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 		private byte[] _data;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -133,7 +133,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			CreateTime = 0x04,
 		}
 
-		#region ITaggedData Members
+		//#region ITaggedData Members
 
 		/// <summary>
 		/// Get the ID
@@ -221,7 +221,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion ITaggedData Members
+		//#endregion ITaggedData Members
 
 		/// <summary>
 		/// Test a <see cref="DateTime"> value to see if is valid and can be represented here.</see>
@@ -309,14 +309,14 @@ namespace ICSharpCode.SharpZipLib.Zip
 			set { _flags = value; }
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private Flags _flags;
 		private DateTime _modificationTime = new DateTime(1970, 1, 1);
 		private DateTime _lastAccessTime = new DateTime(1970, 1, 1);
 		private DateTime _createTime = new DateTime(1970, 1, 1);
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -465,13 +465,13 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private DateTime _lastAccessTime = DateTime.FromFileTimeUtc(0);
 		private DateTime _lastModificationTime = DateTime.FromFileTimeUtc(0);
 		private DateTime _createTime = DateTime.FromFileTimeUtc(0);
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -503,7 +503,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </remarks>
 	/*sealed*/ public class ZipExtraData : IDisposable
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a default instance.
@@ -529,7 +529,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Get the raw extra data value
@@ -843,7 +843,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return result;
 		}
 
-		#region Reading Support
+		//#region Reading Support
 
 		/// <summary>
 		/// Read a long in little endian form from the last <see cref="Find">found</see> data value
@@ -948,9 +948,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			index += 2;
 		}
 
-		#endregion Reading Support
+		//#endregion Reading Support
 
-		#region IDisposable Members
+		//#region IDisposable Members
 
 		/// <summary>
 		/// Dispose of this instance.
@@ -963,9 +963,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion IDisposable Members
+		//#endregion IDisposable Members
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private int _index;
 		private int _readValueStart;
@@ -974,6 +974,6 @@ namespace ICSharpCode.SharpZipLib.Zip
 		private MemoryStream _newEntry;
 		private byte[] _data;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

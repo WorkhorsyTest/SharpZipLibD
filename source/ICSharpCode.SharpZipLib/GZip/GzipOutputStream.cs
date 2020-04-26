@@ -44,7 +44,7 @@ namespace ICSharpCode.SharpZipLib.GZip
 			Closed,
 		};
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// CRC-32 value for uncompressed data
@@ -53,9 +53,9 @@ namespace ICSharpCode.SharpZipLib.GZip
 
 		private OutputState state_ = OutputState.Header;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Creates a GzipOutputStream with the default buffer size
@@ -81,9 +81,9 @@ namespace ICSharpCode.SharpZipLib.GZip
 		{
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Public API
+		//#region Public API
 
 		/// <summary>
 		/// Sets the active compression level (0-9).  The new level will be activated
@@ -111,9 +111,9 @@ namespace ICSharpCode.SharpZipLib.GZip
 			return deflater_.GetLevel();
 		}
 
-		#endregion Public API
+		//#endregion Public API
 
-		#region Stream overrides
+		//#region Stream overrides
 
 		/// <summary>
 		/// Write given buffer to output updating crc
@@ -160,9 +160,9 @@ namespace ICSharpCode.SharpZipLib.GZip
 			}
 		}
 
-		#endregion Stream overrides
+		//#endregion Stream overrides
 
-		#region DeflaterOutputStream overrides
+		//#region DeflaterOutputStream overrides
 
 		/// <summary>
 		/// Finish compression and write any footer information required to stream
@@ -200,9 +200,9 @@ namespace ICSharpCode.SharpZipLib.GZip
 			}
 		}
 
-		#endregion DeflaterOutputStream overrides
+		//#endregion DeflaterOutputStream overrides
 
-		#region Support Routines
+		//#region Support Routines
 
 		private void WriteHeader()
 		{
@@ -235,6 +235,6 @@ namespace ICSharpCode.SharpZipLib.GZip
 			}
 		}
 
-		#endregion Support Routines
+		//#endregion Support Routines
 	}
 }

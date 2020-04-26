@@ -149,11 +149,11 @@ namespace ICSharpCode.SharpZipLib.Zip
 			set { progressInterval_ = value; }
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private TimeSpan progressInterval_ = TimeSpan.FromSeconds(3);
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -161,7 +161,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </summary>
 	public class FastZip
 	{
-		#region Enumerations
+		//#region Enumerations
 
 		/// <summary>
 		/// Defines the desired handling when overwriting files during extraction.
@@ -184,9 +184,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			Always
 		}
 
-		#endregion Enumerations
+		//#endregion Enumerations
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a default instance of <see cref="FastZip"/>.
@@ -204,9 +204,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			events_ = events;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Properties
+		//#region Properties
 
 		/// <summary>
 		/// Get/set a value indicating wether empty directories should be created.
@@ -312,18 +312,18 @@ namespace ICSharpCode.SharpZipLib.Zip
 			set { compressionLevel_ = value; }
 		}
 
-		#endregion Properties
+		//#endregion Properties
 
-		#region Delegates
+		//#region Delegates
 
 		/// <summary>
 		/// Delegate called when confirming overwriting of files.
 		/// </summary>
 		public delegate bool ConfirmOverwriteDelegate(string fileName);
 
-		#endregion Delegates
+		//#endregion Delegates
 
-		#region CreateZip
+		//#region CreateZip
 
 		/// <summary>
 		/// Create a zip file.
@@ -399,9 +399,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion CreateZip
+		//#endregion CreateZip
 
-		#region ExtractZip
+		//#region ExtractZip
 
 		/// <summary>
 		/// Extract the contents of a zip file.
@@ -498,9 +498,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion ExtractZip
+		//#endregion ExtractZip
 
-		#region Internal Processing
+		//#region Internal Processing
 
 		private void ProcessDirectory(object sender, DirectoryEventArgs e)
 		{
@@ -749,9 +749,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 				(name.IndexOfAny(Path.GetInvalidPathChars()) < 0);
 		}
 
-		#endregion Internal Processing
+		//#endregion Internal Processing
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private bool continueRunning_;
 		private byte[] buffer_;
@@ -774,6 +774,6 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 		private string password_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

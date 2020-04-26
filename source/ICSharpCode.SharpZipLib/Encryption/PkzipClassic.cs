@@ -120,11 +120,11 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			keys[2] = 0;
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private uint[] keys;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -141,7 +141,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			SetKeys(keyBlock);
 		}
 
-		#region ICryptoTransform Members
+		//#region ICryptoTransform Members
 
 		/// <summary>
 		/// Transforms the specified region of the specified byte array.
@@ -222,9 +222,9 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			}
 		}
 
-		#endregion ICryptoTransform Members
+		//#endregion ICryptoTransform Members
 
-		#region IDisposable Members
+		//#region IDisposable Members
 
 		/// <summary>
 		/// Cleanup /*internal*/ state.
@@ -234,7 +234,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			Reset();
 		}
 
-		#endregion IDisposable Members
+		//#endregion IDisposable Members
 	}
 
 	/// <summary>
@@ -251,7 +251,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			SetKeys(keyBlock);
 		}
 
-		#region ICryptoTransform Members
+		//#region ICryptoTransform Members
 
 		/// <summary>
 		/// Transforms the specified region of the specified byte array.
@@ -332,9 +332,9 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			}
 		}
 
-		#endregion ICryptoTransform Members
+		//#endregion ICryptoTransform Members
 
-		#region IDisposable Members
+		//#region IDisposable Members
 
 		/// <summary>
 		/// Cleanup /*internal*/ state.
@@ -344,7 +344,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			Reset();
 		}
 
-		#endregion IDisposable Members
+		//#endregion IDisposable Members
 	}
 
 	/// <summary>
@@ -476,10 +476,10 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			return new PkzipClassicDecryptCryptoTransform(Key);
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private byte[] key_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

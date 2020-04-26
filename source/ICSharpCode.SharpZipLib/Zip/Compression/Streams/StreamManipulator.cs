@@ -284,7 +284,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			windowEnd_ = end;
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private byte[] window_;
 		private int windowStart_;
@@ -293,6 +293,6 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 		private uint buffer_;
 		private int bitsInBuffer_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

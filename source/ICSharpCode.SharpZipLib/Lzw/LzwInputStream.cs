@@ -144,7 +144,7 @@ namespace ICSharpCode.SharpZipLib.Lzw
 
 				while (lBitPos < bitIn)
 				{
-					#region A
+					//#region A
 
 					// handle 1-byte reads correctly
 					if (count == 0)
@@ -178,9 +178,9 @@ namespace ICSharpCode.SharpZipLib.Lzw
 						goto MainLoop;
 					}
 
-					#endregion A
+					//#endregion A
 
-					#region B
+					//#region B
 
 					// read next code
 					int pos = lBitPos >> 3;
@@ -221,9 +221,9 @@ namespace ICSharpCode.SharpZipLib.Lzw
 						goto MainLoop;
 					}
 
-					#endregion B
+					//#endregion B
 
-					#region C
+					//#region C
 
 					// setup
 					int inCode = code;
@@ -261,9 +261,9 @@ namespace ICSharpCode.SharpZipLib.Lzw
 					count -= num;
 					lStackP += num;
 
-					#endregion C
+					//#endregion C
 
-					#region D
+					//#region D
 
 					// generate new entry in table
 					if (lFreeEnt < lMaxMaxCode)
@@ -291,7 +291,7 @@ namespace ICSharpCode.SharpZipLib.Lzw
 						return offset - start;
 					}
 
-					#endregion D
+					//#endregion D
 				}   // while
 
 				lBitPos = ResetBuf(lBitPos);
@@ -386,7 +386,7 @@ namespace ICSharpCode.SharpZipLib.Lzw
 				tabSuffix[idx] = (byte)idx;
 		}
 
-		#region Stream Overrides
+		//#region Stream Overrides
 
 		/// <summary>
 		/// Gets a value indicating whether the current stream supports reading
@@ -521,9 +521,9 @@ namespace ICSharpCode.SharpZipLib.Lzw
 			}
 		}
 
-		#endregion Stream Overrides
+		//#endregion Stream Overrides
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private Stream baseInputStream;
 
@@ -567,6 +567,6 @@ namespace ICSharpCode.SharpZipLib.Lzw
 		private bool eof;
 		private const int EXTRA = 64;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

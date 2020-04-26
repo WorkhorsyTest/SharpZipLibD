@@ -12,7 +12,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 	/// </remarks>
 	public class InflaterInputBuffer
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a new instance of <see cref="InflaterInputBuffer"/> with a default buffer size
@@ -39,7 +39,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			clearText = rawData;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Get the length of bytes bytes in the <see cref="RawData"/>
@@ -301,7 +301,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			}
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private int rawLength;
 		private byte[] rawData;
@@ -315,7 +315,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 		private ICryptoTransform cryptoTransform;
 		private Stream inputStream;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -329,7 +329,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 	/// </summary>
 	public class InflaterInputStream : Stream
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Create an InflaterInputStream with the default decompressor
@@ -394,7 +394,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			inputBuffer = new InflaterInputBuffer(baseInputStream, bufferSize);
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Gets or sets a flag indicating ownership of underlying stream.
@@ -496,7 +496,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			inputBuffer.SetInflaterInput(inf);
 		}
 
-		#region Stream Overrides
+		//#region Stream Overrides
 
 		/// <summary>
 		/// Gets a value indicating whether the current stream supports reading
@@ -679,9 +679,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			return count - remainingBytes;
 		}
 
-		#endregion Stream Overrides
+		//#endregion Stream Overrides
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// Decompressor for this stream
@@ -708,6 +708,6 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 		/// </summary>
 		private bool isClosed;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

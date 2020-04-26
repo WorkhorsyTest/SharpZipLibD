@@ -31,7 +31,7 @@ namespace ICSharpCode.SharpZipLib.Checksum
 	/// </remarks>
 	public /*sealed*/ class BZip2Crc : IChecksum
 	{
-		#region Instance Fields
+		//#region Instance Fields
 
 		private const uint crcInit = 0xFFFFFFFF;
 		//const uint crcXor = 0x00000000;
@@ -108,7 +108,7 @@ namespace ICSharpCode.SharpZipLib.Checksum
 		/// </summary>
 		private uint checkValue;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
 		/// <summary>
 		/// Initialise a default instance of <see cref="BZip2Crc"></see>

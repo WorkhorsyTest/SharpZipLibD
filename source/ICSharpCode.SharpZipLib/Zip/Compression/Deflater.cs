@@ -14,7 +14,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// </summary>
 	public class Deflater
 	{
-		#region Deflater Documentation
+		//#region Deflater Documentation
 
 		/*
 		* The Deflater can do the following state transitions:
@@ -51,9 +51,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		*
 		*/
 
-		#endregion Deflater Documentation
+		//#endregion Deflater Documentation
 
-		#region Public Constants
+		//#region Public Constants
 
 		/// <summary>
 		/// The best and slowest compression level.  This tries to find very
@@ -82,9 +82,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		/// </summary>
 		public const int DEFLATED = 8;
 
-		#endregion Public Constants
+		//#endregion Public Constants
 
-		#region Public Enum
+		//#region Public Enum
 
 		/// <summary>
 		/// Compression Level as an enum for safer use
@@ -119,9 +119,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			DEFLATED = Deflater.DEFLATED
 		}
 
-		#endregion Public Enum
+		//#endregion Public Enum
 
-		#region Local Constants
+		//#region Local Constants
 
 		private const int IS_SETDICT = 0x01;
 		private const int IS_FLUSHING = 0x04;
@@ -139,9 +139,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		private const int FINISHED_STATE = 0x1e;
 		private const int CLOSED_STATE = 0x7f;
 
-		#endregion Local Constants
+		//#endregion Local Constants
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Creates a new deflater with default compression level.
@@ -194,7 +194,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			Reset();
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Resets the deflater.  The deflater acts afterwards as if it was
@@ -567,7 +567,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			engine.SetDictionary(dictionary, index, count);
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// Compression level.
@@ -599,6 +599,6 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		/// </summary>
 		private DeflaterEngine engine;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

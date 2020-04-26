@@ -57,7 +57,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </example>
 	public class ZipInputStream : InflaterInputStream
 	{
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// Delegate for reading bytes from a stream.
@@ -77,9 +77,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 		private int flags;
 		private string password;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Creates a new Zip input stream, for reading a zip archive.
@@ -102,7 +102,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			internalReader = new ReadDataHandler(ReadingNotAvailable);
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Optional password used for encryption when non-null

@@ -12,14 +12,14 @@ using System.Text;
 
 namespace ICSharpCode.SharpZipLib.Zip
 {
-	#region Keys Required Event Args
+	//#region Keys Required Event Args
 
 	/// <summary>
 	/// Arguments used with KeysRequiredEvent
 	/// </summary>
 	public class KeysRequiredEventArgs : EventArgs
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a new instance of <see cref="KeysRequiredEventArgs"></see>
@@ -41,9 +41,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			key = keyValue;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Properties
+		//#region Properties
 
 		/// <summary>
 		/// Gets the name of the file for which keys are required.
@@ -62,19 +62,19 @@ namespace ICSharpCode.SharpZipLib.Zip
 			set { key = value; }
 		}
 
-		#endregion Properties
+		//#endregion Properties
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private /*readonly*/ string fileName;
 		private byte[] key;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
-	#endregion Keys Required Event Args
+	//#endregion Keys Required Event Args
 
-	#region Test Definitions
+	//#region Test Definitions
 
 	/// <summary>
 	/// The strategy to apply to testing.
@@ -135,7 +135,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <seealso cref="ZipFile.TestArchive(bool)">TestArchive</seealso>
 	public class TestStatus
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a new instance of <see cref="TestStatus"/>
@@ -146,9 +146,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			file_ = file;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Properties
+		//#region Properties
 
 		/// <summary>
 		/// Get the current <see cref="TestOperation"/> in progress.
@@ -198,9 +198,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			get { return entryValid_; }
 		}
 
-		#endregion Properties
+		//#endregion Properties
 
-		#region Internal API
+		//#region Internal API
 
 		/*internal*/ void AddError()
 		{
@@ -225,9 +225,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			bytesTested_ = value;
 		}
 
-		#endregion Internal API
+		//#endregion Internal API
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private /*readonly*/ ZipFile file_;
 		private ZipEntry entry_;
@@ -236,7 +236,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		private long bytesTested_;
 		private TestOperation operation_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -246,9 +246,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// the operation as found in <see cref="TestStatus">status</see> has started.</remarks>
 	public delegate void ZipTestResultHandler(TestStatus status, string message);
 
-	#endregion Test Definitions
+	//#endregion Test Definitions
 
-	#region Update Definitions
+	//#region Update Definitions
 
 	/// <summary>
 	/// The possible ways of <see cref="ZipFile.CommitUpdate()">applying updates</see> to an archive.
@@ -266,9 +266,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 		Direct,
 	}
 
-	#endregion Update Definitions
+	//#endregion Update Definitions
 
-	#region ZipFile Class
+	//#region ZipFile Class
 
 	/// <summary>
 	/// This class represents a Zip archive.  You can ask for the contained
@@ -315,7 +315,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </example>
 	public class ZipFile : IEnumerable, IDisposable
 	{
-		#region KeyHandling
+		//#region KeyHandling
 
 		/// <summary>
 		/// Delegate for handling keys/password setting during compresion/decompression.
@@ -381,9 +381,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			get { return key != null; }
 		}
 
-		#endregion KeyHandling
+		//#endregion KeyHandling
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Opens a Zip file with the given name for reading.
@@ -552,9 +552,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			isNewArchive_ = true;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Destructors and Closing
+		//#region Destructors and Closing
 
 		/// <summary>
 		/// Finalize this instance.
@@ -577,9 +577,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			GC.SuppressFinalize(this);
 		}
 
-		#endregion Destructors and Closing
+		//#endregion Destructors and Closing
 
-		#region Creators
+		//#region Creators
 
 		/// <summary>
 		/// Create a new <see cref="ZipFile"/> whose data will be stored in a file.
@@ -635,9 +635,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return result;
 		}
 
-		#endregion Creators
+		//#endregion Creators
 
-		#region Properties
+		//#region Properties
 
 		/// <summary>
 		/// Get/set a flag indicating if the underlying stream is owned by the ZipFile instance.
@@ -724,9 +724,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion Properties
+		//#endregion Properties
 
-		#region Input Handling
+		//#region Input Handling
 
 		/// <summary>
 		/// Gets an enumerator for the Zip entries in this Zip file.
@@ -889,9 +889,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return result;
 		}
 
-		#endregion Input Handling
+		//#endregion Input Handling
 
-		#region Archive Testing
+		//#region Archive Testing
 
 		/// <summary>
 		/// Test an archive for integrity/validity
@@ -1337,9 +1337,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion Archive Testing
+		//#endregion Archive Testing
 
-		#region Updating
+		//#region Updating
 
 		private const int DefaultBufferSize = 4096;
 
@@ -1353,7 +1353,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			Add,        // Add a new file to the archive.
 		}
 
-		#region Properties
+		//#region Properties
 
 		/// <summary>
 		/// Get / set the <see cref="INameTransform"/> to apply to names when updating.
@@ -1433,9 +1433,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			set { useZip64_ = value; }
 		}
 
-		#endregion Properties
+		//#endregion Properties
 
-		#region Immediate updating
+		//#region Immediate updating
 
 		//		TBD: Direct form of updating
 		//
@@ -1447,9 +1447,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 		//		{
 		//		}
 
-		#endregion Immediate updating
+		//#endregion Immediate updating
 
-		#region Deferred Updating
+		//#region Deferred Updating
 
 		/// <summary>
 		/// Begin updating this <see cref="ZipFile"/> archive.
@@ -1617,9 +1617,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			commentEdited_ = true;
 		}
 
-		#endregion Deferred Updating
+		//#endregion Deferred Updating
 
-		#region Adding Entries
+		//#region Adding Entries
 
 		private void AddUpdate(ZipUpdate update)
 		{
@@ -1904,9 +1904,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion Adding Entries
+		//#endregion Adding Entries
 
-		#region Modifying Entries
+		//#region Modifying Entries
 
 		/* Modify not yet ready for public consumption.
 		   Direct modification of an entry should not overwrite original data before its read.
@@ -1927,9 +1927,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 				}
 		*/
 
-		#endregion Modifying Entries
+		//#endregion Modifying Entries
 
-		#region Deleting Entries
+		//#region Deleting Entries
 
 		/// <summary>
 		/// Delete an entry by name
@@ -1987,11 +1987,11 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion Deleting Entries
+		//#endregion Deleting Entries
 
-		#region Update Support
+		//#region Update Support
 
-		#region Writing Values/Headers
+		//#region Writing Values/Headers
 
 		private void WriteLEShort(int value)
 		{
@@ -2335,7 +2335,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return ZipConstants.CentralHeaderBaseSize + name.Length + centralExtraData.Length + rawComment.Length;
 		}
 
-		#endregion Writing Values/Headers
+		//#endregion Writing Values/Headers
 
 		private void PostUpdateCleanup()
 		{
@@ -3095,16 +3095,16 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion Update Support
+		//#endregion Update Support
 
-		#region ZipUpdate class
+		//#region ZipUpdate class
 
 		/// <summary>
 		/// Represents a pending update to a Zip file.
 		/// </summary>
 		private class ZipUpdate
 		{
-			#region Constructors
+			//#region Constructors
 
 			public ZipUpdate(string fileName, ZipEntry entry)
 			{
@@ -3175,7 +3175,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 				// Do nothing.
 			}
 
-			#endregion Constructors
+			//#endregion Constructors
 
 			/// <summary>
 			/// Get the <see cref="ZipEntry"/> for this update.
@@ -3257,7 +3257,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 				return result;
 			}
 
-			#region Instance Fields
+			//#region Instance Fields
 
 			private ZipEntry entry_;
 			private ZipEntry outEntry_;
@@ -3268,23 +3268,23 @@ namespace ICSharpCode.SharpZipLib.Zip
 			private long crcPatchOffset_ = -1;
 			private long _offsetBasedSize = -1;
 
-			#endregion Instance Fields
+			//#endregion Instance Fields
 		}
 
-		#endregion ZipUpdate class
+		//#endregion ZipUpdate class
 
-		#endregion Updating
+		//#endregion Updating
 
-		#region Disposing
+		//#region Disposing
 
-		#region IDisposable Members
+		//#region IDisposable Members
 
 		void IDisposable.Dispose()
 		{
 			Close();
 		}
 
-		#endregion IDisposable Members
+		//#endregion IDisposable Members
 
 		private void DisposeInternal(bool disposing)
 		{
@@ -3315,11 +3315,11 @@ namespace ICSharpCode.SharpZipLib.Zip
 			DisposeInternal(disposing);
 		}
 
-		#endregion Disposing
+		//#endregion Disposing
 
-		#region Internal routines
+		//#region Internal routines
 
-		#region Reading
+		//#region Reading
 
 		/// <summary>
 		/// Read an unsigned short in little endian byte order.
@@ -3367,7 +3367,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return ReadLEUint() | ((ulong)ReadLEUint() << 32);
 		}
 
-		#endregion Reading
+		//#endregion Reading
 
 		// NOTE this returns the offset of the first byte after the signature.
 		private long LocateBlockWithSignature(int signature, long endLocation, int minimumBlockSize, int maximumVariableData)
@@ -3715,9 +3715,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			stream.Write(cryptBuffer, 0, cryptBuffer.Length);
 		}
 
-		#endregion Internal routines
+		//#endregion Internal routines
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private bool isDisposed_;
 		private string name_;
@@ -3736,7 +3736,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		// Hint: Set always ZipEntry size before they are added to an archive and this setting isnt needed.
 		private UseZip64 useZip64_ = UseZip64.Dynamic;
 
-		#region Zip Update Instance Fields
+		//#region Zip Update Instance Fields
 
 		private List<ZipUpdate> updates_;
 		private long updateCount_; // Count is managed manually as updates_ can contain nulls!
@@ -3750,18 +3750,18 @@ namespace ICSharpCode.SharpZipLib.Zip
 		private bool commentEdited_;
 		private IEntryFactory updateEntryFactory_ = new ZipEntryFactory();
 
-		#endregion Zip Update Instance Fields
+		//#endregion Zip Update Instance Fields
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
-		#region Support Classes
+		//#region Support Classes
 
 		/// <summary>
 		/// Represents a string from a <see cref="ZipFile"/> which is stored as an array of bytes.
 		/// </summary>
 		private class ZipString
 		{
-			#region Constructors
+			//#region Constructors
 
 			/// <summary>
 			/// Initialise a <see cref="ZipString"/> with a string.
@@ -3782,7 +3782,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 				rawComment_ = rawString;
 			}
 
-			#endregion Constructors
+			//#endregion Constructors
 
 			/// <summary>
 			/// Get a value indicating the original source of data for this instance.
@@ -3859,13 +3859,13 @@ namespace ICSharpCode.SharpZipLib.Zip
 				return zipString.comment_;
 			}
 
-			#region Instance Fields
+			//#region Instance Fields
 
 			private string comment_;
 			private byte[] rawComment_;
 			private /*readonly*/ bool isSourceString_;
 
-			#endregion Instance Fields
+			//#endregion Instance Fields
 		}
 
 		/// <summary>
@@ -3873,16 +3873,16 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// </summary>
 		private class ZipEntryEnumerator : IEnumerator
 		{
-			#region Constructors
+			//#region Constructors
 
 			public ZipEntryEnumerator(ZipEntry[] entries)
 			{
 				array = entries;
 			}
 
-			#endregion Constructors
+			//#endregion Constructors
 
-			#region IEnumerator Members
+			//#region IEnumerator Members
 
 			public object Current
 			{
@@ -3902,14 +3902,14 @@ namespace ICSharpCode.SharpZipLib.Zip
 				return (++index < array.Length);
 			}
 
-			#endregion IEnumerator Members
+			//#endregion IEnumerator Members
 
-			#region Instance Fields
+			//#region Instance Fields
 
 			private ZipEntry[] array;
 			private int index = -1;
 
-			#endregion Instance Fields
+			//#endregion Instance Fields
 		}
 
 		/// <summary>
@@ -3918,14 +3918,14 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// </summary>
 		private class UncompressedStream : Stream
 		{
-			#region Constructors
+			//#region Constructors
 
 			public UncompressedStream(Stream baseStream)
 			{
 				baseStream_ = baseStream;
 			}
 
-			#endregion Constructors
+			//#endregion Constructors
 
 			/// <summary>
 			/// Gets a value indicating whether the current stream supports reading.
@@ -4060,11 +4060,11 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 			private /*readonly*/
 
-			#region Instance Fields
+			//#region Instance Fields
 
 			Stream baseStream_;
 
-			#endregion Instance Fields
+			//#endregion Instance Fields
 		}
 
 		/// <summary>
@@ -4073,7 +4073,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// </summary>
 		private class PartialInputStream : Stream
 		{
-			#region Constructors
+			//#region Constructors
 
 			/// <summary>
 			/// Initialise a new instance of the <see cref="PartialInputStream"/> class.
@@ -4102,7 +4102,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 				end_ = start + length;
 			}
 
-			#endregion Constructors
+			//#endregion Constructors
 
 			/// <summary>
 			/// Read a byte from this stream.
@@ -4326,7 +4326,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 				get { return baseStream_.CanTimeout; }
 			}
 
-			#region Instance Fields
+			//#region Instance Fields
 
 			private ZipFile zipFile_;
 			private Stream baseStream_;
@@ -4335,15 +4335,15 @@ namespace ICSharpCode.SharpZipLib.Zip
 			private long readPos_;
 			private /*readonly*/ long end_;
 
-			#endregion Instance Fields
+			//#endregion Instance Fields
 		}
 
-		#endregion Support Classes
+		//#endregion Support Classes
 	}
 
-	#endregion ZipFile Class
+	//#endregion ZipFile Class
 
-	#region DataSources
+	//#region DataSources
 
 	/// <summary>
 	/// Provides a static way to obtain a source of data for an entry.
@@ -4388,7 +4388,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			fileName_ = fileName;
 		}
 
-		#region IDataSource Members
+		//#region IDataSource Members
 
 		/// <summary>
 		/// Get a <see cref="Stream"/> providing data.
@@ -4401,13 +4401,13 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 		private /*readonly*/
 
-		#endregion IDataSource Members
+		//#endregion IDataSource Members
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		string fileName_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -4415,7 +4415,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </summary>
 	public class DynamicDiskDataSource : IDynamicDataSource
 	{
-		#region IDataSource Members
+		//#region IDataSource Members
 
 		/// <summary>
 		/// Get a <see cref="Stream"/> providing data for an entry.
@@ -4435,12 +4435,12 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return result;
 		}
 
-		#endregion IDataSource Members
+		//#endregion IDataSource Members
 	}
 
-	#endregion DataSources
+	//#endregion DataSources
 
-	#region Archive Storage
+	//#region Archive Storage
 
 	/// <summary>
 	/// Defines facilities for data storage when updating Zip Archives.
@@ -4492,7 +4492,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </summary>
 	abstract public class BaseArchiveStorage : IArchiveStorage
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="BaseArchiveStorage"/> class.
@@ -4503,9 +4503,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			updateMode_ = updateMode;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region IArchiveStorage Members
+		//#region IArchiveStorage Members
 
 		/// <summary>
 		/// Gets a temporary output <see cref="Stream"/>
@@ -4553,13 +4553,13 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion IArchiveStorage Members
+		//#endregion IArchiveStorage Members
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private /*readonly*/ FileUpdateMode updateMode_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -4567,7 +4567,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </summary>
 	public class DiskArchiveStorage : BaseArchiveStorage
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DiskArchiveStorage"/> class.
@@ -4594,9 +4594,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 		{
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region IArchiveStorage Members
+		//#region IArchiveStorage Members
 
 		/// <summary>
 		/// Gets a temporary output <see cref="Stream"/> for performing updates on.
@@ -4721,9 +4721,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion IArchiveStorage Members
+		//#endregion IArchiveStorage Members
 
-		#region Internal routines
+		//#region Internal routines
 
 		private static string GetTempFileName(string original, bool makeTempFile)
 		{
@@ -4769,15 +4769,15 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return result;
 		}
 
-		#endregion Internal routines
+		//#endregion Internal routines
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private Stream temporaryStream_;
 		private /*readonly*/ string fileName_;
 		private string temporaryName_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -4785,7 +4785,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </summary>
 	public class MemoryArchiveStorage : BaseArchiveStorage
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MemoryArchiveStorage"/> class.
@@ -4805,9 +4805,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 		{
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Properties
+		//#region Properties
 
 		/// <summary>
 		/// Get the stream returned by <see cref="ConvertTemporaryToFinal"/> if this was in fact called.
@@ -4817,9 +4817,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			get { return finalStream_; }
 		}
 
-		#endregion Properties
+		//#endregion Properties
 
-		#region IArchiveStorage Members
+		//#region IArchiveStorage Members
 
 		/// <summary>
 		/// Gets the temporary output <see cref="Stream"/>
@@ -4901,15 +4901,15 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#endregion IArchiveStorage Members
+		//#endregion IArchiveStorage Members
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private MemoryStream temporaryStream_;
 		private MemoryStream finalStream_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
-	#endregion Archive Storage
+	//#endregion Archive Storage
 }

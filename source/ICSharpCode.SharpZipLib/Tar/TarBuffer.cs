@@ -39,7 +39,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		or which contains garbage records after a zero block.
 		*/
 
-		#region Constants
+		//#region Constants
 
 		/// <summary>
 		/// The size of a block in a tar archive in bytes.
@@ -63,7 +63,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </remarks>
 		public const int DefaultRecordSize = BlockSize * DefaultBlockFactor;
 
-		#endregion Constants
+		//#endregion Constants
 
 		/// <summary>
 		/// Get the record size for this buffer
@@ -582,7 +582,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			}
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private Stream inputStream;
 		private Stream outputStream;
@@ -594,6 +594,6 @@ namespace ICSharpCode.SharpZipLib.Tar
 		private int recordSize = DefaultRecordSize;
 		private int blockFactor = DefaultBlockFactor;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

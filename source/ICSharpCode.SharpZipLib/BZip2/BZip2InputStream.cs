@@ -9,7 +9,7 @@ namespace ICSharpCode.SharpZipLib.BZip2
 	/// </summary>
 	public class BZip2InputStream : Stream
 	{
-		#region Constants
+		//#region Constants
 
 		private const int START_BLOCK_STATE = 1;
 		private const int RAND_PART_A_STATE = 2;
@@ -19,9 +19,9 @@ namespace ICSharpCode.SharpZipLib.BZip2
 		private const int NO_RAND_PART_B_STATE = 6;
 		private const int NO_RAND_PART_C_STATE = 7;
 
-		#endregion Constants
+		//#endregion Constants
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/*--
 		index of the last char in the block, so
@@ -87,7 +87,7 @@ namespace ICSharpCode.SharpZipLib.BZip2
 		private int i2, j2;
 		private byte z;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
 		/// <summary>
 		/// Construct instance for reading from stream
@@ -119,7 +119,7 @@ namespace ICSharpCode.SharpZipLib.BZip2
 		/// </summary>
 		public bool IsStreamOwner { get; set; } = true;
 
-		#region Stream Overrides
+		//#region Stream Overrides
 
 		/// <summary>
 		/// Gets a value indicating if the stream supports reading
@@ -316,7 +316,7 @@ namespace ICSharpCode.SharpZipLib.BZip2
 			return retChar;
 		}
 
-		#endregion Stream Overrides
+		//#endregion Stream Overrides
 
 		private void MakeMaps()
 		{

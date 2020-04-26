@@ -12,7 +12,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// according to Zip naming conventions, and should not be used if maximum compatability is desired.</remarks>
 	public class ZipNameTransform : INameTransform
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialize a new instance of <see cref="ZipNameTransform"></see>
@@ -30,7 +30,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			TrimPrefix = trimPrefix;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Static constructor.
@@ -234,17 +234,17 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return result;
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private string trimPrefix_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
-		#region Class Fields
+		//#region Class Fields
 
 		private static /*readonly*/ char[] InvalidEntryChars;
 		private static /*readonly*/ char[] InvalidEntryCharsRelaxed;
 
-		#endregion Class Fields
+		//#endregion Class Fields
 	}
 }

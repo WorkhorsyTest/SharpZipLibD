@@ -2,14 +2,14 @@ using System;
 
 namespace ICSharpCode.SharpZipLib.Core
 {
-	#region EventArgs
+	//#region EventArgs
 
 	/// <summary>
 	/// Event arguments for scanning.
 	/// </summary>
 	public class ScanEventArgs : EventArgs
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a new instance of <see cref="ScanEventArgs"/>
@@ -20,7 +20,7 @@ namespace ICSharpCode.SharpZipLib.Core
 			name_ = name;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// The file or directory name for this event.
@@ -39,12 +39,12 @@ namespace ICSharpCode.SharpZipLib.Core
 			set { continueRunning_ = value; }
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private string name_;
 		private bool continueRunning_ = true;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -52,7 +52,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// </summary>
 	public class ProgressEventArgs : EventArgs
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a new instance of <see cref="ScanEventArgs"/>
@@ -67,7 +67,7 @@ namespace ICSharpCode.SharpZipLib.Core
 			target_ = target;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// The name for this event if known.
@@ -124,14 +124,14 @@ namespace ICSharpCode.SharpZipLib.Core
 			get { return target_; }
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private string name_;
 		private long processed_;
 		private long target_;
 		private bool continueRunning_ = true;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -139,7 +139,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// </summary>
 	public class DirectoryEventArgs : ScanEventArgs
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialize an instance of <see cref="DirectoryEventArgs"></see>.
@@ -152,7 +152,7 @@ namespace ICSharpCode.SharpZipLib.Core
 			hasMatchingFiles_ = hasMatchingFiles;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Get a value indicating if the directory contains any matching files or not.
@@ -164,11 +164,11 @@ namespace ICSharpCode.SharpZipLib.Core
 
 		private /*readonly*/
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		bool hasMatchingFiles_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -176,7 +176,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// </summary>
 	public class ScanFailureEventArgs : EventArgs
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a new instance of <see cref="ScanFailureEventArgs"></see>
@@ -190,7 +190,7 @@ namespace ICSharpCode.SharpZipLib.Core
 			continueRunning_ = true;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// The applicable name.
@@ -217,18 +217,18 @@ namespace ICSharpCode.SharpZipLib.Core
 			set { continueRunning_ = value; }
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private string name_;
 		private Exception exception_;
 		private bool continueRunning_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
-	#endregion EventArgs
+	//#endregion EventArgs
 
-	#region Delegates
+	//#region Delegates
 
 	/// <summary>
 	/// Delegate invoked before starting to process a file.
@@ -265,14 +265,14 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// <param name="e">The event arguments.</param>
 	public delegate void FileFailureHandler(object sender, ScanFailureEventArgs e);
 
-	#endregion Delegates
+	//#endregion Delegates
 
 	/// <summary>
 	/// FileSystemScanner provides facilities scanning of files and directories.
 	/// </summary>
 	public class FileSystemScanner
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a new instance of <see cref="FileSystemScanner"></see>
@@ -314,9 +314,9 @@ namespace ICSharpCode.SharpZipLib.Core
 			directoryFilter_ = directoryFilter;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Delegates
+		//#region Delegates
 
 		/// <summary>
 		/// Delegate to invoke when a directory is processed.
@@ -343,7 +343,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// </summary>
 		public FileFailureHandler FileFailure;
 
-		#endregion Delegates
+		//#endregion Delegates
 
 		/// <summary>
 		/// Raise the DirectoryFailure event.
@@ -523,7 +523,7 @@ namespace ICSharpCode.SharpZipLib.Core
 			}
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// The file filter currently in use.
@@ -540,6 +540,6 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// </summary>
 		private bool alive_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

@@ -62,7 +62,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 
 		private class Tree
 		{
-			#region Instance Fields
+			//#region Instance Fields
 
 			public short[] freqs;
 
@@ -77,9 +77,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			private /*readonly*/ int maxLength;
 			private DeflaterHuffman dh;
 
-			#endregion Instance Fields
+			//#endregion Instance Fields
 
-			#region Constructors
+			//#region Constructors
 
 			public Tree(DeflaterHuffman dh, int elems, int minCodes, int maxLength)
 			{
@@ -90,7 +90,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 				bl_counts = new int[maxLength];
 			}
 
-			#endregion Constructors
+			//#endregion Constructors
 
 			/// <summary>
 			/// Resets the /*internal*/ state of the tree
@@ -579,7 +579,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			}
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// Pending buffer to use
@@ -597,7 +597,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		private int last_lit;
 		private int extra_bits;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
 		static DeflaterHuffman()
 		{

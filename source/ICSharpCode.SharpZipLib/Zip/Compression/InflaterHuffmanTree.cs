@@ -9,17 +9,17 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// </summary>
 	public class InflaterHuffmanTree
 	{
-		#region Constants
+		//#region Constants
 
 		private const int MAX_BITLEN = 15;
 
-		#endregion Constants
+		//#endregion Constants
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private short[] tree;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
 		/// <summary>
 		/// Literal length tree
@@ -69,7 +69,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			}
 		}
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Constructs a Huffman tree from the array of code lengths.
@@ -82,7 +82,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			BuildTree(codeLengths);
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		private void BuildTree(IList<byte> codeLengths)
 		{

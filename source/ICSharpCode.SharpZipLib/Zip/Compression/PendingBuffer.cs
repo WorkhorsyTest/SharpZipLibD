@@ -10,7 +10,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// </summary>
 	public class PendingBuffer
 	{
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// Internal work buffer
@@ -23,9 +23,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		private uint bits;
 		private int bitCount;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// construct instance using default buffer size of 4096
@@ -45,7 +45,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			buffer = new byte[bufferSize];
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Clear /*internal*/ state/buffers

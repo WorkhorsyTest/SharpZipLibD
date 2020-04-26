@@ -35,7 +35,7 @@ namespace ICSharpCode.SharpZipLib.GZip
 	/// </example>
 	public class GZipInputStream : InflaterInputStream
 	{
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// CRC-32 value for uncompressed data
@@ -54,9 +54,9 @@ namespace ICSharpCode.SharpZipLib.GZip
 		/// </summary>
 		private bool completedLastBlock;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Creates a GZipInputStream with the default buffer size
@@ -83,9 +83,9 @@ namespace ICSharpCode.SharpZipLib.GZip
 		{
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Stream overrides
+		//#region Stream overrides
 
 		/// <summary>
 		/// Reads uncompressed data into an array of bytes
@@ -149,9 +149,9 @@ namespace ICSharpCode.SharpZipLib.GZip
 			}
 		}
 
-		#endregion Stream overrides
+		//#endregion Stream overrides
 
-		#region Support routines
+		//#region Support routines
 
 		private bool ReadHeader()
 		{
@@ -385,6 +385,6 @@ namespace ICSharpCode.SharpZipLib.GZip
 			completedLastBlock = true;
 		}
 
-		#endregion Support routines
+		//#endregion Support routines
 	}
 }

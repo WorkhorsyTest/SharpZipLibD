@@ -9,7 +9,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </summary>
 	public class ZipEntryFactory : IEntryFactory
 	{
-		#region Enumerations
+		//#region Enumerations
 
 		/// <summary>
 		/// Defines the possible values to be used for the <see cref="ZipEntry.DateTime"/>.
@@ -57,9 +57,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			Fixed,
 		}
 
-		#endregion Enumerations
+		//#endregion Enumerations
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a new instance of the <see cref="ZipEntryFactory"/> class.
@@ -90,9 +90,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			FixedDateTime = time;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Properties
+		//#region Properties
 
 		/// <summary>
 		/// Get / set the <see cref="INameTransform"/> to be used when creating new <see cref="ZipEntry"/> values.
@@ -170,9 +170,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			set { isUnicodeText_ = value; }
 		}
 
-		#endregion Properties
+		//#endregion Properties
 
-		#region IEntryFactory Members
+		//#region IEntryFactory Members
 
 		/// <summary>
 		/// Make a new <see cref="ZipEntry"/> for a file.
@@ -358,9 +358,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return result;
 		}
 
-		#endregion IEntryFactory Members
+		//#endregion IEntryFactory Members
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private INameTransform nameTransform_;
 		private DateTime fixedDateTime_ = DateTime.Now;
@@ -370,6 +370,6 @@ namespace ICSharpCode.SharpZipLib.Zip
 		private int getAttributes_ = -1;
 		private int setAttributes_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

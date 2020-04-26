@@ -6,7 +6,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 {
 	/*internal*/ class InflaterDynHeader
 	{
-		#region Constants
+		//#region Constants
 
 		// maximum number of literal/length codes
 		private const int LITLEN_MAX = 286;
@@ -23,7 +23,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		private static /*readonly*/ int[] MetaCodeLengthIndex =
 			{ 16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15 };
 
-		#endregion Constants
+		//#endregion Constants
 
 		/// <summary>
 		/// Continue decoding header from <see cref="input"/> until more bits are needed or decoding has been completed
@@ -133,7 +133,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		public InflaterHuffmanTree DistanceTree
 			=> distTree ?? throw new StreamDecodingException("Header properties were accessed before header had been successfully read");
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private /*readonly*/ StreamManipulator input;
 		private /*readonly*/ IEnumerator<bool> state;
@@ -146,6 +146,6 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 
 		private int litLenCodeCount, distanceCodeCount, metaCodeCount;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

@@ -50,7 +50,7 @@ namespace ICSharpCode.SharpZipLib.Checksum
 	/// <see cref="ICSharpCode.SharpZipLib.Zip.Compression.Streams.DeflaterOutputStream"/>
 	public /*sealed*/ class Adler32 : IChecksum
 	{
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// largest prime smaller than 65536
@@ -62,7 +62,7 @@ namespace ICSharpCode.SharpZipLib.Checksum
 		/// </summary>
 		private uint checkValue;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
 		/// <summary>
 		/// Initialise a default instance of <see cref="Adler32"></see>

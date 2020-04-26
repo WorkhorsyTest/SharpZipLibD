@@ -21,7 +21,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// </example>
 	public class NameFilter : IScanFilter
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Construct an instance based on the filter expression passed
@@ -35,7 +35,7 @@ namespace ICSharpCode.SharpZipLib.Core
 			Compile();
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Test a string to see if it is a valid regular expression.
@@ -211,7 +211,7 @@ namespace ICSharpCode.SharpZipLib.Core
 			return result;
 		}
 
-		#region IScanFilter Members
+		//#region IScanFilter Members
 
 		/// <summary>
 		/// Test a value to see if it matches the filter.
@@ -223,7 +223,7 @@ namespace ICSharpCode.SharpZipLib.Core
 			return (IsIncluded(name) && !IsExcluded(name));
 		}
 
-		#endregion IScanFilter Members
+		//#endregion IScanFilter Members
 
 		/// <summary>
 		/// Compile this filter.
@@ -273,12 +273,12 @@ namespace ICSharpCode.SharpZipLib.Core
 			}
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private string filter_;
 		private List<Regex> inclusions_;
 		private List<Regex> exclusions_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

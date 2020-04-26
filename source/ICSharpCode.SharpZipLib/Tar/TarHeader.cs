@@ -40,7 +40,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 	/// </remarks>
 	public class TarHeader
 	{
-		#region Constants
+		//#region Constants
 
 		/// <summary>
 		/// The length of the name field in a header buffer.
@@ -238,9 +238,9 @@ namespace ICSharpCode.SharpZipLib.Tar
 		private const long timeConversionFactor = 10000000L;           // 1 tick == 100 nanoseconds
 		private static /*readonly*/ DateTime dateTime1970 = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 
-		#endregion Constants
+		//#endregion Constants
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a default TarHeader instance
@@ -260,9 +260,9 @@ namespace ICSharpCode.SharpZipLib.Tar
 			Size = 0;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Properties
+		//#region Properties
 
 		/// <summary>
 		/// Get/set the name for this tar entry.
@@ -507,9 +507,9 @@ namespace ICSharpCode.SharpZipLib.Tar
 			set { devMinor = value; }
 		}
 
-		#endregion Properties
+		//#endregion Properties
 
-		#region ICloneable Members
+		//#region ICloneable Members
 
 		/// <summary>
 		/// Create a new <see cref="TarHeader"/> that is a copy of the current instance.
@@ -520,7 +520,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			return this.MemberwiseClone();
 		}
 
-		#endregion ICloneable Members
+		//#endregion ICloneable Members
 
 		/// <summary>
 		/// Parse TarHeader information from a header buffer.
@@ -1121,7 +1121,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			return result;
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private string name;
 		private int mode;
@@ -1140,9 +1140,9 @@ namespace ICSharpCode.SharpZipLib.Tar
 		private int devMajor;
 		private int devMinor;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
-		#region Class Fields
+		//#region Class Fields
 
 		// Values used during recursive operations.
 		static /*internal*/ int userIdAsSet;
@@ -1156,6 +1156,6 @@ namespace ICSharpCode.SharpZipLib.Tar
 		static /*internal*/ string defaultGroupName = "None";
 		static /*internal*/ string defaultUser;
 
-		#endregion Class Fields
+		//#endregion Class Fields
 	}
 }

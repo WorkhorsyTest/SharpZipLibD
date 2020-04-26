@@ -32,7 +32,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 	/// </summary>
 	public class TarEntry
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a default instance of <see cref="TarEntry"/>.
@@ -69,9 +69,9 @@ namespace ICSharpCode.SharpZipLib.Tar
 			this.header = (TarHeader)header.Clone();
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region ICloneable Members
+		//#region ICloneable Members
 
 		/// <summary>
 		/// Clone this tar entry.
@@ -86,7 +86,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			return entry;
 		}
 
-		#endregion ICloneable Members
+		//#endregion ICloneable Members
 
 		/// <summary>
 		/// Construct an entry with only a <paramref name="name">name</paramref>.
@@ -530,7 +530,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			header.DevMinor = 0;
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// The name of the file this entry represents or null if the entry is not based on a file.
@@ -542,6 +542,6 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		private TarHeader header;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

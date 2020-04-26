@@ -11,7 +11,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 	/// public
 	public class TarOutputStream : Stream
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Construct TarOutputStream using default block factor
@@ -41,7 +41,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			blockBuffer = new byte[TarBuffer.BlockSize];
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Gets or sets a flag indicating ownership of underlying stream.
@@ -433,7 +433,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			buffer.WriteBlock(blockBuffer);
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// bytes written for this entry so far
@@ -475,6 +475,6 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		protected Stream outputStream;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

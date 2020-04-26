@@ -10,7 +10,7 @@ namespace ICSharpCode.SharpZipLib.BZip2
 	/// </summary>
 	public class BZip2OutputStream : Stream
 	{
-		#region Constants
+		//#region Constants
 
 		private const int SETMASK = (1 << 21);
 		private const int CLEARMASK = (~SETMASK);
@@ -42,9 +42,9 @@ namespace ICSharpCode.SharpZipLib.BZip2
 												  797161, 2391484
 											  };
 
-		#endregion Constants
+		//#endregion Constants
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/*--
 		index of the last char in the block, so
@@ -107,7 +107,7 @@ namespace ICSharpCode.SharpZipLib.BZip2
 		private /*readonly*/ Stream baseStream;
 		private bool disposed_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
 		/// <summary>
 		/// Construct a default output stream with maximum block size

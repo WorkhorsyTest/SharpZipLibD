@@ -12,7 +12,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 	/// </summary>
 	public class DeflaterOutputStream : Stream
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Creates a new DeflaterOutputStream with a default Deflater and default buffer size.
@@ -84,9 +84,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			deflater_ = deflater ?? throw new ArgumentNullException(nameof(deflater));
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region Public API
+		//#region Public API
 
 		/// <summary>
 		/// Finishes the stream by calling finish() on the deflater.
@@ -149,9 +149,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			}
 		}
 
-		#endregion Public API
+		//#endregion Public API
 
-		#region Encryption
+		//#region Encryption
 
 		private string password;
 
@@ -230,9 +230,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			pwdVerifier = ((ZipAESTransform)cryptoTransform_).PwdVerifier;
 		}
 
-		#endregion Encryption
+		//#endregion Encryption
 
-		#region Deflation Support
+		//#region Deflation Support
 
 		/// <summary>
 		/// Deflates everything in the input buffers.  This will call
@@ -268,9 +268,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			}
 		}
 
-		#endregion Deflation Support
+		//#endregion Deflation Support
 
-		#region Stream Overrides
+		//#region Stream Overrides
 
 		/// <summary>
 		/// Gets value indicating stream can be read from
@@ -461,9 +461,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 			Deflate();
 		}
 
-		#endregion Stream Overrides
+		//#endregion Stream Overrides
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// This buffer is used temporarily to retrieve the bytes from the
@@ -483,13 +483,13 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 
 		private bool isClosed_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 
-		#region Static Fields
+		//#region Static Fields
 
 		// Static to help ensure that multiple files within a zip will get different random salt
 		private static RandomNumberGenerator _aesRnd = RandomNumberGenerator.Create();
 
-		#endregion Static Fields
+		//#endregion Static Fields
 	}
 }

@@ -10,7 +10,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// </summary>
 	public class PathFilter : IScanFilter
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a new instance of <see cref="PathFilter"></see>.
@@ -21,9 +21,9 @@ namespace ICSharpCode.SharpZipLib.Core
 			nameFilter_ = new NameFilter(filter);
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region IScanFilter Members
+		//#region IScanFilter Members
 
 		/// <summary>
 		/// Test a name to see if it matches the filter.
@@ -45,13 +45,13 @@ namespace ICSharpCode.SharpZipLib.Core
 
 		private /*readonly*/
 
-		#endregion IScanFilter Members
+		//#endregion IScanFilter Members
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		NameFilter nameFilter_;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -60,7 +60,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// <remarks>Provides an example of how to customise filtering.</remarks>
 	public class ExtendedPathFilter : PathFilter
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Initialise a new instance of ExtendedPathFilter.
@@ -109,9 +109,9 @@ namespace ICSharpCode.SharpZipLib.Core
 			MaxDate = maxDate;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
-		#region IScanFilter Members
+		//#region IScanFilter Members
 
 		/// <summary>
 		/// Test a filename to see if it matches the filter.
@@ -136,9 +136,9 @@ namespace ICSharpCode.SharpZipLib.Core
 			return result;
 		}
 
-		#endregion IScanFilter Members
+		//#endregion IScanFilter Members
 
-		#region Properties
+		//#region Properties
 
 		/// <summary>
 		/// Get/set the minimum size/length for a file that will match this filter.
@@ -222,16 +222,16 @@ namespace ICSharpCode.SharpZipLib.Core
 			}
 		}
 
-		#endregion Properties
+		//#endregion Properties
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private long minSize_;
 		private long maxSize_ = long.MaxValue;
 		private DateTime minDate_ = DateTime.MinValue;
 		private DateTime maxDate_ = DateTime.MaxValue;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 
 	/// <summary>
@@ -308,11 +308,11 @@ namespace ICSharpCode.SharpZipLib.Core
 			}
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		private long minSize_;
 		private long maxSize_ = long.MaxValue;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

@@ -46,13 +46,13 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// </summary>
 	public class DeflaterEngine
 	{
-		#region Constants
+		//#region Constants
 
 		private const int TooFar = 4096;
 
-		#endregion Constants
+		//#endregion Constants
 
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Construct instance with pending buffer
@@ -93,7 +93,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			blockStart = strstart = 1;
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Deflate drives actual compression of data
@@ -854,7 +854,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			return true;
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		// Hash index of string to be inserted
 		private int ins_h;
@@ -941,6 +941,6 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		/// </summary>
 		private Adler32 adler;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }

@@ -52,7 +52,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </example>
 	public class ZipOutputStream : DeflaterOutputStream
 	{
-		#region Constructors
+		//#region Constructors
 
 		/// <summary>
 		/// Creates a new Zip output stream, writing a zip archive.
@@ -75,7 +75,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		{
 		}
 
-		#endregion Constructors
+		//#endregion Constructors
 
 		/// <summary>
 		/// Gets a flag value of true if the central header has been added for this archive; false if it has not been added.
@@ -903,7 +903,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			}
 		}
 
-		#region Instance Fields
+		//#region Instance Fields
 
 		/// <summary>
 		/// The entries for the archive.
@@ -960,6 +960,6 @@ namespace ICSharpCode.SharpZipLib.Zip
 		// NOTE: Setting the size for entries before they are added is the best solution!
 		private UseZip64 useZip64_ = UseZip64.Dynamic;
 
-		#endregion Instance Fields
+		//#endregion Instance Fields
 	}
 }
