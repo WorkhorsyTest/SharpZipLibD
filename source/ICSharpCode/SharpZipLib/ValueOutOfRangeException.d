@@ -13,7 +13,7 @@ import System.Runtime.Serialization;
 		/// </summary>
 		/// <param name="nameOfValue">Name of the variable, use: nameof()</param>
 		public this(string nameOfValue)
-			: super($"{nameOfValue} out of range") { }
+			{ super($"{nameOfValue} out of range"); }
 
 		/// <summary>
 		/// Initializes a new instance of the ValueOutOfRangeException class naming the the causing variable,
@@ -24,7 +24,7 @@ import System.Runtime.Serialization;
 		/// <param name="maxValue">Expected maximum value</param>
 		/// <param name="minValue">Expected minimum value</param>
 		public this(string nameOfValue, long value, long maxValue, long minValue = 0)
-			: this(nameOfValue, value.ToString(), maxValue.ToString(), minValue.ToString()) { }
+			{ this(nameOfValue, value.ToString(), maxValue.ToString(), minValue.ToString()); }
 
 		/// <summary>
 		/// Initializes a new instance of the ValueOutOfRangeException class naming the the causing variable,
@@ -34,16 +34,16 @@ import System.Runtime.Serialization;
 		/// <param name="value">The invalid value</param>
 		/// <param name="maxValue">Expected maximum value</param>
 		/// <param name="minValue">Expected minimum value</param>
-		public this(string nameOfValue, string value, string maxValue, string minValue = "0") :
-			super($"{nameOfValue} out of range: {value}, should be {minValue}..{maxValue}")
-		{ }
+		public this(string nameOfValue, string value, string maxValue, string minValue = "0")
+		{ super($"{nameOfValue} out of range: {value}, should be {minValue}..{maxValue}"); }
 
 		private this()
 		{
 		}
 
-		private this(string message, BaseException innerException) : super(message, innerException)
+		private this(string message, BaseException innerException)
 		{
+			super(message, innerException);
 		}
 
 		/// <summary>
@@ -58,7 +58,7 @@ import System.Runtime.Serialization;
 		/// about the source or destination.
 		/// </param>
 		protected this(SerializationInfo info, StreamingContext context)
-			: super(info, context)
 		{
+			super(info, context);
 		}
 	}

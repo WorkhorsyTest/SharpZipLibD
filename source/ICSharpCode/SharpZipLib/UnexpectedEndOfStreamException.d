@@ -13,13 +13,13 @@ import System.Runtime.Serialization;
 		/// <summary>
 		/// Initializes a new instance of the UnexpectedEndOfStreamException with a generic message
 		/// </summary>
-		public this() : super(GenericMessage) { }
+		public this() { super(GenericMessage); }
 
 		/// <summary>
 		/// Initializes a new instance of the UnexpectedEndOfStreamException class with a specified error message.
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
-		public this(string message) : super(message) { }
+		public this(string message) { super(message); }
 
 		/// <summary>
 		/// Initializes a new instance of the UnexpectedEndOfStreamException class with a specified
@@ -27,7 +27,7 @@ import System.Runtime.Serialization;
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
 		/// <param name="innerException">The inner exception</param>
-		public this(string message, BaseException innerException) : super(message, innerException) { }
+		public this(string message, BaseException innerException) { super(message, innerException); }
 
 		/// <summary>
 		/// Initializes a new instance of the UnexpectedEndOfStreamException class with serialized data.
@@ -41,7 +41,7 @@ import System.Runtime.Serialization;
 		/// about the source or destination.
 		/// </param>
 		protected this(SerializationInfo info, StreamingContext context)
-			: super(info, context)
 		{
+			super(info, context);
 		}
 	}

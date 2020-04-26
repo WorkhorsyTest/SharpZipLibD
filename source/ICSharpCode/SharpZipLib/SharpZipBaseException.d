@@ -23,8 +23,8 @@ import System.Runtime.Serialization;
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
 		public this(string message)
-			: super(message)
 		{
+			super(message);
 		}
 
 		/// <summary>
@@ -34,8 +34,8 @@ import System.Runtime.Serialization;
 		/// <param name="message">A message describing the exception.</param>
 		/// <param name="innerException">The inner exception</param>
 		public this(string message, BaseException innerException)
-			: super(message, innerException)
 		{
+			super(message, innerException);
 		}
 
 		/// <summary>
@@ -50,7 +50,7 @@ import System.Runtime.Serialization;
 		/// about the source or destination.
 		/// </param>
 		protected this(SerializationInfo info, StreamingContext context)
-			: super(info, context)
 		{
+			super(info, context);
 		}
 	}
