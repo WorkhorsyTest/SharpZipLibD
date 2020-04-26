@@ -132,8 +132,8 @@ import System;
 			//(By Per Bothner)
 			uint s1 = checkValue & 0xFFFF;
 			uint s2 = checkValue >> 16;
-			var count = segment.Count;
-			var offset = segment.Offset;
+			auto count = segment.Count;
+			auto offset = segment.Offset;
 			while (count > 0)
 			{
 				// We can defer the modulo operation:

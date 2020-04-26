@@ -173,8 +173,8 @@ import System;
 		/// </param>
 		public void Update(ArraySegment<byte> segment)
 		{
-			var count = segment.Count;
-			var offset = segment.Offset;
+			auto count = segment.Count;
+			auto offset = segment.Offset;
 
 			while (--count >= 0)
 				Update(segment.Array[offset++]);
