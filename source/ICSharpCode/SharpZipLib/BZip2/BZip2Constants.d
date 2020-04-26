@@ -1,14 +1,15 @@
 
-
+/// <summary>
+/// Defines /*internal*/ values for both compression and decompression
+/// </summary>
+module BZip2Constants;
 
 import ICSharpCode.SharpZipLib.BZip2;
 
 
-	/// <summary>
-	/// Defines /*internal*/ values for both compression and decompression
-	/// </summary>
-	/*internal*/ /*sealed*/ class BZip2Constants
-	{
+
+
+
 		/// <summary>
 		/// Random numbers used to randomise repetitive blocks
 		/// </summary>
@@ -117,8 +118,3 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// Backend constant
 		/// </summary>
 		public const int OvershootBytes = 20;
-
-		private this()
-		{
-		}
-	}
