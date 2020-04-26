@@ -5,7 +5,7 @@ import System.Runtime.Serialization;
 	/// <summary>
 	/// Indicates that the input stream could not decoded due to the stream ending before enough data had been provided
 	/// </summary>
-	[Serializable]
+	//[Serializable]
 	public class UnexpectedEndOfStreamException : StreamDecodingException
 	{
 		private const string GenericMessage = "Input stream ended unexpectedly";

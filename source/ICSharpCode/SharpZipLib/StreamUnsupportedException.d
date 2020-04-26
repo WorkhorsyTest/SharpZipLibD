@@ -5,7 +5,7 @@ import System.Runtime.Serialization;
 	/// <summary>
 	/// Indicates that the input stream could not decoded due to known library incompability or missing features
 	/// </summary>
-	[Serializable]
+	//[Serializable]
 	public class StreamUnsupportedException : StreamDecodingException
 	{
 		private const string GenericMessage = "Input stream is in a unsupported format";

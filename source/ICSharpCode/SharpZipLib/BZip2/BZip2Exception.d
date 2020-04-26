@@ -5,7 +5,7 @@ import System.Runtime.Serialization;
 	/// <summary>
 	/// BZip2Exception represents exceptions specific to BZip2 classes and code.
 	/// </summary>
-	[Serializable]
+	//[Serializable]
 	public class BZip2Exception : SharpZipBaseException
 	{
 		/// <summary>

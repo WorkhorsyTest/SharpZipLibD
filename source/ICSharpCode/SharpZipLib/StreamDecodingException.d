@@ -6,7 +6,7 @@ import System.Runtime.Serialization;
 	/// Indicates that an error occured during decoding of a input stream due to corrupt
 	/// data or (unintentional) library incompability.
 	/// </summary>
-	[Serializable]
+	//[Serializable]
 	public class StreamDecodingException : SharpZipBaseException
 	{
 		private const string GenericMessage = "Input stream could not be decoded";

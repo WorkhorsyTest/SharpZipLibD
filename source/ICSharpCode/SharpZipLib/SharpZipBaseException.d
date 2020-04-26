@@ -8,7 +8,7 @@ import System.Runtime.Serialization;
 	/// </summary>
 	/// <remarks>NOTE: Not all exceptions thrown will be derived from this class.
 	/// A variety of other exceptions are possible for example <see cref="ArgumentNullException"></see></remarks>
-	[Serializable]
+	//[Serializable]
 	public class SharpZipBaseException : BaseException
 	{
 		/// <summary>

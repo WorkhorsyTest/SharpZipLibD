@@ -5,7 +5,7 @@ import System.Runtime.Serialization;
 	/// <summary>
 	/// Indicates that a value was outside of the expected range when decoding an input stream
 	/// </summary>
-	[Serializable]
+	//[Serializable]
 	public class ValueOutOfRangeException : StreamDecodingException
 	{
 		/// <summary>
