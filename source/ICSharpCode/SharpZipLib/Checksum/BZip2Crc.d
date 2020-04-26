@@ -136,10 +136,10 @@ import ICSharpCode.SharpZipLib.Checksum;
 		{
 /*
 			// Tehcnically, the output should be:
-			//return (long)(~checkValue ^ crcXor);
+			//return cast(long)(~checkValue ^ crcXor);
 			// but x ^ 0 = x, so there is no point in adding
 			// the XOR operation
-			return (long)(~checkValue);
+			return cast(long)(~checkValue);
 */return 0;
 		}
 
@@ -153,7 +153,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 		public void Update(int bval)
 		{
 /*
-			checkValue = unchecked(crcTable[(ubyte)(((checkValue >> 24) & 0xFF) ^ bval)] ^ (checkValue << 8));
+			checkValue = unchecked(crcTable[cast(ubyte)(((checkValue >> 24) & 0xFF) ^ bval)] ^ (checkValue << 8));
 */
 		}
 

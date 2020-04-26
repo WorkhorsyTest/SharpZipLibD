@@ -245,7 +245,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 				{
 					return i;
 				}
-				buffer[offset + i] = (ubyte)rb;
+				buffer[offset + i] = cast(ubyte)rb;
 			}
 			return count;
 */return 0;
@@ -312,8 +312,8 @@ import ICSharpCode.SharpZipLib.BZip2;
 			{
 				if (inUse[i])
 				{
-					seqToUnseq[nInUse] = (ubyte)i;
-					unseqToSeq[i] = (ubyte)nInUse;
+					seqToUnseq[nInUse] = cast(ubyte)i;
+					unseqToSeq[i] = cast(ubyte)nInUse;
 					nInUse++;
 				}
 			}
@@ -377,7 +377,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		private void EndBlock()
 		{
 /*
-			computedBlockCRC = (int)mCrc.Value;
+			computedBlockCRC = cast(int)mCrc.Value;
 
 			// -- A bad CRC is considered a fatal error. --
 			if (storedBlockCRC != computedBlockCRC)
@@ -387,7 +387,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 
 			// 1528150659
 			computedCombinedCRC = ((computedCombinedCRC << 1) & 0xFFFFFFFF) | (computedCombinedCRC >> 31);
-			computedCombinedCRC = computedCombinedCRC ^ (uint)computedBlockCRC;
+			computedCombinedCRC = computedCombinedCRC ^ cast(uint)computedBlockCRC;
 */
 		}
 
@@ -395,7 +395,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		{
 /*
 			storedCombinedCRC = BsGetInt32();
-			if (storedCombinedCRC != (int)computedCombinedCRC)
+			if (storedCombinedCRC != cast(int)computedCombinedCRC)
 			{
 				CrcError();
 			}
@@ -514,14 +514,14 @@ import ICSharpCode.SharpZipLib.BZip2;
 				{
 					j++;
 				}
-				selectorMtf[i] = (ubyte)j;
+				selectorMtf[i] = cast(ubyte)j;
 			}
 
 			//--- Undo the MTF values for the selectors. ---
 			ubyte[] pos = new ubyte[BZip2Constants.GroupCount];
 			for (int v = 0; v < nGroups; v++)
 			{
-				pos[v] = (ubyte)v;
+				pos[v] = cast(ubyte)v;
 			}
 
 			for (int i = 0; i < nSelectors; i++)
@@ -601,7 +601,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 
 			for (int i = 0; i <= 255; i++)
 			{
-				yy[i] = (ubyte)i;
+				yy[i] = cast(ubyte)i;
 			}
 
 			last = -1;
@@ -811,7 +811,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 					}
 				}
 				rNToGo--;
-				ch2 ^= (int)((rNToGo == 1) ? 1 : 0);
+				ch2 ^= cast(int)((rNToGo == 1) ? 1 : 0);
 				i2++;
 
 				currentChar = ch2;
@@ -876,7 +876,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 						}
 					}
 					rNToGo--;
-					z ^= (ubyte)((rNToGo == 1) ? 1 : 0);
+					z ^= cast(ubyte)((rNToGo == 1) ? 1 : 0);
 					j2 = 0;
 					currentState = RAND_PART_C_STATE;
 					SetupRandPartC();
@@ -893,7 +893,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		private void SetupRandPartC()
 		{
 /*
-			if (j2 < (int)z)
+			if (j2 < cast(int)z)
 			{
 				currentChar = ch2;
 				mCrc.Update(ch2);
@@ -941,7 +941,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 		private void SetupNoRandPartC()
 		{
 /*
-			if (j2 < (int)z)
+			if (j2 < cast(int)z)
 			{
 				currentChar = ch2;
 				mCrc.Update(ch2);

@@ -104,7 +104,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 			uint s1 = checkValue & 0xFFFF;
 			uint s2 = checkValue >> 16;
 
-			s1 = (s1 + ((uint)bval & 0xFF)) % BASE;
+			s1 = (s1 + (cast(uint)bval & 0xFF)) % BASE;
 			s2 = (s1 + s2) % BASE;
 
 			checkValue = (s2 << 16) + s1;
@@ -155,7 +155,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 				count -= n;
 				while (--n >= 0)
 				{
-					s1 = s1 + (uint)(segment.Array[offset++] & 0xff);
+					s1 = s1 + cast(uint)(segment.Array[offset++] & 0xff);
 					s2 = s2 + s1;
 				}
 				s1 %= BASE;

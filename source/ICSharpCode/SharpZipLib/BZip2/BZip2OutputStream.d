@@ -366,37 +366,37 @@ import ICSharpCode.SharpZipLib.BZip2;
 				{
 					case 1:
 						last++;
-						block[last + 1] = (ubyte)currentChar;
+						block[last + 1] = cast(ubyte)currentChar;
 						break;
 
 					case 2:
 						last++;
-						block[last + 1] = (ubyte)currentChar;
+						block[last + 1] = cast(ubyte)currentChar;
 						last++;
-						block[last + 1] = (ubyte)currentChar;
+						block[last + 1] = cast(ubyte)currentChar;
 						break;
 
 					case 3:
 						last++;
-						block[last + 1] = (ubyte)currentChar;
+						block[last + 1] = cast(ubyte)currentChar;
 						last++;
-						block[last + 1] = (ubyte)currentChar;
+						block[last + 1] = cast(ubyte)currentChar;
 						last++;
-						block[last + 1] = (ubyte)currentChar;
+						block[last + 1] = cast(ubyte)currentChar;
 						break;
 
 					default:
 						inUse[runLength - 4] = true;
 						last++;
-						block[last + 1] = (ubyte)currentChar;
+						block[last + 1] = cast(ubyte)currentChar;
 						last++;
-						block[last + 1] = (ubyte)currentChar;
+						block[last + 1] = cast(ubyte)currentChar;
 						last++;
-						block[last + 1] = (ubyte)currentChar;
+						block[last + 1] = cast(ubyte)currentChar;
 						last++;
-						block[last + 1] = (ubyte)currentChar;
+						block[last + 1] = cast(ubyte)currentChar;
 						last++;
-						block[last + 1] = (ubyte)(runLength - 4);
+						block[last + 1] = cast(ubyte)(runLength - 4);
 						break;
 				}
 			}
@@ -513,7 +513,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 				return;
 			}
 
-			blockCRC = unchecked((uint)mCrc.Value);
+			blockCRC = unchecked(cast(uint)mCrc.Value);
 			combinedCRC = (combinedCRC << 1) | (combinedCRC >> 31);
 			combinedCRC ^= blockCRC;
 
@@ -543,7 +543,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 			/++ Now the block's CRC, so it is in a known place. +/
 			unchecked
 			{
-				BsPutint((int)blockCRC);
+				BsPutint(cast(int)blockCRC);
 			}
 
 			/++ Now a single bit indicating randomisation. +/
@@ -581,7 +581,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 
 			unchecked
 			{
-				BsPutint((int)combinedCRC);
+				BsPutint(cast(int)combinedCRC);
 			}
 
 			BsFinishedWithStream();
@@ -594,7 +594,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 			while (bsLive > 0)
 			{
 				int ch = (bsBuff >> 24);
-				baseStream.WriteByte((ubyte)ch); // write 8-bit
+				baseStream.WriteByte(cast(ubyte)ch); // write 8-bit
 				bsBuff <<= 8;
 				bsLive -= 8;
 				bytesOut++;
@@ -608,7 +608,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 			while (bsLive >= 8)
 			{
 				int ch = (bsBuff >> 24);
-				unchecked { baseStream.WriteByte((ubyte)ch); } // write 8-bit
+				unchecked { baseStream.WriteByte(cast(ubyte)ch); } // write 8-bit
 				bsBuff <<= 8;
 				bsLive -= 8;
 				++bytesOut;
@@ -781,12 +781,12 @@ import ICSharpCode.SharpZipLib.BZip2;
 						for (int i = gs; i <= ge; ++i)
 						{
 							short icv = szptr[i];
-							cost0 += (short)len[0][icv];
-							cost1 += (short)len[1][icv];
-							cost2 += (short)len[2][icv];
-							cost3 += (short)len[3][icv];
-							cost4 += (short)len[4][icv];
-							cost5 += (short)len[5][icv];
+							cost0 += cast(short)len[0][icv];
+							cost1 += cast(short)len[1][icv];
+							cost2 += cast(short)len[2][icv];
+							cost3 += cast(short)len[3][icv];
+							cost4 += cast(short)len[4][icv];
+							cost5 += cast(short)len[5][icv];
 						}
 						cost[0] = cost0;
 						cost[1] = cost1;
@@ -802,7 +802,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 							short icv = szptr[i];
 							for (int t = 0; t < nGroups; t++)
 							{
-								cost[t] += (short)len[t][icv];
+								cost[t] += cast(short)len[t][icv];
 							}
 						}
 					}
@@ -1191,7 +1191,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 						{
 							break;
 						}
-						n = ((int)block[zptr[unLo] + d + 1]) - med;
+						n = (cast(int)block[zptr[unLo] + d + 1]) - med;
 						if (n == 0)
 						{
 							int temp = zptr[unLo];
@@ -1214,7 +1214,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 						{
 							break;
 						}
-						n = ((int)block[zptr[unHi] + d + 1]) - med;
+						n = (cast(int)block[zptr[unHi] + d + 1]) - med;
 						if (n == 0)
 						{
 							int temp = zptr[unHi];
@@ -1306,7 +1306,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 				quadrant[i] = 0;
 			}
 
-			block[0] = (ubyte)(block[last + 1]);
+			block[0] = cast(ubyte)(block[last + 1]);
 
 			if (last < 4000)
 			{
@@ -1516,7 +1516,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 			{
 				if (rNToGo == 0)
 				{
-					rNToGo = (int)BZip2Constants.RandomNumbers[rTPos];
+					rNToGo = cast(int)BZip2Constants.RandomNumbers[rTPos];
 					rTPos++;
 					if (rTPos == 512)
 					{
@@ -1524,7 +1524,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 					}
 				}
 				rNToGo--;
-				block[i + 1] ^= (ubyte)((rNToGo == 1) ? 1 : 0);
+				block[i + 1] ^= cast(ubyte)((rNToGo == 1) ? 1 : 0);
 				// handle 16 bit signed numbers
 				block[i + 1] &= 0xFF;
 
@@ -1801,13 +1801,13 @@ import ICSharpCode.SharpZipLib.BZip2;
 							switch (zPend % 2)
 							{
 								case 0:
-									szptr[wr] = (short)BZip2Constants.RunA;
+									szptr[wr] = cast(short)BZip2Constants.RunA;
 									wr++;
 									mtfFreq[BZip2Constants.RunA]++;
 									break;
 
 								case 1:
-									szptr[wr] = (short)BZip2Constants.RunB;
+									szptr[wr] = cast(short)BZip2Constants.RunB;
 									wr++;
 									mtfFreq[BZip2Constants.RunB]++;
 									break;
@@ -1820,7 +1820,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 						}
 						zPend = 0;
 					}
-					szptr[wr] = (short)(j + 1);
+					szptr[wr] = cast(short)(j + 1);
 					wr++;
 					mtfFreq[j + 1]++;
 				}
@@ -1834,13 +1834,13 @@ import ICSharpCode.SharpZipLib.BZip2;
 					switch (zPend % 2)
 					{
 						case 0:
-							szptr[wr] = (short)BZip2Constants.RunA;
+							szptr[wr] = cast(short)BZip2Constants.RunA;
 							wr++;
 							mtfFreq[BZip2Constants.RunA]++;
 							break;
 
 						case 1:
-							szptr[wr] = (short)BZip2Constants.RunB;
+							szptr[wr] = cast(short)BZip2Constants.RunB;
 							wr++;
 							mtfFreq[BZip2Constants.RunB]++;
 							break;
@@ -1853,7 +1853,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 				}
 			}
 
-			szptr[wr] = (short)EOB;
+			szptr[wr] = cast(short)EOB;
 			wr++;
 			mtfFreq[EOB]++;
 
@@ -1970,8 +1970,8 @@ import ICSharpCode.SharpZipLib.BZip2;
 					nNodes++;
 					parent[n1] = parent[n2] = nNodes;
 
-					weight[nNodes] = (int)((weight[n1] & 0xffffff00) + (weight[n2] & 0xffffff00)) |
-						(int)(1 + (((weight[n1] & 0x000000ff) > (weight[n2] & 0x000000ff)) ? (weight[n1] & 0x000000ff) : (weight[n2] & 0x000000ff)));
+					weight[nNodes] = cast(int)((weight[n1] & 0xffffff00) + (weight[n2] & 0xffffff00)) |
+						cast(int)(1 + (((weight[n1] & 0x000000ff) > (weight[n2] & 0x000000ff)) ? (weight[n1] & 0x000000ff) : (weight[n2] & 0x000000ff)));
 
 					parent[nNodes] = -1;
 					nHeap++;
