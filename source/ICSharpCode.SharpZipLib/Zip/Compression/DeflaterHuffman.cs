@@ -34,9 +34,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 
 		// The lengths of the bit length codes are sent in order of decreasing
 		// probability, to avoid transmitting the lengths for unused bit length codes.
-		private static readonly int[] BL_ORDER = { 16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15 };
+		private static /*readonly*/ int[] BL_ORDER = { 16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15 };
 
-		private static readonly byte[] bit4Reverse = {
+		private static /*readonly*/ byte[] bit4Reverse = {
 			0,
 			8,
 			4,
@@ -73,8 +73,8 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 			public int numCodes;
 
 			private short[] codes;
-			private readonly int[] bl_counts;
-			private readonly int maxLength;
+			private /*readonly*/ int[] bl_counts;
+			private /*readonly*/ int maxLength;
 			private DeflaterHuffman dh;
 
 			#endregion Instance Fields

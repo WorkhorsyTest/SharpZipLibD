@@ -66,7 +66,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 		#region Instance Fields
 
-		private readonly string fileName;
+		private /*readonly*/ string fileName;
 		private byte[] key;
 
 		#endregion Instance Fields
@@ -229,7 +229,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 		#region Instance Fields
 
-		private readonly ZipFile file_;
+		private /*readonly*/ ZipFile file_;
 		private ZipEntry entry_;
 		private bool entryValid_;
 		private int errorCount_;
@@ -3261,9 +3261,9 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 			private ZipEntry entry_;
 			private ZipEntry outEntry_;
-			private readonly UpdateCommand command_;
+			private /*readonly*/ UpdateCommand command_;
 			private IStaticDataSource dataSource_;
-			private readonly string filename_;
+			private /*readonly*/ string filename_;
 			private long sizePatchOffset_ = -1;
 			private long crcPatchOffset_ = -1;
 			private long _offsetBasedSize = -1;
@@ -3863,7 +3863,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 			private string comment_;
 			private byte[] rawComment_;
-			private readonly bool isSourceString_;
+			private /*readonly*/ bool isSourceString_;
 
 			#endregion Instance Fields
 		}
@@ -4058,7 +4058,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 				baseStream_.Write(buffer, offset, count);
 			}
 
-			private readonly
+			private /*readonly*/
 
 			#region Instance Fields
 
@@ -4330,10 +4330,10 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 			private ZipFile zipFile_;
 			private Stream baseStream_;
-			private readonly long start_;
-			private readonly long length_;
+			private /*readonly*/ long start_;
+			private /*readonly*/ long length_;
 			private long readPos_;
-			private readonly long end_;
+			private /*readonly*/ long end_;
 
 			#endregion Instance Fields
 		}
@@ -4399,7 +4399,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 			return File.Open(fileName_, FileMode.Open, FileAccess.Read, FileShare.Read);
 		}
 
-		private readonly
+		private /*readonly*/
 
 		#endregion IDataSource Members
 
@@ -4557,7 +4557,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 		#region Instance Fields
 
-		private readonly FileUpdateMode updateMode_;
+		private /*readonly*/ FileUpdateMode updateMode_;
 
 		#endregion Instance Fields
 	}
@@ -4774,7 +4774,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		#region Instance Fields
 
 		private Stream temporaryStream_;
-		private readonly string fileName_;
+		private /*readonly*/ string fileName_;
 		private string temporaryName_;
 
 		#endregion Instance Fields

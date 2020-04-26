@@ -532,7 +532,7 @@ namespace ICSharpCode.SharpZipLib.Lzw
 		/// </summary>
 		private bool isClosed;
 
-		private readonly byte[] one = new byte[1];
+		private /*readonly*/ byte[] one = new byte[1];
 		private bool headerParsed;
 
 		// string table stuff
@@ -542,7 +542,7 @@ namespace ICSharpCode.SharpZipLib.Lzw
 
 		private int[] tabPrefix;
 		private byte[] tabSuffix;
-		private readonly int[] zeros = new int[256];
+		private /*readonly*/ int[] zeros = new int[256];
 		private byte[] stack;
 
 		// various state
@@ -559,7 +559,7 @@ namespace ICSharpCode.SharpZipLib.Lzw
 		private int freeEnt;
 
 		// input buffer
-		private readonly byte[] data = new byte[1024 * 8];
+		private /*readonly*/ byte[] data = new byte[1024 * 8];
 
 		private int bitPos;
 		private int end;

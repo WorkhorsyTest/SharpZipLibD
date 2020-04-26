@@ -55,7 +55,7 @@ namespace ICSharpCode.SharpZipLib.Checksum
 		/// <summary>
 		/// largest prime smaller than 65536
 		/// </summary>
-		private static readonly uint BASE = 65521;
+		private static /*readonly*/ uint BASE = 65521;
 
 		/// <summary>
 		/// The CRC data checksum so far.

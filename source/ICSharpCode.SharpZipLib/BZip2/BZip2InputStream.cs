@@ -69,7 +69,7 @@ namespace ICSharpCode.SharpZipLib.BZip2
 		private int[][] perm = new int[BZip2Constants.GroupCount][];
 		private int[] minLens = new int[BZip2Constants.GroupCount];
 
-		private readonly Stream baseStream;
+		private /*readonly*/ Stream baseStream;
 		private bool streamEnd;
 
 		private int currentChar = -1;

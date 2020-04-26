@@ -36,7 +36,7 @@ namespace ICSharpCode.SharpZipLib.BZip2
 		usually small, typically <= 20.
 		--*/
 
-		private readonly int[] increments = {
+		private /*readonly*/ int[] increments = {
 												  1, 4, 13, 40, 121, 364, 1093, 3280,
 												  9841, 29524, 88573, 265720,
 												  797161, 2391484
@@ -104,7 +104,7 @@ namespace ICSharpCode.SharpZipLib.BZip2
 		private int runLength;
 		private uint blockCRC, combinedCRC;
 		private int allowableBlockSize;
-		private readonly Stream baseStream;
+		private /*readonly*/ Stream baseStream;
 		private bool disposed_;
 
 		#endregion Instance Fields

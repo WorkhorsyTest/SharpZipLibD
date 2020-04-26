@@ -162,7 +162,7 @@ namespace ICSharpCode.SharpZipLib.Core
 			get { return hasMatchingFiles_; }
 		}
 
-		private readonly
+		private /*readonly*/
 
 		#region Instance Fields
 

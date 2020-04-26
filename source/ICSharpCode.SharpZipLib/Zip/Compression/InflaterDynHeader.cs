@@ -20,7 +20,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		// maximum meta code length codes to read
 		private const int META_MAX = 19;
 
-		private static readonly int[] MetaCodeLengthIndex =
+		private static /*readonly*/ int[] MetaCodeLengthIndex =
 			{ 16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15 };
 
 		#endregion Constants
@@ -135,9 +135,9 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 
 		#region Instance Fields
 
-		private readonly StreamManipulator input;
-		private readonly IEnumerator<bool> state;
-		private readonly IEnumerable<bool> stateMachine;
+		private /*readonly*/ StreamManipulator input;
+		private /*readonly*/ IEnumerator<bool> state;
+		private /*readonly*/ IEnumerable<bool> stateMachine;
 
 		private byte[] codeLengths = new byte[CODELEN_MAX];
 

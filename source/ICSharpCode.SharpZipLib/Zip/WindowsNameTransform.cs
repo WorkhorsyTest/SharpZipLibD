@@ -25,7 +25,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// In this case we need Windows' invalid path characters.
 		/// Path.GetInvalidPathChars() only returns a subset invalid on all platforms.
 		/// </summary>
-		private static readonly char[] InvalidEntryChars = new char[] {
+		private static /*readonly*/ char[] InvalidEntryChars = new char[] {
 			'"', '<', '>', '|', '\0', '\u0001', '\u0002', '\u0003', '\u0004', '\u0005',
 			'\u0006', '\a', '\b', '\t', '\n', '\v', '\f', '\r', '\u000e', '\u000f',
 			'\u0010', '\u0011', '\u0012', '\u0013', '\u0014', '\u0015', '\u0016',

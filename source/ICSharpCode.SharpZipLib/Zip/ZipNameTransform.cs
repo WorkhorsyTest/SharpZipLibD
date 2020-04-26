@@ -242,8 +242,8 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 		#region Class Fields
 
-		private static readonly char[] InvalidEntryChars;
-		private static readonly char[] InvalidEntryCharsRelaxed;
+		private static /*readonly*/ char[] InvalidEntryChars;
+		private static /*readonly*/ char[] InvalidEntryCharsRelaxed;
 
 		#endregion Class Fields
 	}

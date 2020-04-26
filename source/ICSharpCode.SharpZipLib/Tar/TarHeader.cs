@@ -236,7 +236,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		public const string GNU_TMAGIC = "ustar  ";
 
 		private const long timeConversionFactor = 10000000L;           // 1 tick == 100 nanoseconds
-		private static readonly DateTime dateTime1970 = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+		private static /*readonly*/ DateTime dateTime1970 = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 
 		#endregion Constants
 

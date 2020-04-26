@@ -43,7 +43,7 @@ namespace ICSharpCode.SharpZipLib.Core
 			return result;
 		}
 
-		private readonly
+		private /*readonly*/
 
 		#endregion IScanFilter Members
 

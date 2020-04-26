@@ -13,7 +13,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		private const byte VALUE = 2;
 		private const byte END = 3;
 
-		private readonly Dictionary<string, string> headers = new Dictionary<string, string>();
+		private /*readonly*/ Dictionary<string, string> headers = new Dictionary<string, string>();
 
 		private string[] headerParts = new string[3];
 
@@ -21,12 +21,12 @@ namespace ICSharpCode.SharpZipLib.Tar
 		private byte[] byteBuffer;
 		private char[] charBuffer;
 
-		private readonly StringBuilder sb = new StringBuilder();
-		private readonly Decoder decoder = Encoding.UTF8.GetDecoder();
+		private /*readonly*/ StringBuilder sb = new StringBuilder();
+		private /*readonly*/ Decoder decoder = Encoding.UTF8.GetDecoder();
 
 		private int state = LENGTH;
 
-		private static readonly byte[] StateNext = new[] { (byte)' ', (byte)'=', (byte)'\n' };
+		private static /*readonly*/ byte[] StateNext = new[] { (byte)' ', (byte)'=', (byte)'\n' };
 
 		/// <summary>
 		/// Creates a new <see cref="TarExtendedHeaderReader"/>.

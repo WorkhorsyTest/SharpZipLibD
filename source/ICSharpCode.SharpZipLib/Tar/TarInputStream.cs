@@ -719,7 +719,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <summary>
 		/// Stream used as the source of input data.
 		/// </summary>
-		private readonly Stream inputStream;
+		private /*readonly*/ Stream inputStream;
 
 		#endregion Instance Fields
 	}

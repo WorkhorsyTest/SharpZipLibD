@@ -44,8 +44,8 @@ namespace ICSharpCode.SharpZipLib.Encryption
 		private const int ENCRYPT_BLOCK = 16;
 
 		private int _blockSize;
-		private readonly ICryptoTransform _encryptor;
-		private readonly byte[] _counterNonce;
+		private /*readonly*/ ICryptoTransform _encryptor;
+		private /*readonly*/ byte[] _counterNonce;
 		private byte[] _encryptBuffer;
 		private int _encrPos;
 		private byte[] _pwdVerifier;
