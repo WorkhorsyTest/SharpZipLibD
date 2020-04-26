@@ -66,9 +66,9 @@ namespace ICSharpCode.SharpZipLib.Encryption
 		public ZipAESTransform(string key, byte[] saltBytes, int blockSize, bool writeMode)
 		{
 			if (blockSize != 16 && blockSize != 32) // 24 valid for AES but not supported by Winzip
-				throw new Exception("Invalid blocksize " + blockSize + ". Must be 16 or 32.");
+				throw new BaseException("Invalid blocksize " + blockSize + ". Must be 16 or 32.");
 			if (saltBytes.Length != blockSize / 2)
-				throw new Exception("Invalid salt len. Must be " + blockSize / 2 + " for blocksize " + blockSize);
+				throw new BaseException("Invalid salt len. Must be " + blockSize / 2 + " for blocksize " + blockSize);
 			// initialise the encryption buffer and buffer pos
 			_blockSize = blockSize;
 			_encryptBuffer = new byte[_blockSize];

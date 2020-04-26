@@ -30,7 +30,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
 		/// <param name="innerException">The inner exception</param>
-		public InvalidNameException(string message, Exception innerException) : base(message, innerException)
+		public InvalidNameException(string message, BaseException innerException) : base(message, innerException)
 		{
 		}
 

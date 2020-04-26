@@ -10,7 +10,7 @@ namespace ICSharpCode.SharpZipLib
 	/// <remarks>NOTE: Not all exceptions thrown will be derived from this class.
 	/// A variety of other exceptions are possible for example <see cref="ArgumentNullException"></see></remarks>
 	[Serializable]
-	public class SharpZipBaseException : Exception
+	public class SharpZipBaseException : BaseException
 	{
 		/// <summary>
 		/// Initializes a new instance of the SharpZipBaseException class.
@@ -34,7 +34,7 @@ namespace ICSharpCode.SharpZipLib
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
 		/// <param name="innerException">The inner exception</param>
-		public SharpZipBaseException(string message, Exception innerException)
+		public SharpZipBaseException(string message, BaseException innerException)
 			: base(message, innerException)
 		{
 		}

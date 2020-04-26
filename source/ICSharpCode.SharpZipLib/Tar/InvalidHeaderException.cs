@@ -29,7 +29,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		/// <param name="message">Message describing the problem.</param>
 		/// <param name="exception">The exception that is the cause of the current exception.</param>
-		public InvalidHeaderException(string message, Exception exception)
+		public InvalidHeaderException(string message, BaseException exception)
 			: base(message, exception)
 		{
 		}

@@ -948,7 +948,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 					{
 						status.AddError();
 
-						resultHandler?.Invoke(status, $"Exception during test - '{ex.Message}'");
+						resultHandler?.Invoke(status, $"BaseException during test - '{ex.Message}'");
 
 						testing &= strategy != TestStrategy.FindFirstError;
 					}
@@ -1030,11 +1030,11 @@ namespace ICSharpCode.SharpZipLib.Zip
 				// TODO: the 'Corrina Johns' test where local headers are missing from
 				// the central directory.  They are therefore invisible to many archivers.
 			}
-			catch (Exception ex)
+			catch (BaseException ex)
 			{
 				status.AddError();
 
-				resultHandler?.Invoke(status, $"Exception during test - '{ex.Message}'");
+				resultHandler?.Invoke(status, $"BaseException during test - '{ex.Message}'");
 			}
 
 			if (resultHandler != null)
@@ -4647,7 +4647,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 
 				result = File.Open(fileName_, FileMode.Open, FileAccess.Read, FileShare.Read);
 			}
-			catch (Exception)
+			catch (BaseException)
 			{
 				result = null;
 

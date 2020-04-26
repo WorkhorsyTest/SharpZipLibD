@@ -903,9 +903,9 @@ namespace ICSharpCode.SharpZipLib.Tar
 				{
 					Directory.CreateDirectory(directoryName);
 				}
-				catch (Exception e)
+				catch (BaseException e)
 				{
-					throw new TarException("Exception creating directory '" + directoryName + "', " + e.Message, e);
+					throw new TarException("BaseException creating directory '" + directoryName + "', " + e.Message, e);
 				}
 			}
 		}

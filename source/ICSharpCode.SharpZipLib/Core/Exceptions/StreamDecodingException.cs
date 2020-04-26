@@ -29,7 +29,7 @@ namespace ICSharpCode.SharpZipLib
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
 		/// <param name="innerException">The inner exception</param>
-		public StreamDecodingException(string message, Exception innerException) : base(message, innerException) { }
+		public StreamDecodingException(string message, BaseException innerException) : base(message, innerException) { }
 
 		/// <summary>
 		/// Initializes a new instance of the StreamDecodingException class with serialized data.

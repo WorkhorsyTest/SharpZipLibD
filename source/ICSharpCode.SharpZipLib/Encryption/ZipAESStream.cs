@@ -32,7 +32,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 			//  Write bypasses this stream and uses the Transform directly.
 			if (mode != CryptoStreamMode.Read)
 			{
-				throw new Exception("ZipAESStream only for read");
+				throw new BaseException("ZipAESStream only for read");
 			}
 		}
 
@@ -137,14 +137,14 @@ namespace ICSharpCode.SharpZipLib.Encryption
 						nBytes += TransformAndBufferBlock(buffer, offset, bytesLeftToRead, finalBlock);
 					}
 					else if (byteCount < AUTH_CODE_LENGTH)
-						throw new Exception("Internal error missed auth code"); // Coding bug
+						throw new BaseException("Internal error missed auth code"); // Coding bug
 																				// Final block done. Check Auth code.
 					byte[] calcAuthCode = _transform.GetAuthCode();
 					for (int i = 0; i < AUTH_CODE_LENGTH; i++)
 					{
 						if (calcAuthCode[i] != _slideBuffer[_slideBufStartPos + i])
 						{
-							throw new Exception("AES Authentication Code does not match. This is a super-CRC check on the data in the file after compression and encryption. \r\n"
+							throw new BaseException("AES Authentication Code does not match. This is a super-CRC check on the data in the file after compression and encryption. \r\n"
 								+ "The file may be damaged.");
 						}
 					}

@@ -63,7 +63,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 				}
 				defDistTree = new InflaterHuffmanTree(codeLengths);
 			}
-			catch (Exception)
+			catch (BaseException)
 			{
 				throw new SharpZipBaseException("InflaterHuffmanTree: static tree length illegal");
 			}

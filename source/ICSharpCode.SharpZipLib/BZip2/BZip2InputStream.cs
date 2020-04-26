@@ -416,7 +416,7 @@ namespace ICSharpCode.SharpZipLib.BZip2
 			{
 				thech = baseStream.ReadByte();
 			}
-			catch (Exception)
+			catch (BaseException)
 			{
 				CompressedStreamEOF();
 			}

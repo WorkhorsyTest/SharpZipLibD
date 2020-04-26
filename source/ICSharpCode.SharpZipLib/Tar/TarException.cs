@@ -29,8 +29,8 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// Initialise a new instance of <see cref="TarException" />.
 		/// </summary>
 		/// <param name="message">A <see cref="string"/> that describes the error.</param>
-		/// <param name="innerException">The <see cref="Exception"/> that caused this exception.</param>
-		public TarException(string message, Exception innerException)
+		/// <param name="innerException">The <see cref="BaseException"/> that caused this exception.</param>
+		public TarException(string message, BaseException innerException)
 			: base(message, innerException)
 		{
 		}

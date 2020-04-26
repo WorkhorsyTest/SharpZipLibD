@@ -320,7 +320,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 							repLength = CPLENS[symbol - 257];
 							neededBits = CPLEXT[symbol - 257];
 						}
-						catch (Exception)
+						catch (BaseException)
 						{
 							throw new SharpZipBaseException("Illegal rep length code");
 						}
@@ -353,7 +353,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 							repDist = CPDIST[symbol];
 							neededBits = CPDEXT[symbol];
 						}
-						catch (Exception)
+						catch (BaseException)
 						{
 							throw new SharpZipBaseException("Illegal rep dist code");
 						}

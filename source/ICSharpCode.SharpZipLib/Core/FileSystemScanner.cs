@@ -183,7 +183,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// </summary>
 		/// <param name="name">The name to apply.</param>
 		/// <param name="e">The exception to use.</param>
-		public ScanFailureEventArgs(string name, Exception e)
+		public ScanFailureEventArgs(string name, BaseException e)
 		{
 			name_ = name;
 			exception_ = e;
@@ -203,7 +203,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// <summary>
 		/// The applicable exception.
 		/// </summary>
-		public Exception Exception
+		public BaseException BaseException
 		{
 			get { return exception_; }
 		}
@@ -220,7 +220,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		//#region Instance Fields
 
 		private string name_;
-		private Exception exception_;
+		private BaseException exception_;
 		private bool continueRunning_;
 
 		//#endregion Instance Fields
@@ -350,7 +350,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// </summary>
 		/// <param name="directory">The directory name.</param>
 		/// <param name="e">The exception detected.</param>
-		private bool OnDirectoryFailure(string directory, Exception e)
+		private bool OnDirectoryFailure(string directory, BaseException e)
 		{
 			DirectoryFailureHandler handler = DirectoryFailure;
 			bool result = (handler != null);
@@ -368,7 +368,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// </summary>
 		/// <param name="file">The file name.</param>
 		/// <param name="e">The exception detected.</param>
-		private bool OnFileFailure(string file, Exception e)
+		private bool OnFileFailure(string file, BaseException e)
 		{
 			FileFailureHandler handler = FileFailure;
 
@@ -478,7 +478,7 @@ namespace ICSharpCode.SharpZipLib.Core
 								}
 							}
 						}
-						catch (Exception e)
+						catch (BaseException e)
 						{
 							if (!OnFileFailure(fileName, e))
 							{
@@ -488,7 +488,7 @@ namespace ICSharpCode.SharpZipLib.Core
 					}
 				}
 			}
-			catch (Exception e)
+			catch (BaseException e)
 			{
 				if (!OnDirectoryFailure(directory, e))
 				{
@@ -513,7 +513,7 @@ namespace ICSharpCode.SharpZipLib.Core
 						}
 					}
 				}
-				catch (Exception e)
+				catch (BaseException e)
 				{
 					if (!OnDirectoryFailure(directory, e))
 					{

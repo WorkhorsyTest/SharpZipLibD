@@ -47,7 +47,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <param name="directory">The directory causing the failure.</param>
 		/// <param name="e">The exception for this event.</param>
 		/// <returns>A boolean indicating if execution should continue or not.</returns>
-		public bool OnDirectoryFailure(string directory, Exception e)
+		public bool OnDirectoryFailure(string directory, BaseException e)
 		{
 			bool result = false;
 			DirectoryFailureHandler handler = DirectoryFailure;
@@ -67,7 +67,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <param name="file">The file causing the failure.</param>
 		/// <param name="e">The exception for this failure.</param>
 		/// <returns>A boolean indicating if execution should continue or not.</returns>
-		public bool OnFileFailure(string file, Exception e)
+		public bool OnFileFailure(string file, BaseException e)
 		{
 			FileFailureHandler handler = FileFailure;
 			bool result = (handler != null);
@@ -543,7 +543,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 						AddFileContents(e.Name, stream);
 					}
 				}
-				catch (Exception ex)
+				catch (BaseException ex)
 				{
 					if (events_ != null)
 					{
@@ -650,7 +650,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 							File.SetAttributes(targetName, fileAttributes);
 						}
 					}
-					catch (Exception ex)
+					catch (BaseException ex)
 					{
 						if (events_ != null)
 						{
@@ -709,7 +709,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 					{
 						Directory.CreateDirectory(dirName);
 					}
-					catch (Exception ex)
+					catch (BaseException ex)
 					{
 						doExtraction = false;
 						if (events_ != null)

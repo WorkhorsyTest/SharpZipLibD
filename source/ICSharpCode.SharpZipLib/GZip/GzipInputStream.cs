@@ -119,7 +119,7 @@ namespace ICSharpCode.SharpZipLib.GZip
 							return 0;
 						}
 					}
-					catch (Exception ex) when (completedLastBlock && (ex is GZipException || ex is EndOfStreamException))
+					catch (BaseException ex) when (completedLastBlock && (ex is GZipException || ex is EndOfStreamException))
 					{
 						// if we completed the last block (i.e. we're in a stream that has multiple blocks concatenated
 						// we want to return gracefully from any header parsing exceptions since sometimes there may

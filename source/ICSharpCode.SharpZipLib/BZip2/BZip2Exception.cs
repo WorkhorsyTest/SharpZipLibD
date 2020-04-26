@@ -29,8 +29,8 @@ namespace ICSharpCode.SharpZipLib.BZip2
 		/// Initialise a new instance of <see cref="BZip2Exception" />.
 		/// </summary>
 		/// <param name="message">A <see cref="string"/> that describes the error.</param>
-		/// <param name="innerException">The <see cref="Exception"/> that caused this exception.</param>
-		public BZip2Exception(string message, Exception innerException)
+		/// <param name="innerException">The <see cref="BaseException"/> that caused this exception.</param>
+		public BZip2Exception(string message, BaseException innerException)
 			: base(message, innerException)
 		{
 		}
