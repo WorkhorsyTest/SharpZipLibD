@@ -1,5 +1,4 @@
-namespace ICSharpCode.SharpZipLib.Core
-{
+
 	/// <summary>
 	/// INameTransform defines how file system names are transformed for use with archives, or vice versa.
 	/// </summary>
@@ -19,4 +18,3 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// <returns>The transformed directory name</returns>
 		string TransformDirectory(string name);
 	}
-}

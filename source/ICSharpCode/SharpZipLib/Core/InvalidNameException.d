@@ -1,27 +1,31 @@
-﻿using System;
-using System.Runtime.Serialization;
 
-namespace ICSharpCode.SharpZipLib.Core
-{
+import System : BaseException;
+import System.Runtime.Serialization;
+
+import ICSharpCode.SharpZipLib : SharpZipBaseException;
+import ICSharpCode.SharpZipLib.Core;
+
 	/// <summary>
 	/// InvalidNameException is thrown for invalid names such as directory traversal paths and names with invalid characters
 	/// </summary>
-	[Serializable]
+	//[Serializable]
 	public class InvalidNameException : SharpZipBaseException
 	{
 		/// <summary>
 		/// Initializes a new instance of the InvalidNameException class with a default error message.
 		/// </summary>
-		public InvalidNameException() : base("An invalid name was specified")
+		public this()
 		{
+			super("An invalid name was specified");
 		}
 
 		/// <summary>
 		/// Initializes a new instance of the InvalidNameException class with a specified error message.
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
-		public InvalidNameException(string message) : base(message)
+		public this(string message)
 		{
+			super(message);
 		}
 
 		/// <summary>
@@ -30,8 +34,9 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// </summary>
 		/// <param name="message">A message describing the exception.</param>
 		/// <param name="innerException">The inner exception</param>
-		public InvalidNameException(string message, BaseException innerException) : base(message, innerException)
+		public this(string message, BaseException innerException)
 		{
+			super(message, innerException);
 		}
 
 		/// <summary>
@@ -45,9 +50,8 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// The System.Runtime.Serialization.StreamingContext that contains contextual information
 		/// about the source or destination.
 		/// </param>
-		protected InvalidNameException(SerializationInfo info, StreamingContext context)
-			: base(info, context)
+		protected this(SerializationInfo info, StreamingContext context)
 		{
+			super(info, context);
 		}
 	}
-}

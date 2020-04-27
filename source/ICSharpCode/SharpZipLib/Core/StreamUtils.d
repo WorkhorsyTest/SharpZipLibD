@@ -1,8 +1,10 @@
-using System;
-using System.IO;
 
-namespace ICSharpCode.SharpZipLib.Core
-{
+import System : ArgumentException, ArgumentNullException, ArgumentOutOfRangeException, DateTime, TimeSpan;
+import System.IO : Stream, EndOfStreamException;
+import std.stdio : File;
+
+import ICSharpCode.SharpZipLib.Core;
+
 	/// <summary>
 	/// Provides simple <see cref="Stream"/>" utilities.
 	/// </summary>
@@ -13,10 +15,10 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// </summary>
 		/// <param name="stream">The stream to read.</param>
 		/// <param name="buffer">The buffer to fill.</param>
-		/// <seealso cref="ReadFully(Stream,byte[],int,int)"/>
-		static public void ReadFully(Stream stream, byte[] buffer)
+		/// <seealso cref="ReadFully(Stream,ubyte[],int,int)"/>
+		static public void ReadFully(Stream stream, ubyte[] buffer)
 		{
-			ReadFully(stream, buffer, 0, buffer.Length);
+			ReadFully(stream, buffer, 0, cast(int) buffer.length);
 		}
 
 		/// <summary>
@@ -29,27 +31,27 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// <exception cref="ArgumentNullException">Required parameter is null</exception>
 		/// <exception cref="ArgumentOutOfRangeException"><paramref name="offset"/> and or <paramref name="count"/> are invalid.</exception>
 		/// <exception cref="EndOfStreamException">End of stream is encountered before all the data has been read.</exception>
-		static public void ReadFully(Stream stream, byte[] buffer, int offset, int count)
+		static public void ReadFully(Stream stream, ubyte[] buffer, int offset, int count)
 		{
-			if (stream == null)
+			if (stream is null)
 			{
-				throw new ArgumentNullException(nameof(stream));
+				throw new ArgumentNullException(__traits(identifier, stream));
 			}
 
-			if (buffer == null)
+			if (buffer is null)
 			{
-				throw new ArgumentNullException(nameof(buffer));
+				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			// Offset can equal length when buffer and count are 0.
-			if ((offset < 0) || (offset > buffer.Length))
+			if ((offset < 0) || (offset > buffer.length))
 			{
-				throw new ArgumentOutOfRangeException(nameof(offset));
+				throw new ArgumentOutOfRangeException(__traits(identifier, offset));
 			}
 
-			if ((count < 0) || (offset + count > buffer.Length))
+			if ((count < 0) || (offset + count > buffer.length))
 			{
-				throw new ArgumentOutOfRangeException(nameof(count));
+				throw new ArgumentOutOfRangeException(__traits(identifier, count));
 			}
 
 			while (count > 0)
@@ -73,27 +75,27 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// <param name="count">The number of bytes of data to store.</param>
 		/// <exception cref="ArgumentNullException">Required parameter is null</exception>
 		/// <exception cref="ArgumentOutOfRangeException"><paramref name="offset"/> and or <paramref name="count"/> are invalid.</exception>
-		static public int ReadRequestedBytes(Stream stream, byte[] buffer, int offset, int count)
+		static public int ReadRequestedBytes(Stream stream, ubyte[] buffer, int offset, int count)
 		{
-			if (stream == null)
+			if (stream is null)
 			{
-				throw new ArgumentNullException(nameof(stream));
+				throw new ArgumentNullException(__traits(identifier, stream));
 			}
 
-			if (buffer == null)
+			if (buffer is null)
 			{
-				throw new ArgumentNullException(nameof(buffer));
+				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			// Offset can equal length when buffer and count are 0.
-			if ((offset < 0) || (offset > buffer.Length))
+			if ((offset < 0) || (offset > buffer.length))
 			{
-				throw new ArgumentOutOfRangeException(nameof(offset));
+				throw new ArgumentOutOfRangeException(__traits(identifier, offset));
 			}
 
-			if ((count < 0) || (offset + count > buffer.Length))
+			if ((count < 0) || (offset + count > buffer.length))
 			{
-				throw new ArgumentOutOfRangeException(nameof(count));
+				throw new ArgumentOutOfRangeException(__traits(identifier, count));
 			}
 
 			int totalReadCount = 0;
@@ -118,34 +120,34 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// <param name="source">The stream to source data from.</param>
 		/// <param name="destination">The stream to write data to.</param>
 		/// <param name="buffer">The buffer to use during copying.</param>
-		static public void Copy(Stream source, Stream destination, byte[] buffer)
+		static public void Copy(Stream source, Stream destination, ubyte[] buffer)
 		{
-			if (source == null)
+			if (source is null)
 			{
-				throw new ArgumentNullException(nameof(source));
+				throw new ArgumentNullException(__traits(identifier, source));
 			}
 
-			if (destination == null)
+			if (destination is null)
 			{
-				throw new ArgumentNullException(nameof(destination));
+				throw new ArgumentNullException(__traits(identifier, destination));
 			}
 
-			if (buffer == null)
+			if (buffer is null)
 			{
-				throw new ArgumentNullException(nameof(buffer));
+				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			// Ensure a reasonable size of buffer is used without being prohibitive.
-			if (buffer.Length < 128)
+			if (buffer.length < 128)
 			{
-				throw new ArgumentException("Buffer is too small", nameof(buffer));
+				throw new ArgumentException("Buffer is too small", __traits(identifier, buffer));
 			}
 
 			bool copying = true;
 
 			while (copying)
 			{
-				int bytesRead = source.Read(buffer, 0, buffer.Length);
+				int bytesRead = source.Read(buffer, 0, cast(int) buffer.length);
 				if (bytesRead > 0)
 				{
 					destination.Write(buffer, 0, bytesRead);
@@ -170,7 +172,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// <param name="name">The name to use with the event.</param>
 		/// <remarks>This form is specialised for use within #Zip to support events during archive operations.</remarks>
 		static public void Copy(Stream source, Stream destination,
-			byte[] buffer, ProgressHandler progressHandler, TimeSpan updateInterval, object sender, string name)
+			ubyte[] buffer, ProgressHandler progressHandler, TimeSpan updateInterval, Object sender, string name)
 		{
 			Copy(source, destination, buffer, progressHandler, updateInterval, sender, name, -1);
 		}
@@ -189,34 +191,34 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// If the value is negative the target is calculated by looking at the stream.</param>
 		/// <remarks>This form is specialised for use within #Zip to support events during archive operations.</remarks>
 		static public void Copy(Stream source, Stream destination,
-			byte[] buffer,
+			ubyte[] buffer,
 			ProgressHandler progressHandler, TimeSpan updateInterval,
-			object sender, string name, long fixedTarget)
+			Object sender, string name, long fixedTarget)
 		{
-			if (source == null)
+			if (source is null)
 			{
-				throw new ArgumentNullException(nameof(source));
+				throw new ArgumentNullException(__traits(identifier, source));
 			}
 
-			if (destination == null)
+			if (destination is null)
 			{
-				throw new ArgumentNullException(nameof(destination));
+				throw new ArgumentNullException(__traits(identifier, destination));
 			}
 
-			if (buffer == null)
+			if (buffer is null)
 			{
-				throw new ArgumentNullException(nameof(buffer));
+				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			// Ensure a reasonable size of buffer is used without being prohibitive.
-			if (buffer.Length < 128)
+			if (buffer.length < 128)
 			{
-				throw new ArgumentException("Buffer is too small", nameof(buffer));
+				throw new ArgumentException("Buffer is too small", __traits(identifier, buffer));
 			}
 
-			if (progressHandler == null)
+			if (progressHandler is null)
 			{
-				throw new ArgumentNullException(nameof(progressHandler));
+				throw new ArgumentNullException(__traits(identifier, progressHandler));
 			}
 
 			bool copying = true;
@@ -235,14 +237,14 @@ namespace ICSharpCode.SharpZipLib.Core
 			}
 
 			// Always fire 0% progress..
-			var args = new ProgressEventArgs(name, processed, target);
+			auto args = new ProgressEventArgs(name, processed, target);
 			progressHandler(sender, args);
 
 			bool progressFired = true;
 
 			while (copying)
 			{
-				int bytesRead = source.Read(buffer, 0, buffer.Length);
+				int bytesRead = source.Read(buffer, 0, cast(int) buffer.length);
 				if (bytesRead > 0)
 				{
 					processed += bytesRead;
@@ -276,9 +278,8 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// <summary>
 		/// Initialise an instance of <see cref="StreamUtils"></see>
 		/// </summary>
-		private StreamUtils()
+		private this()
 		{
 			// Do nothing.
 		}
 	}
-}

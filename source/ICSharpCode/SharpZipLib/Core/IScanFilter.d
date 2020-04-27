@@ -1,5 +1,4 @@
-﻿namespace ICSharpCode.SharpZipLib.Core
-{
+
 	/// <summary>
 	/// Scanning filters support filtering of names.
 	/// </summary>
@@ -12,4 +11,3 @@
 		/// <returns>Returns true if the name matches the filter, false if it does not match.</returns>
 		bool IsMatch(string name);
 	}
-}
