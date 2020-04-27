@@ -256,3 +256,5 @@ docs/help/api/.manifest
 
 .dub
 source/System
+main
+main.exe
