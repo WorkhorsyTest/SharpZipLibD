@@ -1,5 +1,5 @@
 
-import System : ArraySegment;
+import System : ArraySegment, ArgumentNullException;
 
 import ICSharpCode.SharpZipLib.Checksum;
 

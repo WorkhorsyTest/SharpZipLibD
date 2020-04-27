@@ -1,6 +1,6 @@
 
 
-import System : ArraySegment;
+import System : ArraySegment, ArgumentNullException;
 
 import ICSharpCode.SharpZipLib.Checksum;
 
@@ -98,7 +98,6 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// </param>
 		public void Update(int bval)
 		{
-/*
 			// We could make a length 1 ubyte array and call update again, but I
 			// would rather not have that overhead
 			uint s1 = checkValue & 0xFFFF;
@@ -108,7 +107,6 @@ import ICSharpCode.SharpZipLib.Checksum;
 			s2 = (s1 + s2) % BASE;
 
 			checkValue = (s2 << 16) + s1;
-*/
 		}
 
 		/// <summary>
@@ -118,14 +116,12 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// <param name="buffer">Contains the data to update the checksum with.</param>
 		public void Update(ubyte[] buffer)
 		{
-/*
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
-			Update(new ArraySegment<ubyte>(buffer, 0, buffer.Length));
-*/
+			Update(ArraySegment!ubyte(buffer, 0, cast(int) buffer.length));
 		}
 
 		/// <summary>
@@ -136,7 +132,6 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// </param>
 		public void Update(ArraySegment!ubyte segment)
 		{
-/*
 			//(By Per Bothner)
 			uint s1 = checkValue & 0xFFFF;
 			uint s2 = checkValue >> 16;
@@ -162,6 +157,5 @@ import ICSharpCode.SharpZipLib.Checksum;
 				s2 %= BASE;
 			}
 			checkValue = (s2 << 16) | s1;
-*/
 		}
 	}

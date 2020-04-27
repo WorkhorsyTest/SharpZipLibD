@@ -1,5 +1,5 @@
-import System;
-import System.Runtime.Serialization;
+import System : BaseException;
+import System.Runtime.Serialization : SerializationInfo, StreamingContext;
 
 import ICSharpCode.SharpZipLib;
 

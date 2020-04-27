@@ -1,5 +1,5 @@
 
-import System;
+import System : Array, BaseException, Math, ArgumentNullException, NotSupportedException;
 import System.IO : Stream, SeekOrigin, EndOfStreamException;
 import ICSharpCode.SharpZipLib.Checksum;
 
@@ -13,13 +13,13 @@ import ICSharpCode.SharpZipLib.BZip2;
 	{
 		//#region Constants
 
-		private const int START_BLOCK_STATE = 1;
-		private const int RAND_PART_A_STATE = 2;
-		private const int RAND_PART_B_STATE = 3;
-		private const int RAND_PART_C_STATE = 4;
-		private const int NO_RAND_PART_A_STATE = 5;
-		private const int NO_RAND_PART_B_STATE = 6;
-		private const int NO_RAND_PART_C_STATE = 7;
+		private static const int START_BLOCK_STATE = 1;
+		private static const int RAND_PART_A_STATE = 2;
+		private static const int RAND_PART_B_STATE = 3;
+		private static const int RAND_PART_C_STATE = 4;
+		private static const int NO_RAND_PART_A_STATE = 5;
+		private static const int NO_RAND_PART_B_STATE = 6;
+		private static const int NO_RAND_PART_C_STATE = 7;
 
 		//#endregion Constants
 
@@ -97,7 +97,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// <param name="stream">Data source</param>
 		public this(Stream stream)
 		{
-/*
 			if (stream is null)
 				throw new ArgumentNullException(__traits(identifier, stream));
 
@@ -107,7 +106,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 			Initialize();
 			InitBlock();
 			SetupBlock();
-*/
 		}
 
 		/// <summary>
@@ -232,7 +230,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// </returns>
 		public override int Read(ubyte[] buffer, int offset, int count)
 		{
-/*
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
@@ -248,7 +245,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 				buffer[offset + i] = cast(ubyte)rb;
 			}
 			return count;
-*/return 0;
 		}
 
 		/// <summary>
@@ -268,7 +264,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// <returns>ubyte read or -1 on end of stream</returns>
 		public override int ReadByte()
 		{
-/*
 			if (streamEnd)
 			{
 				return -1; // ok
@@ -297,16 +292,16 @@ import ICSharpCode.SharpZipLib.BZip2;
 				case NO_RAND_PART_A_STATE:
 				case RAND_PART_A_STATE:
 					break;
+				default:
+					break;
 			}
 			return retChar;
-*/return 0;
 		}
 
 		//#endregion Stream Overrides
 
 		private void MakeMaps()
 		{
-/*
 			nInUse = 0;
 			for (int i = 0; i < 256; ++i)
 			{
@@ -317,12 +312,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 					nInUse++;
 				}
 			}
-*/
 		}
 
 		private void Initialize()
 		{
-/*
 			char magic1 = BsGetUChar();
 			char magic2 = BsGetUChar();
 
@@ -337,12 +330,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 
 			SetDecompressStructureSizes(magic4 - '0');
 			computedCombinedCRC = 0;
-*/
 		}
 
 		private void InitBlock()
 		{
-/*
 			char magic1 = BsGetUChar();
 			char magic2 = BsGetUChar();
 			char magic3 = BsGetUChar();
@@ -371,12 +362,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 
 			mCrc.Reset();
 			currentState = START_BLOCK_STATE;
-*/
 		}
 
 		private void EndBlock()
 		{
-/*
 			computedBlockCRC = cast(int)mCrc.Value;
 
 			// -- A bad CRC is considered a fatal error. --
@@ -388,12 +377,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 			// 1528150659
 			computedCombinedCRC = ((computedCombinedCRC << 1) & 0xFFFFFFFF) | (computedCombinedCRC >> 31);
 			computedCombinedCRC = computedCombinedCRC ^ cast(uint)computedBlockCRC;
-*/
 		}
 
 		private void Complete()
 		{
-/*
 			storedCombinedCRC = BsGetInt32();
 			if (storedCombinedCRC != cast(int)computedCombinedCRC)
 			{
@@ -401,12 +388,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 			}
 
 			streamEnd = true;
-*/
 		}
 
 		private void FillBuffer()
 		{
-/*
 			int thech = 0;
 
 			try
@@ -425,12 +410,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 
 			bsBuff = (bsBuff << 8) | (thech & 0xFF);
 			bsLive += 8;
-*/
 		}
 
 		private int BsR(int n)
 		{
-/*
 			while (bsLive < n)
 			{
 				FillBuffer();
@@ -439,14 +422,11 @@ import ICSharpCode.SharpZipLib.BZip2;
 			int v = (bsBuff >> (bsLive - n)) & ((1 << n) - 1);
 			bsLive -= n;
 			return v;
-*/return 0;
 		}
 
 		private char BsGetUChar()
 		{
-/*
-			return (char)BsR(8);
-*/return 0;
+			return cast(char)BsR(8);
 		}
 
 		private int BsGetIntVS(int numBits)
@@ -456,23 +436,16 @@ import ICSharpCode.SharpZipLib.BZip2;
 
 		private int BsGetInt32()
 		{
-/*
 			int result = BsR(8);
 			result = (result << 8) | BsR(8);
 			result = (result << 8) | BsR(8);
 			result = (result << 8) | BsR(8);
 			return result;
-*/return 0;
 		}
 
 		private void RecvDecodingTables()
 		{
-/*
-			char[][] len = new char[BZip2Constants.GroupCount][];
-			for (int i = 0; i < BZip2Constants.GroupCount; ++i)
-			{
-				len[i] = new char[BZip2Constants.MaximumAlphaSize];
-			}
+			char[][] len = new char[][](BZip2Constants.GroupCount, BZip2Constants.MaximumAlphaSize);
 
 			bool[] inUse16 = new bool[16];
 
@@ -554,7 +527,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 							curr--;
 						}
 					}
-					len[t][i] = (char)curr;
+					len[t][i] = cast(char)curr;
 				}
 			}
 
@@ -571,12 +544,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 				HbCreateDecodeTables(limit[t], baseArray[t], perm[t], len[t], minLen, maxLen, alphaSize);
 				minLens[t] = minLen;
 			}
-*/
 		}
 
 		private void GetAndMoveToFrontDecode()
 		{
-/*
 			ubyte[] yy = new ubyte[256];
 			int nextSym;
 
@@ -749,12 +720,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 					continue;
 				}
 			}
-*/
 		}
 
 		private void SetupBlock()
 		{
-/*
 			int[] cftab = new int[257];
 
 			cftab[0] = 0;
@@ -790,12 +759,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 			{
 				SetupNoRandPartA();
 			}
-*/
 		}
 
 		private void SetupRandPartA()
 		{
-/*
 			if (i2 <= last)
 			{
 				chPrev = ch2;
@@ -824,12 +791,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 				InitBlock();
 				SetupBlock();
 			}
-*/
 		}
 
 		private void SetupNoRandPartA()
 		{
-/*
 			if (i2 <= last)
 			{
 				chPrev = ch2;
@@ -847,12 +812,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 				InitBlock();
 				SetupBlock();
 			}
-*/
 		}
 
 		private void SetupRandPartB()
 		{
-/*
 			if (ch2 != chPrev)
 			{
 				currentState = RAND_PART_A_STATE;
@@ -887,12 +850,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 					SetupRandPartA();
 				}
 			}
-*/
 		}
 
 		private void SetupRandPartC()
 		{
-/*
 			if (j2 < cast(int)z)
 			{
 				currentChar = ch2;
@@ -906,12 +867,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 				count = 0;
 				SetupRandPartA();
 			}
-*/
 		}
 
 		private void SetupNoRandPartB()
 		{
-/*
 			if (ch2 != chPrev)
 			{
 				currentState = NO_RAND_PART_A_STATE;
@@ -935,12 +894,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 					SetupNoRandPartA();
 				}
 			}
-*/
 		}
 
 		private void SetupNoRandPartC()
 		{
-/*
 			if (j2 < cast(int)z)
 			{
 				currentChar = ch2;
@@ -954,12 +911,10 @@ import ICSharpCode.SharpZipLib.BZip2;
 				count = 0;
 				SetupNoRandPartA();
 			}
-*/
 		}
 
 		private void SetDecompressStructureSizes(int newSize100k)
 		{
-/*
 			if (!(0 <= newSize100k && newSize100k <= 9 && 0 <= blockSize100k && blockSize100k <= 9))
 			{
 				throw new BZip2Exception("Invalid block size");
@@ -975,7 +930,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 			int n = BZip2Constants.BaseBlockSize * newSize100k;
 			ll8 = new ubyte[n];
 			tt = new int[n];
-*/
 		}
 
 		private static void CompressedStreamEOF()
@@ -1000,7 +954,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 
 		private static void HbCreateDecodeTables(int[] limit, int[] baseArray, int[] perm, char[] length, int minLen, int maxLen, int alphaSize)
 		{
-/*
 			int pp = 0;
 
 			for (int i = minLen; i <= maxLen; ++i)
@@ -1048,6 +1001,5 @@ import ICSharpCode.SharpZipLib.BZip2;
 			{
 				baseArray[i] = ((limit[i - 1] + 1) << 1) - baseArray[i];
 			}
-*/
 		}
 	}

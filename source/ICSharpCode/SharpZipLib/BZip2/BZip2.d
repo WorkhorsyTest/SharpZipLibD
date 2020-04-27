@@ -1,5 +1,6 @@
-import System;
-import System.IO;
+
+import System : BaseException, ArgumentNullException;
+import System.IO : Stream;
 //import ICSharpCode.SharpZipLib.Core : StreamUtils;
 
 import ICSharpCode.SharpZipLib.BZip2;
@@ -19,7 +20,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// <param name="isStreamOwner">Both streams are closed on completion if true.</param>
 		public static void Decompress(Stream inStream, Stream outStream, bool isStreamOwner)
 		{
-/*
 			if (inStream is null)
 				throw new ArgumentNullException(__traits(identifier, inStream));
 
@@ -32,7 +32,9 @@ import ICSharpCode.SharpZipLib.BZip2;
 				scope (exit) bzipInput.destroy();
 
 				bzipInput.IsStreamOwner = isStreamOwner;
+/*
 				Core.StreamUtils.Copy(bzipInput, outStream, new ubyte[4096]);
+*/
 			}
 			finally
 			{
@@ -42,7 +44,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 					outStream.Dispose();
 				}
 			}
-*/
 		}
 
 		/// <summary>
@@ -56,7 +57,6 @@ import ICSharpCode.SharpZipLib.BZip2;
 		/// the lowest compression and 9 the highest.</param>
 		public static void Compress(Stream inStream, Stream outStream, bool isStreamOwner, int level)
 		{
-/*
 			if (inStream is null)
 				throw new ArgumentNullException(__traits(identifier, inStream));
 
@@ -69,7 +69,9 @@ import ICSharpCode.SharpZipLib.BZip2;
 				scope (exit) bzipOutput.destroy();
 
 				bzipOutput.IsStreamOwner = isStreamOwner;
+/*
 				Core.StreamUtils.Copy(inStream, bzipOutput, new ubyte[4096]);
+*/
 			}
 			finally
 			{
@@ -79,6 +81,5 @@ import ICSharpCode.SharpZipLib.BZip2;
 					inStream.Dispose();
 				}
 			}
-*/
 		}
 	}

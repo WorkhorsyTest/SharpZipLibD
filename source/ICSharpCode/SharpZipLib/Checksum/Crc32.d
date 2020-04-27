@@ -1,5 +1,5 @@
 
-import System : ArraySegment;
+import System : ArraySegment, ArgumentNullException;
 
 import ICSharpCode.SharpZipLib.Checksum;
 
@@ -101,9 +101,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 
 		/*internal*/ static uint ComputeCrc32(uint oldCrc, ubyte bval)
 		{
-/*
 			return cast(uint)(Crc32.crcTable[(oldCrc ^ bval) & 0xFF] ^ (oldCrc >> 8));
-*/return 0;
 		}
 
 		/// <summary>
@@ -128,9 +126,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// <remarks>Reversed Out = false</remarks>
 		public long Value()
 		{
-/*
 			return cast(long)(checkValue ^ crcXor);
-*/return 0;
 		}
 
 		/// <summary>
@@ -154,14 +150,12 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// <param name="buffer">Contains the data to update the CRC with.</param>
 		public void Update(ubyte[] buffer)
 		{
-/*
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
-			Update(new ArraySegment<ubyte>(buffer, 0, buffer.Length));
-*/
+			Update(ArraySegment!ubyte(buffer, 0, cast(int) buffer.length));
 		}
 
 		/// <summary>
@@ -172,12 +166,10 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// </param>
 		public void Update(ArraySegment!ubyte segment)
 		{
-/*
 			auto count = segment.Count;
 			auto offset = segment.Offset;
 
 			while (--count >= 0)
 				Update(segment.Array[offset++]);
-*/
 		}
 	}
