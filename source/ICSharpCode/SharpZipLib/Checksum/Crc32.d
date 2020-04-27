@@ -138,9 +138,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// <remarks>Reversed Data = true</remarks>
 		public void Update(int bval)
 		{
-/*
-			checkValue = unchecked(crcTable[(checkValue ^ bval) & 0xFF] ^ (checkValue >> 8));
-*/
+			checkValue = /*unchecked*/(crcTable[(checkValue ^ bval) & 0xFF] ^ (checkValue >> 8));
 		}
 
 		/// <summary>

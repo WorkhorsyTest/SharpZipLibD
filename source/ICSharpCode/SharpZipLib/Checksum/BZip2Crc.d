@@ -150,9 +150,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 		/// <remarks>Reversed Data = false</remarks>
 		public void Update(int bval)
 		{
-/*
-			checkValue = unchecked(crcTable[cast(ubyte)(((checkValue >> 24) & 0xFF) ^ bval)] ^ (checkValue << 8));
-*/
+			checkValue = /*unchecked*/(crcTable[cast(ubyte)(((checkValue >> 24) & 0xFF) ^ bval)] ^ (checkValue << 8));
 		}
 
 		/// <summary>

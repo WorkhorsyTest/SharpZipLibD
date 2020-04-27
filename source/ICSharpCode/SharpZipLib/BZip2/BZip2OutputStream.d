@@ -495,9 +495,8 @@ import ICSharpCode.SharpZipLib.BZip2;
 			{       // dont do anything for empty files, (makes empty files compatible with original Bzip)
 				return;
 			}
-/*
-			blockCRC = unchecked(cast(uint)mCrc.Value);
-*/
+
+			blockCRC = /*unchecked*/(cast(uint)mCrc.Value);
 			combinedCRC = (combinedCRC << 1) | (combinedCRC >> 31);
 			combinedCRC ^= blockCRC;
 
@@ -523,13 +522,13 @@ import ICSharpCode.SharpZipLib.BZip2;
 			BsPutUChar(0x26);
 			BsPutUChar(0x53);
 			BsPutUChar(0x59);
-/*
+
 			/++ Now the block's CRC, so it is in a known place. +/
-			unchecked
+			/*unchecked*/
 			{
 				BsPutint(cast(int)blockCRC);
 			}
-*/
+
 			/++ Now a single bit indicating randomisation. +/
 			if (blockRandomised)
 			{
@@ -560,12 +559,12 @@ import ICSharpCode.SharpZipLib.BZip2;
 			BsPutUChar(0x38);
 			BsPutUChar(0x50);
 			BsPutUChar(0x90);
-/*
-			unchecked
+
+			/*unchecked*/
 			{
 				BsPutint(cast(int)combinedCRC);
 			}
-*/
+
 			BsFinishedWithStream();
 		}
 
@@ -586,9 +585,7 @@ import ICSharpCode.SharpZipLib.BZip2;
 			while (bsLive >= 8)
 			{
 				int ch = (bsBuff >> 24);
-/*
-				unchecked { baseStream.WriteByte(cast(ubyte)ch); } // write 8-bit
-*/
+				/*unchecked*/ { baseStream.WriteByte(cast(ubyte)ch); } // write 8-bit
 				bsBuff <<= 8;
 				bsLive -= 8;
 				++bytesOut;
