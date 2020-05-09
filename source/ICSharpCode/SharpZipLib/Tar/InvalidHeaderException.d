@@ -20,8 +20,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <param name="message">Message describing the exception cause.</param>
 		public this(string message)
-			: super(message)
 		{
+			super(message);
 		}
 
 		/// <summary>
@@ -30,7 +30,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="message">Message describing the problem.</param>
 		/// <param name="exception">The exception that is the cause of the current exception.</param>
 		public this(string message, BaseException exception)
-			: super(message, exception)
 		{
+			super(message, exception);
 		}
 	}

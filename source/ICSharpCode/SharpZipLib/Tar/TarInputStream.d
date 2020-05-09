@@ -19,8 +19,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <param name="inputStream">stream to source data from</param>
 		public this(Stream inputStream)
-			: this(inputStream, TarBuffer.DefaultBlockFactor)
 		{
+			this(inputStream, TarBuffer.DefaultBlockFactor);
 		}
 
 		/// <summary>

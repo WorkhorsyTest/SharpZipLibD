@@ -18,8 +18,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <param name="outputStream">stream to write to</param>
 		public this(Stream outputStream)
-			: this(outputStream, TarBuffer.DefaultBlockFactor)
 		{
+			this(outputStream, TarBuffer.DefaultBlockFactor);
 		}
 
 		/// <summary>
