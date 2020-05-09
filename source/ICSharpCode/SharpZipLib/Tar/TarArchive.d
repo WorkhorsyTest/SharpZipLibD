@@ -42,7 +42,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		/// <param name="entry">The <see cref="TarEntry">TarEntry</see> for this event</param>
 		/// <param name="message">message for this event.  Null is no message</param>
-		protected virtual void OnProgressMessageEvent(TarEntry entry, string message)
+		protected /*virtual*/ void OnProgressMessageEvent(TarEntry entry, string message)
 		{
 			ProgressMessageHandler handler = ProgressMessageEvent;
 			if (handler != null)
@@ -857,7 +857,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		/// <param name="disposing">true to release both managed and unmanaged resources;
 		/// false to release only unmanaged resources.</param>
-		protected virtual void Dispose(bool disposing)
+		protected /*virtual*/ void Dispose(bool disposing)
 		{
 			if (!isDisposed)
 			{
@@ -881,7 +881,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <summary>
 		/// Closes the archive and releases any associated resources.
 		/// </summary>
-		public virtual void Close()
+		public /*virtual*/ void Close()
 		{
 			Dispose(true);
 		}
