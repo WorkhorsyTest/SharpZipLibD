@@ -31,7 +31,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Creates a new <see cref="TarExtendedHeaderReader"/>.
 		/// </summary>
-		public TarExtendedHeaderReader()
+		public this()
 		{
 			ResetBuffers();
 		}

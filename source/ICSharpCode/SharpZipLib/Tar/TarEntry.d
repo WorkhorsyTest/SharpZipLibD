@@ -37,7 +37,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Initialise a default instance of <see cref="TarEntry"/>.
 		/// </summary>
-		private TarEntry()
+		private this()
 		{
 			header = new TarHeader();
 		}
@@ -49,7 +49,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name = "headerBuffer">
 		/// The header bytes from a tar archive entry.
 		/// </param>
-		public TarEntry(ubyte[] headerBuffer)
+		public this(ubyte[] headerBuffer)
 		{
 			header = new TarHeader();
 			header.ParseBuffer(headerBuffer);
@@ -59,7 +59,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Construct a TarEntry using the <paramref name="header">header</paramref> provided
 		/// </summary>
 		/// <param name="header">Header details for entry</param>
-		public TarEntry(TarHeader header)
+		public this(TarHeader header)
 		{
 			if (header == null)
 			{

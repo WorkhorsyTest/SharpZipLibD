@@ -18,7 +18,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Construct a TarInputStream with default block factor
 		/// </summary>
 		/// <param name="inputStream">stream to source data from</param>
-		public TarInputStream(Stream inputStream)
+		public this(Stream inputStream)
 			: this(inputStream, TarBuffer.DefaultBlockFactor)
 		{
 		}
@@ -28,7 +28,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <param name="inputStream">stream to source data from</param>
 		/// <param name="blockFactor">block factor to apply to archive</param>
-		public TarInputStream(Stream inputStream, int blockFactor)
+		public this(Stream inputStream, int blockFactor)
 		{
 			this.inputStream = inputStream;
 			tarBuffer = TarBuffer.CreateInputTarBuffer(inputStream, blockFactor);

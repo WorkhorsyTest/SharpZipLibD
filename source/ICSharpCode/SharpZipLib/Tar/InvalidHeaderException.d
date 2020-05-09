@@ -11,7 +11,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Initialise a new instance of the InvalidHeaderException class.
 		/// </summary>
-		public InvalidHeaderException()
+		public this()
 		{
 		}
 
@@ -19,7 +19,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Initialises a new instance of the InvalidHeaderException class with a specified message.
 		/// </summary>
 		/// <param name="message">Message describing the exception cause.</param>
-		public InvalidHeaderException(string message)
+		public this(string message)
 			: base(message)
 		{
 		}
@@ -29,7 +29,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <param name="message">Message describing the problem.</param>
 		/// <param name="exception">The exception that is the cause of the current exception.</param>
-		public InvalidHeaderException(string message, BaseException exception)
+		public this(string message, BaseException exception)
 			: base(message, exception)
 		{
 		}

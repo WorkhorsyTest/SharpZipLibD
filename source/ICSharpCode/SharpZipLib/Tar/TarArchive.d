@@ -56,7 +56,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Constructor for a default <see cref="TarArchive"/>.
 		/// </summary>
-		protected TarArchive()
+		protected this()
 		{
 		}
 
@@ -64,7 +64,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Initalise a TarArchive for input.
 		/// </summary>
 		/// <param name="stream">The <see cref="TarInputStream"/> to use for input.</param>
-		protected TarArchive(TarInputStream stream)
+		protected this(TarInputStream stream)
 		{
 			if (stream == null)
 			{
@@ -78,7 +78,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Initialise a TarArchive for output.
 		/// </summary>
 		/// <param name="stream">The <see cref="TarOutputStream"/> to use for output.</param>
-		protected TarArchive(TarOutputStream stream)
+		protected this(TarOutputStream stream)
 		{
 			if (stream == null)
 			{

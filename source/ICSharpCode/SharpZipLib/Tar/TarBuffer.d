@@ -114,7 +114,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Construct a default TarBuffer
 		/// </summary>
-		protected TarBuffer()
+		protected this()
 		{
 		}
 

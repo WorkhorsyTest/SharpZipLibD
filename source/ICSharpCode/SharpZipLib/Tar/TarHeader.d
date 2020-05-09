@@ -245,7 +245,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Initialise a default TarHeader instance
 		/// </summary>
-		public TarHeader()
+		public this()
 		{
 			Magic = TMAGIC;
 			Version = " ";

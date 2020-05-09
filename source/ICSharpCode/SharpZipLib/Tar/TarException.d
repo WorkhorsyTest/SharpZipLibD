@@ -12,7 +12,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Initialise a new instance of <see cref="TarException" />.
 		/// </summary>
-		public TarException()
+		public this()
 		{
 		}
 
@@ -20,7 +20,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Initialise a new instance of <see cref="TarException" /> with its message string.
 		/// </summary>
 		/// <param name="message">A <see cref="string"/> that describes the error.</param>
-		public TarException(string message)
+		public this(string message)
 			: base(message)
 		{
 		}
@@ -30,7 +30,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <param name="message">A <see cref="string"/> that describes the error.</param>
 		/// <param name="innerException">The <see cref="BaseException"/> that caused this exception.</param>
-		public TarException(string message, BaseException innerException)
+		public this(string message, BaseException innerException)
 			: base(message, innerException)
 		{
 		}
@@ -46,7 +46,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// The System.Runtime.Serialization.StreamingContext that contains contextual information
 		/// about the source or destination.
 		/// </param>
-		protected TarException(SerializationInfo info, StreamingContext context)
+		protected this(SerializationInfo info, StreamingContext context)
 			: base(info, context)
 		{
 		}
