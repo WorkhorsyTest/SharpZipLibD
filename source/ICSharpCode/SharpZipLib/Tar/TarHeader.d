@@ -1,5 +1,5 @@
-using System;
-using System.Text;
+import System;
+import System.Text;
 
 namespace ICSharpCode.SharpZipLib.Tar
 {
