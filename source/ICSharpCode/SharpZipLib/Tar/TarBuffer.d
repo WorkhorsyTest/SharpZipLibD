@@ -1,8 +1,8 @@
 import System;
 import System.IO;
 
-namespace ICSharpCode.SharpZipLib.Tar
-{
+import ICSharpCode.SharpZipLib.Tar;
+
 	/// <summary>
 	/// The TarBuffer class implements the tar archive concept
 	/// of a buffered input stream. This concept goes back to the
@@ -596,4 +596,3 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 		//#endregion Instance Fields
 	}
-}

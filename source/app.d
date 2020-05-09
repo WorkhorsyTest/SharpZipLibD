@@ -10,6 +10,7 @@ int main() {
 	import std.stdio : stdout;
 	import System.IO : File;
 	import ICSharpCode.SharpZipLib.BZip2 : BZip2;
+	import ICSharpCode.SharpZipLib.Tar : TarArchive;
 
 	// Extract the tar.bz2 to tar
 	{

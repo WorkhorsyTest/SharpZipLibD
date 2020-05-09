@@ -1,8 +1,8 @@
 import System.Collections.Generic;
 import System.Text;
 
-namespace ICSharpCode.SharpZipLib.Tar
-{
+import ICSharpCode.SharpZipLib.Tar;
+
 	/// <summary>
 	/// Reads the extended header of a Tar stream
 	/// </summary>
@@ -96,4 +96,3 @@ namespace ICSharpCode.SharpZipLib.Tar
 			}
 		}
 	}
-}

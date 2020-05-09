@@ -1,8 +1,8 @@
 import System;
 import System.IO;
 
-namespace ICSharpCode.SharpZipLib.Tar
-{
+import ICSharpCode.SharpZipLib.Tar;
+
 	/// <summary>
 	/// This class represents an entry in a Tar archive. It consists
 	/// of the entry's header, as well as the entry's File. Entries
@@ -544,4 +544,3 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 		//#endregion Instance Fields
 	}
-}

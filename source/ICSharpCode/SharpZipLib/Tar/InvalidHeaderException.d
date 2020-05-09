@@ -1,7 +1,7 @@
 import System;
 
-namespace ICSharpCode.SharpZipLib.Tar
-{
+import ICSharpCode.SharpZipLib.Tar;
+
 	/// <summary>
 	/// This exception is used to indicate that there is a problem
 	/// with a TAR archive header.
@@ -34,4 +34,3 @@ namespace ICSharpCode.SharpZipLib.Tar
 		{
 		}
 	}
-}

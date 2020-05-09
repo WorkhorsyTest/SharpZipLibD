@@ -1,8 +1,8 @@
 import System;
 import System.IO;
 
-namespace ICSharpCode.SharpZipLib.Tar
-{
+import ICSharpCode.SharpZipLib.Tar;
+
 	/// <summary>
 	/// The TarOutputStream writes a UNIX tar archive as an OutputStream.
 	/// Methods are provided to put entries, and then write their contents
@@ -477,4 +477,3 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 		//#endregion Instance Fields
 	}
-}

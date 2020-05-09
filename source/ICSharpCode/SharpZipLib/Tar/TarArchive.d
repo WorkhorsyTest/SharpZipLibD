@@ -2,8 +2,8 @@ import System;
 import System.IO;
 import System.Text;
 
-namespace ICSharpCode.SharpZipLib.Tar
-{
+import ICSharpCode.SharpZipLib.Tar;
+
 	/// <summary>
 	/// Used to advise clients of 'events' while processing archives
 	/// </summary>
@@ -956,4 +956,3 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 		//#endregion Instance Fields
 	}
-}

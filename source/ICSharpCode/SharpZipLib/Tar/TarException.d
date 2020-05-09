@@ -1,8 +1,8 @@
 import System;
 import System.Runtime.Serialization;
 
-namespace ICSharpCode.SharpZipLib.Tar
-{
+import ICSharpCode.SharpZipLib.Tar;
+
 	/// <summary>
 	/// TarException represents exceptions specific to Tar classes and code.
 	/// </summary>
@@ -51,4 +51,3 @@ namespace ICSharpCode.SharpZipLib.Tar
 		{
 		}
 	}
-}

@@ -1,8 +1,8 @@
 import System;
 import System.Text;
 
-namespace ICSharpCode.SharpZipLib.Tar
-{
+import ICSharpCode.SharpZipLib.Tar;
+
 	/// <summary>
 	/// This class encapsulates the Tar Entry Header used in Tar Archives.
 	/// The class also holds a number of tar constants, used mostly in headers.
@@ -1158,4 +1158,3 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 		//#endregion Class Fields
 	}
-}

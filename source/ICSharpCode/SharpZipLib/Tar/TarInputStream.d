@@ -2,8 +2,8 @@ import System;
 import System.IO;
 import System.Text;
 
-namespace ICSharpCode.SharpZipLib.Tar
-{
+import ICSharpCode.SharpZipLib.Tar;
+
 	/// <summary>
 	/// The TarInputStream reads a UNIX tar archive as an InputStream.
 	/// methods are provided to position at each successive entry in
@@ -723,4 +723,3 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 		//#endregion Instance Fields
 	}
-}
