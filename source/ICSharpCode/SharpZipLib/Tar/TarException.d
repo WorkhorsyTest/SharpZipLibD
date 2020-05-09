@@ -21,7 +21,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <param name="message">A <see cref="string"/> that describes the error.</param>
 		public this(string message)
-			: base(message)
+			: super(message)
 		{
 		}
 
@@ -31,7 +31,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="message">A <see cref="string"/> that describes the error.</param>
 		/// <param name="innerException">The <see cref="BaseException"/> that caused this exception.</param>
 		public this(string message, BaseException innerException)
-			: base(message, innerException)
+			: super(message, innerException)
 		{
 		}
 
@@ -47,7 +47,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// about the source or destination.
 		/// </param>
 		protected this(SerializationInfo info, StreamingContext context)
-			: base(info, context)
+			: super(info, context)
 		{
 		}
 	}
