@@ -316,7 +316,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <returns>
 		/// TarBuffer record size.
 		/// </returns>
-		[Obsolete("Use RecordSize property instead")]
+		//deprecated("Use RecordSize property instead")
 		public int GetRecordSize()
 		{
 			return tarBuffer.RecordSize;

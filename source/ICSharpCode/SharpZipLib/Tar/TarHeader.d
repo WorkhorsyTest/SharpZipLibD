@@ -285,7 +285,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// Get the name of this entry.
 		/// </summary>
 		/// <returns>The entry's name.</returns>
-		[Obsolete("Use the Name property instead", true)]
+		//deprecated("Use the Name property instead", true)
 		public string GetName()
 		{
 			return name;

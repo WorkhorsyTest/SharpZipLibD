@@ -83,7 +83,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		/// <returns>The record size in bytes.
 		/// This is equal to the <see cref="BlockFactor"/> multiplied by the <see cref="BlockSize"/></returns>
-		[Obsolete("Use RecordSize property instead")]
+		//deprecated("Use RecordSize property instead")
 		public int GetRecordSize()
 		{
 			return recordSize;
@@ -105,7 +105,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// Get the TAR Buffer's block factor
 		/// </summary>
 		/// <returns>The block factor; the number of blocks per record.</returns>
-		[Obsolete("Use BlockFactor property instead")]
+		//deprecated("Use BlockFactor property instead")
 		public int GetBlockFactor()
 		{
 			return blockFactor;
@@ -230,7 +230,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		/// <param name = "block">The data block to check.</param>
 		/// <returns>Returns true if the block is an EOF block; false otherwise.</returns>
-		[Obsolete("Use IsEndOfArchiveBlock instead")]
+		//deprecated("Use IsEndOfArchiveBlock instead")
 		public bool IsEOFBlock(byte[] block)
 		{
 			if (block == null)
@@ -409,7 +409,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <remarks>
 		/// The absolute block number = (<see cref="GetCurrentRecordNum">record number</see> * <see cref="BlockFactor">block factor</see>) + <see cref="GetCurrentBlockNum">block number</see>.
 		/// </remarks>
-		[Obsolete("Use CurrentBlock property instead")]
+		//deprecated("Use CurrentBlock property instead")
 		public int GetCurrentBlockNum()
 		{
 			return currentBlockIndex;
@@ -432,7 +432,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <returns>
 		/// The current zero based record number.
 		/// </returns>
-		[Obsolete("Use CurrentRecord property instead")]
+		//deprecated("Use CurrentRecord property instead")
 		public int GetCurrentRecordNum()
 		{
 			return currentRecordIndex;
