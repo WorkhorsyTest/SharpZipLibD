@@ -10,7 +10,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 	/// they are to be used.
 	/// <p>
 	/// TarEntries that are created from the header bytes read from
-	/// an archive are instantiated with the TarEntry( byte[] )
+	/// an archive are instantiated with the TarEntry( ubyte[] )
 	/// constructor. These entries will be used when extracting from
 	/// or listing the contents of an archive. These entries have their
 	/// header filled in using the header bytes. They also set the File
@@ -49,7 +49,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name = "headerBuffer">
 		/// The header bytes from a tar archive entry.
 		/// </param>
-		public TarEntry(byte[] headerBuffer)
+		public TarEntry(ubyte[] headerBuffer)
 		{
 			header = new TarHeader();
 			header.ParseBuffer(headerBuffer);
@@ -469,14 +469,14 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name = "outBuffer">
 		/// The tar entry header buffer to fill in.
 		/// </param>
-		public void WriteEntryHeader(byte[] outBuffer)
+		public void WriteEntryHeader(ubyte[] outBuffer)
 		{
 			header.WriteHeader(outBuffer);
 		}
 
 		/// <summary>
 		/// Convenience method that will modify an entry's name directly
-		/// in place in an entry header buffer byte array.
+		/// in place in an entry header buffer ubyte array.
 		/// </summary>
 		/// <param name="buffer">
 		/// The buffer containing the entry header to modify.
@@ -484,7 +484,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name="newName">
 		/// The new name to place into the header buffer.
 		/// </param>
-		static public void AdjustEntryName(byte[] buffer, string newName)
+		static public void AdjustEntryName(ubyte[] buffer, string newName)
 		{
 			TarHeader.GetNameBytes(newName, buffer, 0, TarHeader.NAMELEN);
 		}

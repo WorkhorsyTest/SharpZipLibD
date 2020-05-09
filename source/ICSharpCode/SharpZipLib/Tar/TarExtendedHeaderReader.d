@@ -8,17 +8,17 @@ namespace ICSharpCode.SharpZipLib.Tar
 	/// </summary>
 	public class TarExtendedHeaderReader
 	{
-		private const byte LENGTH = 0;
-		private const byte KEY = 1;
-		private const byte VALUE = 2;
-		private const byte END = 3;
+		private const ubyte LENGTH = 0;
+		private const ubyte KEY = 1;
+		private const ubyte VALUE = 2;
+		private const ubyte END = 3;
 
 		private /*readonly*/ Dictionary<string, string> headers = new Dictionary<string, string>();
 
 		private string[] headerParts = new string[3];
 
 		private int bbIndex;
-		private byte[] byteBuffer;
+		private ubyte[] byteBuffer;
 		private char[] charBuffer;
 
 		private /*readonly*/ StringBuilder sb = new StringBuilder();
@@ -26,7 +26,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 		private int state = LENGTH;
 
-		private static /*readonly*/ byte[] StateNext = new[] { (byte)' ', (byte)'=', (byte)'\n' };
+		private static /*readonly*/ ubyte[] StateNext = new[] { (ubyte)' ', (ubyte)'=', (ubyte)'\n' };
 
 		/// <summary>
 		/// Creates a new <see cref="TarExtendedHeaderReader"/>.
@@ -41,11 +41,11 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		/// <param name="buffer"></param>
 		/// <param name="length"></param>
-		public void Read(byte[] buffer, int length)
+		public void Read(ubyte[] buffer, int length)
 		{
 			for (int i = 0; i < length; i++)
 			{
-				byte next = buffer[i];
+				ubyte next = buffer[i];
 
 				if (next == StateNext[state])
 				{
@@ -80,7 +80,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		private void ResetBuffers()
 		{
 			charBuffer = new char[4];
-			byteBuffer = new byte[4];
+			byteBuffer = new ubyte[4];
 			bbIndex = 0;
 		}
 

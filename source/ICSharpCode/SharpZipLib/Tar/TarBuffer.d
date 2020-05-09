@@ -207,7 +207,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		{
 			blockFactor = archiveBlockFactor;
 			recordSize = archiveBlockFactor * BlockSize;
-			recordBuffer = new byte[RecordSize];
+			recordBuffer = new ubyte[RecordSize];
 
 			if (inputStream != null)
 			{
@@ -231,7 +231,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name = "block">The data block to check.</param>
 		/// <returns>Returns true if the block is an EOF block; false otherwise.</returns>
 		//deprecated("Use IsEndOfArchiveBlock instead")
-		public bool IsEOFBlock(byte[] block)
+		public bool IsEOFBlock(ubyte[] block)
 		{
 			if (block == null)
 			{
@@ -263,7 +263,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		/// <param name = "block">The data block to check.</param>
 		/// <returns>Returns true if the block is an EOF block; false otherwise.</returns>
-		public static bool IsEndOfArchiveBlock(byte[] block)
+		public static bool IsEndOfArchiveBlock(ubyte[] block)
 		{
 			if (block == null)
 			{
@@ -313,7 +313,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <returns>
 		/// The block of data read.
 		/// </returns>
-		public byte[] ReadBlock()
+		public ubyte[] ReadBlock()
 		{
 			if (inputStream == null)
 			{
@@ -328,7 +328,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 				}
 			}
 
-			byte[] result = new byte[BlockSize];
+			ubyte[] result = new ubyte[BlockSize];
 
 			Array.Copy(recordBuffer, (currentBlockIndex * BlockSize), result, 0, BlockSize);
 			currentBlockIndex++;
@@ -444,7 +444,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name="block">
 		/// The data to write to the archive.
 		/// </param>
-		public void WriteBlock(byte[] block)
+		public void WriteBlock(ubyte[] block)
 		{
 			if (block == null)
 			{
@@ -483,7 +483,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name="offset">
 		/// The offset of the record data within buffer.
 		/// </param>
-		public void WriteBlock(byte[] buffer, int offset)
+		public void WriteBlock(ubyte[] buffer, int offset)
 		{
 			if (buffer == null)
 			{
@@ -587,7 +587,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		private Stream inputStream;
 		private Stream outputStream;
 
-		private byte[] recordBuffer;
+		private ubyte[] recordBuffer;
 		private int currentBlockIndex;
 		private int currentRecordIndex;
 

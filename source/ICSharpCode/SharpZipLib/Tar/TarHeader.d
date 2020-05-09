@@ -119,111 +119,111 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <summary>
 		///  The "old way" of indicating a normal file.
 		/// </summary>
-		public const byte LF_OLDNORM = 0;
+		public const ubyte LF_OLDNORM = 0;
 
 		/// <summary>
 		/// Normal file type.
 		/// </summary>
-		public const byte LF_NORMAL = (byte)'0';
+		public const ubyte LF_NORMAL = (ubyte)'0';
 
 		/// <summary>
 		/// Link file type.
 		/// </summary>
-		public const byte LF_LINK = (byte)'1';
+		public const ubyte LF_LINK = (ubyte)'1';
 
 		/// <summary>
 		/// Symbolic link file type.
 		/// </summary>
-		public const byte LF_SYMLINK = (byte)'2';
+		public const ubyte LF_SYMLINK = (ubyte)'2';
 
 		/// <summary>
 		/// Character device file type.
 		/// </summary>
-		public const byte LF_CHR = (byte)'3';
+		public const ubyte LF_CHR = (ubyte)'3';
 
 		/// <summary>
 		/// Block device file type.
 		/// </summary>
-		public const byte LF_BLK = (byte)'4';
+		public const ubyte LF_BLK = (ubyte)'4';
 
 		/// <summary>
 		/// Directory file type.
 		/// </summary>
-		public const byte LF_DIR = (byte)'5';
+		public const ubyte LF_DIR = (ubyte)'5';
 
 		/// <summary>
 		/// FIFO (pipe) file type.
 		/// </summary>
-		public const byte LF_FIFO = (byte)'6';
+		public const ubyte LF_FIFO = (ubyte)'6';
 
 		/// <summary>
 		/// Contiguous file type.
 		/// </summary>
-		public const byte LF_CONTIG = (byte)'7';
+		public const ubyte LF_CONTIG = (ubyte)'7';
 
 		/// <summary>
 		/// Posix.1 2001 global extended header
 		/// </summary>
-		public const byte LF_GHDR = (byte)'g';
+		public const ubyte LF_GHDR = (ubyte)'g';
 
 		/// <summary>
 		/// Posix.1 2001 extended header
 		/// </summary>
-		public const byte LF_XHDR = (byte)'x';
+		public const ubyte LF_XHDR = (ubyte)'x';
 
 		// POSIX allows for upper case ascii type as extensions
 
 		/// <summary>
 		/// Solaris access control list file type
 		/// </summary>
-		public const byte LF_ACL = (byte)'A';
+		public const ubyte LF_ACL = (ubyte)'A';
 
 		/// <summary>
 		/// GNU dir dump file type
 		/// This is a dir entry that contains the names of files that were in the
 		/// dir at the time the dump was made
 		/// </summary>
-		public const byte LF_GNU_DUMPDIR = (byte)'D';
+		public const ubyte LF_GNU_DUMPDIR = (ubyte)'D';
 
 		/// <summary>
 		/// Solaris Extended Attribute File
 		/// </summary>
-		public const byte LF_EXTATTR = (byte)'E';
+		public const ubyte LF_EXTATTR = (ubyte)'E';
 
 		/// <summary>
 		/// Inode (metadata only) no file content
 		/// </summary>
-		public const byte LF_META = (byte)'I';
+		public const ubyte LF_META = (ubyte)'I';
 
 		/// <summary>
 		/// Identifies the next file on the tape as having a long link name
 		/// </summary>
-		public const byte LF_GNU_LONGLINK = (byte)'K';
+		public const ubyte LF_GNU_LONGLINK = (ubyte)'K';
 
 		/// <summary>
 		/// Identifies the next file on the tape as having a long name
 		/// </summary>
-		public const byte LF_GNU_LONGNAME = (byte)'L';
+		public const ubyte LF_GNU_LONGNAME = (ubyte)'L';
 
 		/// <summary>
 		/// Continuation of a file that began on another volume
 		/// </summary>
-		public const byte LF_GNU_MULTIVOL = (byte)'M';
+		public const ubyte LF_GNU_MULTIVOL = (ubyte)'M';
 
 		/// <summary>
 		/// For storing filenames that dont fit in the main header (old GNU)
 		/// </summary>
-		public const byte LF_GNU_NAMES = (byte)'N';
+		public const ubyte LF_GNU_NAMES = (ubyte)'N';
 
 		/// <summary>
 		/// GNU Sparse file
 		/// </summary>
-		public const byte LF_GNU_SPARSE = (byte)'S';
+		public const ubyte LF_GNU_SPARSE = (ubyte)'S';
 
 		/// <summary>
 		/// GNU Tape/volume header ignore on extraction
 		/// </summary>
-		public const byte LF_GNU_VOLHDR = (byte)'V';
+		public const ubyte LF_GNU_VOLHDR = (ubyte)'V';
 
 		/// <summary>
 		/// The magic tag representing a POSIX tar archive.  (would be written with a trailing NULL)
@@ -382,7 +382,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <summary>
 		/// Get/set the entry's type flag.
 		/// </summary>
-		public byte TypeFlag
+		public ubyte TypeFlag
 		{
 			get { return typeFlag; }
 			set { typeFlag = value; }
@@ -528,7 +528,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name = "header">
 		/// The tar entry header buffer to get information from.
 		/// </param>
-		public void ParseBuffer(byte[] header)
+		public void ParseBuffer(ubyte[] header)
 		{
 			if (header == null)
 			{
@@ -594,7 +594,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// 'Write' header information to buffer provided, updating the <see cref="Checksum">check sum</see>.
 		/// </summary>
 		/// <param name="outBuffer">output buffer for header information</param>
-		public void WriteHeader(byte[] outBuffer)
+		public void WriteHeader(ubyte[] outBuffer)
 		{
 			if (outBuffer == null)
 			{
@@ -614,7 +614,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			int csOffset = offset;
 			for (int c = 0; c < CHKSUMLEN; ++c)
 			{
-				outBuffer[offset++] = (byte)' ';
+				outBuffer[offset++] = (ubyte)' ';
 			}
 
 			outBuffer[offset++] = TypeFlag;
@@ -711,11 +711,11 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 		// Return value that may be stored in octal or binary. Length must exceed 8.
 		//
-		static private long ParseBinaryOrOctal(byte[] header, int offset, int length)
+		static private long ParseBinaryOrOctal(ubyte[] header, int offset, int length)
 		{
 			if (header[offset] >= 0x80)
 			{
-				// File sizes over 8GB are stored in 8 right-justified bytes of binary indicated by setting the high-order bit of the leftmost byte of a numeric field.
+				// File sizes over 8GB are stored in 8 right-justified bytes of binary indicated by setting the high-order bit of the leftmost ubyte of a numeric field.
 				long result = 0;
 				for (int pos = length - 8; pos < length; pos++)
 				{
@@ -733,7 +733,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name = "offset">The offset into the buffer from which to parse.</param>
 		/// <param name = "length">The number of header bytes to parse.</param>
 		/// <returns>The long equivalent of the octal string.</returns>
-		static public long ParseOctal(byte[] header, int offset, int length)
+		static public long ParseOctal(ubyte[] header, int offset, int length)
 		{
 			if (header == null)
 			{
@@ -751,14 +751,14 @@ namespace ICSharpCode.SharpZipLib.Tar
 					break;
 				}
 
-				if (header[i] == (byte)' ' || header[i] == '0')
+				if (header[i] == (ubyte)' ' || header[i] == '0')
 				{
 					if (stillPadding)
 					{
 						continue;
 					}
 
-					if (header[i] == (byte)' ')
+					if (header[i] == (ubyte)' ')
 					{
 						break;
 					}
@@ -787,7 +787,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <returns>
 		/// The name parsed.
 		/// </returns>
-		static public StringBuilder ParseName(byte[] header, int offset, int length)
+		static public StringBuilder ParseName(ubyte[] header, int offset, int length)
 		{
 			if (header == null)
 			{
@@ -829,10 +829,10 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name="name">The name to add</param>
 		/// <param name="nameOffset">The offset of the first character</param>
 		/// <param name="buffer">The buffer to add to</param>
-		/// <param name="bufferOffset">The index of the first byte to add</param>
+		/// <param name="bufferOffset">The index of the first ubyte to add</param>
 		/// <param name="length">The number of characters/bytes to add</param>
 		/// <returns>The next free index in the <paramref name="buffer"/></returns>
-		public static int GetNameBytes(StringBuilder name, int nameOffset, byte[] buffer, int bufferOffset, int length)
+		public static int GetNameBytes(StringBuilder name, int nameOffset, ubyte[] buffer, int bufferOffset, int length)
 		{
 			if (name == null)
 			{
@@ -853,10 +853,10 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name="name">The name to add</param>
 		/// <param name="nameOffset">The offset of the first character</param>
 		/// <param name="buffer">The buffer to add to</param>
-		/// <param name="bufferOffset">The index of the first byte to add</param>
+		/// <param name="bufferOffset">The index of the first ubyte to add</param>
 		/// <param name="length">The number of characters/bytes to add</param>
 		/// <returns>The next free index in the <paramref name="buffer"/></returns>
-		public static int GetNameBytes(string name, int nameOffset, byte[] buffer, int bufferOffset, int length)
+		public static int GetNameBytes(string name, int nameOffset, ubyte[] buffer, int bufferOffset, int length)
 		{
 			if (name == null)
 			{
@@ -872,7 +872,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 			for (i = 0; i < length && nameOffset + i < name.Length; ++i)
 			{
-				buffer[bufferOffset + i] = (byte)name[nameOffset + i];
+				buffer[bufferOffset + i] = (ubyte)name[nameOffset + i];
 			}
 
 			for (; i < length; ++i)
@@ -899,9 +899,9 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// The number of header bytes to add
 		/// </param>
 		/// <returns>
-		/// The index of the next free byte in the buffer
+		/// The index of the next free ubyte in the buffer
 		/// </returns>
-		public static int GetNameBytes(StringBuilder name, byte[] buffer, int offset, int length)
+		public static int GetNameBytes(StringBuilder name, ubyte[] buffer, int offset, int length)
 		{
 			if (name == null)
 			{
@@ -923,8 +923,8 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name="buffer">The buffer to add to</param>
 		/// <param name="offset">The offset into the buffer from which to start adding</param>
 		/// <param name="length">The number of header bytes to add</param>
-		/// <returns>The index of the next free byte in the buffer</returns>
-		public static int GetNameBytes(string name, byte[] buffer, int offset, int length)
+		/// <returns>The index of the next free ubyte in the buffer</returns>
+		public static int GetNameBytes(string name, ubyte[] buffer, int offset, int length)
 		{
 			if (name == null)
 			{
@@ -948,7 +948,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name="bufferOffset">The offset to start adding at.</param>
 		/// <param name="length">The number of ascii characters to add.</param>
 		/// <returns>The next free index in the buffer.</returns>
-		public static int GetAsciiBytes(string toAdd, int nameOffset, byte[] buffer, int bufferOffset, int length)
+		public static int GetAsciiBytes(string toAdd, int nameOffset, ubyte[] buffer, int bufferOffset, int length)
 		{
 			if (toAdd == null)
 			{
@@ -963,7 +963,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			int i;
 			for (i = 0; i < length && nameOffset + i < toAdd.Length; ++i)
 			{
-				buffer[bufferOffset + i] = (byte)toAdd[nameOffset + i];
+				buffer[bufferOffset + i] = (ubyte)toAdd[nameOffset + i];
 			}
 			// If length is beyond the toAdd string length (which is OK by the prev loop condition), eg if a field has fixed length and the string is shorter, make sure all of the extra chars are written as NULLs, so that the reader func would ignore them and get back the original string
 			for (; i < length; ++i)
@@ -987,9 +987,9 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// The length of the octal string to create
 		/// </param>
 		/// <returns>
-		/// The offset of the character next byte after the octal string
+		/// The offset of the character next ubyte after the octal string
 		/// </returns>
-		public static int GetOctalBytes(long value, byte[] buffer, int offset, int length)
+		public static int GetOctalBytes(long value, ubyte[] buffer, int offset, int length)
 		{
 			if (buffer == null)
 			{
@@ -1006,14 +1006,14 @@ namespace ICSharpCode.SharpZipLib.Tar
 			{
 				for (long v = value; (localIndex >= 0) && (v > 0); --localIndex)
 				{
-					buffer[offset + localIndex] = (byte)((byte)'0' + (byte)(v & 7));
+					buffer[offset + localIndex] = (ubyte)((ubyte)'0' + (ubyte)(v & 7));
 					v >>= 3;
 				}
 			}
 
 			for (; localIndex >= 0; --localIndex)
 			{
-				buffer[offset + localIndex] = (byte)'0';
+				buffer[offset + localIndex] = (ubyte)'0';
 			}
 
 			return offset + length;
@@ -1026,15 +1026,15 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name = "buffer">The buffer to update</param>
 		/// <param name = "offset">The offset into the buffer to store the value</param>
 		/// <param name = "length">The length of the octal string. Must be 12.</param>
-		/// <returns>Index of next byte</returns>
-		private static int GetBinaryOrOctalBytes(long value, byte[] buffer, int offset, int length)
+		/// <returns>Index of next ubyte</returns>
+		private static int GetBinaryOrOctalBytes(long value, ubyte[] buffer, int offset, int length)
 		{
 			if (value > 0x1FFFFFFFF)
 			{  // Octal 77777777777 (11 digits)
-			   // Put value as binary, right-justified into the buffer. Set high order bit of left-most byte.
+			   // Put value as binary, right-justified into the buffer. Set high order bit of left-most ubyte.
 				for (int pos = length - 1; pos > 0; pos--)
 				{
-					buffer[offset + pos] = (byte)value;
+					buffer[offset + pos] = (ubyte)value;
 					value = value >> 8;
 				}
 				buffer[offset] = 0x80;
@@ -1055,7 +1055,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// The final space is already there, from checksumming
 		/// </param>
 		/// <returns>The modified buffer offset</returns>
-		private static void GetCheckSumOctalBytes(long value, byte[] buffer, int offset, int length)
+		private static void GetCheckSumOctalBytes(long value, ubyte[] buffer, int offset, int length)
 		{
 			GetOctalBytes(value, buffer, offset, length - 1);
 		}
@@ -1066,7 +1066,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		/// <param name = "buffer">The tar entry's header buffer.</param>
 		/// <returns>The computed checksum.</returns>
-		private static int ComputeCheckSum(byte[] buffer)
+		private static int ComputeCheckSum(ubyte[] buffer)
 		{
 			int sum = 0;
 			for (int i = 0; i < buffer.Length; ++i)
@@ -1081,7 +1081,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </summary>
 		/// <param name = "buffer">The tar entry's header buffer.</param>
 		/// <returns>The checksum for the buffer</returns>
-		private static int MakeCheckSum(byte[] buffer)
+		private static int MakeCheckSum(ubyte[] buffer)
 		{
 			int sum = 0;
 			for (int i = 0; i < CHKSUMOFS; ++i)
@@ -1091,7 +1091,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 			for (int i = 0; i < CHKSUMLEN; ++i)
 			{
-				sum += (byte)' ';
+				sum += (ubyte)' ';
 			}
 
 			for (int i = CHKSUMOFS + CHKSUMLEN; i < buffer.Length; ++i)
@@ -1131,7 +1131,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		private DateTime modTime;
 		private int checksum;
 		private bool isChecksumValid;
-		private byte typeFlag;
+		private ubyte typeFlag;
 		private string linkName;
 		private string magic;
 		private string version;

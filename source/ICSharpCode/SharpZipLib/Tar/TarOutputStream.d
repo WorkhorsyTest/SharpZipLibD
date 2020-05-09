@@ -37,8 +37,8 @@ namespace ICSharpCode.SharpZipLib.Tar
 			this.outputStream = outputStream;
 			buffer = TarBuffer.CreateOutputTarBuffer(outputStream, blockFactor);
 
-			assemblyBuffer = new byte[TarBuffer.BlockSize];
-			blockBuffer = new byte[TarBuffer.BlockSize];
+			assemblyBuffer = new ubyte[TarBuffer.BlockSize];
+			blockBuffer = new ubyte[TarBuffer.BlockSize];
 		}
 
 		//#endregion Constructors
@@ -134,10 +134,10 @@ namespace ICSharpCode.SharpZipLib.Tar
 		}
 
 		/// <summary>
-		/// Read a byte from the stream and advance the position within the stream
-		/// by one byte or returns -1 if at the end of the stream.
+		/// Read a ubyte from the stream and advance the position within the stream
+		/// by one ubyte or returns -1 if at the end of the stream.
 		/// </summary>
-		/// <returns>The byte value or -1 if at end of stream</returns>
+		/// <returns>The ubyte value or -1 if at end of stream</returns>
 		public override int ReadByte()
 		{
 			return outputStream.ReadByte();
@@ -153,7 +153,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <returns>The total number of bytes read, or zero if at the end of the stream.
 		/// The number of bytes may be less than the <paramref name="count">count</paramref>
 		/// requested if data is not avialable.</returns>
-		public override int Read(byte[] buffer, int offset, int count)
+		public override int Read(ubyte[] buffer, int offset, int count)
 		{
 			return outputStream.Read(buffer, offset, count);
 		}
@@ -307,15 +307,15 @@ namespace ICSharpCode.SharpZipLib.Tar
 		}
 
 		/// <summary>
-		/// Writes a byte to the current tar archive entry.
-		/// This method simply calls Write(byte[], int, int).
+		/// Writes a ubyte to the current tar archive entry.
+		/// This method simply calls Write(ubyte[], int, int).
 		/// </summary>
 		/// <param name="value">
-		/// The byte to be written.
+		/// The ubyte to be written.
 		/// </param>
-		public override void WriteByte(byte value)
+		public override void WriteByte(ubyte value)
 		{
-			Write(new byte[] { value }, 0, 1);
+			Write(new ubyte[] { value }, 0, 1);
 		}
 
 		/// <summary>
@@ -336,7 +336,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <param name = "count">
 		/// The number of bytes to write.
 		/// </param>
-		public override void Write(byte[] buffer, int offset, int count)
+		public override void Write(ubyte[] buffer, int offset, int count)
 		{
 			if (buffer == null)
 			{
@@ -367,7 +367,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 			//
 			// We have to deal with assembly!!!
-			// The programmer can be writing little 32 byte chunks for all
+			// The programmer can be writing little 32 ubyte chunks for all
 			// we know, and we must assemble complete blocks for writing.
 			// TODO  REVIEW Maybe this should be in TarBuffer? Could that help to
 			//        eliminate some of the buffer copying.
@@ -458,12 +458,12 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <summary>
 		/// single block working buffer
 		/// </summary>
-		protected byte[] blockBuffer;
+		protected ubyte[] blockBuffer;
 
 		/// <summary>
 		/// 'Assembly' buffer used to assemble data before writing
 		/// </summary>
-		protected byte[] assemblyBuffer;
+		protected ubyte[] assemblyBuffer;
 
 		/// <summary>
 		/// TarBuffer used to provide correct blocking factor

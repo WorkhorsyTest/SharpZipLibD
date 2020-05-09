@@ -649,7 +649,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			{
 				using (var outw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true))
 				{
-					byte[] rdbuf = new byte[32 * 1024];
+					ubyte[] rdbuf = new ubyte[32 * 1024];
 
 					while (true)
 					{
@@ -769,9 +769,9 @@ namespace ICSharpCode.SharpZipLib.Tar
 								{
 									break;
 								}
-								byte[] data = Encoding.ASCII.GetBytes(line);
+								ubyte[] data = Encoding.ASCII.GetBytes(line);
 								outStream.Write(data, 0, data.Length);
-								outStream.WriteByte((byte)'\n');
+								outStream.WriteByte((ubyte)'\n');
 							}
 
 							outStream.Flush();
@@ -820,7 +820,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			{
 				using (Stream inputStream = File.OpenRead(entryFilename))
 				{
-					byte[] localBuffer = new byte[32 * 1024];
+					ubyte[] localBuffer = new ubyte[32 * 1024];
 					while (true)
 					{
 						int numRead = inputStream.Read(localBuffer, 0, localBuffer.Length);
@@ -912,20 +912,20 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 		// TODO: TarArchive - Is there a better way to test for a text file?
 		// It no longer reads entire files into memory but is still a weak test!
-		// This assumes that byte values 0-7, 14-31 or 255 are binary
+		// This assumes that ubyte values 0-7, 14-31 or 255 are binary
 		// and that all non text files contain one of these values
 		private static bool IsBinary(string filename)
 		{
 			using (FileStream fs = File.OpenRead(filename))
 			{
 				int sampleSize = Math.Min(4096, (int)fs.Length);
-				byte[] content = new byte[sampleSize];
+				ubyte[] content = new ubyte[sampleSize];
 
 				int bytesRead = fs.Read(content, 0, sampleSize);
 
 				for (int i = 0; i < bytesRead; ++i)
 				{
-					byte b = content[i];
+					ubyte b = content[i];
 					if ((b < 8) || ((b > 13) && (b < 32)) || (b == 255))
 					{
 						return true;

@@ -148,36 +148,36 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// This operation is not supported and will throw a NotSupportedException
 		/// </summary>
 		/// <param name="buffer">The buffer containing bytes to write.</param>
-		/// <param name="offset">The offset in the buffer of the frist byte to write.</param>
+		/// <param name="offset">The offset in the buffer of the frist ubyte to write.</param>
 		/// <param name="count">The number of bytes to write.</param>
 		/// <exception cref="NotSupportedException">Any access</exception>
-		public override void Write(byte[] buffer, int offset, int count)
+		public override void Write(ubyte[] buffer, int offset, int count)
 		{
 			throw new NotSupportedException("TarInputStream Write not supported");
 		}
 
 		/// <summary>
-		/// Writes a byte to the current position in the file stream.
+		/// Writes a ubyte to the current position in the file stream.
 		/// This operation is not supported and will throw a NotSupportedException
 		/// </summary>
-		/// <param name="value">The byte value to write.</param>
+		/// <param name="value">The ubyte value to write.</param>
 		/// <exception cref="NotSupportedException">Any access</exception>
-		public override void WriteByte(byte value)
+		public override void WriteByte(ubyte value)
 		{
 			throw new NotSupportedException("TarInputStream WriteByte not supported");
 		}
 
 		/// <summary>
-		/// Reads a byte from the current tar archive entry.
+		/// Reads a ubyte from the current tar archive entry.
 		/// </summary>
-		/// <returns>A byte cast to an int; -1 if the at the end of the stream.</returns>
+		/// <returns>A ubyte cast to an int; -1 if the at the end of the stream.</returns>
 		public override int ReadByte()
 		{
-			byte[] oneByteBuffer = new byte[1];
+			ubyte[] oneByteBuffer = new ubyte[1];
 			int num = Read(oneByteBuffer, 0, 1);
 			if (num <= 0)
 			{
-				// return -1 to indicate that no byte was read.
+				// return -1 to indicate that no ubyte was read.
 				return -1;
 			}
 			return oneByteBuffer[0];
@@ -201,7 +201,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <returns>
 		/// The number of bytes read, or 0 at end of stream/EOF.
 		/// </returns>
-		public override int Read(byte[] buffer, int offset, int count)
+		public override int Read(ubyte[] buffer, int offset, int count)
 		{
 			if (buffer == null)
 			{
@@ -235,7 +235,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 				else
 				{
 					int newLen = readBuffer.Length - sz;
-					byte[] newBuf = new byte[newLen];
+					ubyte[] newBuf = new ubyte[newLen];
 					Array.Copy(readBuffer, sz, newBuf, 0, newLen);
 					readBuffer = newBuf;
 				}
@@ -247,7 +247,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 			while (numToRead > 0)
 			{
-				byte[] rec = tarBuffer.ReadBlock();
+				ubyte[] rec = tarBuffer.ReadBlock();
 				if (rec == null)
 				{
 					// Unexpected EOF!
@@ -260,7 +260,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 				if (recLen > sz)
 				{
 					Array.Copy(rec, 0, buffer, offset, sz);
-					readBuffer = new byte[recLen - sz];
+					readBuffer = new ubyte[recLen - sz];
 					Array.Copy(rec, sz, readBuffer, 0, recLen - sz);
 				}
 				else
@@ -355,7 +355,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			// This is horribly inefficient, but it ensures that we
 			// properly skip over bytes via the TarBuffer...
 			//
-			byte[] skipBuf = new byte[8 * 1024];
+			ubyte[] skipBuf = new ubyte[8 * 1024];
 
 			for (long num = skipCount; num > 0;)
 			{
@@ -425,7 +425,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 				SkipToNextEntry();
 			}
 
-			byte[] headerBuf = tarBuffer.ReadBlock();
+			ubyte[] headerBuf = tarBuffer.ReadBlock();
 
 			if (headerBuf == null)
 			{
@@ -464,7 +464,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 
 					if (header.TypeFlag == TarHeader.LF_GNU_LONGNAME)
 					{
-						byte[] nameBuffer = new byte[TarBuffer.BlockSize];
+						ubyte[] nameBuffer = new ubyte[TarBuffer.BlockSize];
 						long numToRead = this.entrySize;
 
 						longName = new StringBuilder();
@@ -493,7 +493,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 					}
 					else if (header.TypeFlag == TarHeader.LF_XHDR)
 					{  // POSIX extended header
-						byte[] nameBuffer = new byte[TarBuffer.BlockSize];
+						ubyte[] nameBuffer = new ubyte[TarBuffer.BlockSize];
 						long numToRead = this.entrySize;
 
 						var xhr = new TarExtendedHeaderReader();
@@ -579,7 +579,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// </param>
 		public void CopyEntryContents(Stream outputStream)
 		{
-			byte[] tempBuffer = new byte[32 * 1024];
+			ubyte[] tempBuffer = new ubyte[32 * 1024];
 
 			while (true)
 			{
@@ -640,7 +640,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			/// <returns>
 			/// Created TarEntry or descendant class
 			/// </returns>
-			TarEntry CreateEntry(byte[] headerBuffer);
+			TarEntry CreateEntry(ubyte[] headerBuffer);
 		}
 
 		/// <summary>
@@ -673,7 +673,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 			/// </summary>
 			/// <param name="headerBuffer">The buffer containing entry details.</param>
 			/// <returns>A new <see cref="TarEntry"/></returns>
-			public TarEntry CreateEntry(byte[] headerBuffer)
+			public TarEntry CreateEntry(ubyte[] headerBuffer)
 			{
 				return new TarEntry(headerBuffer);
 			}
@@ -699,7 +699,7 @@ namespace ICSharpCode.SharpZipLib.Tar
 		/// <summary>
 		/// Buffer used with calls to <code>Read()</code>
 		/// </summary>
-		protected byte[] readBuffer;
+		protected ubyte[] readBuffer;
 
 		/// <summary>
 		/// Working buffer
