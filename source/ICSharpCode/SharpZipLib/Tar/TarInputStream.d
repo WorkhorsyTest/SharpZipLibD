@@ -187,7 +187,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (buffer is null)
 			{
-				throw new ArgumentNullException(nameof(buffer));
+				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			int totalRead = 0;

@@ -121,7 +121,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (inputStream is null)
 			{
-				throw new ArgumentNullException(nameof(inputStream));
+				throw new ArgumentNullException(__traits(identifier, inputStream));
 			}
 
 			return CreateInputTarBuffer(inputStream, DefaultBlockFactor);
@@ -137,12 +137,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (inputStream is null)
 			{
-				throw new ArgumentNullException(nameof(inputStream));
+				throw new ArgumentNullException(__traits(identifier, inputStream));
 			}
 
 			if (blockFactor <= 0)
 			{
-				throw new ArgumentOutOfRangeException(nameof(blockFactor), "Factor cannot be negative");
+				throw new ArgumentOutOfRangeException(__traits(identifier, blockFactor), "Factor cannot be negative");
 			}
 
 			auto tarBuffer = new TarBuffer();
@@ -162,7 +162,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (outputStream is null)
 			{
-				throw new ArgumentNullException(nameof(outputStream));
+				throw new ArgumentNullException(__traits(identifier, outputStream));
 			}
 
 			return CreateOutputTarBuffer(outputStream, DefaultBlockFactor);
@@ -178,12 +178,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (outputStream is null)
 			{
-				throw new ArgumentNullException(nameof(outputStream));
+				throw new ArgumentNullException(__traits(identifier, outputStream));
 			}
 
 			if (blockFactor <= 0)
 			{
-				throw new ArgumentOutOfRangeException(nameof(blockFactor), "Factor cannot be negative");
+				throw new ArgumentOutOfRangeException(__traits(identifier, blockFactor), "Factor cannot be negative");
 			}
 
 			auto tarBuffer = new TarBuffer();
@@ -229,7 +229,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (block is null)
 			{
-				throw new ArgumentNullException(nameof(block));
+				throw new ArgumentNullException(__traits(identifier, block));
 			}
 
 			if (block.Length != BlockSize)
@@ -261,7 +261,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (block is null)
 			{
-				throw new ArgumentNullException(nameof(block));
+				throw new ArgumentNullException(__traits(identifier, block));
 			}
 
 			if (block.Length != BlockSize)
@@ -442,7 +442,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (block is null)
 			{
-				throw new ArgumentNullException(nameof(block));
+				throw new ArgumentNullException(__traits(identifier, block));
 			}
 
 			if (outputStream is null)
@@ -481,7 +481,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (buffer is null)
 			{
-				throw new ArgumentNullException(nameof(buffer));
+				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			if (outputStream is null)
@@ -491,7 +491,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			if ((offset < 0) || (offset >= buffer.Length))
 			{
-				throw new ArgumentOutOfRangeException(nameof(offset));
+				throw new ArgumentOutOfRangeException(__traits(identifier, offset));
 			}
 
 			if ((offset + BlockSize) > buffer.Length)

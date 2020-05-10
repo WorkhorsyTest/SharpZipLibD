@@ -31,7 +31,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (outputStream is null)
 			{
-				throw new ArgumentNullException(nameof(outputStream));
+				throw new ArgumentNullException(__traits(identifier, outputStream));
 			}
 
 			this.outputStream = outputStream;
@@ -220,7 +220,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (entry is null)
 			{
-				throw new ArgumentNullException(nameof(entry));
+				throw new ArgumentNullException(__traits(identifier, entry));
 			}
 
 			if (entry.TarHeader.Name.Length > TarHeader.NAMELEN)
@@ -322,12 +322,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (buffer is null)
 			{
-				throw new ArgumentNullException(nameof(buffer));
+				throw new ArgumentNullException(__traits(identifier, buffer));
 			}
 
 			if (offset < 0)
 			{
-				throw new ArgumentOutOfRangeException(nameof(offset), "Cannot be negative");
+				throw new ArgumentOutOfRangeException(__traits(identifier, offset), "Cannot be negative");
 			}
 
 			if (buffer.Length - offset < count)
@@ -337,14 +337,14 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			if (count < 0)
 			{
-				throw new ArgumentOutOfRangeException(nameof(count), "Cannot be negative");
+				throw new ArgumentOutOfRangeException(__traits(identifier, count), "Cannot be negative");
 			}
 
 			if ((currBytes + count) > currSize)
 			{
 				string errorText = string.Format("request to write '{0}' bytes exceeds size in header of '{1}' bytes",
 					count, this.currSize);
-				throw new ArgumentOutOfRangeException(nameof(count), errorText);
+				throw new ArgumentOutOfRangeException(__traits(identifier, count), errorText);
 			}
 
 			//

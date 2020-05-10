@@ -63,7 +63,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (header is null)
 			{
-				throw new ArgumentNullException(nameof(header));
+				throw new ArgumentNullException(__traits(identifier, header));
 			}
 
 			this.header = cast(TarHeader)header.Clone();
@@ -157,7 +157,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (toTest is null)
 			{
-				throw new ArgumentNullException(nameof(toTest));
+				throw new ArgumentNullException(__traits(identifier, toTest));
 			}
 
 			return toTest.Name.StartsWith(Name, StringComparison.Ordinal);
@@ -336,12 +336,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (header is null)
 			{
-				throw new ArgumentNullException(nameof(header));
+				throw new ArgumentNullException(__traits(identifier, header));
 			}
 
 			if (file is null)
 			{
-				throw new ArgumentNullException(nameof(file));
+				throw new ArgumentNullException(__traits(identifier, file));
 			}
 
 			this.file = file;
@@ -473,12 +473,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			if (header is null)
 			{
-				throw new ArgumentNullException(nameof(header));
+				throw new ArgumentNullException(__traits(identifier, header));
 			}
 
 			if (name is null)
 			{
-				throw new ArgumentNullException(nameof(name));
+				throw new ArgumentNullException(__traits(identifier, name));
 			}
 
 			bool isDir = name.EndsWith("/", StringComparison.Ordinal);

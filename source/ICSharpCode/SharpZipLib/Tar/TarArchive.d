@@ -72,7 +72,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		{
 			if (stream is null)
 			{
-				throw new ArgumentNullException(nameof(stream));
+				throw new ArgumentNullException(__traits(identifier, stream));
 			}
 
 			tarIn = stream;
@@ -86,7 +86,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		{
 			if (stream is null)
 			{
-				throw new ArgumentNullException(nameof(stream));
+				throw new ArgumentNullException(__traits(identifier, stream));
 			}
 
 			tarOut = stream;
@@ -108,7 +108,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		{
 			if (inputStream is null)
 			{
-				throw new ArgumentNullException(nameof(inputStream));
+				throw new ArgumentNullException(__traits(identifier, inputStream));
 			}
 
 			auto tarStream = cast(TarInputStream) inputStream;
@@ -135,7 +135,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		{
 			if (inputStream is null)
 			{
-				throw new ArgumentNullException(nameof(inputStream));
+				throw new ArgumentNullException(__traits(identifier, inputStream));
 			}
 
 			if (inputStream is TarInputStream)
@@ -155,7 +155,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		{
 			if (outputStream is null)
 			{
-				throw new ArgumentNullException(nameof(outputStream));
+				throw new ArgumentNullException(__traits(identifier, outputStream));
 			}
 
 			auto tarStream = cast(TarOutputStream) outputStream;
@@ -182,7 +182,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		{
 			if (outputStream is null)
 			{
-				throw new ArgumentNullException(nameof(outputStream));
+				throw new ArgumentNullException(__traits(identifier, outputStream));
 			}
 
 			if (outputStream is TarOutputStream)
@@ -674,7 +674,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		{
 			if (sourceEntry is null)
 			{
-				throw new ArgumentNullException(nameof(sourceEntry));
+				throw new ArgumentNullException(__traits(identifier, sourceEntry));
 			}
 
 			if (isDisposed)
