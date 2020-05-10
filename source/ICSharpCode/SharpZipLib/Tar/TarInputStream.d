@@ -1,8 +1,8 @@
-import System;
-import System.IO;
-import System.Text;
+import System : Array, NotSupportedException, ArgumentNullException;
+import System.IO : Stream, SeekOrigin;
+import System.Text : StringBuilder;
 
-import ICSharpCode.SharpZipLib.Tar;
+import ICSharpCode.SharpZipLib.Tar : TarHeader, TarBuffer, TarEntry, TarException, TarExtendedHeaderReader, InvalidHeaderException;
 
 	/// <summary>
 	/// The TarInputStream reads a UNIX tar archive as an InputStream.
@@ -20,9 +20,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="inputStream">stream to source data from</param>
 		public this(Stream inputStream)
 		{
-/*
 			this(inputStream, TarBuffer.DefaultBlockFactor);
-*/
 		}
 
 		/// <summary>
@@ -32,10 +30,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="blockFactor">block factor to apply to archive</param>
 		public this(Stream inputStream, int blockFactor)
 		{
-/*
 			this.inputStream = inputStream;
 			tarBuffer = TarBuffer.CreateInputTarBuffer(inputStream, blockFactor);
-*/
 		}
 
 		//#endregion Constructors
@@ -159,7 +155,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>A ubyte cast to an int; -1 if the at the end of the stream.</returns>
 		public override int ReadByte()
 		{
-/*
 			ubyte[] oneByteBuffer = new ubyte[1];
 			int num = Read(oneByteBuffer, 0, 1);
 			if (num <= 0)
@@ -168,7 +163,6 @@ import ICSharpCode.SharpZipLib.Tar;
 				return -1;
 			}
 			return oneByteBuffer[0];
-*/return 0;
 		}
 
 		/// <summary>
@@ -191,7 +185,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public override int Read(ubyte[] buffer, int offset, int count)
 		{
-/*
+			import std.string : format;
+
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
@@ -213,17 +208,17 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			if (readBuffer !is null)
 			{
-				int sz = (numToRead > readBuffer.Length) ? readBuffer.Length : cast(int)numToRead;
+				int sz = cast(int) ((numToRead > readBuffer.length) ? readBuffer.length : numToRead);
 
 				Array.Copy(readBuffer, 0, buffer, offset, sz);
 
-				if (sz >= readBuffer.Length)
+				if (sz >= readBuffer.length)
 				{
 					readBuffer = null;
 				}
 				else
 				{
-					int newLen = readBuffer.Length - sz;
+					int newLen = cast(int)(readBuffer.length - sz);
 					ubyte[] newBuf = new ubyte[newLen];
 					Array.Copy(readBuffer, sz, newBuf, 0, newLen);
 					readBuffer = newBuf;
@@ -240,11 +235,11 @@ import ICSharpCode.SharpZipLib.Tar;
 				if (rec is null)
 				{
 					// Unexpected EOF!
-					throw new TarException("unexpected EOF with " + numToRead + " bytes unread");
+					throw new TarException("unexpected EOF with %s bytes unread".format(numToRead));
 				}
 
 				auto sz = cast(int)numToRead;
-				int recLen = rec.Length;
+				int recLen = cast(int)rec.length;
 
 				if (recLen > sz)
 				{
@@ -266,7 +261,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			entryOffset += totalRead;
 
 			return totalRead;
-*/return 0;
 		}
 
 		/// <summary>
@@ -275,12 +269,10 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		protected override void Dispose(bool disposing)
 		{
-/*
 			if (disposing)
 			{
 				tarBuffer.Close();
 			}
-*/
 		}
 
 		//#endregion Stream Overrides
@@ -340,7 +332,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void Skip(long skipCount)
 		{
-/*
 			// TODO: REVIEW efficiency of TarInputStream.Skip
 			// This is horribly inefficient, but it ensures that we
 			// properly skip over bytes via the TarBuffer...
@@ -349,7 +340,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			for (long num = skipCount; num > 0;)
 			{
-				int toRead = num > skipBuf.Length ? skipBuf.Length : cast(int)num;
+				int toRead = cast(int) (num > skipBuf.length ? skipBuf.length : num);
 				int numRead = Read(skipBuf, 0, toRead);
 
 				if (numRead == -1)
@@ -359,7 +350,6 @@ import ICSharpCode.SharpZipLib.Tar;
 
 				num -= numRead;
 			}
-*/
 		}
 
 		/// <summary>
@@ -403,7 +393,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public TarEntry GetNextEntry()
 		{
-/*
+			import std.string : format;
+
 			if (hasHitEOF)
 			{
 				return null;
@@ -460,7 +451,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 						while (numToRead > 0)
 						{
-							int numRead = this.Read(nameBuffer, 0, (numToRead > nameBuffer.Length ? nameBuffer.Length : cast(int)numToRead));
+							int numRead = this.Read(nameBuffer, 0, cast(int)(numToRead > nameBuffer.length ? nameBuffer.length : numToRead));
 
 							if (numRead == -1)
 							{
@@ -489,7 +480,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 						while (numToRead > 0)
 						{
-							int numRead = this.Read(nameBuffer, 0, (numToRead > nameBuffer.Length ? nameBuffer.Length : cast(int)numToRead));
+							int numRead = this.Read(nameBuffer, 0, cast(int)(numToRead > nameBuffer.length ? nameBuffer.length : numToRead));
 
 							if (numRead == -1)
 							{
@@ -500,6 +491,7 @@ import ICSharpCode.SharpZipLib.Tar;
 							numToRead -= numRead;
 						}
 
+						string name;
 						if (xhr.Headers.TryGetValue("path", name))
 						{
 							longName = new StringBuilder(name);
@@ -551,13 +543,12 @@ import ICSharpCode.SharpZipLib.Tar;
 					entrySize = 0;
 					entryOffset = 0;
 					currentEntry = null;
-					string errorText = string.Format("Bad header in record {0} block {1} {2}",
-						tarBuffer.CurrentRecord, tarBuffer.CurrentBlock, ex.Message);
+					string errorText = format("Bad header in record %s block %s %s",
+						tarBuffer.CurrentRecord, tarBuffer.CurrentBlock, ex.msg);
 					throw new InvalidHeaderException(errorText);
 				}
 			}
 			return currentEntry;
-*/return null;
 		}
 
 		/// <summary>
@@ -569,24 +560,21 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void CopyEntryContents(Stream outputStream)
 		{
-/*
 			ubyte[] tempBuffer = new ubyte[32 * 1024];
 
 			while (true)
 			{
-				int numRead = Read(tempBuffer, 0, tempBuffer.Length);
+				int numRead = Read(tempBuffer, 0, cast(int) tempBuffer.length);
 				if (numRead <= 0)
 				{
 					break;
 				}
 				outputStream.Write(tempBuffer, 0, numRead);
 			}
-*/
 		}
 
 		private void SkipToNextEntry()
 		{
-/*
 			long numToSkip = entrySize - entryOffset;
 
 			if (numToSkip > 0)
@@ -595,7 +583,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			readBuffer = null;
-*/
 		}
 
 		/// <summary>
@@ -649,9 +636,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			/// <returns>A new <see cref="TarEntry"/></returns>
 			public TarEntry CreateEntry(string name)
 			{
-/*
 				return TarEntry.CreateTarEntry(name);
-*/return null;
 			}
 
 			/// <summary>
@@ -661,9 +646,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			/// <returns>A new <see cref="TarEntry"/></returns>
 			public TarEntry CreateEntryFromFile(string fileName)
 			{
-/*
 				return TarEntry.CreateEntryFromFile(fileName);
-*/return null;
 			}
 
 			/// <summary>

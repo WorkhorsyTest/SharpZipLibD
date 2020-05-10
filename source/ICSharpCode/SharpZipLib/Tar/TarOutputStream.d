@@ -1,7 +1,7 @@
-import System;
-import System.IO;
+import System : ArgumentException, ArgumentNullException, ArgumentOutOfRangeException, Array;
+import System.IO : Stream, SeekOrigin;
 
-import ICSharpCode.SharpZipLib.Tar;
+import ICSharpCode.SharpZipLib.Tar : TarHeader, TarBuffer, TarEntry, TarException;
 
 	/// <summary>
 	/// The TarOutputStream writes a UNIX tar archive as an OutputStream.
@@ -19,9 +19,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="outputStream">stream to write to</param>
 		public this(Stream outputStream)
 		{
-/*
 			this(outputStream, TarBuffer.DefaultBlockFactor);
-*/
 		}
 
 		/// <summary>
@@ -31,7 +29,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="blockFactor">blocking factor</param>
 		public this(Stream outputStream, int blockFactor)
 		{
-/*
 			if (outputStream is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, outputStream));
@@ -42,7 +39,6 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			assemblyBuffer = new ubyte[TarBuffer.BlockSize];
 			blockBuffer = new ubyte[TarBuffer.BlockSize];
-*/
 		}
 
 		//#endregion Constructors
@@ -222,33 +218,32 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void PutNextEntry(TarEntry entry)
 		{
-/*
 			if (entry is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, entry));
 			}
 
-			if (entry.tarHeader.Name.Length > TarHeader.NAMELEN)
+			if (entry.tarHeader.Name.length > TarHeader.NAMELEN)
 			{
 				auto longHeader = new TarHeader();
 				longHeader.TypeFlag = TarHeader.LF_GNU_LONGNAME;
-				longHeader.Name = longHeader.Name + "././@LongLink";
+				longHeader.Name = longHeader.Name ~ "././@LongLink";
 				longHeader.Mode = 420;//644 by default
 				longHeader.UserId = entry.UserId;
 				longHeader.GroupId = entry.GroupId;
 				longHeader.GroupName = entry.GroupName;
 				longHeader.UserName = entry.UserName;
 				longHeader.LinkName = "";
-				longHeader.Size = entry.tarHeader.Name.Length + 1;  // Plus one to avoid dropping last char
+				longHeader.Size = entry.tarHeader.Name.length + 1;  // Plus one to avoid dropping last char
 
 				longHeader.WriteHeader(blockBuffer);
 				buffer.WriteBlock(blockBuffer);  // Add special long filename header block
 
 				int nameCharIndex = 0;
 
-				while (nameCharIndex < entry.tarHeader.Name.Length + 1 /+ we've allocated one for the null char, now we must make sure it gets written out +/)
+				while (nameCharIndex < entry.tarHeader.Name.length + 1 /+ we've allocated one for the null char, now we must make sure it gets written out +/)
 				{
-					Array.Clear(blockBuffer, 0, blockBuffer.Length);
+					Array.Clear(blockBuffer, 0, blockBuffer.length);
 					TarHeader.GetAsciiBytes(entry.tarHeader.Name, nameCharIndex, this.blockBuffer, 0, TarBuffer.BlockSize); // This func handles OK the extra char out of string length
 					nameCharIndex += TarBuffer.BlockSize;
 					buffer.WriteBlock(blockBuffer);
@@ -261,7 +256,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			currBytes = 0;
 
 			currSize = entry.IsDirectory ? 0 : entry.Size;
-*/
 		}
 
 		/// <summary>
@@ -275,10 +269,11 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		public void CloseEntry()
 		{
-/*
+			import std.string : format;
+
 			if (assemblyBufferLength > 0)
 			{
-				Array.Clear(assemblyBuffer, assemblyBufferLength, assemblyBuffer.Length - assemblyBufferLength);
+				Array.Clear(assemblyBuffer, assemblyBufferLength, assemblyBuffer.length - assemblyBufferLength);
 
 				buffer.WriteBlock(assemblyBuffer);
 
@@ -288,12 +283,11 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			if (currBytes < currSize)
 			{
-				string errorText = string.Format(
-					"Entry closed at '{0}' before the '{1}' bytes specified in the header were written",
+				string errorText = format(
+					"Entry closed at '%s' before the '%s' bytes specified in the header were written",
 					currBytes, currSize);
 				throw new TarException(errorText);
 			}
-*/
 		}
 
 		/// <summary>
@@ -305,9 +299,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public override void WriteByte(ubyte value)
 		{
-/*
-			Write(new ubyte[] [ value ], 0, 1);
-*/
+			Write([ value ], 0, 1);
 		}
 
 		/// <summary>
@@ -330,7 +322,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public override void Write(ubyte[] buffer, int offset, int count)
 		{
-/*
+			import std.string : format;
+
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
@@ -341,7 +334,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				throw new ArgumentOutOfRangeException(__traits(identifier, offset), "Cannot be negative");
 			}
 
-			if (buffer.Length - offset < count)
+			if (buffer.length - offset < count)
 			{
 				throw new ArgumentException("offset and count combination is invalid");
 			}
@@ -353,7 +346,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			if ((currBytes + count) > currSize)
 			{
-				string errorText = string.Format("request to write '{0}' bytes exceeds size in header of '{1}' bytes",
+				string errorText = format("request to write '%s' bytes exceeds size in header of '%s' bytes",
 					count, this.currSize);
 				throw new ArgumentOutOfRangeException(__traits(identifier, count), errorText);
 			}
@@ -367,16 +360,16 @@ import ICSharpCode.SharpZipLib.Tar;
 			//
 			if (assemblyBufferLength > 0)
 			{
-				if ((assemblyBufferLength + count) >= blockBuffer.Length)
+				if ((assemblyBufferLength + count) >= blockBuffer.length)
 				{
-					int aLen = blockBuffer.Length - assemblyBufferLength;
+					int aLen = cast(int) (blockBuffer.length - assemblyBufferLength);
 
 					Array.Copy(assemblyBuffer, 0, blockBuffer, 0, assemblyBufferLength);
 					Array.Copy(buffer, offset, blockBuffer, assemblyBufferLength, aLen);
 
 					this.buffer.WriteBlock(blockBuffer);
 
-					currBytes += blockBuffer.Length;
+					currBytes += blockBuffer.length;
 
 					offset += aLen;
 					count -= aLen;
@@ -399,7 +392,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			//
 			while (count > 0)
 			{
-				if (count < blockBuffer.Length)
+				if (count < blockBuffer.length)
 				{
 					Array.Copy(buffer, offset, assemblyBuffer, assemblyBufferLength, count);
 					assemblyBufferLength += count;
@@ -408,12 +401,11 @@ import ICSharpCode.SharpZipLib.Tar;
 
 				this.buffer.WriteBlock(buffer, offset);
 
-				int bufferLength = blockBuffer.Length;
+				int bufferLength = cast(int) blockBuffer.length;
 				currBytes += bufferLength;
 				count -= bufferLength;
 				offset += bufferLength;
 			}
-*/
 		}
 
 		/// <summary>
@@ -422,11 +414,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		private void WriteEofBlock()
 		{
-/*
-			Array.Clear(blockBuffer, 0, blockBuffer.Length);
+			Array.Clear(blockBuffer, 0, blockBuffer.length);
 			buffer.WriteBlock(blockBuffer);
 			buffer.WriteBlock(blockBuffer);
-*/
 		}
 
 		//#region Instance Fields

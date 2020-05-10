@@ -423,22 +423,22 @@ import ICSharpCode.SharpZipLib.Tar;
 		public string UserName() { return userName; }
 		public string UserName(string value)
 		{
-/*
+			import System : Substring, Math;
+
 			if (value !is null)
 			{
-				userName = value.Substring(0, Math.Min(UNAMELEN, value.Length));
+				userName = value.Substring(0, Math.Min(UNAMELEN, value.length));
 			}
 			else
 			{
 				string currentUser = "user";
-				if (currentUser.Length > UNAMELEN)
+				if (currentUser.length > UNAMELEN)
 				{
 					currentUser = currentUser.Substring(0, UNAMELEN);
 				}
 				userName = currentUser;
 			}
 			return userName;
-*/return null;
 		}
 
 		/// <summary>
@@ -498,7 +498,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void ParseBuffer(ubyte[] header)
 		{
-/*
+			import System : String;
+
 			if (header is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, header));
@@ -553,11 +554,10 @@ import ICSharpCode.SharpZipLib.Tar;
 				offset += DEVLEN;
 
 				string prefix = ParseName(header, offset, PREFIXLEN).ToString();
-				if (!string.IsNullOrEmpty(prefix)) Name = prefix + '/' + Name;
+				if (!String.IsNullOrEmpty(prefix)) Name = prefix ~ '/' ~ Name;
 			}
 
 			isChecksumValid = Checksum == TarHeader.MakeCheckSum(header);
-*/
 		}
 
 		/// <summary>
@@ -566,7 +566,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="outBuffer">output buffer for header information</param>
 		public void WriteHeader(ubyte[] outBuffer)
 		{
-/*
 			if (outBuffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, outBuffer));
@@ -602,7 +601,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				offset = GetOctalBytes(DevMinor, outBuffer, offset, DEVLEN);
 			}
 
-			for (; offset < outBuffer.Length;)
+			for (; offset < outBuffer.length;)
 			{
 				outBuffer[offset++] = 0;
 			}
@@ -611,7 +610,6 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			GetCheckSumOctalBytes(checksum, outBuffer, csOffset, CHKSUMLEN);
 			isChecksumValid = true;
-*/
 		}
 
 		/// <summary>
@@ -677,12 +675,10 @@ import ICSharpCode.SharpZipLib.Tar;
 
 		static /*internal*/ void RestoreSetValues()
 		{
-/*
 			defaultUserId = userIdAsSet;
 			defaultUser = userNameAsSet;
 			defaultGroupId = groupIdAsSet;
 			defaultGroupName = groupNameAsSet;
-*/
 		}
 
 		// Return value that may be stored in octal or binary. Length must exceed 8.
@@ -765,7 +761,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		static public StringBuilder ParseName(ubyte[] header, int offset, int length)
 		{
-/*
 			if (header is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, header));
@@ -781,7 +776,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				throw new ArgumentOutOfRangeException(__traits(identifier, length), "Cannot be less than zero");
 			}
 
-			if (offset + length > header.Length)
+			if (offset + length > header.length)
 			{
 				throw new ArgumentException("Exceeds header size", __traits(identifier, length));
 			}
@@ -798,7 +793,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			return result;
-*/return null;
 		}
 
 		/// <summary>
@@ -836,7 +830,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The next free index in the <paramref name="buffer"/></returns>
 		public static int GetNameBytes(string name, int nameOffset, ubyte[] buffer, int bufferOffset, int length)
 		{
-/*
 			if (name is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, name));
@@ -849,7 +842,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			int i;
 
-			for (i = 0; i < length && nameOffset + i < name.Length; ++i)
+			for (i = 0; i < length && nameOffset + i < name.length; ++i)
 			{
 				buffer[bufferOffset + i] = cast(ubyte)name[nameOffset + i];
 			}
@@ -860,7 +853,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			return bufferOffset + length;
-*/return 0;
 		}
 
 		/// <summary>
@@ -930,7 +922,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The next free index in the buffer.</returns>
 		public static int GetAsciiBytes(string toAdd, int nameOffset, ubyte[] buffer, int bufferOffset, int length)
 		{
-/*
 			if (toAdd is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, toAdd));
@@ -942,7 +933,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			int i;
-			for (i = 0; i < length && nameOffset + i < toAdd.Length; ++i)
+			for (i = 0; i < length && nameOffset + i < toAdd.length; ++i)
 			{
 				buffer[bufferOffset + i] = cast(ubyte)toAdd[nameOffset + i];
 			}
@@ -950,7 +941,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			for (; i < length; ++i)
 				buffer[bufferOffset + i] = 0;
 			return bufferOffset + length;
-*/return 0;
 		}
 
 		/// <summary>
@@ -1050,14 +1040,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The computed checksum.</returns>
 		private static int ComputeCheckSum(ubyte[] buffer)
 		{
-/*
 			int sum = 0;
-			for (int i = 0; i < buffer.Length; ++i)
+			for (int i = 0; i < buffer.length; ++i)
 			{
 				sum += buffer[i];
 			}
 			return sum;
-*/return 0;
 		}
 
 		/// <summary>
@@ -1067,7 +1055,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The checksum for the buffer</returns>
 		private static int MakeCheckSum(ubyte[] buffer)
 		{
-/*
 			int sum = 0;
 			for (int i = 0; i < CHKSUMOFS; ++i)
 			{
@@ -1079,12 +1066,11 @@ import ICSharpCode.SharpZipLib.Tar;
 				sum += cast(ubyte)' ';
 			}
 
-			for (int i = CHKSUMOFS + CHKSUMLEN; i < buffer.Length; ++i)
+			for (int i = CHKSUMOFS + CHKSUMLEN; i < buffer.length; ++i)
 			{
 				sum += buffer[i];
 			}
 			return sum;
-*/return 0;
 		}
 
 		private static int GetCTime(DateTime dateTime)
@@ -1096,7 +1082,6 @@ import ICSharpCode.SharpZipLib.Tar;
 
 		private static DateTime GetDateTimeFromCTime(long ticks)
 		{
-/*
 			DateTime result;
 
 			try
@@ -1108,7 +1093,6 @@ import ICSharpCode.SharpZipLib.Tar;
 				result = dateTime1970;
 			}
 			return result;
-*/return DateTime.init;
 		}
 
 		//#region Instance Fields
