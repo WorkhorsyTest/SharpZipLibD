@@ -45,72 +45,72 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// The length of the name field in a header buffer.
 		/// </summary>
-		public const int NAMELEN = 100;
+		public static const int NAMELEN = 100;
 
 		/// <summary>
 		/// The length of the mode field in a header buffer.
 		/// </summary>
-		public const int MODELEN = 8;
+		public static const int MODELEN = 8;
 
 		/// <summary>
 		/// The length of the user id field in a header buffer.
 		/// </summary>
-		public const int UIDLEN = 8;
+		public static const int UIDLEN = 8;
 
 		/// <summary>
 		/// The length of the group id field in a header buffer.
 		/// </summary>
-		public const int GIDLEN = 8;
+		public static const int GIDLEN = 8;
 
 		/// <summary>
 		/// The length of the checksum field in a header buffer.
 		/// </summary>
-		public const int CHKSUMLEN = 8;
+		public static const int CHKSUMLEN = 8;
 
 		/// <summary>
 		/// Offset of checksum in a header buffer.
 		/// </summary>
-		public const int CHKSUMOFS = 148;
+		public static const int CHKSUMOFS = 148;
 
 		/// <summary>
 		/// The length of the size field in a header buffer.
 		/// </summary>
-		public const int SIZELEN = 12;
+		public static const int SIZELEN = 12;
 
 		/// <summary>
 		/// The length of the magic field in a header buffer.
 		/// </summary>
-		public const int MAGICLEN = 6;
+		public static const int MAGICLEN = 6;
 
 		/// <summary>
 		/// The length of the version field in a header buffer.
 		/// </summary>
-		public const int VERSIONLEN = 2;
+		public static const int VERSIONLEN = 2;
 
 		/// <summary>
 		/// The length of the modification time field in a header buffer.
 		/// </summary>
-		public const int MODTIMELEN = 12;
+		public static const int MODTIMELEN = 12;
 
 		/// <summary>
 		/// The length of the user name field in a header buffer.
 		/// </summary>
-		public const int UNAMELEN = 32;
+		public static const int UNAMELEN = 32;
 
 		/// <summary>
 		/// The length of the group name field in a header buffer.
 		/// </summary>
-		public const int GNAMELEN = 32;
+		public static const int GNAMELEN = 32;
 
 		/// <summary>
 		/// The length of the devices field in a header buffer.
 		/// </summary>
-		public const int DEVLEN = 8;
+		public static const int DEVLEN = 8;
 
 		/// <summary>
 		/// The length of the name prefix field in a header buffer.
 		/// </summary>
-		public const int PREFIXLEN = 155;
+		public static const int PREFIXLEN = 155;
 
 		//
 		// LF_ constants represent the "type" of an entry
@@ -119,123 +119,123 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		///  The "old way" of indicating a normal file.
 		/// </summary>
-		public const ubyte LF_OLDNORM = 0;
+		public static const ubyte LF_OLDNORM = 0;
 
 		/// <summary>
 		/// Normal file type.
 		/// </summary>
-		public const ubyte LF_NORMAL = cast(ubyte)'0';
+		public static const ubyte LF_NORMAL = cast(ubyte)'0';
 
 		/// <summary>
 		/// Link file type.
 		/// </summary>
-		public const ubyte LF_LINK = cast(ubyte)'1';
+		public static const ubyte LF_LINK = cast(ubyte)'1';
 
 		/// <summary>
 		/// Symbolic link file type.
 		/// </summary>
-		public const ubyte LF_SYMLINK = cast(ubyte)'2';
+		public static const ubyte LF_SYMLINK = cast(ubyte)'2';
 
 		/// <summary>
 		/// Character device file type.
 		/// </summary>
-		public const ubyte LF_CHR = cast(ubyte)'3';
+		public static const ubyte LF_CHR = cast(ubyte)'3';
 
 		/// <summary>
 		/// Block device file type.
 		/// </summary>
-		public const ubyte LF_BLK = cast(ubyte)'4';
+		public static const ubyte LF_BLK = cast(ubyte)'4';
 
 		/// <summary>
 		/// Directory file type.
 		/// </summary>
-		public const ubyte LF_DIR = cast(ubyte)'5';
+		public static const ubyte LF_DIR = cast(ubyte)'5';
 
 		/// <summary>
 		/// FIFO (pipe) file type.
 		/// </summary>
-		public const ubyte LF_FIFO = cast(ubyte)'6';
+		public static const ubyte LF_FIFO = cast(ubyte)'6';
 
 		/// <summary>
 		/// Contiguous file type.
 		/// </summary>
-		public const ubyte LF_CONTIG = cast(ubyte)'7';
+		public static const ubyte LF_CONTIG = cast(ubyte)'7';
 
 		/// <summary>
 		/// Posix.1 2001 global extended header
 		/// </summary>
-		public const ubyte LF_GHDR = cast(ubyte)'g';
+		public static const ubyte LF_GHDR = cast(ubyte)'g';
 
 		/// <summary>
 		/// Posix.1 2001 extended header
 		/// </summary>
-		public const ubyte LF_XHDR = cast(ubyte)'x';
+		public static const ubyte LF_XHDR = cast(ubyte)'x';
 
 		// POSIX allows for upper case ascii type as extensions
 
 		/// <summary>
 		/// Solaris access control list file type
 		/// </summary>
-		public const ubyte LF_ACL = cast(ubyte)'A';
+		public static const ubyte LF_ACL = cast(ubyte)'A';
 
 		/// <summary>
 		/// GNU dir dump file type
 		/// This is a dir entry that contains the names of files that were in the
 		/// dir at the time the dump was made
 		/// </summary>
-		public const ubyte LF_GNU_DUMPDIR = cast(ubyte)'D';
+		public static const ubyte LF_GNU_DUMPDIR = cast(ubyte)'D';
 
 		/// <summary>
 		/// Solaris Extended Attribute File
 		/// </summary>
-		public const ubyte LF_EXTATTR = cast(ubyte)'E';
+		public static const ubyte LF_EXTATTR = cast(ubyte)'E';
 
 		/// <summary>
 		/// Inode (metadata only) no file content
 		/// </summary>
-		public const ubyte LF_META = cast(ubyte)'I';
+		public static const ubyte LF_META = cast(ubyte)'I';
 
 		/// <summary>
 		/// Identifies the next file on the tape as having a long link name
 		/// </summary>
-		public const ubyte LF_GNU_LONGLINK = cast(ubyte)'K';
+		public static const ubyte LF_GNU_LONGLINK = cast(ubyte)'K';
 
 		/// <summary>
 		/// Identifies the next file on the tape as having a long name
 		/// </summary>
-		public const ubyte LF_GNU_LONGNAME = cast(ubyte)'L';
+		public static const ubyte LF_GNU_LONGNAME = cast(ubyte)'L';
 
 		/// <summary>
 		/// Continuation of a file that began on another volume
 		/// </summary>
-		public const ubyte LF_GNU_MULTIVOL = cast(ubyte)'M';
+		public static const ubyte LF_GNU_MULTIVOL = cast(ubyte)'M';
 
 		/// <summary>
 		/// For storing filenames that dont fit in the main header (old GNU)
 		/// </summary>
-		public const ubyte LF_GNU_NAMES = cast(ubyte)'N';
+		public static const ubyte LF_GNU_NAMES = cast(ubyte)'N';
 
 		/// <summary>
 		/// GNU Sparse file
 		/// </summary>
-		public const ubyte LF_GNU_SPARSE = cast(ubyte)'S';
+		public static const ubyte LF_GNU_SPARSE = cast(ubyte)'S';
 
 		/// <summary>
 		/// GNU Tape/volume header ignore on extraction
 		/// </summary>
-		public const ubyte LF_GNU_VOLHDR = cast(ubyte)'V';
+		public static const ubyte LF_GNU_VOLHDR = cast(ubyte)'V';
 
 		/// <summary>
 		/// The magic tag representing a POSIX tar archive.  (would be written with a trailing NULL)
 		/// </summary>
-		public const string TMAGIC = "ustar";
+		public static const string TMAGIC = "ustar";
 
 		/// <summary>
 		/// The magic tag representing an old GNU tar archive where version is included in magic and overwrites it
 		/// </summary>
-		public const string GNU_TMAGIC = "ustar  ";
+		public static const string GNU_TMAGIC = "ustar  ";
 
-		private const long timeConversionFactor = 10000000L;           // 1 tick == 100 nanoseconds
+		private static const long timeConversionFactor = 10000000L;           // 1 tick == 100 nanoseconds
 		private static /*readonly*/ DateTime dateTime1970 = DateTime(1970, 1, 1, 0, 0, 0, 0);
 
 		//#endregion Constants
