@@ -874,7 +874,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// Ensures that resources are freed and other cleanup operations are performed
 		/// when the garbage collector reclaims the <see cref="TarArchive"/>.
 		/// </summary>
-		~TarArchive()
+		~this()
 		{
 			Dispose(false);
 		}
