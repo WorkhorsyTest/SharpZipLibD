@@ -206,7 +206,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			if (readBuffer !is null)
 			{
-				int sz = (numToRead > readBuffer.Length) ? readBuffer.Length : (int)numToRead;
+				int sz = (numToRead > readBuffer.Length) ? readBuffer.Length : cast(int)numToRead;
 
 				Array.Copy(readBuffer, 0, buffer, offset, sz);
 
@@ -236,7 +236,7 @@ import ICSharpCode.SharpZipLib.Tar;
 					throw new TarException("unexpected EOF with " + numToRead + " bytes unread");
 				}
 
-				auto sz = (int)numToRead;
+				auto sz = cast(int)numToRead;
 				int recLen = rec.Length;
 
 				if (recLen > sz)
@@ -338,7 +338,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			for (long num = skipCount; num > 0;)
 			{
-				int toRead = num > skipBuf.Length ? skipBuf.Length : (int)num;
+				int toRead = num > skipBuf.Length ? skipBuf.Length : cast(int)num;
 				int numRead = Read(skipBuf, 0, toRead);
 
 				if (numRead == -1)
@@ -447,7 +447,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 						while (numToRead > 0)
 						{
-							int numRead = this.Read(nameBuffer, 0, (numToRead > nameBuffer.Length ? nameBuffer.Length : (int)numToRead));
+							int numRead = this.Read(nameBuffer, 0, (numToRead > nameBuffer.Length ? nameBuffer.Length : cast(int)numToRead));
 
 							if (numRead == -1)
 							{
@@ -476,7 +476,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 						while (numToRead > 0)
 						{
-							int numRead = this.Read(nameBuffer, 0, (numToRead > nameBuffer.Length ? nameBuffer.Length : (int)numToRead));
+							int numRead = this.Read(nameBuffer, 0, (numToRead > nameBuffer.Length ? nameBuffer.Length : cast(int)numToRead));
 
 							if (numRead == -1)
 							{

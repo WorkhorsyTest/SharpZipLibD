@@ -714,7 +714,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			string tempFileName = null;
 			string entryFilename = sourceEntry.File;
 
-			auto entry = (TarEntry)sourceEntry.Clone();
+			auto entry = cast(TarEntry)sourceEntry.Clone();
 
 			if (applyUserInfoOverrides)
 			{
@@ -745,7 +745,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 								}
 								ubyte[] data = Encoding.ASCII.GetBytes(line);
 								outStream.Write(data, 0, data.Length);
-								outStream.WriteByte((ubyte)'\n');
+								outStream.WriteByte(castcast(ubyte)'\n');
 							}
 
 							outStream.Flush();
@@ -892,7 +892,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		{
 			using (FileStream fs = File.OpenRead(filename))
 			{
-				int sampleSize = Math.Min(4096, (int)fs.Length);
+				int sampleSize = Math.Min(4096, cast(int)fs.Length);
 				ubyte[] content = new ubyte[sampleSize];
 
 				int bytesRead = fs.Read(content, 0, sampleSize);

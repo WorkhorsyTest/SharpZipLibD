@@ -369,8 +369,8 @@ import ICSharpCode.SharpZipLib.Tar;
 					break;
 				}
 
-				offset += (int)numBytes;
-				bytesNeeded -= (int)numBytes;
+				offset += cast(int)numBytes;
+				bytesNeeded -= cast(int)numBytes;
 			}
 
 			currentRecordIndex++;

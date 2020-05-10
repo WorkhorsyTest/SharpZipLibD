@@ -66,7 +66,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				throw new ArgumentNullException(nameof(header));
 			}
 
-			this.header = (TarHeader)header.Clone();
+			this.header = cast(TarHeader)header.Clone();
 		}
 
 		//#endregion Constructors
@@ -81,7 +81,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			auto entry = new TarEntry();
 			entry.file = file;
-			entry.header = (TarHeader)header.Clone();
+			entry.header = cast(TarHeader)header.Clone();
 			entry.Name = Name;
 			return entry;
 		}

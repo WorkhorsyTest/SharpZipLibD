@@ -124,106 +124,106 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Normal file type.
 		/// </summary>
-		public const ubyte LF_NORMAL = (ubyte)'0';
+		public const ubyte LF_NORMAL = cast(ubyte)'0';
 
 		/// <summary>
 		/// Link file type.
 		/// </summary>
-		public const ubyte LF_LINK = (ubyte)'1';
+		public const ubyte LF_LINK = cast(ubyte)'1';
 
 		/// <summary>
 		/// Symbolic link file type.
 		/// </summary>
-		public const ubyte LF_SYMLINK = (ubyte)'2';
+		public const ubyte LF_SYMLINK = cast(ubyte)'2';
 
 		/// <summary>
 		/// Character device file type.
 		/// </summary>
-		public const ubyte LF_CHR = (ubyte)'3';
+		public const ubyte LF_CHR = cast(ubyte)'3';
 
 		/// <summary>
 		/// Block device file type.
 		/// </summary>
-		public const ubyte LF_BLK = (ubyte)'4';
+		public const ubyte LF_BLK = cast(ubyte)'4';
 
 		/// <summary>
 		/// Directory file type.
 		/// </summary>
-		public const ubyte LF_DIR = (ubyte)'5';
+		public const ubyte LF_DIR = cast(ubyte)'5';
 
 		/// <summary>
 		/// FIFO (pipe) file type.
 		/// </summary>
-		public const ubyte LF_FIFO = (ubyte)'6';
+		public const ubyte LF_FIFO = cast(ubyte)'6';
 
 		/// <summary>
 		/// Contiguous file type.
 		/// </summary>
-		public const ubyte LF_CONTIG = (ubyte)'7';
+		public const ubyte LF_CONTIG = cast(ubyte)'7';
 
 		/// <summary>
 		/// Posix.1 2001 global extended header
 		/// </summary>
-		public const ubyte LF_GHDR = (ubyte)'g';
+		public const ubyte LF_GHDR = cast(ubyte)'g';
 
 		/// <summary>
 		/// Posix.1 2001 extended header
 		/// </summary>
-		public const ubyte LF_XHDR = (ubyte)'x';
+		public const ubyte LF_XHDR = cast(ubyte)'x';
 
 		// POSIX allows for upper case ascii type as extensions
 
 		/// <summary>
 		/// Solaris access control list file type
 		/// </summary>
-		public const ubyte LF_ACL = (ubyte)'A';
+		public const ubyte LF_ACL = cast(ubyte)'A';
 
 		/// <summary>
 		/// GNU dir dump file type
 		/// This is a dir entry that contains the names of files that were in the
 		/// dir at the time the dump was made
 		/// </summary>
-		public const ubyte LF_GNU_DUMPDIR = (ubyte)'D';
+		public const ubyte LF_GNU_DUMPDIR = cast(ubyte)'D';
 
 		/// <summary>
 		/// Solaris Extended Attribute File
 		/// </summary>
-		public const ubyte LF_EXTATTR = (ubyte)'E';
+		public const ubyte LF_EXTATTR = cast(ubyte)'E';
 
 		/// <summary>
 		/// Inode (metadata only) no file content
 		/// </summary>
-		public const ubyte LF_META = (ubyte)'I';
+		public const ubyte LF_META = cast(ubyte)'I';
 
 		/// <summary>
 		/// Identifies the next file on the tape as having a long link name
 		/// </summary>
-		public const ubyte LF_GNU_LONGLINK = (ubyte)'K';
+		public const ubyte LF_GNU_LONGLINK = cast(ubyte)'K';
 
 		/// <summary>
 		/// Identifies the next file on the tape as having a long name
 		/// </summary>
-		public const ubyte LF_GNU_LONGNAME = (ubyte)'L';
+		public const ubyte LF_GNU_LONGNAME = cast(ubyte)'L';
 
 		/// <summary>
 		/// Continuation of a file that began on another volume
 		/// </summary>
-		public const ubyte LF_GNU_MULTIVOL = (ubyte)'M';
+		public const ubyte LF_GNU_MULTIVOL = cast(ubyte)'M';
 
 		/// <summary>
 		/// For storing filenames that dont fit in the main header (old GNU)
 		/// </summary>
-		public const ubyte LF_GNU_NAMES = (ubyte)'N';
+		public const ubyte LF_GNU_NAMES = cast(ubyte)'N';
 
 		/// <summary>
 		/// GNU Sparse file
 		/// </summary>
-		public const ubyte LF_GNU_SPARSE = (ubyte)'S';
+		public const ubyte LF_GNU_SPARSE = cast(ubyte)'S';
 
 		/// <summary>
 		/// GNU Tape/volume header ignore on extraction
 		/// </summary>
-		public const ubyte LF_GNU_VOLHDR = (ubyte)'V';
+		public const ubyte LF_GNU_VOLHDR = cast(ubyte)'V';
 
 		/// <summary>
 		/// The magic tag representing a POSIX tar archive.  (would be written with a trailing NULL)
@@ -504,13 +504,13 @@ import ICSharpCode.SharpZipLib.Tar;
 			name = ParseName(header, offset, NAMELEN).ToString();
 			offset += NAMELEN;
 
-			mode = (int)ParseOctal(header, offset, MODELEN);
+			mode = cast(int)ParseOctal(header, offset, MODELEN);
 			offset += MODELEN;
 
-			UserId = (int)ParseOctal(header, offset, UIDLEN);
+			UserId = cast(int)ParseOctal(header, offset, UIDLEN);
 			offset += UIDLEN;
 
-			GroupId = (int)ParseOctal(header, offset, GIDLEN);
+			GroupId = cast(int)ParseOctal(header, offset, GIDLEN);
 			offset += GIDLEN;
 
 			Size = ParseBinaryOrOctal(header, offset, SIZELEN);
@@ -519,7 +519,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			ModTime = GetDateTimeFromCTime(ParseOctal(header, offset, MODTIMELEN));
 			offset += MODTIMELEN;
 
-			checksum = (int)ParseOctal(header, offset, CHKSUMLEN);
+			checksum = cast(int)ParseOctal(header, offset, CHKSUMLEN);
 			offset += CHKSUMLEN;
 
 			TypeFlag = header[offset++];
@@ -541,10 +541,10 @@ import ICSharpCode.SharpZipLib.Tar;
 				GroupName = ParseName(header, offset, GNAMELEN).ToString();
 				offset += GNAMELEN;
 
-				DevMajor = (int)ParseOctal(header, offset, DEVLEN);
+				DevMajor = cast(int)ParseOctal(header, offset, DEVLEN);
 				offset += DEVLEN;
 
-				DevMinor = (int)ParseOctal(header, offset, DEVLEN);
+				DevMinor = cast(int)ParseOctal(header, offset, DEVLEN);
 				offset += DEVLEN;
 
 				string prefix = ParseName(header, offset, PREFIXLEN).ToString();
@@ -578,7 +578,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			int csOffset = offset;
 			for (int c = 0; c < CHKSUMLEN; ++c)
 			{
-				outBuffer[offset++] = (ubyte)' ';
+				outBuffer[offset++] = cast(ubyte)' ';
 			}
 
 			outBuffer[offset++] = TypeFlag;
@@ -715,14 +715,14 @@ import ICSharpCode.SharpZipLib.Tar;
 					break;
 				}
 
-				if (header[i] == (ubyte)' ' || header[i] == '0')
+				if (header[i] == cast(ubyte)' ' || header[i] == '0')
 				{
 					if (stillPadding)
 					{
 						continue;
 					}
 
-					if (header[i] == (ubyte)' ')
+					if (header[i] == cast(ubyte)' ')
 					{
 						break;
 					}
@@ -781,7 +781,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				{
 					break;
 				}
-				result.Append((char)header[i]);
+				result.Append(cast(char)header[i]);
 			}
 
 			return result;
@@ -836,7 +836,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			for (i = 0; i < length && nameOffset + i < name.Length; ++i)
 			{
-				buffer[bufferOffset + i] = (ubyte)name[nameOffset + i];
+				buffer[bufferOffset + i] = cast(ubyte)name[nameOffset + i];
 			}
 
 			for (; i < length; ++i)
@@ -927,7 +927,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			int i;
 			for (i = 0; i < length && nameOffset + i < toAdd.Length; ++i)
 			{
-				buffer[bufferOffset + i] = (ubyte)toAdd[nameOffset + i];
+				buffer[bufferOffset + i] = cast(ubyte)toAdd[nameOffset + i];
 			}
 			// If length is beyond the toAdd string length (which is OK by the prev loop condition), eg if a field has fixed length and the string is shorter, make sure all of the extra chars are written as NULLs, so that the reader func would ignore them and get back the original string
 			for (; i < length; ++i)
@@ -970,14 +970,14 @@ import ICSharpCode.SharpZipLib.Tar;
 			{
 				for (long v = value; (localIndex >= 0) && (v > 0); --localIndex)
 				{
-					buffer[offset + localIndex] = (ubyte)((ubyte)'0' + (ubyte)(v & 7));
+					buffer[offset + localIndex] = cast(ubyte)(cast(ubyte)'0' + cast(ubyte)(v & 7));
 					v >>= 3;
 				}
 			}
 
 			for (; localIndex >= 0; --localIndex)
 			{
-				buffer[offset + localIndex] = (ubyte)'0';
+				buffer[offset + localIndex] = cast(ubyte)'0';
 			}
 
 			return offset + length;
@@ -998,7 +998,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			   // Put value as binary, right-justified into the buffer. Set high order bit of left-most ubyte.
 				for (int pos = length - 1; pos > 0; pos--)
 				{
-					buffer[offset + pos] = (ubyte)value;
+					buffer[offset + pos] = cast(ubyte)value;
 					value = value >> 8;
 				}
 				buffer[offset] = 0x80;
@@ -1055,7 +1055,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			for (int i = 0; i < CHKSUMLEN; ++i)
 			{
-				sum += (ubyte)' ';
+				sum += cast(ubyte)' ';
 			}
 
 			for (int i = CHKSUMOFS + CHKSUMLEN; i < buffer.Length; ++i)
@@ -1067,7 +1067,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 		private static int GetCTime(DateTime dateTime)
 		{
-			return unchecked((int)((dateTime.Ticks - dateTime1970.Ticks) / timeConversionFactor));
+			return unchecked(cast(int)((dateTime.Ticks - dateTime1970.Ticks) / timeConversionFactor));
 		}
 
 		private static DateTime GetDateTimeFromCTime(long ticks)
