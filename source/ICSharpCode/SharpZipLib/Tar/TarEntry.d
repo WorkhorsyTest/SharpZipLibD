@@ -77,7 +77,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Clone this tar entry.
 		/// </summary>
 		/// <returns>Returns a clone of this entry.</returns>
-		public object Clone()
+		public Object Clone()
 		{
 			auto entry = new TarEntry();
 			entry.file = file;
@@ -122,7 +122,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// True if the entries are equal; false if not.
 		/// </returns>
-		public override bool Equals(object obj)
+		public override bool Equals(Object obj)
 		{
 			auto localEntry = cast(TarEntry) obj;
 

@@ -479,7 +479,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Create a new <see cref="TarHeader"/> that is a copy of the current instance.
 		/// </summary>
 		/// <returns>A new <see cref="Object"/> that is a copy of the current instance.</returns>
-		public object Clone()
+		public Object Clone()
 		{
 			return this.MemberwiseClone();
 		}
@@ -620,7 +620,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <param name="obj">The object to compare with.</param>
 		/// <returns>true if the objects are equal, false otherwise.</returns>
-		public override bool Equals(object obj)
+		public override bool Equals(Object obj)
 		{
 			auto localHeader = cast(TarHeader) obj;
 
