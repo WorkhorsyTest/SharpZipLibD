@@ -111,7 +111,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				throw new ArgumentNullException(nameof(inputStream));
 			}
 
-			auto tarStream = inputStream as TarInputStream;
+			auto tarStream = cast(TarInputStream) inputStream;
 
 			TarArchive result;
 			if (tarStream !is null)
@@ -158,7 +158,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				throw new ArgumentNullException(nameof(outputStream));
 			}
 
-			auto tarStream = outputStream as TarOutputStream;
+			auto tarStream = cast(TarOutputStream) outputStream;
 
 			TarArchive result;
 			if (tarStream !is null)

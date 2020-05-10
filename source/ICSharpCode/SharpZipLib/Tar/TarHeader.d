@@ -622,7 +622,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>true if the objects are equal, false otherwise.</returns>
 		public override bool Equals(object obj)
 		{
-			auto localHeader = obj as TarHeader;
+			auto localHeader = cast(TarHeader) obj;
 
 			bool result;
 			if (localHeader !is null)

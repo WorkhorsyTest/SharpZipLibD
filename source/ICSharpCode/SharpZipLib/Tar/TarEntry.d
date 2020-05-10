@@ -124,7 +124,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public override bool Equals(object obj)
 		{
-			auto localEntry = obj as TarEntry;
+			auto localEntry = cast(TarEntry) obj;
 
 			if (localEntry !is null)
 			{
