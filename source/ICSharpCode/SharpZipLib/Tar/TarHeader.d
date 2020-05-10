@@ -405,7 +405,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <exception cref="ArgumentNullException">Thrown when attempting to set Version to null.</exception>
 		public string Version()
 		{
-			return version;
+			return _version;
 		}
 
 		public string Version(string value)
@@ -414,7 +414,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			{
 				throw new ArgumentNullException(__traits(identifier, value));
 			}
-			return version = value;
+			return _version = value;
 		}
 
 		/// <summary>
@@ -1098,7 +1098,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		private ubyte typeFlag;
 		private string linkName;
 		private string magic;
-		private string version;
+		private string _version;
 		private string userName;
 		private string groupName;
 		private int devMajor;
