@@ -248,7 +248,7 @@ import ICSharpCode.SharpZipLib.Tar : TarException, TarHeader, TarEntry, TarBuffe
 		/// <param name= "translateAsciiFiles">
 		/// If true, translate ascii text files.
 		/// </param>
-		//deprecated("Use the AsciiTranslate property")
+		deprecated("Use the AsciiTranslate property")
 		public void SetAsciiTranslation(bool translateAsciiFiles)
 		{
 			if (isDisposed)
@@ -486,7 +486,7 @@ import ICSharpCode.SharpZipLib.Tar : TarException, TarHeader, TarEntry, TarBuffe
 		/// <summary>
 		/// Close the archive.
 		/// </summary>
-		//deprecated("Use Close instead")
+		deprecated("Use Close instead")
 		public void CloseArchive()
 		{
 			Close();

@@ -300,7 +300,7 @@ import ICSharpCode.SharpZipLib.Tar : TarHeader, TarBuffer, TarEntry, TarExceptio
 		/// <returns>
 		/// TarBuffer record size.
 		/// </returns>
-		//deprecated("Use RecordSize property instead")
+		deprecated("Use RecordSize property instead")
 		public int GetRecordSize()
 		{
 			return tarBuffer.RecordSize;
