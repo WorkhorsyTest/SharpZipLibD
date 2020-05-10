@@ -122,7 +122,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// True if the entries are equal; false if not.
 		/// </returns>
-		public override bool Equals(Object obj)
+		public /*override*/ bool Equals(Object obj)
 		{
 			auto localEntry = cast(TarEntry) obj;
 
@@ -137,7 +137,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Derive a Hash value for the current <see cref="Object"/>
 		/// </summary>
 		/// <returns>A Hash code for the current <see cref="Object"/></returns>
-		public override int GetHashCode()
+		public /*override*/ int GetHashCode()
 		{
 			return Name.GetHashCode();
 		}

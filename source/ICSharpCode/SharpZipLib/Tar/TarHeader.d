@@ -610,7 +610,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Get a hash code for the current object.
 		/// </summary>
 		/// <returns>A hash code for the current object.</returns>
-		public override int GetHashCode()
+		public /*override*/ int GetHashCode()
 		{
 			return Name.GetHashCode();
 		}
@@ -620,7 +620,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <param name="obj">The object to compare with.</param>
 		/// <returns>true if the objects are equal, false otherwise.</returns>
-		public override bool Equals(Object obj)
+		public /*override*/ bool Equals(Object obj)
 		{
 			auto localHeader = cast(TarHeader) obj;
 
