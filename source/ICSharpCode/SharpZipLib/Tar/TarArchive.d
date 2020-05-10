@@ -597,8 +597,10 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 
 				if (process)
 				{
-					using (auto outputStream = File.Create(destFile))
 					{
+						auto outputStream = File.Create(destFile);
+						scope (exit) outputStream.dispose();
+
 						if (this.asciiTranslate)
 						{
 							// May need to translate the file.
@@ -621,8 +623,10 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 
 			if (asciiTrans)
 			{
-				using (auto outw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true))
 				{
+					auto outw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true);
+					scope (exit) outw.dispose();
+
 					ubyte[] rdbuf = new ubyte[32 * 1024];
 
 					while (true)
@@ -732,10 +736,14 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				{
 					tempFileName = Path.GetTempFileName();
 
-					using (StreamReader inStream = File.OpenText(entryFilename))
 					{
-						using (Stream outStream = File.Create(tempFileName))
+						StreamReader inStream = File.OpenText(entryFilename);
+						scope (exit) inStream.dispose();
+
 						{
+							Stream outStream = File.Create(tempFileName);
+							scope (exit) outStream.dispose();
+
 							while (true)
 							{
 								string line = inStream.ReadLine();
@@ -792,8 +800,10 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			}
 			else
 			{
-				using (Stream inputStream = File.OpenRead(entryFilename))
 				{
+					Stream inputStream = File.OpenRead(entryFilename);
+					scope (exit) inputStream.dispose();
+
 					ubyte[] localBuffer = new ubyte[32 * 1024];
 					while (true)
 					{
@@ -890,8 +900,10 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		// and that all non text files contain one of these values
 		private static bool IsBinary(string filename)
 		{
-			using (FileStream fs = File.OpenRead(filename))
 			{
+				FileStream fs = File.OpenRead(filename);
+				scope (exit) fs.dispose();
+
 				int sampleSize = Math.Min(4096, cast(int)fs.Length);
 				ubyte[] content = new ubyte[sampleSize];
 
