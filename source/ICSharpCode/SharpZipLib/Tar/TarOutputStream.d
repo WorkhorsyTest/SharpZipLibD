@@ -297,7 +297,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public override void WriteByte(ubyte value)
 		{
-			Write(new ubyte[] { value }, 0, 1);
+			Write(new ubyte[] [ value ], 0, 1);
 		}
 
 		/// <summary>
