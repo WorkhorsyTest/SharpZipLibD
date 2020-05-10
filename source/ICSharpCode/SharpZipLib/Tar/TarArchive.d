@@ -927,9 +927,9 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		private bool asciiTranslate;
 
 		private int userId;
-		private string userName = string.Empty;
+		private string userName = String.Empty;
 		private int groupId;
-		private string groupName = string.Empty;
+		private string groupName = String.Empty;
 
 		private string rootPath;
 		private string pathPrefix;
