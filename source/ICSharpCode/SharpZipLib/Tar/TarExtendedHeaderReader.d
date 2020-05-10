@@ -22,8 +22,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		private char[] charBuffer;
 
 		private /*readonly*/ StringBuilder sb = new StringBuilder();
-		private /*readonly*/ Decoder decoder = Encoding.UTF8.GetDecoder();
-
+/*
+		private readonly Decoder decoder = Encoding.UTF8.GetDecoder();
+*/
 		private int state = LENGTH;
 
 		private static /*readonly*/ ubyte[] StateNext = new[] { cast(ubyte)' ', cast(ubyte)'=', cast(ubyte)'\n' };
@@ -71,10 +72,13 @@ import ICSharpCode.SharpZipLib.Tar;
 
 		private void Flush()
 		{
+/*
 			decoder.Convert(byteBuffer, 0, bbIndex, charBuffer, 0, 4, false, out int bytesUsed, out int charsUsed, out bool completed);
 
 			sb.Append(charBuffer, 0, charsUsed);
 			ResetBuffers();
+*/
+throw new NotImplementedException("FIXME");
 		}
 
 		private void ResetBuffers()

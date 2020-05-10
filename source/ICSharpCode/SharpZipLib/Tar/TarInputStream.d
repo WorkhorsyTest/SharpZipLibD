@@ -487,7 +487,7 @@ import ICSharpCode.SharpZipLib.Tar;
 							numToRead -= numRead;
 						}
 
-						if (xhr.Headers.TryGetValue("path", out string name))
+						if (xhr.Headers.TryGetValue("path", name))
 						{
 							longName = new StringBuilder(name);
 						}
