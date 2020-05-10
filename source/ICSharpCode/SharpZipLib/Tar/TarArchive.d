@@ -35,8 +35,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Client hook allowing detailed information to be reported during processing
 		/// </summary>
+/*
 		public event ProgressMessageHandler ProgressMessageEvent;
-
+*/
 		/// <summary>
 		/// Raises the ProgressMessage event
 		/// </summary>
@@ -44,11 +45,14 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="message">message for this event.  Null is no message</param>
 		protected /*virtual*/ void OnProgressMessageEvent(TarEntry entry, string message)
 		{
+/*
 			ProgressMessageHandler handler = ProgressMessageEvent;
 			if (handler != null)
 			{
 				handler(this, entry, message);
 			}
+*/
+throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event too");
 		}
 
 		//#region Constructors
