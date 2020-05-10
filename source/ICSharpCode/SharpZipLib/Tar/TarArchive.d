@@ -753,7 +753,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 								}
 								ubyte[] data = Encoding.ASCII.GetBytes(line);
 								outStream.Write(data, 0, data.Length);
-								outStream.WriteByte(castcast(ubyte)'\n');
+								outStream.WriteByte(cast(ubyte)'\n');
 							}
 
 							outStream.Flush();
