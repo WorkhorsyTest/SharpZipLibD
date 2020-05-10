@@ -7,7 +7,7 @@ import ICSharpCode.SharpZipLib.Tar;
 	/// <summary>
 	/// Used to advise clients of 'events' while processing archives
 	/// </summary>
-	public delegate void ProgressMessageHandler(TarArchive archive, TarEntry entry, string message);
+	public alias ProgressMessageHandler = void delegate(TarArchive archive, TarEntry entry, string message);
 
 	/// <summary>
 	/// The TarArchive class implements the concept of a
