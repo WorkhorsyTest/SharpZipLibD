@@ -1,5 +1,5 @@
-import System;
-import System.IO;
+import System : DateTime, ArgumentNullException, String, EndsWith, StartsWith, IndexOf, Substring, Replace, StringComparison;
+import System.IO : Directory, File, FileInfo, Path;
 
 import ICSharpCode.SharpZipLib.Tar;
 

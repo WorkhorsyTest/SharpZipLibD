@@ -1,5 +1,5 @@
-import System.Collections.Generic;
-import System.Text;
+import System.Collections.Generic : Dictionary;
+import System.Text : Decoder, Encoding, StringBuilder;
 
 import ICSharpCode.SharpZipLib.Tar;
 

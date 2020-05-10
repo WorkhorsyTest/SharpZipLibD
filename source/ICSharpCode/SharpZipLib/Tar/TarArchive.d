@@ -1,6 +1,6 @@
-import System;
-import System.IO;
-import System.Text;
+import System : Math, BaseException, String, IDisposable, ObjectDisposedException, ArgumentNullException, ArgumentException, NotImplementedException;
+import System.IO : Path, File, Stream, StreamReader, StreamWriter, FileStream, FileInfo, FileAttributes, Directory;
+import System.Text : Encoding, UTF8Encoding;
 
 import ICSharpCode.SharpZipLib.Tar;
 

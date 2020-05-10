@@ -1,5 +1,5 @@
-import System;
-import System.Text;
+import System : DateTime, ArgumentException, ArgumentOutOfRangeException, ArgumentNullException;
+import System.Text : StringBuilder;
 
 import ICSharpCode.SharpZipLib.Tar;
 

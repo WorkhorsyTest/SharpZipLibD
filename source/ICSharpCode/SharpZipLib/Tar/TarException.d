@@ -1,5 +1,6 @@
 import System;
 import System.Runtime.Serialization;
+import ICSharpCode.SharpZipLib : SharpZipBaseException;
 
 import ICSharpCode.SharpZipLib.Tar;
 
