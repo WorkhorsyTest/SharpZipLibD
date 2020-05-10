@@ -45,7 +45,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// The size of a block in a tar archive in bytes.
 		/// </summary>
 		/// <remarks>This is 512 bytes.</remarks>
-		public const int BlockSize = 512;
+		public static const int BlockSize = 512;
 
 		/// <summary>
 		/// The number of blocks in a default record.
@@ -53,7 +53,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <remarks>
 		/// The default value is 20 blocks per record.
 		/// </remarks>
-		public const int DefaultBlockFactor = 20;
+		public static const int DefaultBlockFactor = 20;
 
 		/// <summary>
 		/// The size in bytes of a default record.
@@ -61,7 +61,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <remarks>
 		/// The default size is 10KB.
 		/// </remarks>
-		public const int DefaultRecordSize = BlockSize * DefaultBlockFactor;
+		public static const int DefaultRecordSize = BlockSize * DefaultBlockFactor;
 
 		//#endregion Constants
 

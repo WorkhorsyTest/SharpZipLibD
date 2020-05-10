@@ -2,7 +2,7 @@ import System : Math, BaseException, String, IDisposable, ObjectDisposedExceptio
 import System.IO : Path, File, Stream, StreamReader, StreamWriter, FileStream, FileInfo, FileAttributes, Directory;
 import System.Text : Encoding, UTF8Encoding;
 
-import ICSharpCode.SharpZipLib.Tar;
+import ICSharpCode.SharpZipLib.Tar : TarException, TarHeader, TarEntry, TarBuffer, TarInputStream, TarOutputStream;
 
 	/// <summary>
 	/// Used to advise clients of 'events' while processing archives
