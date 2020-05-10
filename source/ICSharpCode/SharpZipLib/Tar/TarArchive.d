@@ -52,7 +52,6 @@ import ICSharpCode.SharpZipLib.Tar : TarException, TarHeader, TarEntry, TarBuffe
 				handler(this, entry, message);
 			}
 */
-throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event too");
 		}
 
 		//#region Constructors
