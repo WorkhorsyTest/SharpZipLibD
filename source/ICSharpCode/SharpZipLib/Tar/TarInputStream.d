@@ -20,7 +20,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="inputStream">stream to source data from</param>
 		public this(Stream inputStream)
 		{
+/*
 			this(inputStream, TarBuffer.DefaultBlockFactor);
+*/
 		}
 
 		/// <summary>
@@ -30,8 +32,10 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="blockFactor">block factor to apply to archive</param>
 		public this(Stream inputStream, int blockFactor)
 		{
+/*
 			this.inputStream = inputStream;
 			tarBuffer = TarBuffer.CreateInputTarBuffer(inputStream, blockFactor);
+*/
 		}
 
 		//#endregion Constructors
@@ -155,6 +159,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>A ubyte cast to an int; -1 if the at the end of the stream.</returns>
 		public override int ReadByte()
 		{
+/*
 			ubyte[] oneByteBuffer = new ubyte[1];
 			int num = Read(oneByteBuffer, 0, 1);
 			if (num <= 0)
@@ -163,6 +168,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				return -1;
 			}
 			return oneByteBuffer[0];
+*/return 0;
 		}
 
 		/// <summary>
@@ -185,6 +191,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public override int Read(ubyte[] buffer, int offset, int count)
 		{
+/*
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
@@ -259,6 +266,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			entryOffset += totalRead;
 
 			return totalRead;
+*/return 0;
 		}
 
 		/// <summary>
@@ -267,10 +275,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		protected override void Dispose(bool disposing)
 		{
+/*
 			if (disposing)
 			{
 				tarBuffer.Close();
 			}
+*/
 		}
 
 		//#endregion Stream Overrides
@@ -330,6 +340,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void Skip(long skipCount)
 		{
+/*
 			// TODO: REVIEW efficiency of TarInputStream.Skip
 			// This is horribly inefficient, but it ensures that we
 			// properly skip over bytes via the TarBuffer...
@@ -348,6 +359,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 				num -= numRead;
 			}
+*/
 		}
 
 		/// <summary>
@@ -391,6 +403,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public TarEntry GetNextEntry()
 		{
+/*
 			if (hasHitEOF)
 			{
 				return null;
@@ -544,6 +557,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				}
 			}
 			return currentEntry;
+*/return null;
 		}
 
 		/// <summary>
@@ -555,6 +569,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void CopyEntryContents(Stream outputStream)
 		{
+/*
 			ubyte[] tempBuffer = new ubyte[32 * 1024];
 
 			while (true)
@@ -566,10 +581,12 @@ import ICSharpCode.SharpZipLib.Tar;
 				}
 				outputStream.Write(tempBuffer, 0, numRead);
 			}
+*/
 		}
 
 		private void SkipToNextEntry()
 		{
+/*
 			long numToSkip = entrySize - entryOffset;
 
 			if (numToSkip > 0)
@@ -578,6 +595,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			readBuffer = null;
+*/
 		}
 
 		/// <summary>
@@ -631,7 +649,9 @@ import ICSharpCode.SharpZipLib.Tar;
 			/// <returns>A new <see cref="TarEntry"/></returns>
 			public TarEntry CreateEntry(string name)
 			{
+/*
 				return TarEntry.CreateTarEntry(name);
+*/return null;
 			}
 
 			/// <summary>
@@ -641,7 +661,9 @@ import ICSharpCode.SharpZipLib.Tar;
 			/// <returns>A new <see cref="TarEntry"/></returns>
 			public TarEntry CreateEntryFromFile(string fileName)
 			{
+/*
 				return TarEntry.CreateEntryFromFile(fileName);
+*/return null;
 			}
 
 			/// <summary>

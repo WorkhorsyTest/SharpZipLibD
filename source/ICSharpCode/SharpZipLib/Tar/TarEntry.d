@@ -124,6 +124,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public /*override*/ bool Equals(Object obj)
 		{
+/*
 			auto localEntry = cast(TarEntry) obj;
 
 			if (localEntry !is null)
@@ -131,6 +132,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				return Name.Equals(localEntry.Name);
 			}
 			return false;
+*/return false;
 		}
 
 		/// <summary>
@@ -139,7 +141,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>A Hash code for the current <see cref="Object"/></returns>
 		public /*override*/ int GetHashCode()
 		{
+/*
 			return Name.GetHashCode();
+*/return 0;
 		}
 
 		/// <summary>
@@ -155,12 +159,14 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public bool IsDescendent(TarEntry toTest)
 		{
+/*
 			if (toTest is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, toTest));
 			}
 
 			return toTest.Name.StartsWith(Name, StringComparison.Ordinal);
+*/return false;
 		}
 
 		/// <summary>
@@ -308,6 +314,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public bool IsDirectory()
 		{
+/*
 			if (file !is null)
 			{
 				return Directory.Exists(file);
@@ -321,6 +328,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				}
 			}
 			return false;
+*/return false;
 		}
 
 		/// <summary>
@@ -334,6 +342,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void GetFileTarHeader(TarHeader header, string file)
 		{
+/*
 			if (header is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, header));
@@ -355,7 +364,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				name = name.Substring(Directory.GetCurrentDirectory().Length);
 			}
 
-			/*
+			/+
 						if (Path.DirectorySeparatorChar == '\\')
 						{
 							// check if the OS is Windows
@@ -371,7 +380,7 @@ import ICSharpCode.SharpZipLib.Tar;
 								}
 							}
 						}
-			*/
+			+/
 
 			name = name.Replace(Path.DirectorySeparatorChar, '/');
 
@@ -407,6 +416,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			header.ModTime = System.IO.File.GetLastWriteTime(file.Replace('/', Path.DirectorySeparatorChar)).ToUniversalTime();
 			header.DevMajor = 0;
 			header.DevMinor = 0;
+*/
 		}
 
 		/// <summary>
@@ -418,6 +428,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public TarEntry[] GetDirectoryEntries()
 		{
+/*
 			if ((file is null) || !Directory.Exists(file))
 			{
 				return new TarEntry[0];
@@ -432,6 +443,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			return result;
+*/return null;
 		}
 
 		/// <summary>
@@ -457,7 +469,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		static public void AdjustEntryName(ubyte[] buffer, string newName)
 		{
+/*
 			TarHeader.GetNameBytes(newName, buffer, 0, TarHeader.NAMELEN);
+*/
 		}
 
 		/// <summary>
@@ -471,6 +485,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		static public void NameTarHeader(TarHeader header, string name)
 		{
+/*
 			if (header is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, header));
@@ -499,6 +514,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			header.DevMajor = 0;
 			header.DevMinor = 0;
+*/
 		}
 
 		//#region Instance Fields

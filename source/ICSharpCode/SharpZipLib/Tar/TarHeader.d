@@ -423,6 +423,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		public string UserName() { return userName; }
 		public string UserName(string value)
 		{
+/*
 			if (value !is null)
 			{
 				userName = value.Substring(0, Math.Min(UNAMELEN, value.Length));
@@ -437,6 +438,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				userName = currentUser;
 			}
 			return userName;
+*/return null;
 		}
 
 		/// <summary>
@@ -481,7 +483,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>A new <see cref="Object"/> that is a copy of the current instance.</returns>
 		public Object Clone()
 		{
+/*
 			return this.MemberwiseClone();
+*/return null;
 		}
 
 		//#endregion ICloneable Members
@@ -494,6 +498,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void ParseBuffer(ubyte[] header)
 		{
+/*
 			if (header is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, header));
@@ -552,6 +557,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			isChecksumValid = Checksum == TarHeader.MakeCheckSum(header);
+*/
 		}
 
 		/// <summary>
@@ -560,6 +566,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="outBuffer">output buffer for header information</param>
 		public void WriteHeader(ubyte[] outBuffer)
 		{
+/*
 			if (outBuffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, outBuffer));
@@ -604,6 +611,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			GetCheckSumOctalBytes(checksum, outBuffer, csOffset, CHKSUMLEN);
 			isChecksumValid = true;
+*/
 		}
 
 		/// <summary>
@@ -612,7 +620,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>A hash code for the current object.</returns>
 		public /*override*/ int GetHashCode()
 		{
+/*
 			return Name.GetHashCode();
+*/return 0;
 		}
 
 		/// <summary>
@@ -667,10 +677,12 @@ import ICSharpCode.SharpZipLib.Tar;
 
 		static /*internal*/ void RestoreSetValues()
 		{
+/*
 			defaultUserId = userIdAsSet;
 			defaultUser = userNameAsSet;
 			defaultGroupId = groupIdAsSet;
 			defaultGroupName = groupNameAsSet;
+*/
 		}
 
 		// Return value that may be stored in octal or binary. Length must exceed 8.
@@ -753,6 +765,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		static public StringBuilder ParseName(ubyte[] header, int offset, int length)
 		{
+/*
 			if (header is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, header));
@@ -785,6 +798,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			return result;
+*/return null;
 		}
 
 		/// <summary>
@@ -822,6 +836,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The next free index in the <paramref name="buffer"/></returns>
 		public static int GetNameBytes(string name, int nameOffset, ubyte[] buffer, int bufferOffset, int length)
 		{
+/*
 			if (name is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, name));
@@ -845,6 +860,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			return bufferOffset + length;
+*/return 0;
 		}
 
 		/// <summary>
@@ -914,6 +930,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The next free index in the buffer.</returns>
 		public static int GetAsciiBytes(string toAdd, int nameOffset, ubyte[] buffer, int bufferOffset, int length)
 		{
+/*
 			if (toAdd is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, toAdd));
@@ -933,6 +950,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			for (; i < length; ++i)
 				buffer[bufferOffset + i] = 0;
 			return bufferOffset + length;
+*/return 0;
 		}
 
 		/// <summary>
@@ -1032,12 +1050,14 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The computed checksum.</returns>
 		private static int ComputeCheckSum(ubyte[] buffer)
 		{
+/*
 			int sum = 0;
 			for (int i = 0; i < buffer.Length; ++i)
 			{
 				sum += buffer[i];
 			}
 			return sum;
+*/return 0;
 		}
 
 		/// <summary>
@@ -1047,6 +1067,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The checksum for the buffer</returns>
 		private static int MakeCheckSum(ubyte[] buffer)
 		{
+/*
 			int sum = 0;
 			for (int i = 0; i < CHKSUMOFS; ++i)
 			{
@@ -1063,15 +1084,19 @@ import ICSharpCode.SharpZipLib.Tar;
 				sum += buffer[i];
 			}
 			return sum;
+*/return 0;
 		}
 
 		private static int GetCTime(DateTime dateTime)
 		{
+/*
 			return unchecked(cast(int)((dateTime.Ticks - dateTime1970.Ticks) / timeConversionFactor));
+*/return 0;
 		}
 
 		private static DateTime GetDateTimeFromCTime(long ticks)
 		{
+/*
 			DateTime result;
 
 			try
@@ -1083,6 +1108,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				result = dateTime1970;
 			}
 			return result;
+*/return DateTime.init;
 		}
 
 		//#region Instance Fields

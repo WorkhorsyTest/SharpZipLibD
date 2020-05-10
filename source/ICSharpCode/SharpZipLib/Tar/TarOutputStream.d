@@ -19,7 +19,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="outputStream">stream to write to</param>
 		public this(Stream outputStream)
 		{
+/*
 			this(outputStream, TarBuffer.DefaultBlockFactor);
+*/
 		}
 
 		/// <summary>
@@ -29,6 +31,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="blockFactor">blocking factor</param>
 		public this(Stream outputStream, int blockFactor)
 		{
+/*
 			if (outputStream is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, outputStream));
@@ -39,6 +42,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			assemblyBuffer = new ubyte[TarBuffer.BlockSize];
 			blockBuffer = new ubyte[TarBuffer.BlockSize];
+*/
 		}
 
 		//#endregion Constructors
@@ -218,6 +222,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void PutNextEntry(TarEntry entry)
 		{
+/*
 			if (entry is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, entry));
@@ -241,7 +246,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 				int nameCharIndex = 0;
 
-				while (nameCharIndex < entry.tarHeader.Name.Length + 1 /* we've allocated one for the null char, now we must make sure it gets written out */)
+				while (nameCharIndex < entry.tarHeader.Name.Length + 1 /+ we've allocated one for the null char, now we must make sure it gets written out +/)
 				{
 					Array.Clear(blockBuffer, 0, blockBuffer.Length);
 					TarHeader.GetAsciiBytes(entry.tarHeader.Name, nameCharIndex, this.blockBuffer, 0, TarBuffer.BlockSize); // This func handles OK the extra char out of string length
@@ -256,6 +261,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			currBytes = 0;
 
 			currSize = entry.IsDirectory ? 0 : entry.Size;
+*/
 		}
 
 		/// <summary>
@@ -269,6 +275,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		public void CloseEntry()
 		{
+/*
 			if (assemblyBufferLength > 0)
 			{
 				Array.Clear(assemblyBuffer, assemblyBufferLength, assemblyBuffer.Length - assemblyBufferLength);
@@ -286,6 +293,7 @@ import ICSharpCode.SharpZipLib.Tar;
 					currBytes, currSize);
 				throw new TarException(errorText);
 			}
+*/
 		}
 
 		/// <summary>
@@ -297,7 +305,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public override void WriteByte(ubyte value)
 		{
+/*
 			Write(new ubyte[] [ value ], 0, 1);
+*/
 		}
 
 		/// <summary>
@@ -320,6 +330,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public override void Write(ubyte[] buffer, int offset, int count)
 		{
+/*
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
@@ -402,6 +413,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				count -= bufferLength;
 				offset += bufferLength;
 			}
+*/
 		}
 
 		/// <summary>
@@ -410,9 +422,11 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		private void WriteEofBlock()
 		{
+/*
 			Array.Clear(blockBuffer, 0, blockBuffer.Length);
 			buffer.WriteBlock(blockBuffer);
 			buffer.WriteBlock(blockBuffer);
+*/
 		}
 
 		//#region Instance Fields

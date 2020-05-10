@@ -78,7 +78,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			sb.Append(charBuffer, 0, charsUsed);
 			ResetBuffers();
 */
-throw new NotImplementedException("FIXME");
 		}
 
 		private void ResetBuffers()
