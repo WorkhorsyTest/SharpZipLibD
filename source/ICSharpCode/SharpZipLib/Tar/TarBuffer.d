@@ -119,7 +119,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>A new <see cref="TarBuffer"/> suitable for input.</returns>
 		public static TarBuffer CreateInputTarBuffer(Stream inputStream)
 		{
-			if (inputStream == null)
+			if (inputStream is null)
 			{
 				throw new ArgumentNullException(nameof(inputStream));
 			}
@@ -135,7 +135,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>A new <see cref="TarBuffer"/> suitable for input.</returns>
 		public static TarBuffer CreateInputTarBuffer(Stream inputStream, int blockFactor)
 		{
-			if (inputStream == null)
+			if (inputStream is null)
 			{
 				throw new ArgumentNullException(nameof(inputStream));
 			}
@@ -160,7 +160,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>A new <see cref="TarBuffer"/> suitable for output.</returns>
 		public static TarBuffer CreateOutputTarBuffer(Stream outputStream)
 		{
-			if (outputStream == null)
+			if (outputStream is null)
 			{
 				throw new ArgumentNullException(nameof(outputStream));
 			}
@@ -176,7 +176,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>A new <see cref="TarBuffer"/> suitable for output.</returns>
 		public static TarBuffer CreateOutputTarBuffer(Stream outputStream, int blockFactor)
 		{
-			if (outputStream == null)
+			if (outputStream is null)
 			{
 				throw new ArgumentNullException(nameof(outputStream));
 			}
@@ -203,7 +203,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			recordSize = archiveBlockFactor * BlockSize;
 			recordBuffer = new ubyte[RecordSize];
 
-			if (inputStream != null)
+			if (inputStream !is null)
 			{
 				currentRecordIndex = -1;
 				currentBlockIndex = BlockFactor;
@@ -227,7 +227,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		//deprecated("Use IsEndOfArchiveBlock instead")
 		public bool IsEOFBlock(ubyte[] block)
 		{
-			if (block == null)
+			if (block is null)
 			{
 				throw new ArgumentNullException(nameof(block));
 			}
@@ -259,7 +259,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>Returns true if the block is an EOF block; false otherwise.</returns>
 		public static bool IsEndOfArchiveBlock(ubyte[] block)
 		{
-			if (block == null)
+			if (block is null)
 			{
 				throw new ArgumentNullException(nameof(block));
 			}
@@ -285,7 +285,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		public void SkipBlock()
 		{
-			if (inputStream == null)
+			if (inputStream is null)
 			{
 				throw new TarException("no input stream defined");
 			}
@@ -309,7 +309,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public ubyte[] ReadBlock()
 		{
-			if (inputStream == null)
+			if (inputStream is null)
 			{
 				throw new TarException("TarBuffer.ReadBlock - no input stream defined");
 			}
@@ -337,7 +337,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		private bool ReadRecord()
 		{
-			if (inputStream == null)
+			if (inputStream is null)
 			{
 				throw new TarException("no input stream stream defined");
 			}
@@ -440,12 +440,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void WriteBlock(ubyte[] block)
 		{
-			if (block == null)
+			if (block is null)
 			{
 				throw new ArgumentNullException(nameof(block));
 			}
 
-			if (outputStream == null)
+			if (outputStream is null)
 			{
 				throw new TarException("TarBuffer.WriteBlock - no output stream defined");
 			}
@@ -479,12 +479,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void WriteBlock(ubyte[] buffer, int offset)
 		{
-			if (buffer == null)
+			if (buffer is null)
 			{
 				throw new ArgumentNullException(nameof(buffer));
 			}
 
-			if (outputStream == null)
+			if (outputStream is null)
 			{
 				throw new TarException("TarBuffer.WriteBlock - no output stream stream defined");
 			}
@@ -516,7 +516,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		private void WriteRecord()
 		{
-			if (outputStream == null)
+			if (outputStream is null)
 			{
 				throw new TarException("TarBuffer.WriteRecord no output stream defined");
 			}
@@ -535,7 +535,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// for the end of a tar stream.</remarks>
 		private void WriteFinalRecord()
 		{
-			if (outputStream == null)
+			if (outputStream is null)
 			{
 				throw new TarException("TarBuffer.WriteFinalRecord no output stream defined");
 			}
@@ -556,7 +556,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		public void Close()
 		{
-			if (outputStream != null)
+			if (outputStream !is null)
 			{
 				WriteFinalRecord();
 
@@ -566,7 +566,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				}
 				outputStream = null;
 			}
-			else if (inputStream != null)
+			else if (inputStream !is null)
 			{
 				if (IsStreamOwner)
 				{

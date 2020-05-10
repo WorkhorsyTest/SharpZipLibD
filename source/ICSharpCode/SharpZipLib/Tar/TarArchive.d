@@ -47,7 +47,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 /*
 			ProgressMessageHandler handler = ProgressMessageEvent;
-			if (handler != null)
+			if (handler !is null)
 			{
 				handler(this, entry, message);
 			}
@@ -70,7 +70,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <param name="stream">The <see cref="TarInputStream"/> to use for input.</param>
 		protected this(TarInputStream stream)
 		{
-			if (stream == null)
+			if (stream is null)
 			{
 				throw new ArgumentNullException(nameof(stream));
 			}
@@ -84,7 +84,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <param name="stream">The <see cref="TarOutputStream"/> to use for output.</param>
 		protected this(TarOutputStream stream)
 		{
-			if (stream == null)
+			if (stream is null)
 			{
 				throw new ArgumentNullException(nameof(stream));
 			}
@@ -106,7 +106,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <returns>Returns a new <see cref="TarArchive"/> suitable for reading from.</returns>
 		public static TarArchive CreateInputTarArchive(Stream inputStream)
 		{
-			if (inputStream == null)
+			if (inputStream is null)
 			{
 				throw new ArgumentNullException(nameof(inputStream));
 			}
@@ -114,7 +114,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			auto tarStream = inputStream as TarInputStream;
 
 			TarArchive result;
-			if (tarStream != null)
+			if (tarStream !is null)
 			{
 				result = new TarArchive(tarStream);
 			}
@@ -133,7 +133,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <returns>Returns a <see cref="TarArchive"/> suitable for reading.</returns>
 		public static TarArchive CreateInputTarArchive(Stream inputStream, int blockFactor)
 		{
-			if (inputStream == null)
+			if (inputStream is null)
 			{
 				throw new ArgumentNullException(nameof(inputStream));
 			}
@@ -153,7 +153,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <returns>Returns a <see cref="TarArchive"/> suitable for writing.</returns>
 		public static TarArchive CreateOutputTarArchive(Stream outputStream)
 		{
-			if (outputStream == null)
+			if (outputStream is null)
 			{
 				throw new ArgumentNullException(nameof(outputStream));
 			}
@@ -161,7 +161,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			auto tarStream = outputStream as TarOutputStream;
 
 			TarArchive result;
-			if (tarStream != null)
+			if (tarStream !is null)
 			{
 				result = new TarArchive(tarStream);
 			}
@@ -180,7 +180,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <returns>Returns a <see cref="TarArchive"/> suitable for writing.</returns>
 		public static TarArchive CreateOutputTarArchive(Stream outputStream, int blockFactor)
 		{
-			if (outputStream == null)
+			if (outputStream is null)
 			{
 				throw new ArgumentNullException(nameof(outputStream));
 			}
@@ -453,11 +453,11 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				throw new ObjectDisposedException("TarArchive");
 			}
 
-			if (tarIn != null)
+			if (tarIn !is null)
 			{
 				return tarIn.RecordSize;
 			}
-			else if (tarOut != null)
+			else if (tarOut !is null)
 			{
 				return tarOut.RecordSize;
 			}
@@ -470,7 +470,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </summary>
 		public bool IsStreamOwner(bool value)
 		{
-			if (tarIn != null)
+			if (tarIn !is null)
 			{
 				return tarIn.IsStreamOwner = value;
 			}
@@ -506,7 +506,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			{
 				TarEntry entry = tarIn.GetNextEntry();
 
-				if (entry == null)
+				if (entry is null)
 				{
 					break;
 				}
@@ -531,7 +531,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			{
 				TarEntry entry = tarIn.GetNextEntry();
 
-				if (entry == null)
+				if (entry is null)
 				{
 					break;
 				}
@@ -668,7 +668,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </param>
 		public void WriteEntry(TarEntry sourceEntry, bool recurse)
 		{
-			if (sourceEntry == null)
+			if (sourceEntry is null)
 			{
 				throw new ArgumentNullException(nameof(sourceEntry));
 			}
@@ -739,7 +739,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 							while (true)
 							{
 								string line = inStream.ReadLine();
-								if (line == null)
+								if (line is null)
 								{
 									break;
 								}
@@ -767,12 +767,12 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				}
 			}
 
-			if (pathPrefix != null)
+			if (pathPrefix !is null)
 			{
-				newName = (newName == null) ? pathPrefix + "/" + entry.Name : pathPrefix + "/" + newName;
+				newName = (newName is null) ? pathPrefix + "/" + entry.Name : pathPrefix + "/" + newName;
 			}
 
-			if (newName != null)
+			if (newName !is null)
 			{
 				entry.Name = newName;
 			}
@@ -838,13 +838,13 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				isDisposed = true;
 				if (disposing)
 				{
-					if (tarOut != null)
+					if (tarOut !is null)
 					{
 						tarOut.Flush();
 						tarOut.Dispose();
 					}
 
-					if (tarIn != null)
+					if (tarIn !is null)
 					{
 						tarIn.Dispose();
 					}

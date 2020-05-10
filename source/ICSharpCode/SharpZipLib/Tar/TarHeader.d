@@ -275,7 +275,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 		public string Name(string value)
 		{
-			if (value == null)
+			if (value is null)
 			{
 				throw new ArgumentNullException(nameof(value));
 			}
@@ -378,7 +378,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		public string LinkName() { return linkName; }
 		public string LinkName(string value)
 		{
-			if (value == null)
+			if (value is null)
 			{
 				throw new ArgumentNullException(nameof(value));
 			}
@@ -392,7 +392,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		public string Magic() { return magic; }
 		public string Magic(string value)
 		{
-			if (value == null)
+			if (value is null)
 			{
 				throw new ArgumentNullException(nameof(value));
 			}
@@ -410,7 +410,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 		public string Version(string value)
 		{
-			if (value == null)
+			if (value is null)
 			{
 				throw new ArgumentNullException(nameof(value));
 			}
@@ -423,7 +423,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		public string UserName() { return userName; }
 		public string UserName(string value)
 		{
-			if (value != null)
+			if (value !is null)
 			{
 				userName = value.Substring(0, Math.Min(UNAMELEN, value.Length));
 			}
@@ -448,7 +448,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		public string GroupName() { return groupName; }
 		public string GroupName(string value)
 		{
-			if (value == null)
+			if (value is null)
 			{
 				groupName = "None";
 			}
@@ -494,7 +494,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void ParseBuffer(ubyte[] header)
 		{
-			if (header == null)
+			if (header is null)
 			{
 				throw new ArgumentNullException(nameof(header));
 			}
@@ -560,7 +560,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="outBuffer">output buffer for header information</param>
 		public void WriteHeader(ubyte[] outBuffer)
 		{
-			if (outBuffer == null)
+			if (outBuffer is null)
 			{
 				throw new ArgumentNullException(nameof(outBuffer));
 			}
@@ -625,7 +625,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			auto localHeader = obj as TarHeader;
 
 			bool result;
-			if (localHeader != null)
+			if (localHeader !is null)
 			{
 				result = (name == localHeader.name)
 					&& (mode == localHeader.mode)
@@ -699,7 +699,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The long equivalent of the octal string.</returns>
 		static public long ParseOctal(ubyte[] header, int offset, int length)
 		{
-			if (header == null)
+			if (header is null)
 			{
 				throw new ArgumentNullException(nameof(header));
 			}
@@ -753,7 +753,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		static public StringBuilder ParseName(ubyte[] header, int offset, int length)
 		{
-			if (header == null)
+			if (header is null)
 			{
 				throw new ArgumentNullException(nameof(header));
 			}
@@ -798,12 +798,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The next free index in the <paramref name="buffer"/></returns>
 		public static int GetNameBytes(StringBuilder name, int nameOffset, ubyte[] buffer, int bufferOffset, int length)
 		{
-			if (name == null)
+			if (name is null)
 			{
 				throw new ArgumentNullException(nameof(name));
 			}
 
-			if (buffer == null)
+			if (buffer is null)
 			{
 				throw new ArgumentNullException(nameof(buffer));
 			}
@@ -822,12 +822,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The next free index in the <paramref name="buffer"/></returns>
 		public static int GetNameBytes(string name, int nameOffset, ubyte[] buffer, int bufferOffset, int length)
 		{
-			if (name == null)
+			if (name is null)
 			{
 				throw new ArgumentNullException(nameof(name));
 			}
 
-			if (buffer == null)
+			if (buffer is null)
 			{
 				throw new ArgumentNullException(nameof(buffer));
 			}
@@ -867,12 +867,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public static int GetNameBytes(StringBuilder name, ubyte[] buffer, int offset, int length)
 		{
-			if (name == null)
+			if (name is null)
 			{
 				throw new ArgumentNullException(nameof(name));
 			}
 
-			if (buffer == null)
+			if (buffer is null)
 			{
 				throw new ArgumentNullException(nameof(buffer));
 			}
@@ -890,12 +890,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The index of the next free ubyte in the buffer</returns>
 		public static int GetNameBytes(string name, ubyte[] buffer, int offset, int length)
 		{
-			if (name == null)
+			if (name is null)
 			{
 				throw new ArgumentNullException(nameof(name));
 			}
 
-			if (buffer == null)
+			if (buffer is null)
 			{
 				throw new ArgumentNullException(nameof(buffer));
 			}
@@ -914,12 +914,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>The next free index in the buffer.</returns>
 		public static int GetAsciiBytes(string toAdd, int nameOffset, ubyte[] buffer, int bufferOffset, int length)
 		{
-			if (toAdd == null)
+			if (toAdd is null)
 			{
 				throw new ArgumentNullException(nameof(toAdd));
 			}
 
-			if (buffer == null)
+			if (buffer is null)
 			{
 				throw new ArgumentNullException(nameof(buffer));
 			}
@@ -955,7 +955,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public static int GetOctalBytes(long value, ubyte[] buffer, int offset, int length)
 		{
-			if (buffer == null)
+			if (buffer is null)
 			{
 				throw new ArgumentNullException(nameof(buffer));
 			}

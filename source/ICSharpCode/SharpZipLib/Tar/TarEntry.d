@@ -61,7 +61,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="header">Header details for entry</param>
 		public this(TarHeader header)
 		{
-			if (header == null)
+			if (header is null)
 			{
 				throw new ArgumentNullException(nameof(header));
 			}
@@ -126,7 +126,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 			auto localEntry = obj as TarEntry;
 
-			if (localEntry != null)
+			if (localEntry !is null)
 			{
 				return Name.Equals(localEntry.Name);
 			}
@@ -155,7 +155,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public bool IsDescendent(TarEntry toTest)
 		{
-			if (toTest == null)
+			if (toTest is null)
 			{
 				throw new ArgumentNullException(nameof(toTest));
 			}
@@ -308,12 +308,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public bool IsDirectory()
 		{
-			if (file != null)
+			if (file !is null)
 			{
 				return Directory.Exists(file);
 			}
 
-			if (header != null)
+			if (header !is null)
 			{
 				if ((header.TypeFlag == TarHeader.LF_DIR) || Name.EndsWith("/", StringComparison.Ordinal))
 				{
@@ -334,12 +334,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void GetFileTarHeader(TarHeader header, string file)
 		{
-			if (header == null)
+			if (header is null)
 			{
 				throw new ArgumentNullException(nameof(header));
 			}
 
-			if (file == null)
+			if (file is null)
 			{
 				throw new ArgumentNullException(nameof(file));
 			}
@@ -418,7 +418,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public TarEntry[] GetDirectoryEntries()
 		{
-			if ((file == null) || !Directory.Exists(file))
+			if ((file is null) || !Directory.Exists(file))
 			{
 				return new TarEntry[0];
 			}
@@ -471,12 +471,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		static public void NameTarHeader(TarHeader header, string name)
 		{
-			if (header == null)
+			if (header is null)
 			{
 				throw new ArgumentNullException(nameof(header));
 			}
 
-			if (name == null)
+			if (name is null)
 			{
 				throw new ArgumentNullException(nameof(name));
 			}

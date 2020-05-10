@@ -29,7 +29,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <param name="blockFactor">blocking factor</param>
 		public this(Stream outputStream, int blockFactor)
 		{
-			if (outputStream == null)
+			if (outputStream is null)
 			{
 				throw new ArgumentNullException(nameof(outputStream));
 			}
@@ -218,7 +218,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void PutNextEntry(TarEntry entry)
 		{
-			if (entry == null)
+			if (entry is null)
 			{
 				throw new ArgumentNullException(nameof(entry));
 			}
@@ -320,7 +320,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public override void Write(ubyte[] buffer, int offset, int count)
 		{
-			if (buffer == null)
+			if (buffer is null)
 			{
 				throw new ArgumentNullException(nameof(buffer));
 			}
