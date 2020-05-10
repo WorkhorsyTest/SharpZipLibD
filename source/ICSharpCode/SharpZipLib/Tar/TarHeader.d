@@ -268,17 +268,18 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Get/set the name for this tar entry.
 		/// </summary>
 		/// <exception cref="ArgumentNullException">Thrown when attempting to set the property to null.</exception>
-		public string Name
+		public string Name()
 		{
-			get { return name; }
-			set
+			return name;
+		}
+
+		public string Name(string value)
+		{
+			if (value == null)
 			{
-				if (value == null)
-				{
-					throw new ArgumentNullException(nameof(value));
-				}
-				name = value;
+				throw new ArgumentNullException(nameof(value));
 			}
+			return name = value;
 		}
 
 		/// <summary>
@@ -294,11 +295,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Get/set the entry's Unix style permission mode.
 		/// </summary>
-		public int Mode
-		{
-			get { return mode; }
-			set { mode = value; }
-		}
+		public int Mode() { return mode; }
+		public int Mode(int value) { return mode = value; }
 
 		/// <summary>
 		/// The entry's user id.
@@ -307,11 +305,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// This is only directly relevant to unix systems.
 		/// The default is zero.
 		/// </remarks>
-		public int UserId
-		{
-			get { return userId; }
-			set { userId = value; }
-		}
+		public int UserId() { return userId; }
+		public int UserId(int value) { return userId = value; }
 
 		/// <summary>
 		/// Get/set the entry's group id.
@@ -320,27 +315,21 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// This is only directly relevant to linux/unix systems.
 		/// The default value is zero.
 		/// </remarks>
-		public int GroupId
-		{
-			get { return groupId; }
-			set { groupId = value; }
-		}
+		public int GroupId() { return groupId; }
+		public int GroupId(int value) { return groupId = value; }
 
 		/// <summary>
 		/// Get/set the entry's size.
 		/// </summary>
 		/// <exception cref="ArgumentOutOfRangeException">Thrown when setting the size to less than zero.</exception>
-		public long Size
+		public long Size() { return size; }
+		public long Size(long value)
 		{
-			get { return size; }
-			set
+			if (value < 0)
 			{
-				if (value < 0)
-				{
-					throw new ArgumentOutOfRangeException(nameof(value), "Cannot be less than zero");
-				}
-				size = value;
+				throw new ArgumentOutOfRangeException(nameof(value), "Cannot be less than zero");
 			}
+			return size = value;
 		}
 
 		/// <summary>
@@ -350,121 +339,104 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// The modification time is only accurate to within a second.
 		/// </remarks>
 		/// <exception cref="ArgumentOutOfRangeException">Thrown when setting the date time to less than 1/1/1970.</exception>
-		public DateTime ModTime
+		public DateTime ModTime() { return modTime; }
+		public DateTime ModTime(DateTime value)
 		{
-			get { return modTime; }
-			set
+			if (value < dateTime1970)
 			{
-				if (value < dateTime1970)
-				{
-					throw new ArgumentOutOfRangeException(nameof(value), "ModTime cannot be before Jan 1st 1970");
-				}
-				modTime = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, value.Second);
+				throw new ArgumentOutOfRangeException(nameof(value), "ModTime cannot be before Jan 1st 1970");
 			}
+			return modTime = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, value.Second);
 		}
 
 		/// <summary>
 		/// Get the entry's checksum.  This is only valid/updated after writing or reading an entry.
 		/// </summary>
-		public int Checksum
+		public int Checksum()
 		{
-			get { return checksum; }
+			return checksum;
 		}
 
 		/// <summary>
 		/// Get value of true if the header checksum is valid, false otherwise.
 		/// </summary>
-		public bool IsChecksumValid
+		public bool IsChecksumValid()
 		{
-			get { return isChecksumValid; }
+			return isChecksumValid;
 		}
 
 		/// <summary>
 		/// Get/set the entry's type flag.
 		/// </summary>
-		public ubyte TypeFlag
-		{
-			get { return typeFlag; }
-			set { typeFlag = value; }
-		}
+		public ubyte TypeFlag() { return typeFlag; }
+		public ubyte TypeFlag(ubyte value) { return typeFlag = value; }
 
 		/// <summary>
 		/// The entry's link name.
 		/// </summary>
 		/// <exception cref="ArgumentNullException">Thrown when attempting to set LinkName to null.</exception>
-		public string LinkName
+		public string LinkName() { return linkName; }
+		public string LinkName(string value)
 		{
-			get { return linkName; }
-			set
+			if (value == null)
 			{
-				if (value == null)
-				{
-					throw new ArgumentNullException(nameof(value));
-				}
-				linkName = value;
+				throw new ArgumentNullException(nameof(value));
 			}
+			return linkName = value;
 		}
 
 		/// <summary>
 		/// Get/set the entry's magic tag.
 		/// </summary>
 		/// <exception cref="ArgumentNullException">Thrown when attempting to set Magic to null.</exception>
-		public string Magic
+		public string Magic() { return magic; }
+		public string Magic(string value)
 		{
-			get { return magic; }
-			set
+			if (value == null)
 			{
-				if (value == null)
-				{
-					throw new ArgumentNullException(nameof(value));
-				}
-				magic = value;
+				throw new ArgumentNullException(nameof(value));
 			}
+			return magic = value;
 		}
 
 		/// <summary>
 		/// The entry's version.
 		/// </summary>
 		/// <exception cref="ArgumentNullException">Thrown when attempting to set Version to null.</exception>
-		public string Version
+		public string Version()
 		{
-			get
-			{
-				return version;
-			}
+			return version;
+		}
 
-			set
+		public string Version(string value)
+		{
+			if (value == null)
 			{
-				if (value == null)
-				{
-					throw new ArgumentNullException(nameof(value));
-				}
-				version = value;
+				throw new ArgumentNullException(nameof(value));
 			}
+			return version = value;
 		}
 
 		/// <summary>
 		/// The entry's user name.
 		/// </summary>
-		public string UserName
+		public string UserName() { return userName; }
+		public string UserName(string value)
 		{
-			get { return userName; }
-			set
+			if (value != null)
 			{
-				if (value != null)
-				{
-					userName = value.Substring(0, Math.Min(UNAMELEN, value.Length));
-				}
-				else
-				{
-					string currentUser = "user";
-					if (currentUser.Length > UNAMELEN)
-					{
-						currentUser = currentUser.Substring(0, UNAMELEN);
-					}
-					userName = currentUser;
-				}
+				userName = value.Substring(0, Math.Min(UNAMELEN, value.Length));
 			}
+			else
+			{
+				string currentUser = "user";
+				if (currentUser.Length > UNAMELEN)
+				{
+					currentUser = currentUser.Substring(0, UNAMELEN);
+				}
+				userName = currentUser;
+			}
+			return userName;
 		}
 
 		/// <summary>
@@ -473,39 +445,31 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <remarks>
 		/// This is only directly relevant to unix systems.
 		/// </remarks>
-		public string GroupName
+		public string GroupName() { return groupName; }
+		public string GroupName(string value)
 		{
-			get { return groupName; }
-			set
+			if (value == null)
 			{
-				if (value == null)
-				{
-					groupName = "None";
-				}
-				else
-				{
-					groupName = value;
-				}
+				groupName = "None";
 			}
+			else
+			{
+				groupName = value;
+			}
+			return groupName;
 		}
 
 		/// <summary>
 		/// Get/set the entry's major device number.
 		/// </summary>
-		public int DevMajor
-		{
-			get { return devMajor; }
-			set { devMajor = value; }
-		}
+		public int DevMajor() { return devMajor; }
+		public int DevMajor(int value) { return devMajor = value; }
 
 		/// <summary>
 		/// Get/set the entry's minor device number.
 		/// </summary>
-		public int DevMinor
-		{
-			get { return devMinor; }
-			set { devMinor = value; }
-		}
+		public int DevMinor() { return devMinor; }
+		public int DevMinor(int value) { return devMinor = value; }
 
 		//#endregion Properties
 

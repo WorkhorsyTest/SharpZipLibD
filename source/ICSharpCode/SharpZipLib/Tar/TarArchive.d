@@ -217,27 +217,24 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// '\n', which is the defacto standard for a TAR archive. This makes
 		/// text files compatible with UNIX.
 		/// </summary>
-		public bool AsciiTranslate
+		public bool AsciiTranslate()
 		{
-			get
+			if (isDisposed)
 			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
-
-				return asciiTranslate;
+				throw new ObjectDisposedException("TarArchive");
 			}
 
-			set
-			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
+			return asciiTranslate;
+		}
 
-				asciiTranslate = value;
+		public bool AsciiTranslate(bool value)
+		{
+			if (isDisposed)
+			{
+				throw new ObjectDisposedException("TarArchive");
 			}
+
+			return asciiTranslate = value;
 		}
 
 		/// <summary>
@@ -261,54 +258,48 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// PathPrefix is added to entry names as they are written if the value is not null.
 		/// A slash character is appended after PathPrefix
 		/// </summary>
-		public string PathPrefix
+		public string PathPrefix()
 		{
-			get
+			if (isDisposed)
 			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
-
-				return pathPrefix;
+				throw new ObjectDisposedException("TarArchive");
 			}
 
-			set
-			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
+			return pathPrefix;
+		}
 
-				pathPrefix = value;
+		public string PathPrefix(string value)
+		{
+			if (isDisposed)
+			{
+				throw new ObjectDisposedException("TarArchive");
 			}
+
+			return pathPrefix = value;
 		}
 
 		/// <summary>
 		/// RootPath is removed from entry names if it is found at the
 		/// beginning of the name.
 		/// </summary>
-		public string RootPath
+		public string RootPath()
 		{
-			get
+			if (isDisposed)
 			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
-
-				return rootPath;
+				throw new ObjectDisposedException("TarArchive");
 			}
 
-			set
+			return rootPath;
+		}
+
+		public string RootPath(string value)
+		{
+			if (isDisposed)
 			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
-				// Convert to forward slashes for matching. Trim trailing / for correct final path
-				rootPath = value.Replace('\\', '/').TrimEnd('/');
+				throw new ObjectDisposedException("TarArchive");
 			}
+			// Convert to forward slashes for matching. Trim trailing / for correct final path
+			return rootPath = value.Replace('\\', '/').TrimEnd('/');
 		}
 
 		/// <summary>
@@ -349,27 +340,24 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Get or set a value indicating if overrides defined by <see cref="SetUserInfo">SetUserInfo</see> should be applied.
 		/// </summary>
 		/// <remarks>If overrides are not applied then the values as set in each header will be used.</remarks>
-		public bool ApplyUserInfoOverrides
+		public bool ApplyUserInfoOverrides()
 		{
-			get
+			if (isDisposed)
 			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
-
-				return applyUserInfoOverrides;
+				throw new ObjectDisposedException("TarArchive");
 			}
 
-			set
-			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
+			return applyUserInfoOverrides;
+		}
 
-				applyUserInfoOverrides = value;
+		public bool ApplyUserInfoOverrides(bool value)
+		{
+			if (isDisposed)
+			{
+				throw new ObjectDisposedException("TarArchive");
 			}
+
+			return applyUserInfoOverrides = value;
 		}
 
 		/// <summary>
@@ -380,17 +368,14 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// The current user id.
 		/// </returns>
-		public int UserId
+		public int UserId()
 		{
-			get
+			if (isDisposed)
 			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
-
-				return userId;
+				throw new ObjectDisposedException("TarArchive");
 			}
+
+			return userId;
 		}
 
 		/// <summary>
@@ -401,17 +386,14 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// The current user name.
 		/// </returns>
-		public string UserName
+		public string UserName()
 		{
-			get
+			if (isDisposed)
 			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
-
-				return userName;
+				throw new ObjectDisposedException("TarArchive");
 			}
+
+			return userName;
 		}
 
 		/// <summary>
@@ -422,17 +404,14 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// The current group id.
 		/// </returns>
-		public int GroupId
+		public int GroupId()
 		{
-			get
+			if (isDisposed)
 			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
-
-				return groupId;
+				throw new ObjectDisposedException("TarArchive");
 			}
+
+			return groupId;
 		}
 
 		/// <summary>
@@ -443,17 +422,14 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// The current group name.
 		/// </returns>
-		public string GroupName
+		public string GroupName()
 		{
-			get
+			if (isDisposed)
 			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
-
-				return groupName;
+				throw new ObjectDisposedException("TarArchive");
 			}
+
+			return groupName;
 		}
 
 		/// <summary>
@@ -466,43 +442,37 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// The record size this archive is using.
 		/// </returns>
-		public int RecordSize
+		public int RecordSize()
 		{
-			get
+			if (isDisposed)
 			{
-				if (isDisposed)
-				{
-					throw new ObjectDisposedException("TarArchive");
-				}
-
-				if (tarIn != null)
-				{
-					return tarIn.RecordSize;
-				}
-				else if (tarOut != null)
-				{
-					return tarOut.RecordSize;
-				}
-				return TarBuffer.DefaultRecordSize;
+				throw new ObjectDisposedException("TarArchive");
 			}
+
+			if (tarIn != null)
+			{
+				return tarIn.RecordSize;
+			}
+			else if (tarOut != null)
+			{
+				return tarOut.RecordSize;
+			}
+			return TarBuffer.DefaultRecordSize;
 		}
 
 		/// <summary>
 		/// Sets the IsStreamOwner property on the underlying stream.
 		/// Set this to false to prevent the Close of the TarArchive from closing the stream.
 		/// </summary>
-		public bool IsStreamOwner
+		public bool IsStreamOwner(bool value)
 		{
-			set
+			if (tarIn != null)
 			{
-				if (tarIn != null)
-				{
-					tarIn.IsStreamOwner = value;
-				}
-				else
-				{
-					tarOut.IsStreamOwner = value;
-				}
+				return tarIn.IsStreamOwner = value;
+			}
+			else
+			{
+				return tarOut.IsStreamOwner = value;
 			}
 		}
 

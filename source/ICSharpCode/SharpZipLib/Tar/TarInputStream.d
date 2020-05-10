@@ -41,58 +41,43 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// When the flag is true <see cref="Stream.Dispose()" /> will close the underlying stream also.
 		/// </summary>
 		/// <remarks>The default value is true.</remarks>
-		public bool IsStreamOwner
-		{
-			get { return tarBuffer.IsStreamOwner; }
-			set { tarBuffer.IsStreamOwner = value; }
-		}
+		public bool IsStreamOwner() { return tarBuffer.IsStreamOwner; }
+		public bool IsStreamOwner(bool value) { return tarBuffer.IsStreamOwner = value; }
 
 		//#region Stream Overrides
 
 		/// <summary>
 		/// Gets a value indicating whether the current stream supports reading
 		/// </summary>
-		public override bool CanRead
+		public override bool CanRead()
 		{
-			get
-			{
-				return inputStream.CanRead;
-			}
+			return inputStream.CanRead;
 		}
 
 		/// <summary>
 		/// Gets a value indicating whether the current stream supports seeking
 		/// This property always returns false.
 		/// </summary>
-		public override bool CanSeek
+		public override bool CanSeek()
 		{
-			get
-			{
-				return false;
-			}
+			return false;
 		}
 
 		/// <summary>
 		/// Gets a value indicating if the stream supports writing.
 		/// This property always returns false.
 		/// </summary>
-		public override bool CanWrite
+		public override bool CanWrite()
 		{
-			get
-			{
-				return false;
-			}
+			return false;
 		}
 
 		/// <summary>
 		/// The length in bytes of the stream
 		/// </summary>
-		public override long Length
+		public override long Length()
 		{
-			get
-			{
-				return inputStream.Length;
-			}
+			return inputStream.Length;
 		}
 
 		/// <summary>
@@ -100,16 +85,13 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Setting the Position is not supported and throws a NotSupportedExceptionNotSupportedException
 		/// </summary>
 		/// <exception cref="NotSupportedException">Any attempt to set position</exception>
-		public override long Position
+		public override long Position()
 		{
-			get
-			{
-				return inputStream.Position;
-			}
-			set
-			{
-				throw new NotSupportedException("TarInputStream Seek not supported");
-			}
+			return inputStream.Position;
+		}
+		public override long Position(long value)
+		{
+			throw new NotSupportedException("TarInputStream Seek not supported");
 		}
 
 		/// <summary>
@@ -305,9 +287,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Get the record size being used by this stream's TarBuffer.
 		/// </summary>
-		public int RecordSize
+		public int RecordSize()
 		{
-			get { return tarBuffer.RecordSize; }
+			return tarBuffer.RecordSize;
 		}
 
 		/// <summary>
@@ -332,12 +314,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// The number of available bytes for the current entry.
 		/// </returns>
-		public long Available
+		public long Available()
 		{
-			get
-			{
-				return entrySize - entryOffset;
-			}
+			return entrySize - entryOffset;
 		}
 
 		/// <summary>
@@ -375,12 +354,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Return a value of true if marking is supported; false otherwise.
 		/// </summary>
 		/// <remarks>Currently marking is not supported, the return value is always false.</remarks>
-		public bool IsMarkSupported
+		public bool IsMarkSupported()
 		{
-			get
-			{
-				return false;
-			}
+			return false;
 		}
 
 		/// <summary>

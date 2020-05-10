@@ -48,69 +48,51 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// When the flag is true <see cref="Stream.Dispose()" /> will close the underlying stream also.
 		/// </summary>
 		/// <remarks>The default value is true.</remarks>
-		public bool IsStreamOwner
-		{
-			get { return buffer.IsStreamOwner; }
-			set { buffer.IsStreamOwner = value; }
-		}
+		public bool IsStreamOwner() { return buffer.IsStreamOwner; }
+		public bool IsStreamOwner(bool value) { return buffer.IsStreamOwner = value; }
 
 		/// <summary>
 		/// true if the stream supports reading; otherwise, false.
 		/// </summary>
-		public override bool CanRead
+		public override bool CanRead()
 		{
-			get
-			{
-				return outputStream.CanRead;
-			}
+			return outputStream.CanRead;
 		}
 
 		/// <summary>
 		/// true if the stream supports seeking; otherwise, false.
 		/// </summary>
-		public override bool CanSeek
+		public override bool CanSeek()
 		{
-			get
-			{
-				return outputStream.CanSeek;
-			}
+			return outputStream.CanSeek;
 		}
 
 		/// <summary>
 		/// true if stream supports writing; otherwise, false.
 		/// </summary>
-		public override bool CanWrite
+		public override bool CanWrite()
 		{
-			get
-			{
-				return outputStream.CanWrite;
-			}
+			return outputStream.CanWrite;
 		}
 
 		/// <summary>
 		/// length of stream in bytes
 		/// </summary>
-		public override long Length
+		public override long Length()
 		{
-			get
-			{
-				return outputStream.Length;
-			}
+			return outputStream.Length;
 		}
 
 		/// <summary>
 		/// gets or sets the position within the current stream.
 		/// </summary>
-		public override long Position
+		public override long Position()
 		{
-			get
-			{
-				return outputStream.Position;
-			}
-			set
-			{
-				outputStream.Position = value;
-			}
+			return outputStream.Position;
+		}
+		public override long Position(long value)
+		{
+			return outputStream.Position = value;
 		}
 
 		/// <summary>
@@ -197,9 +179,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Get the record size being used by this stream's TarBuffer.
 		/// </summary>
-		public int RecordSize
+		public int RecordSize()
 		{
-			get { return buffer.RecordSize; }
+			return buffer.RecordSize;
 		}
 
 		/// <summary>
@@ -217,9 +199,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Get a value indicating wether an entry is open, requiring more data to be written.
 		/// </summary>
-		private bool IsEntryOpen
+		private bool IsEntryOpen()
 		{
-			get { return (currBytes < currSize); }
+			return (currBytes < currSize);
 		}
 
 		/// <summary>

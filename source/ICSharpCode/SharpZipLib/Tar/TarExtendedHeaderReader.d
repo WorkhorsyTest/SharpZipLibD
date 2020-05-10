@@ -87,12 +87,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Returns the parsed headers as key-value strings
 		/// </summary>
-		public Dictionary<string, string> Headers
+		public Dictionary<string, string> Headers()
 		{
-			get
-			{
-				// TODO: Check for invalid state? -NM 2018-07-01
-				return headers;
-			}
+			// TODO: Check for invalid state? -NM 2018-07-01
+			return headers;
 		}
 	}

@@ -169,87 +169,70 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// This entry's TarHeader.
 		/// </returns>
-		public TarHeader TarHeader
+		public TarHeader TarHeader()
 		{
-			get
-			{
-				return header;
-			}
+			return header;
 		}
 
 		/// <summary>
 		/// Get/Set this entry's name.
 		/// </summary>
-		public string Name
+		public string Name()
 		{
-			get
-			{
-				return header.Name;
-			}
-			set
-			{
-				header.Name = value;
-			}
+			return header.Name;
+		}
+		public string Name(string value)
+		{
+			return header.Name = value;
 		}
 
 		/// <summary>
 		/// Get/set this entry's user id.
 		/// </summary>
-		public int UserId
+		public int UserId()
 		{
-			get
-			{
-				return header.UserId;
-			}
-			set
-			{
-				header.UserId = value;
-			}
+			return header.UserId;
+		}
+		public int UserId(int value)
+		{
+			return header.UserId = value;
 		}
 
 		/// <summary>
 		/// Get/set this entry's group id.
 		/// </summary>
-		public int GroupId
+
+		public int GroupId()
 		{
-			get
-			{
-				return header.GroupId;
-			}
-			set
-			{
-				header.GroupId = value;
-			}
+			return header.GroupId;
+		}
+		public int GroupId(int value)
+		{
+			return header.GroupId = value;
 		}
 
 		/// <summary>
 		/// Get/set this entry's user name.
 		/// </summary>
-		public string UserName
+		public string UserName()
 		{
-			get
-			{
-				return header.UserName;
-			}
-			set
-			{
-				header.UserName = value;
-			}
+			return header.UserName;
+		}
+		public string UserName(string value)
+		{
+			return header.UserName = value;
 		}
 
 		/// <summary>
 		/// Get/set this entry's group name.
 		/// </summary>
-		public string GroupName
+		public string GroupName()
 		{
-			get
-			{
-				return header.GroupName;
-			}
-			set
-			{
-				header.GroupName = value;
-			}
+			return header.GroupName;
+		}
+		public string GroupName(string value)
+		{
+			return header.GroupName = value;
 		}
 
 		/// <summary>
@@ -285,16 +268,13 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Get/Set the modification time for this entry
 		/// </summary>
-		public DateTime ModTime
+		public DateTime ModTime()
 		{
-			get
-			{
-				return header.ModTime;
-			}
-			set
-			{
-				header.ModTime = value;
-			}
+			return header.ModTime;
+		}
+		public DateTime ModTime(DateTime value)
+		{
+			return header.ModTime = value;
 		}
 
 		/// <summary>
@@ -303,27 +283,21 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// This entry's file.
 		/// </returns>
-		public string File
+		public string File()
 		{
-			get
-			{
-				return file;
-			}
+			return file;
 		}
 
 		/// <summary>
 		/// Get/set this entry's recorded file size.
 		/// </summary>
-		public long Size
+		public long Size()
 		{
-			get
-			{
-				return header.Size;
-			}
-			set
-			{
-				header.Size = value;
-			}
+			return header.Size;
+		}
+		public long Size(long value)
+		{
+			return header.Size = value;
 		}
 
 		/// <summary>
@@ -332,24 +306,21 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// True if this entry is a directory.
 		/// </returns>
-		public bool IsDirectory
+		public bool IsDirectory()
 		{
-			get
+			if (file != null)
 			{
-				if (file != null)
-				{
-					return Directory.Exists(file);
-				}
-
-				if (header != null)
-				{
-					if ((header.TypeFlag == TarHeader.LF_DIR) || Name.EndsWith("/", StringComparison.Ordinal))
-					{
-						return true;
-					}
-				}
-				return false;
+				return Directory.Exists(file);
 			}
+
+			if (header != null)
+			{
+				if ((header.TypeFlag == TarHeader.LF_DIR) || Name.EndsWith("/", StringComparison.Ordinal))
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		/// <summary>

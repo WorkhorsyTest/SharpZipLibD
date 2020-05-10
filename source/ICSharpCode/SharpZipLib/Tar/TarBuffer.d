@@ -70,12 +70,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <value>The record size in bytes.
 		/// This is equal to the <see cref="BlockFactor"/> multiplied by the <see cref="BlockSize"/></value>
-		public int RecordSize
+		public int RecordSize()
 		{
-			get
-			{
-				return recordSize;
-			}
+			return recordSize;
 		}
 
 		/// <summary>
@@ -93,12 +90,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// Get the Blocking factor for the buffer
 		/// </summary>
 		/// <value>This is the number of blocks in each record.</value>
-		public int BlockFactor
+		public int BlockFactor()
 		{
-			get
-			{
-				return blockFactor;
-			}
+			return blockFactor;
 		}
 
 		/// <summary>
@@ -388,9 +382,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		/// <remarks>Block numbers are zero based values</remarks>
 		/// <seealso cref="RecordSize"/>
-		public int CurrentBlock
+		public int CurrentBlock()
 		{
-			get { return currentBlockIndex; }
+			return currentBlockIndex;
 		}
 
 		/// <summary>
@@ -398,7 +392,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// When the flag is true <see cref="Close" /> will close the underlying stream also.
 		/// </summary>
 		/// <remarks>The default value is true.</remarks>
-		public bool IsStreamOwner { get; set; } = true;
+		public bool IsStreamOwner /*{ get; set; }*/ = true;
 
 		/// <summary>
 		/// Get the current block number, within the current record, zero based.
@@ -421,9 +415,9 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// The current zero based record number.
 		/// </returns>
-		public int CurrentRecord
+		public int CurrentRecord()
 		{
-			get { return currentRecordIndex; }
+			return currentRecordIndex;
 		}
 
 		/// <summary>
