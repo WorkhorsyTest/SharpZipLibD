@@ -1,7 +1,7 @@
-import System;
-import System.IO;
+import System : Array, ArgumentException, ArgumentNullException, ArgumentOutOfRangeException;
+import System.IO : Stream;
 
-import ICSharpCode.SharpZipLib.Tar;
+import ICSharpCode.SharpZipLib.Tar : TarException;
 
 	/// <summary>
 	/// The TarBuffer class implements the tar archive concept
@@ -227,13 +227,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		//deprecated("Use IsEndOfArchiveBlock instead")
 		public bool IsEOFBlock(ubyte[] block)
 		{
-/*
 			if (block is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, block));
 			}
 
-			if (block.Length != BlockSize)
+			if (block.length != BlockSize)
 			{
 				throw new ArgumentException("block length is invalid");
 			}
@@ -247,7 +246,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			return true;
-*/return false;
 		}
 
 		/// <summary>
@@ -261,13 +259,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>Returns true if the block is an EOF block; false otherwise.</returns>
 		public static bool IsEndOfArchiveBlock(ubyte[] block)
 		{
-/*
 			if (block is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, block));
 			}
 
-			if (block.Length != BlockSize)
+			if (block.length != BlockSize)
 			{
 				throw new ArgumentException("block length is invalid");
 			}
@@ -281,7 +278,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			return true;
-*/return false;
 		}
 
 		/// <summary>
@@ -289,7 +285,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		public void SkipBlock()
 		{
-/*
 			if (inputStream is null)
 			{
 				throw new TarException("no input stream defined");
@@ -304,7 +299,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			currentBlockIndex++;
-*/
 		}
 
 		/// <summary>
@@ -315,7 +309,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public ubyte[] ReadBlock()
 		{
-/*
 			if (inputStream is null)
 			{
 				throw new TarException("TarBuffer.ReadBlock - no input stream defined");
@@ -334,7 +327,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			Array.Copy(recordBuffer, (currentBlockIndex * BlockSize), result, 0, BlockSize);
 			currentBlockIndex++;
 			return result;
-*/return null;
 		}
 
 		/// <summary>
@@ -345,7 +337,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		private bool ReadRecord()
 		{
-/*
 			if (inputStream is null)
 			{
 				throw new TarException("no input stream stream defined");
@@ -384,7 +375,6 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			currentRecordIndex++;
 			return true;
-*/return false;
 		}
 
 		/// <summary>
@@ -450,7 +440,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void WriteBlock(ubyte[] block)
 		{
-/*
+			import std.string : format;
+
 			if (block is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, block));
@@ -461,10 +452,10 @@ import ICSharpCode.SharpZipLib.Tar;
 				throw new TarException("TarBuffer.WriteBlock - no output stream defined");
 			}
 
-			if (block.Length != BlockSize)
+			if (block.length != BlockSize)
 			{
-				string errorText = string.Format("TarBuffer.WriteBlock - block to write has length '{0}' which is not the block size of '{1}'",
-					block.Length, BlockSize);
+				string errorText = format("TarBuffer.WriteBlock - block to write has length '%s' which is not the block size of '%s'",
+					block.length, BlockSize);
 				throw new TarException(errorText);
 			}
 
@@ -475,7 +466,6 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			Array.Copy(block, 0, recordBuffer, (currentBlockIndex * BlockSize), BlockSize);
 			currentBlockIndex++;
-*/
 		}
 
 		/// <summary>
@@ -491,7 +481,8 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		public void WriteBlock(ubyte[] buffer, int offset)
 		{
-/*
+			import std.string : format;
+
 			if (buffer is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, buffer));
@@ -502,15 +493,15 @@ import ICSharpCode.SharpZipLib.Tar;
 				throw new TarException("TarBuffer.WriteBlock - no output stream stream defined");
 			}
 
-			if ((offset < 0) || (offset >= buffer.Length))
+			if ((offset < 0) || (offset >= buffer.length))
 			{
 				throw new ArgumentOutOfRangeException(__traits(identifier, offset));
 			}
 
-			if ((offset + BlockSize) > buffer.Length)
+			if ((offset + BlockSize) > buffer.length)
 			{
-				string errorText = string.Format("TarBuffer.WriteBlock - record has length '{0}' with offset '{1}' which is less than the record size of '{2}'",
-					buffer.Length, offset, recordSize);
+				string errorText = format("TarBuffer.WriteBlock - record has length '%s' with offset '%s' which is less than the record size of '%s'",
+					buffer.length, offset, recordSize);
 				throw new TarException(errorText);
 			}
 
@@ -522,7 +513,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			Array.Copy(buffer, offset, recordBuffer, (currentBlockIndex * BlockSize), BlockSize);
 
 			currentBlockIndex++;
-*/
 		}
 
 		/// <summary>
@@ -530,7 +520,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		private void WriteRecord()
 		{
-/*
 			if (outputStream is null)
 			{
 				throw new TarException("TarBuffer.WriteRecord no output stream defined");
@@ -541,7 +530,6 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			currentBlockIndex = 0;
 			currentRecordIndex++;
-*/
 		}
 
 		/// <summary>
@@ -551,7 +539,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// for the end of a tar stream.</remarks>
 		private void WriteFinalRecord()
 		{
-/*
 			if (outputStream is null)
 			{
 				throw new TarException("TarBuffer.WriteFinalRecord no output stream defined");
@@ -565,7 +552,6 @@ import ICSharpCode.SharpZipLib.Tar;
 			}
 
 			outputStream.Flush();
-*/
 		}
 
 		/// <summary>
@@ -574,7 +560,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </summary>
 		public void Close()
 		{
-/*
 			if (outputStream !is null)
 			{
 				WriteFinalRecord();
@@ -593,7 +578,6 @@ import ICSharpCode.SharpZipLib.Tar;
 				}
 				inputStream = null;
 			}
-*/
 		}
 
 		//#region Instance Fields

@@ -526,7 +526,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </param>
 		public void ExtractContents(string destinationDirectory)
 		{
-/*
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
@@ -546,7 +545,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 
 				ExtractEntry(destinationDirectory, entry);
 			}
-*/
 		}
 
 		/// <summary>
@@ -561,7 +559,8 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </param>
 		private void ExtractEntry(string destDir, TarEntry entry)
 		{
-/*
+			import System : Substring, Replace;
+
 			OnProgressMessageEvent(entry, null);
 
 			string name = entry.Name;
@@ -570,7 +569,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			{
 				// NOTE:
 				// for UNC names...  \\machine\share\zoom\beet.txt gives \zoom\beet.txt
-				name = name.Substring(Path.GetPathRoot(name).Length);
+				name = name.Substring(Path.GetPathRoot(name).length);
 			}
 
 			name = name.Replace('/', Path.DirectorySeparatorChar);
@@ -606,7 +605,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				{
 					{
 						auto outputStream = File.Create(destFile);
-						scope (exit) outputStream.dispose();
+						scope (exit) outputStream.destroy();
 
 						if (this.asciiTranslate)
 						{
@@ -621,26 +620,24 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 					}
 				}
 			}
-*/
 		}
 
 		// Extract a TAR entry, and perform an ASCII translation if required.
 		private void ExtractAndTranslateEntry(string destFile, Stream outputStream)
 		{
-/*
 			bool asciiTrans = !IsBinary(destFile);
 
 			if (asciiTrans)
 			{
 				{
 					auto outw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true);
-					scope (exit) outw.dispose();
+					scope (exit) outw.destroy();
 
 					ubyte[] rdbuf = new ubyte[32 * 1024];
 
 					while (true)
 					{
-						int numRead = tarIn.Read(rdbuf, 0, rdbuf.Length);
+						int numRead = tarIn.Read(rdbuf, 0, cast(int)rdbuf.length);
 
 						if (numRead <= 0)
 						{
@@ -664,7 +661,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				// No translation required.
 				tarIn.CopyEntryContents(outputStream);
 			}
-*/
 		}
 
 		/// <summary>
@@ -682,7 +678,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </param>
 		public void WriteEntry(TarEntry sourceEntry, bool recurse)
 		{
-/*
 			if (sourceEntry is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, sourceEntry));
@@ -709,7 +704,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 					TarHeader.RestoreSetValues();
 				}
 			}
-*/
 		}
 
 		/// <summary>
@@ -727,7 +721,8 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </param>
 		private void WriteEntryCore(TarEntry sourceEntry, bool recurse)
 		{
-/*
+			import System : StartsWith, Substring, StringComparison;
+
 			string tempFileName = null;
 			string entryFilename = sourceEntry.File;
 
@@ -751,11 +746,11 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 
 					{
 						StreamReader inStream = File.OpenText(entryFilename);
-						scope (exit) inStream.dispose();
+						scope (exit) inStream.destroy();
 
 						{
 							Stream outStream = File.Create(tempFileName);
-							scope (exit) outStream.dispose();
+							scope (exit) outStream.destroy();
 
 							while (true)
 							{
@@ -765,7 +760,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 									break;
 								}
 								ubyte[] data = Encoding.ASCII.GetBytes(line);
-								outStream.Write(data, 0, data.Length);
+								outStream.Write(data, 0, cast(int) data.length);
 								outStream.WriteByte(cast(ubyte)'\n');
 							}
 
@@ -784,13 +779,13 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			{
 				if (entry.Name.StartsWith(rootPath, StringComparison.OrdinalIgnoreCase))
 				{
-					newName = entry.Name.Substring(rootPath.Length + 1);
+					newName = entry.Name.Substring(rootPath.length + 1);
 				}
 			}
 
 			if (pathPrefix !is null)
 			{
-				newName = (newName is null) ? pathPrefix + "/" + entry.Name : pathPrefix + "/" + newName;
+				newName = (newName is null) ? pathPrefix ~ "/" ~ entry.Name : pathPrefix ~ "/" ~ newName;
 			}
 
 			if (newName !is null)
@@ -805,7 +800,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				if (recurse)
 				{
 					TarEntry[] list = entry.GetDirectoryEntries();
-					for (int i = 0; i < list.Length; ++i)
+					for (int i = 0; i < list.length; ++i)
 					{
 						WriteEntryCore(list[i], recurse);
 					}
@@ -815,12 +810,12 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			{
 				{
 					Stream inputStream = File.OpenRead(entryFilename);
-					scope (exit) inputStream.dispose();
+					scope (exit) inputStream.destroy();
 
 					ubyte[] localBuffer = new ubyte[32 * 1024];
 					while (true)
 					{
-						int numRead = inputStream.Read(localBuffer, 0, localBuffer.Length);
+						int numRead = inputStream.Read(localBuffer, 0, cast(int)localBuffer.length);
 
 						if (numRead <= 0)
 						{
@@ -831,14 +826,13 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 					}
 				}
 
-				if (!string.IsNullOrEmpty(tempFileName))
+				if (!String.IsNullOrEmpty(tempFileName))
 				{
 					File.Delete(tempFileName);
 				}
 
 				tarOut.CloseEntry();
 			}
-*/
 		}
 
 		/// <summary>
@@ -899,7 +893,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 
 		private static void EnsureDirectoryExists(string directoryName)
 		{
-/*
 			if (!Directory.Exists(directoryName))
 			{
 				try
@@ -908,10 +901,9 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				}
 				catch (BaseException e)
 				{
-					throw new TarException("BaseException creating directory '" + directoryName + "', " + e.Message, e);
+					throw new TarException("BaseException creating directory '" ~ directoryName ~ "', " ~ e.msg, e);
 				}
 			}
-*/
 		}
 
 		// TODO: TarArchive - Is there a better way to test for a text file?
@@ -920,10 +912,9 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		// and that all non text files contain one of these values
 		private static bool IsBinary(string filename)
 		{
-/*
 			{
 				FileStream fs = File.OpenRead(filename);
-				scope (exit) fs.dispose();
+				scope (exit) fs.destroy();
 
 				int sampleSize = Math.Min(4096, cast(int)fs.Length);
 				ubyte[] content = new ubyte[sampleSize];
@@ -940,7 +931,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				}
 			}
 			return false;
-*/return false;
 		}
 
 		//#region Instance Fields

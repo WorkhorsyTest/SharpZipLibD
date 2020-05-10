@@ -1,7 +1,7 @@
 import System : DateTime, ArgumentNullException, String, EndsWith, StartsWith, IndexOf, Substring, Replace, StringComparison;
 import System.IO : Directory, File, FileInfo, Path;
 
-import ICSharpCode.SharpZipLib.Tar;
+import ICSharpCode.SharpZipLib.Tar : TarHeader;
 
 	/// <summary>
 	/// This class represents an entry in a Tar archive. It consists
@@ -124,15 +124,13 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public /*override*/ bool Equals(Object obj)
 		{
-/*
 			auto localEntry = cast(TarEntry) obj;
 
 			if (localEntry !is null)
 			{
-				return Name.Equals(localEntry.Name);
+				return Name == localEntry.Name;
 			}
 			return false;
-*/return false;
 		}
 
 		/// <summary>
@@ -159,14 +157,12 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public bool IsDescendent(TarEntry toTest)
 		{
-/*
 			if (toTest is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, toTest));
 			}
 
 			return toTest.Name.StartsWith(Name, StringComparison.Ordinal);
-*/return false;
 		}
 
 		/// <summary>
@@ -314,7 +310,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public bool IsDirectory()
 		{
-/*
 			if (file !is null)
 			{
 				return Directory.Exists(file);
@@ -328,7 +323,6 @@ import ICSharpCode.SharpZipLib.Tar;
 				}
 			}
 			return false;
-*/return false;
 		}
 
 		/// <summary>
@@ -361,7 +355,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			// 23-Jan-2004 GnuTar allows device names in path where the name is not local to the current directory
 			if (name.IndexOf(Directory.GetCurrentDirectory(), StringComparison.Ordinal) == 0)
 			{
-				name = name.Substring(Directory.GetCurrentDirectory().Length);
+				name = name.Substring(Directory.GetCurrentDirectory().length);
 			}
 
 			/+
@@ -399,9 +393,9 @@ import ICSharpCode.SharpZipLib.Tar;
 			{
 				header.Mode = 1003; // Magic number for security access for a UNIX filesystem
 				header.TypeFlag = TarHeader.LF_DIR;
-				if ((header.Name.Length == 0) || header.Name[header.Name.Length - 1] != '/')
+				if ((header.Name.length == 0) || header.Name[header.Name.length - 1] != '/')
 				{
-					header.Name = header.Name + "/";
+					header.Name = header.Name ~ "/";
 				}
 
 				header.Size = 0;
@@ -413,7 +407,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				header.Size = new FileInfo(file.Replace('/', Path.DirectorySeparatorChar)).Length;
 			}
 
-			header.ModTime = System.IO.File.GetLastWriteTime(file.Replace('/', Path.DirectorySeparatorChar)).ToUniversalTime();
+			header.ModTime = File.GetLastWriteTime(file.Replace('/', Path.DirectorySeparatorChar)).ToUniversalTime();
 			header.DevMajor = 0;
 			header.DevMinor = 0;
 */
@@ -428,22 +422,20 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public TarEntry[] GetDirectoryEntries()
 		{
-/*
 			if ((file is null) || !Directory.Exists(file))
 			{
 				return new TarEntry[0];
 			}
 
 			string[] list = Directory.GetFileSystemEntries(file);
-			TarEntry[] result = new TarEntry[list.Length];
+			TarEntry[] result = new TarEntry[list.length];
 
-			for (int i = 0; i < list.Length; ++i)
+			for (int i = 0; i < list.length; ++i)
 			{
 				result[i] = TarEntry.CreateEntryFromFile(list[i]);
 			}
 
 			return result;
-*/return null;
 		}
 
 		/// <summary>
@@ -469,9 +461,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		static public void AdjustEntryName(ubyte[] buffer, string newName)
 		{
-/*
 			TarHeader.GetNameBytes(newName, buffer, 0, TarHeader.NAMELEN);
-*/
 		}
 
 		/// <summary>
@@ -485,7 +475,6 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </param>
 		static public void NameTarHeader(TarHeader header, string name)
 		{
-/*
 			if (header is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, header));
@@ -514,7 +503,6 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			header.DevMajor = 0;
 			header.DevMinor = 0;
-*/
 		}
 
 		//#region Instance Fields
