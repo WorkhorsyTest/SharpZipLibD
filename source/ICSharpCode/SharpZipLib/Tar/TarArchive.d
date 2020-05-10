@@ -70,14 +70,12 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <param name="stream">The <see cref="TarInputStream"/> to use for input.</param>
 		protected this(TarInputStream stream)
 		{
-/*
 			if (stream is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, stream));
 			}
 
 			tarIn = stream;
-*/
 		}
 
 		/// <summary>
@@ -86,14 +84,12 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <param name="stream">The <see cref="TarOutputStream"/> to use for output.</param>
 		protected this(TarOutputStream stream)
 		{
-/*
 			if (stream is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, stream));
 			}
 
 			tarOut = stream;
-*/
 		}
 
 		//#endregion Constructors
@@ -110,7 +106,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <returns>Returns a new <see cref="TarArchive"/> suitable for reading from.</returns>
 		public static TarArchive CreateInputTarArchive(Stream inputStream)
 		{
-/*
 			if (inputStream is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, inputStream));
@@ -128,7 +123,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				result = CreateInputTarArchive(inputStream, TarBuffer.DefaultBlockFactor);
 			}
 			return result;
-*/return null;
 		}
 
 		/// <summary>
@@ -139,19 +133,18 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <returns>Returns a <see cref="TarArchive"/> suitable for reading.</returns>
 		public static TarArchive CreateInputTarArchive(Stream inputStream, int blockFactor)
 		{
-/*
 			if (inputStream is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, inputStream));
 			}
 
-			if (inputStream is TarInputStream)
+			auto tarStream = cast(TarInputStream) inputStream;
+			if (tarStream !is null)
 			{
 				throw new ArgumentException("TarInputStream not valid");
 			}
 
 			return new TarArchive(new TarInputStream(inputStream, blockFactor));
-*/return null;
 		}
 
 		/// <summary>
@@ -161,7 +154,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <returns>Returns a <see cref="TarArchive"/> suitable for writing.</returns>
 		public static TarArchive CreateOutputTarArchive(Stream outputStream)
 		{
-/*
 			if (outputStream is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, outputStream));
@@ -179,7 +171,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				result = CreateOutputTarArchive(outputStream, TarBuffer.DefaultBlockFactor);
 			}
 			return result;
-*/return null;
 		}
 
 		/// <summary>
@@ -190,19 +181,18 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// <returns>Returns a <see cref="TarArchive"/> suitable for writing.</returns>
 		public static TarArchive CreateOutputTarArchive(Stream outputStream, int blockFactor)
 		{
-/*
 			if (outputStream is null)
 			{
 				throw new ArgumentNullException(__traits(identifier, outputStream));
 			}
 
-			if (outputStream is TarOutputStream)
+			auto tarStream = cast(TarOutputStream) outputStream;
+			if (tarStream !is null)
 			{
 				throw new ArgumentException("TarOutputStream is not valid");
 			}
 
 			return new TarArchive(new TarOutputStream(outputStream, blockFactor));
-*/return null;
 		}
 
 		//#endregion Static factory methods
@@ -216,14 +206,12 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </param>
 		public void SetKeepOldFiles(bool keepExistingFiles)
 		{
-/*
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
 			}
 
 			keepOldFiles = keepExistingFiles;
-*/
 		}
 
 		/// <summary>
@@ -237,26 +225,22 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </summary>
 		public bool AsciiTranslate()
 		{
-/*
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
 			}
 
 			return asciiTranslate;
-*/return false;
 		}
 
 		public bool AsciiTranslate(bool value)
 		{
-/*
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
 			}
 
 			return asciiTranslate = value;
-*/return false;
 		}
 
 		/// <summary>
@@ -268,14 +252,12 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		//deprecated("Use the AsciiTranslate property")
 		public void SetAsciiTranslation(bool translateAsciiFiles)
 		{
-/*
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
 			}
 
 			asciiTranslate = translateAsciiFiles;
-*/
 		}
 
 		/// <summary>
@@ -284,26 +266,22 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </summary>
 		public string PathPrefix()
 		{
-/*
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
 			}
 
 			return pathPrefix;
-*/return null;
 		}
 
 		public string PathPrefix(string value)
 		{
-/*
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
 			}
 
 			return pathPrefix = value;
-*/return null;
 		}
 
 		/// <summary>
@@ -322,14 +300,14 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 
 		public string RootPath(string value)
 		{
-/*
+			import System : Replace, TrimEnd;
+
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
 			}
 			// Convert to forward slashes for matching. Trim trailing / for correct final path
 			return rootPath = value.Replace('\\', '/').TrimEnd('/');
-*/return null;
 		}
 
 		/// <summary>
@@ -354,7 +332,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </param>
 		public void SetUserInfo(int userId, string userName, int groupId, string groupName)
 		{
-/*
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
@@ -365,7 +342,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			this.groupId = groupId;
 			this.groupName = groupName;
 			applyUserInfoOverrides = true;
-*/
 		}
 
 		/// <summary>
@@ -476,7 +452,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </returns>
 		public int RecordSize()
 		{
-/*
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
@@ -491,7 +466,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				return tarOut.RecordSize;
 			}
 			return TarBuffer.DefaultRecordSize;
-*/return 0;
 		}
 
 		/// <summary>
@@ -527,7 +501,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 		/// </summary>
 		public void ListContents()
 		{
-/*
 			if (isDisposed)
 			{
 				throw new ObjectDisposedException("TarArchive");
@@ -543,7 +516,6 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				}
 				OnProgressMessageEvent(entry, null);
 			}
-*/
 		}
 
 		/// <summary>
