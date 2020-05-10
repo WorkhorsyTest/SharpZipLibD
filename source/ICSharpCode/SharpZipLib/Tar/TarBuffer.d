@@ -145,7 +145,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				throw new ArgumentOutOfRangeException(nameof(blockFactor), "Factor cannot be negative");
 			}
 
-			var tarBuffer = new TarBuffer();
+			auto tarBuffer = new TarBuffer();
 			tarBuffer.inputStream = inputStream;
 			tarBuffer.outputStream = null;
 			tarBuffer.Initialize(blockFactor);
@@ -186,7 +186,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				throw new ArgumentOutOfRangeException(nameof(blockFactor), "Factor cannot be negative");
 			}
 
-			var tarBuffer = new TarBuffer();
+			auto tarBuffer = new TarBuffer();
 			tarBuffer.inputStream = null;
 			tarBuffer.outputStream = outputStream;
 			tarBuffer.Initialize(blockFactor);

@@ -622,7 +622,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>true if the objects are equal, false otherwise.</returns>
 		public override bool Equals(object obj)
 		{
-			var localHeader = obj as TarHeader;
+			auto localHeader = obj as TarHeader;
 
 			bool result;
 			if (localHeader != null)
@@ -773,7 +773,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				throw new ArgumentException("Exceeds header size", nameof(length));
 			}
 
-			var result = new StringBuilder(length);
+			auto result = new StringBuilder(length);
 
 			for (int i = offset; i < offset + length; ++i)
 			{

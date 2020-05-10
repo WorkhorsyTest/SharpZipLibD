@@ -79,7 +79,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>Returns a clone of this entry.</returns>
 		public object Clone()
 		{
-			var entry = new TarEntry();
+			auto entry = new TarEntry();
 			entry.file = file;
 			entry.header = (TarHeader)header.Clone();
 			entry.Name = Name;
@@ -96,7 +96,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>Returns the newly created <see cref="TarEntry"/></returns>
 		public static TarEntry CreateTarEntry(string name)
 		{
-			var entry = new TarEntry();
+			auto entry = new TarEntry();
 			TarEntry.NameTarHeader(entry.header, name);
 			return entry;
 		}
@@ -109,7 +109,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>Returns the newly created <see cref="TarEntry"/></returns>
 		public static TarEntry CreateEntryFromFile(string fileName)
 		{
-			var entry = new TarEntry();
+			auto entry = new TarEntry();
 			entry.GetFileTarHeader(entry.header, fileName);
 			return entry;
 		}
@@ -124,7 +124,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// </returns>
 		public override bool Equals(object obj)
 		{
-			var localEntry = obj as TarEntry;
+			auto localEntry = obj as TarEntry;
 
 			if (localEntry != null)
 			{

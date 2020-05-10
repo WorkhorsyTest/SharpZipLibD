@@ -111,7 +111,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				throw new ArgumentNullException(nameof(inputStream));
 			}
 
-			var tarStream = inputStream as TarInputStream;
+			auto tarStream = inputStream as TarInputStream;
 
 			TarArchive result;
 			if (tarStream != null)
@@ -158,7 +158,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				throw new ArgumentNullException(nameof(outputStream));
 			}
 
-			var tarStream = outputStream as TarOutputStream;
+			auto tarStream = outputStream as TarOutputStream;
 
 			TarArchive result;
 			if (tarStream != null)
@@ -580,7 +580,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 				EnsureDirectoryExists(parentDirectory);
 
 				bool process = true;
-				var fileInfo = new FileInfo(destFile);
+				auto fileInfo = new FileInfo(destFile);
 				if (fileInfo.Exists)
 				{
 					if (keepOldFiles)
@@ -597,7 +597,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 
 				if (process)
 				{
-					using (var outputStream = File.Create(destFile))
+					using (auto outputStream = File.Create(destFile))
 					{
 						if (this.asciiTranslate)
 						{
@@ -621,7 +621,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 
 			if (asciiTrans)
 			{
-				using (var outw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true))
+				using (auto outw = new StreamWriter(outputStream, new UTF8Encoding(false), 1024, true))
 				{
 					ubyte[] rdbuf = new ubyte[32 * 1024];
 
@@ -714,7 +714,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 			string tempFileName = null;
 			string entryFilename = sourceEntry.File;
 
-			var entry = (TarEntry)sourceEntry.Clone();
+			auto entry = (TarEntry)sourceEntry.Clone();
 
 			if (applyUserInfoOverrides)
 			{

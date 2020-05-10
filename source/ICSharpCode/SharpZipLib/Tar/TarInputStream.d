@@ -236,7 +236,7 @@ import ICSharpCode.SharpZipLib.Tar;
 					throw new TarException("unexpected EOF with " + numToRead + " bytes unread");
 				}
 
-				var sz = (int)numToRead;
+				auto sz = (int)numToRead;
 				int recLen = rec.Length;
 
 				if (recLen > sz)
@@ -427,7 +427,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			{
 				try
 				{
-					var header = new TarHeader();
+					auto header = new TarHeader();
 					header.ParseBuffer(headerBuf);
 					if (!header.IsChecksumValid)
 					{
@@ -472,7 +472,7 @@ import ICSharpCode.SharpZipLib.Tar;
 						ubyte[] nameBuffer = new ubyte[TarBuffer.BlockSize];
 						long numToRead = this.entrySize;
 
-						var xhr = new TarExtendedHeaderReader();
+						auto xhr = new TarExtendedHeaderReader();
 
 						while (numToRead > 0)
 						{

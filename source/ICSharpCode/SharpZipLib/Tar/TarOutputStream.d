@@ -225,7 +225,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			if (entry.TarHeader.Name.Length > TarHeader.NAMELEN)
 			{
-				var longHeader = new TarHeader();
+				auto longHeader = new TarHeader();
 				longHeader.TypeFlag = TarHeader.LF_GNU_LONGNAME;
 				longHeader.Name = longHeader.Name + "././@LongLink";
 				longHeader.Mode = 420;//644 by default
