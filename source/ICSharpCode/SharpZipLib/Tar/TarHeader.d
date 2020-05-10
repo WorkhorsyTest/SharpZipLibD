@@ -236,7 +236,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		public const string GNU_TMAGIC = "ustar  ";
 
 		private const long timeConversionFactor = 10000000L;           // 1 tick == 100 nanoseconds
-		private static /*readonly*/ DateTime dateTime1970 = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+		private static /*readonly*/ DateTime dateTime1970 = DateTime(1970, 1, 1, 0, 0, 0, 0);
 
 		//#endregion Constants
 
@@ -346,7 +346,7 @@ import ICSharpCode.SharpZipLib.Tar;
 			{
 				throw new ArgumentOutOfRangeException(__traits(identifier, value), "ModTime cannot be before Jan 1st 1970");
 			}
-			return modTime = new DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, value.Second);
+			return modTime = DateTime(value.Year, value.Month, value.Day, value.Hour, value.Minute, value.Second);
 		}
 
 		/// <summary>
@@ -1076,7 +1076,7 @@ import ICSharpCode.SharpZipLib.Tar;
 
 			try
 			{
-				result = new DateTime(dateTime1970.Ticks + ticks * timeConversionFactor);
+				result = DateTime(dateTime1970.Ticks + ticks * timeConversionFactor);
 			}
 			catch (ArgumentOutOfRangeException)
 			{
