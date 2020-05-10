@@ -13,7 +13,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		private const ubyte VALUE = 2;
 		private const ubyte END = 3;
 
-		private /*readonly*/ Dictionary<string, string> headers = new Dictionary<string, string>();
+		private /*readonly*/ Dictionary!(string, string) headers = new Dictionary!(string, string)();
 
 		private string[] headerParts = new string[3];
 
@@ -87,7 +87,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <summary>
 		/// Returns the parsed headers as key-value strings
 		/// </summary>
-		public Dictionary<string, string> Headers()
+		public Dictionary!(string, string) Headers()
 		{
 			// TODO: Check for invalid state? -NM 2018-07-01
 			return headers;
