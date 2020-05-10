@@ -223,7 +223,7 @@ import ICSharpCode.SharpZipLib.Tar;
 				throw new ArgumentNullException(__traits(identifier, entry));
 			}
 
-			if (entry.TarHeader.Name.Length > TarHeader.NAMELEN)
+			if (entry.tarHeader.Name.Length > TarHeader.NAMELEN)
 			{
 				auto longHeader = new TarHeader();
 				longHeader.TypeFlag = TarHeader.LF_GNU_LONGNAME;
@@ -234,17 +234,17 @@ import ICSharpCode.SharpZipLib.Tar;
 				longHeader.GroupName = entry.GroupName;
 				longHeader.UserName = entry.UserName;
 				longHeader.LinkName = "";
-				longHeader.Size = entry.TarHeader.Name.Length + 1;  // Plus one to avoid dropping last char
+				longHeader.Size = entry.tarHeader.Name.Length + 1;  // Plus one to avoid dropping last char
 
 				longHeader.WriteHeader(blockBuffer);
 				buffer.WriteBlock(blockBuffer);  // Add special long filename header block
 
 				int nameCharIndex = 0;
 
-				while (nameCharIndex < entry.TarHeader.Name.Length + 1 /* we've allocated one for the null char, now we must make sure it gets written out */)
+				while (nameCharIndex < entry.tarHeader.Name.Length + 1 /* we've allocated one for the null char, now we must make sure it gets written out */)
 				{
 					Array.Clear(blockBuffer, 0, blockBuffer.Length);
-					TarHeader.GetAsciiBytes(entry.TarHeader.Name, nameCharIndex, this.blockBuffer, 0, TarBuffer.BlockSize); // This func handles OK the extra char out of string length
+					TarHeader.GetAsciiBytes(entry.tarHeader.Name, nameCharIndex, this.blockBuffer, 0, TarBuffer.BlockSize); // This func handles OK the extra char out of string length
 					nameCharIndex += TarBuffer.BlockSize;
 					buffer.WriteBlock(blockBuffer);
 				}

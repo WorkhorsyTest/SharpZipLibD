@@ -536,7 +536,7 @@ throw new NotImplementedException("FIXME: Port the ProgressMessageHandler event 
 					break;
 				}
 
-				if (entry.TarHeader.TypeFlag == TarHeader.LF_LINK || entry.TarHeader.TypeFlag == TarHeader.LF_SYMLINK)
+				if (entry.tarHeader.TypeFlag == TarHeader.LF_LINK || entry.tarHeader.TypeFlag == TarHeader.LF_SYMLINK)
 					continue;
 
 				ExtractEntry(destinationDirectory, entry);

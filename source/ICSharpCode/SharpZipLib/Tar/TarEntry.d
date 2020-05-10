@@ -169,7 +169,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		/// <returns>
 		/// This entry's TarHeader.
 		/// </returns>
-		public TarHeader TarHeader()
+		public TarHeader tarHeader()
 		{
 			return header;
 		}
