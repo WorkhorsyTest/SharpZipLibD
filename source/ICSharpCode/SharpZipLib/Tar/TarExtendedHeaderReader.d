@@ -27,7 +27,7 @@ import ICSharpCode.SharpZipLib.Tar;
 */
 		private int state = LENGTH;
 
-		private static /*readonly*/ ubyte[] StateNext = [ cast(ubyte)' ', cast(ubyte)'=', cast(ubyte)'\n' ];
+		private static immutable ubyte[] StateNext = [ cast(ubyte)' ', cast(ubyte)'=', cast(ubyte)'\n' ];
 
 		/// <summary>
 		/// Creates a new <see cref="TarExtendedHeaderReader"/>.

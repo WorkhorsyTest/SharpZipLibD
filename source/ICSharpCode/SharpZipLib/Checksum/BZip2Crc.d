@@ -38,7 +38,7 @@ import ICSharpCode.SharpZipLib.Checksum;
 		private const uint crcInit = 0xFFFFFFFF;
 		//const uint crcXor = 0x00000000;
 
-		private static /*readonly*/ uint[] crcTable = [
+		private static immutable uint[] crcTable = [
 			0X00000000, 0X04C11DB7, 0X09823B6E, 0X0D4326D9,
 			0X130476DC, 0X17C56B6B, 0X1A864DB2, 0X1E475005,
 			0X2608EDB8, 0X22C9F00F, 0X2F8AD6D6, 0X2B4BCB61,
