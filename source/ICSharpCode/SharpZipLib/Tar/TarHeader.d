@@ -1,4 +1,4 @@
-import System : DateTime, ArgumentException, ArgumentOutOfRangeException, ArgumentNullException;
+import System : DateTime, ArgumentException, ArgumentOutOfRangeException, ArgumentNullException, NotImplementedException;
 import System.Text : StringBuilder;
 
 import ICSharpCode.SharpZipLib.Tar;
@@ -485,7 +485,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 /*
 			return this.MemberwiseClone();
-*/return null;
+*/throw new NotImplementedException();
 		}
 
 		//#endregion ICloneable Members
@@ -620,7 +620,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 /*
 			return Name.GetHashCode();
-*/return 0;
+*/throw new NotImplementedException();
 		}
 
 		/// <summary>
@@ -1077,7 +1077,7 @@ import ICSharpCode.SharpZipLib.Tar;
 		{
 /*
 			return unchecked(cast(int)((dateTime.Ticks - dateTime1970.Ticks) / timeConversionFactor));
-*/return 0;
+*/throw new NotImplementedException();
 		}
 
 		private static DateTime GetDateTimeFromCTime(long ticks)
